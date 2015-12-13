@@ -703,7 +703,7 @@ Blockly.Blocks['colour_hue'] = {
   },
   mutationToDom: function(workspace) {
     var container = document.createElement('mutation');
-    container.setAttribute('colour', this.getColour());
+    container.setAttribute('colour', this.getColourHue());
     return container;
   },
   domToMutation: function(container) {

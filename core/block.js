@@ -590,18 +590,31 @@ Blockly.Block.prototype.setTooltip = function(newTip) {
 
 /**
  * Get the colour of a block.
- * @return {number} HSV hue value.
+ * @return {number} hex value.
  */
 Blockly.Block.prototype.getColour = function() {
-  return this.colourHue_;
+  return this.colourHex_||'#000000';
+};
+
+/**
+ * Get the colour of a block.
+ * @return {number} HSV hue value.
+ */
+Blockly.Block.prototype.getColourHue = function() {
+  var colourHsv = goog.color.hexToHsv(this.colourHex_);
+  return colourHsv[0];
 };
 
 /**
  * Change the colour of a block.
- * @param {number} colourHue HSV hue value.
+ * @param {(number|number[])} colour, hue value or RGB value.
  */
-Blockly.Block.prototype.setColour = function(colourHue) {
-  this.colourHue_ = colourHue;
+Blockly.Block.prototype.setColour = function(colour) {
+  if( Object.prototype.toString.call( colour ) === '[object Array]' ) {
+    this.colourHex_ = goog.color.rgbArrayToHex(colour);
+  } else {
+    this.colourHex_ = Blockly.makeColour(colour);;
+  }
   if (this.rendered) {
     this.updateColour();
   }
