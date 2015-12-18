@@ -521,6 +521,22 @@ Blockly.BlockSvg.prototype.onMouseUp_ = function(e) {
       Blockly.highlightedConnection_.unhighlight();
       Blockly.highlightedConnection_ = null;
     }
+    // Check if this block is part of a task or event if desired
+    if (Blockly.getMainWorkspace().checkInTask && Blockly.selected) {
+      var rootBlock = this_.getRootBlock();
+      var inTask = false;
+      var validRoots = Blockly.getMainWorkspace().checkInTask;
+      for (var i = 0; i < validRoots.length; i++) {
+        if (rootBlock.type.indexOf(validRoots[i]) >= 0) {
+          inTask = true;
+          break;
+        }
+      }
+      var descendants = rootBlock.getDescendants();
+      for (var j = 0; j < descendants.length; j++) {
+        descendants[j].setInTask(inTask);
+      }
+    }
     Blockly.Css.setCursor(Blockly.Css.Cursor.OPEN);
   });
 };
@@ -1307,7 +1323,7 @@ Blockly.BlockSvg.disconnectUiStop_.group = null;
  * Change the colour of a block.
  */
 Blockly.BlockSvg.prototype.updateColour = function() {
-  if (this.disabled) {
+  if (this.disabled || !this.inTask) {
     // Disabled blocks don't have colour.
     return;
   }
@@ -1346,7 +1362,7 @@ Blockly.BlockSvg.prototype.updateColour = function() {
 Blockly.BlockSvg.prototype.updateDisabled = function() {
   var hasClass = Blockly.hasClass_(/** @type {!Element} */ (this.svgGroup_),
                                    'blocklyDisabled');
-  if (this.disabled || this.getInheritedDisabled()) {
+  if (this.disabled || this.getInheritedDisabled() || !this.inTask) {
     if (!hasClass) {
       Blockly.addClass_(/** @type {!Element} */ (this.svgGroup_),
                         'blocklyDisabled');
@@ -1512,6 +1528,21 @@ Blockly.BlockSvg.prototype.setDisabled = function(disabled) {
     return;
   }
   Blockly.BlockSvg.superClass_.setDisabled.call(this, disabled);
+  if (this.rendered) {
+    this.updateDisabled();
+  }
+  this.workspace.fireChangeEvent();
+};
+
+/**
+ * Set whether the block is in task or not.
+ * @param {boolean} intask True if block belongs to a valid task.
+ */
+Blockly.BlockSvg.prototype.setInTask = function(inTask) {
+  if (this.inTask == inTask) {
+    return;
+  }
+  Blockly.BlockSvg.superClass_.setInTask.call(this, inTask);
   if (this.rendered) {
     this.updateDisabled();
   }

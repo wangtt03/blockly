@@ -131,6 +131,8 @@ Blockly.Block.prototype.fill = function(workspace, prototypeName) {
   this.isShadow_ = false;
   /** @type {boolean} */
   this.collapsed_ = false;
+  /** @type {boolean} */
+  this.inTask = true;
 
   /** @type {string|Blockly.Comment} */
   this.comment = null;
@@ -832,6 +834,14 @@ Blockly.Block.prototype.getInheritedDisabled = function() {
       return true;
     }
   }
+};
+
+/**
+ * Set whether the block is in task or not.
+ * @param {boolean} intask True if block belongs to a valid task.
+ */
+Blockly.Block.prototype.setInTask = function(inTask) {  
+  this.inTask = inTask;
 };
 
 /**

@@ -105,7 +105,7 @@ Blockly.parseOptions_ = function(options) {
     var languageTree = null;
     var hasCategories = false;
     var hasTrashcan = false;
-    var hasCollapse = false;
+    var hasf = false;
     var hasComments = false;
     var hasDisable = false;
     var hasSounds = false;
@@ -213,7 +213,8 @@ Blockly.parseOptions_ = function(options) {
     gridOptions: gridOptions,
     zoomOptions: zoomOptions,
     enableRealtime: enableRealtime,
-    realtimeOptions: realtimeOptions
+    realtimeOptions: realtimeOptions,
+    checkInTask: options['checkInTask'] || false
   };
 };
 
