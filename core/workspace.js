@@ -43,6 +43,8 @@ Blockly.Workspace = function(opt_options) {
   this.options = opt_options || {};
   /** @type {boolean} */
   this.RTL = !!this.options.RTL;
+  /** @type {boolean} */
+  this.checkInTask = this.options.checkInTask;
   /** @type {!Array.<!Blockly.Block>} */
   this.topBlocks_ = [];
 };

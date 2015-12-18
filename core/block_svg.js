@@ -99,9 +99,8 @@ Blockly.BlockSvg.prototype.initSvg = function() {
   for (var i = 0, input; input = this.inputList[i]; i++) {
     input.init();
   }
-  var icons = this.getIcons();
-  for (var i = 0; i < icons.length; i++) {
-    icons[i].createIcon();
+  if (this.mutator) {
+    this.mutator.createIcon();
   }
   this.updateColour();
   this.updateMovable();
@@ -524,6 +523,22 @@ Blockly.BlockSvg.prototype.onMouseUp_ = function(e) {
     // resize to contain the newly positioned block.  Force a second resize
     // now that the block has been deleted.
     Blockly.fireUiEvent(window, 'resize');
+  }
+// Check if this block is part of a task or event if desired
+  if (Blockly.getMainWorkspace().checkInTask && Blockly.selected) {
+    var rootBlock = this.getRootBlock();
+    var inTask = false;
+    var validRoots = Blockly.getMainWorkspace().checkInTask;
+    for (var i = 0; i < validRoots.length; i++) {
+      if (rootBlock.type.indexOf(validRoots[i]) >= 0) {
+        inTask = true;
+        break;
+      }
+    }
+    var descendants = rootBlock.getDescendants();
+    for (var j = 0; j < descendants.length; j++) {
+      descendants[j].setInTask(inTask);
+    }
   }
   if (Blockly.highlightedConnection_) {
     Blockly.highlightedConnection_.unhighlight();
@@ -1204,7 +1219,7 @@ Blockly.BlockSvg.prototype.connectionUiEffect = function() {
   var ripple = Blockly.createSvgElement('circle',
       {'cx': xy.x, 'cy': xy.y, 'r': 0, 'fill': 'none',
        'stroke': '#888', 'stroke-width': 10},
-      this.workspace.getParentSvg());
+      this.workspace.options.svg);
   // Start the animation.
   Blockly.BlockSvg.connectionUiStep_(ripple, new Date(), this.workspace.scale);
 };
@@ -1349,7 +1364,7 @@ Blockly.BlockSvg.prototype.updateColour = function() {
 Blockly.BlockSvg.prototype.updateDisabled = function() {
   var hasClass = Blockly.hasClass_(/** @type {!Element} */ (this.svgGroup_),
                                    'blocklyDisabled');
-  if (this.disabled || this.getInheritedDisabled()) {
+  if (this.disabled || this.getInheritedDisabled() || !this.inTask) {
     if (!hasClass) {
       Blockly.addClass_(/** @type {!Element} */ (this.svgGroup_),
                         'blocklyDisabled');
@@ -1513,6 +1528,21 @@ Blockly.BlockSvg.prototype.setDisabled = function(disabled) {
     return;
   }
   Blockly.BlockSvg.superClass_.setDisabled.call(this, disabled);
+  if (this.rendered) {
+    this.updateDisabled();
+  }
+  this.workspace.fireChangeEvent();
+};
+
+/**
+ * Set whether the block is in task or not.
+ * @param {boolean} intask True if block belongs to a valid task.
+ */
+Blockly.BlockSvg.prototype.setInTask = function(inTask) {
+  if (this.inTask == inTask) {
+    return;
+  }
+  Blockly.BlockSvg.superClass_.setInTask.call(this, inTask);
   if (this.rendered) {
     this.updateDisabled();
   }
