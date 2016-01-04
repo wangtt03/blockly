@@ -85,7 +85,7 @@ Blockly.Toolbox.prototype.CONFIG_ = {
   cssItem: '',
   cssTreeRow: 'blocklyTreeRow',
   cssItemLabel: 'blocklyTreeLabel',
-  cssTreeIcon: 'blocklyTreeIcon',
+  //cssTreeIcon: 'blocklyTreeIcon',
   cssExpandedFolderIcon: 'blocklyTreeIconOpen',
   cssFileIcon: 'blocklyTreeIconNone',
   cssSelectedRow: 'blocklyTreeSelected'
@@ -190,6 +190,7 @@ Blockly.Toolbox.prototype.populate_ = function(newTree) {
   rootOut.removeChildren();  // Delete any existing content.
   rootOut.blocks = [];
   var hasColours = false;
+  var hasSvg = false;
   function syncTrees(treeIn, treeOut) {
     for (var i = 0, childIn; childIn = treeIn.childNodes[i]; i++) {
       if (!childIn.tagName) {
@@ -219,6 +220,17 @@ Blockly.Toolbox.prototype.populate_ = function(newTree) {
           } else {
             childOut.hexColour = '';
           }
+          var svg = childIn.getAttribute('svg');
+          if (svg) {
+            var rgbName = 'CAT_' + childIn.getAttribute('name').toUpperCase() + '_RGB';
+            var colour = Blockly[rgbName];
+            if (colour) {
+              childOut.hexColour = colour;
+            } else {
+              childOut.hexColour = '#57e';
+            }
+            hasSvg = true;
+          }
           if (childIn.getAttribute('expanded') == 'true') {
             if (childOut.blocks.length) {
               rootOut.setSelectedItem(childOut);
@@ -240,6 +252,7 @@ Blockly.Toolbox.prototype.populate_ = function(newTree) {
   }
   syncTrees(newTree, this.tree_);
   this.hasColours_ = hasColours;
+  this.hasSvg_ = hasSvg;
 
   if (rootOut.blocks.length) {
     throw 'Toolbox cannot have both blocks and categories in the root level.';
@@ -255,14 +268,31 @@ Blockly.Toolbox.prototype.populate_ = function(newTree) {
  *     Defaults to the root node.
  * @private
  */
-Blockly.Toolbox.prototype.addColour_ = function(opt_tree) {
-  var tree = opt_tree || this.tree_;
+Blockly.Toolbox.prototype.addColour_ = function(opt_tree, opt_sup) {
+  var tree = opt_tree || this.tree_; 
   var children = tree.getChildren();
   for (var i = 0, child; child = children[i]; i++) {
     var element = child.getRowElement();
-    if (element) {
+    if (element) {         
       if (this.hasColours_) {
-        var border = '8px solid ' + (child.hexColour || '#ddd');
+        var border = '8px solid ' + (child.hexColour || '#ddd'); 
+      } else if (this.hasSvg_ && element.className === "blocklyTreeRow") {
+        child.setAfterLabelHtml(this.createSvg_(child.hexColour).outerHTML);       
+        element.style['background-color']= child.hexColour;
+        if (this.workspace_.RTL) {
+          child.getAfterLabelElement().style.float="left";
+          element.style['padding-right']="0";
+          if (opt_sup) {
+            element.style['margin-right']="20px";
+          }
+        } else {
+          child.getAfterLabelElement().style.float="right";
+          element.style['padding-left']="0";
+          if (opt_sup) {
+            element.style['margin-left']="20px";
+          }
+        }
+        var border = 'none';
       } else {
         var border = 'none';
       }
@@ -272,8 +302,46 @@ Blockly.Toolbox.prototype.addColour_ = function(opt_tree) {
         element.style.borderLeft = border;
       }
     }
-    this.addColour_(child);
+    this.addColour_(child, true);
   }
+};
+
+/**
+ * Add toolbox decoration as svg.
+ * @param {hexColour} colour of the svg.
+ * @private
+ */
+Blockly.Toolbox.prototype.createSvg_ = function(hexColour) { 
+  var id = Blockly.genUid();
+  var svgCategory = Blockly.createSvgElement('svg', {
+      'xmlns' : 'http://www.w3.org/2000/svg',
+      'id' : 'blocklyCat' + id,
+      'width' : 15,
+      'height' : 40
+  }, null);
+  if (this.workspace_.RTL) {
+    var svgCatGroup = Blockly.createSvgElement('g', {
+      'transform' : 'translate(15) scale(-1 1)',
+    }, svgCategory);
+  } else {
+    var svgCatGroup = Blockly.createSvgElement('g', {}, svgCategory);
+  }  
+  var svgFlyoutPath = Blockly.createSvgElement('path', {
+      'class' : 'blocklyCon',
+      'd' : 'm0,40 h15v-40 h-15 v40 z'
+  }, svgCatGroup);
+  var svgCatPath = Blockly.createSvgElement('path', {
+      'fill' : hexColour,
+      'd': 'M 0,30 l7.8,0.5 l2.5-5.5 c3-10.7,0.3-16.3-10.3-15.7 z'
+  }, svgCatGroup); 
+  var svgCatEndPath = Blockly.createSvgElement('path', {
+      'class' : 'blocklyToolboxBackground',
+      'stroke' : '#ddd',
+      'stroke-width' : '2',
+      'fill' : 'none',
+      'd' : 'M1,40 v-10 l7.8,0.5 l2.5-5.5 c3-10.7,0.3-16.3-10.3-15.7 v-10'
+  }, svgCatGroup); 
+  return svgCategory;
 };
 
 /**
@@ -374,18 +442,28 @@ Blockly.Toolbox.TreeControl.prototype.setSelectedItem = function(node) {
     return;
   }
   if (toolbox.lastCategory_) {
-    toolbox.lastCategory_.getRowElement().style.backgroundColor = '';
+    if (!this.toolbox_.hasSvg_) {
+      toolbox.lastCategory_.getRowElement().style.backgroundColor = '';
+    } else {
+      var html = toolbox.lastCategory_.getAfterLabelHtml().replace('blocklyConSelected', 'blocklyCon');
+      toolbox.lastCategory_.setAfterLabelHtml(html);
+    }
   }
   if (node) {
-    var hexColour = node.hexColour || '#57e';
-    node.getRowElement().style.backgroundColor = hexColour;
-    // Add colours to child nodes which may have been collapsed and thus
-    // not rendered.
-    toolbox.addColour_(node);
+    if (!this.toolbox_.hasSvg_) {
+      var hexColour = node.hexColour || '#57e';
+      node.getRowElement().style.backgroundColor = hexColour;
+    } else if (node.blocks && node.blocks.length) {
+      var html = node.getAfterLabelHtml().replace('blocklyCon', 'blocklyConSelected');
+      node.setAfterLabelHtml(html);
+    }
   }
+  // Add colours to child nodes which may have been collapsed and thus
+  // not rendered.
+  toolbox.addColour_(node,node ? true : false);
   goog.ui.tree.TreeControl.prototype.setSelectedItem.call(this, node);
   if (node && node.blocks && node.blocks.length) {
-    toolbox.flyout_.show(node.blocks);
+    toolbox.flyout_.show(node.blocks, this.toolbox_.hasSvg_ ? node.hexColour : null);
     // Scroll the flyout to the top if the category has changed.
     if (toolbox.lastCategory_ != node) {
       toolbox.flyout_.scrollToTop();
