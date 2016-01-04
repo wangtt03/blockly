@@ -83,6 +83,55 @@ Blockly.HSV_SATURATION = 0.45;
 Blockly.HSV_VALUE = 0.65;
 
 /**
+ * The rgb value for block colours in logic category.
+ */
+Blockly.CAT_LOGIC_RGB = [ 51, 184, 202 ];
+/**
+ * The rgb value for block colours in colour category.
+ */
+Blockly.CAT_COLOUR_RGB = [ 235, 195, 0 ];
+/**
+ * The rgb value for block colours in lists category.
+ */
+Blockly.CAT_LIST_RGB = [ 57, 55, 139 ];
+/**
+ * The rgb value for block colours in math category.
+ */
+Blockly.CAT_MATH_RGB = [ 0, 90, 148 ];
+/**
+ * The rgb value for block colours in procedures category.
+ */
+Blockly.CAT_PROCEDURE_RGB = [ 23, 156, 125 ];
+/**
+ * The rgb value for block colours in actions category.
+ */
+Blockly.CAT_ACTION_RGB = [ 242, 148, 0 ];
+/**
+ * The rgb value for block colours in activity category.
+ */
+Blockly.CAT_ACTIVITY_RGB = [ 226, 0, 26 ];
+/**
+ * The rgb value for block colours in controls category.
+ */
+Blockly.CAT_CONTROL_RGB = [ 235, 106, 10 ];
+/**
+ * The rgb value for block colours in sensors category.
+ */
+Blockly.CAT_SENSOR_RGB = [ 143, 164, 2 ];
+/**
+ * The rgb value for block colours in text category.
+ */
+Blockly.CAT_TEXT_RGB = [ 177, 200, 0 ];
+/**
+ * The rgb value for block colours in variables category.
+ */
+Blockly.CAT_VARIABLE_RGB = [ 144, 133, 186 ];
+/**
+ * The rgb value for block colours in communication category.
+ */
+Blockly.CAT_COMMUNICATION_RGB = [ 255, 105, 180 ];
+
+/**
  * Sprited icons and images.
  */
 Blockly.SPRITE = {

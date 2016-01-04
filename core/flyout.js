@@ -352,7 +352,7 @@ Blockly.Flyout.prototype.hide = function() {
  * @param {!Array|string} xmlList List of blocks to show.
  *     Variables and procedures have a custom set of blocks.
  */
-Blockly.Flyout.prototype.show = function(xmlList) {
+Blockly.Flyout.prototype.show = function(xmlList, opt_colour) {
   this.hide();
   // Delete any blocks from a previous showing.
   var blocks = this.workspace_.getTopBlocks(false);
@@ -379,6 +379,11 @@ Blockly.Flyout.prototype.show = function(xmlList) {
 
   var margin = this.CORNER_RADIUS;
   this.svgGroup_.style.display = 'block';
+  
+  if (opt_colour) {
+    this.svgBackground_.setAttribute('fill', opt_colour);
+  }
+  
   // Create the blocks to be shown in this flyout.
   var blocks = [];
   var gaps = [];
