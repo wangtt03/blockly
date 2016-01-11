@@ -44,6 +44,8 @@ Blockly.Workspace = function(opt_options) {
   this.checkInTask = this.options.checkInTask;
   /** @type {!Array.<!Blockly.Block>} */
   this.topBlocks_ = [];
+  /** @type {boolean} */
+  this.variableDeclaration = !!this.options.variableDeclaration;
 };
 
 /**
