@@ -684,3 +684,68 @@ Blockly.Blocks['text_prompt'] = {
   mutationToDom: Blockly.Blocks['text_prompt_ext'].mutationToDom,
   domToMutation: Blockly.Blocks['text_prompt_ext'].domToMutation
 };
+
+Blockly.Blocks['robText_join'] = {
+  /**
+   * Block for creating a string made up of any number of elements of any
+   * type.
+   * @this Blockly.Block
+   */
+  init : function() {
+    this.setHelpUrl(Blockly.Msg.TEXT_JOIN_HELPURL);
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.appendValueInput('ADD0').appendField(Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH);
+    this.appendValueInput('ADD1');
+    this.setOutput(true, 'String');
+    this.setMutatorPlus(new Blockly.MutatorPlus(this));
+    this.setTooltip(Blockly.Msg.TEXT_JOIN_TOOLTIP);
+    this.itemCount_ = 2;
+  },
+  /**
+   * Create XML to represent number of text inputs.
+   * @return {Element} XML storage element.
+   * @this Blockly.Block
+   */
+  mutationToDom : function() {
+    var container = document.createElement('mutation');
+    container.setAttribute('items', this.itemCount_);
+    return container;
+  },
+  /**
+   * Parse XML to restore the text inputs.
+   * @param {!Element} xmlElement XML storage element.
+   * @this Blockly.Block
+   */
+  domToMutation : function(xmlElement) {
+    this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
+    for (var x = 2; x < this.itemCount_; x++) {
+      var input = this.appendValueInput('ADD' + x);
+      if (x == 2) {
+        this.setMutatorMinus(new Blockly.MutatorMinus(this));
+      }
+    }
+  },
+  /**
+   * Update the shape according to the number of item inputs.
+   * @param {Number} number of item inputs.
+   * @this Blockly.Block
+   */
+  updateShape_ : function(num) {
+    if (num == 1) {
+      if (this.itemCount_ == 2) {
+        this.setMutatorMinus(new Blockly.MutatorMinus(this));
+        this.render();
+      }
+      this.appendValueInput('ADD' + this.itemCount_);
+      this.itemCount_++;
+    } else if (num == -1) {
+      this.itemCount_--;
+      this.removeInput('ADD' + this.itemCount_);
+    }
+    if (this.itemCount_ == 2) {
+      this.mutatorMinus.dispose();
+      this.mutatorMinus = null;
+      this.render();
+    }
+  }
+};

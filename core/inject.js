@@ -186,7 +186,7 @@ Blockly.parseOptions_ = function(options) {
 
   var enableRealtime = !!options['realtime'];
   var realtimeOptions = enableRealtime ? options['realtimeOptions'] : undefined;
-
+ 
   return {
     RTL: !!options['rtl'],
     collapse: hasCollapse,
@@ -205,7 +205,8 @@ Blockly.parseOptions_ = function(options) {
     zoomOptions: zoomOptions,
     enableRealtime: enableRealtime,
     realtimeOptions: realtimeOptions,
-    checkInTask: options['checkInTask'] || false
+    checkInTask: options['checkInTask'] || false,
+    variableDeclaration: !!options['variableDeclaration'],
   };
 };
 

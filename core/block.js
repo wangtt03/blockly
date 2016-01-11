@@ -31,6 +31,8 @@ goog.require('Blockly.Comment');
 goog.require('Blockly.Connection');
 goog.require('Blockly.Input');
 goog.require('Blockly.Mutator');
+goog.require('Blockly.MutatorPlus');
+goog.require('Blockly.MutatorMinus');
 goog.require('Blockly.Warning');
 goog.require('Blockly.Workspace');
 goog.require('Blockly.Xml');
@@ -104,6 +106,8 @@ Blockly.Block = function(workspace, prototypeName, opt_id) {
   this.isInFlyout = workspace.isFlyout;
   /** @type {boolean} */
   this.RTL = workspace.RTL;
+  /** @type {boolean} */
+  this.variableDeclaration = workspace.variableDeclaration;
 
   // Copy the type-specific functions and data from the prototype.
   if (prototypeName) {
@@ -735,6 +739,17 @@ Blockly.Block.prototype.setOutput = function(newBoolean, opt_check) {
     this.render();
     this.bumpNeighbours_();
   }
+};
+
+/**
+ * Change the output type on a block. 
+ * @param {string|Array  <string>|null} check Returned type or list of returned types. Null or undefined if any type could be returned (e.g. variable get). It is fine if
+ *            this is the same as the old type.
+ * @throws {goog.asserts.AssertionError} if the block did not already have an output.
+ */
+Blockly.Block.prototype.changeOutput = function(check) {
+    goog.asserts.assert(this.outputConnection, 'Only use changeOutput() on blocks that already have an output.');
+    this.outputConnection.setCheck(check);
 };
 
 /**

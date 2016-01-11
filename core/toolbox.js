@@ -116,7 +116,9 @@ Blockly.Toolbox.prototype.init = function() {
   var workspaceOptions = {
     disabledPatternId: workspace.options.disabledPatternId,
     parentWorkspace: workspace,
-    RTL: workspace.RTL
+    RTL: workspace.RTL,
+    svg: workspace.options.svg,
+    variableDeclaration: workspace.variableDeclaration
   };
   /**
    * @type {!Blockly.Flyout}
@@ -273,7 +275,7 @@ Blockly.Toolbox.prototype.addColour_ = function(opt_tree, opt_sup) {
   var children = tree.getChildren();
   for (var i = 0, child; child = children[i]; i++) {
     var element = child.getRowElement();
-    if (element) {         
+    if (element) {
       if (this.hasColours_) {
         var border = '8px solid ' + (child.hexColour || '#ddd'); 
       } else if (this.hasSvg_ && element.className === "blocklyTreeRow") {

@@ -137,8 +137,13 @@ Blockly.FieldVariable.dropdownCreate = function() {
     variableList.push(name);
   }
   variableList.sort(goog.string.caseInsensitiveCompare);
-  variableList.push(Blockly.Msg.RENAME_VARIABLE);
-  variableList.push(Blockly.Msg.NEW_VARIABLE);
+  var block = this.sourceBlock_;
+  if (block && !block.variableDeclaration) {
+    variableList.push(Blockly.Msg.RENAME_VARIABLE);
+    variableList.push(Blockly.Msg.NEW_VARIABLE);
+  } else if (variableList.length === 0){
+    variableList.push('dummy');
+  }
   // Variables are not language-specific, use the name as both the user-facing
   // text and the internal representation.
   var options = [];
@@ -175,23 +180,27 @@ Blockly.FieldVariable.dropdownChange = function(text) {
     return newVar;
   }
   var workspace = this.sourceBlock_.workspace;
-  if (text == Blockly.Msg.RENAME_VARIABLE) {
-    var oldVar = this.getText();
-    text = promptName(Blockly.Msg.RENAME_VARIABLE_TITLE.replace('%1', oldVar),
-                      oldVar);
-    if (text) {
-      Blockly.Variables.renameVariable(oldVar, text, workspace);
+  if (!workspace.variableDeclaration) {
+    if (text == Blockly.Msg.RENAME_VARIABLE) {
+      var oldVar = this.getText();
+      text = promptName(Blockly.Msg.RENAME_VARIABLE_TITLE.replace('%1', oldVar),
+                        oldVar);
+      if (text) {
+        Blockly.Variables.renameVariable(oldVar, text, workspace);
+      }
+      return null;
+    } else if (text == Blockly.Msg.NEW_VARIABLE) {
+      text = promptName(Blockly.Msg.NEW_VARIABLE_TITLE, '');
+      // Since variables are case-insensitive, ensure that if the new variable
+      // matches with an existing variable, the new case prevails throughout.
+      if (text) {
+        Blockly.Variables.renameVariable(text, text, workspace);
+        return text;
+      }
+      return null;
     }
-    return null;
-  } else if (text == Blockly.Msg.NEW_VARIABLE) {
-    text = promptName(Blockly.Msg.NEW_VARIABLE_TITLE, '');
-    // Since variables are case-insensitive, ensure that if the new variable
-    // matches with an existing variable, the new case prevails throughout.
-    if (text) {
-      Blockly.Variables.renameVariable(text, text, workspace);
-      return text;
-    }
-    return null;
+  } else {
+    this.sourceBlock_.setType(this.getText(), Blockly.Variables.getType(text));
   }
   return undefined;
 };

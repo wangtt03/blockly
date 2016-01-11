@@ -1010,6 +1010,17 @@ Blockly.Msg.VARIABLES_SET_TOOLTIP = 'Sets this variable to be equal to the input
 /// context menu - Selecting this creates a block to get (change) the value of
 /// this variable.\n\nParameters:\n* %1 - the name of the variable.
 Blockly.Msg.VARIABLES_SET_CREATE_GET = 'Create "get %1"';
+Blockly.Msg.VARIABLES_TYPE_NUMBER = 'Number';
+Blockly.Msg.VARIABLES_TYPE_BOOLEAN = 'Boolean';
+Blockly.Msg.VARIABLES_TYPE_STRING = 'String';
+Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER = 'List Number';
+Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING = 'List String';
+Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN = 'List Boolean';
+Blockly.Msg.VARIABLES_TYPE_ARRAY_COLOUR = 'List Colour';
+Blockly.Msg.VARIABLES_TYPE_COLOUR = 'Colour';
+Blockly.Msg.VARIABLES_TYPE_CONNECTION =  'Connection';
+Blockly.Msg.VARIABLES_TITLE = 'variable';
+Blockly.Msg.START_PROGRAM = 'program-start';
 
 // Procedures Blocks.
 /// url - Information about defining [https://en.wikipedia.org/wiki/Procedure_(computer_science) functions] that do not have return values.
@@ -1022,7 +1033,7 @@ Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = 'to';
 /// function definition block, as shown on
 /// [https://blockly-demo.appspot.com/static/apps/code/index.html?lang=en#w7cfju this block].
 /// The user will replace it with the function's name.
-Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = 'do something';
+Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = 'doSomething';
 /// block text - This precedes the list of parameters on a function's defiition block.  See
 /// [https://blockly-demo.appspot.com/static/apps/code/index.html?lang=en#voztpd this sample
 /// function with parameters].
@@ -1068,7 +1079,8 @@ Blockly.Msg.PROCEDURES_CALLNORETURN_TOOLTIP = 'Run the user-defined function "%1
 Blockly.Msg.PROCEDURES_CALLRETURN_HELPURL = 'https://en.wikipedia.org/wiki/Procedure_%28computer_science%29';
 /// tooltip - This block causes the body (blocks inside) of the named function definition to be run.\n\nParameters:\n* %1 - the name of the function.
 Blockly.Msg.PROCEDURES_CALLRETURN_TOOLTIP = 'Run the user-defined function "%1" and use its output.';
-
+Blockly.Msg.PROCEDURES_VARIABLES_ERROR = 'Error: This block may be used only within the "';
+Blockly.Msg.PROCEDURES_VARIABLES_LOOP_ERROR = 'Error: This block may be used only within a loop which declares ';
 /// block text - This text appears on a block in a window that appears when the user clicks
 /// on the plus sign or star on a function definition block.  It refers to the set of parameters
 /// (referred to by the simpler term "inputs") to the function.  See

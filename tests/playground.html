@@ -45,6 +45,7 @@
 <script src="../core/blockly.js"></script>
 <script src="../core/css.js"></script>
 <script src="../core/inject.js"></script>
+<script src="../core/field_variable.js"></script>
 <script src="../core/workspace.js"></script>
 <script src="../core/workspace_svg.js"></script>
 <script src="../core/icon.js"></script>
@@ -52,6 +53,12 @@
 <script src="../core/block_svg.js"></script>
 <script src="../core/toolbox.js"></script>
 <script src="../core/xml.js"></script>
+<script src="../core/variables.js"></script>
+<script src="../core/procedures.js"></script>
+<script src="../core/mutator.js"></script>
+<script src="../core/mutatorPlus.js"></script>
+<script src="../core/mutatorMinus.js"></script>
+<script src="../core/contextmenu.js"></script>
 <script src="../blocks/logic.js"></script>
 <script src="../blocks/loops.js"></script>
 <script src="../blocks/math.js"></script>
@@ -91,7 +98,8 @@ function start() {
               minScale: .25,
               scaleSpeed: 1.1
              },
-           checkInTask:['start', '_def', 'event']
+           checkInTask:['start', '_def', 'event'],
+           variableDeclaration: true
           });
 }
 
@@ -220,7 +228,10 @@ h1 {
 
   <xml id="toolbox" style="display: none">
     <category name="Logic" colour="210">
+      <!-- <block type="robControls_start"></block> -->
       <block type="controls_if"></block>
+      <block type="robControls_if"></block>
+      <block type="robControls_ifElse"></block>
       <block type="logic_compare"></block>
       <block type="logic_operation"></block>
       <block type="logic_negate"></block>
@@ -238,7 +249,7 @@ h1 {
       </block>
       <block type="controls_repeat" disabled="true"></block>
       <block type="controls_whileUntil"></block>
-      <block type="controls_for">
+      <block type="robControls_for">
         <value name="FROM">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -255,7 +266,7 @@ h1 {
           </shadow>
         </value>
       </block>
-      <block type="controls_forEach"></block>
+      <block type="robControls_forEach"></block>
       <block type="controls_flow_statements"></block>
     </category>
     <category name="Math" colour="230">
@@ -355,6 +366,7 @@ h1 {
     <category name="Text" colour="160">
       <block type="text"></block>
       <block type="text_join"></block>
+      <block type="robText_join"></block>
       <block type="text_append">
         <value name="TEXT">
           <shadow type="text"></shadow>
@@ -430,46 +442,26 @@ h1 {
       </block>
     </category>
     <category name="Lists" colour="260">
-      <block type="lists_create_with">
-        <mutation items="0"></mutation>
+      <block type="robLists_create_with">
+        <mutation items="0" list_type="Number"></mutation>
       </block>
-      <block type="lists_create_with"></block>
-      <block type="lists_repeat">
+      <block type="robLists_create_with"></block>
+      <block type="robLists_repeat">
         <value name="NUM">
           <shadow type="math_number">
             <field name="NUM">5</field>
           </shadow>
         </value>
       </block>
-      <block type="lists_length"></block>
-      <block type="lists_isEmpty"></block>
-      <block type="lists_indexOf">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">list</field>
-          </block>
-        </value>
+      <block type="robLists_length"></block>
+      <block type="robLists_isEmpty"></block>
+      <block type="robLists_indexOf">
       </block>
-      <block type="lists_getIndex">
-        <value name="VALUE">
-          <block type="variables_get">
-            <field name="VAR">list</field>
-          </block>
-        </value>
+      <block type="robLists_getIndex">
       </block>
-      <block type="lists_setIndex">
-        <value name="LIST">
-          <block type="variables_get">
-            <field name="VAR">list</field>
-          </block>
-        </value>
+      <block type="robLists_setIndex">
       </block>
-      <block type="lists_getSublist">
-        <value name="LIST">
-          <block type="variables_get">
-            <field name="VAR">list</field>
-          </block>
-        </value>
+      <block type="robLists_getSublist">
       </block>
       <block type="lists_split">
         <value name="DELIM">
