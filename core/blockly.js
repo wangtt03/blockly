@@ -482,7 +482,8 @@ Blockly.longStop_ = function() {
  * @private
  */
 Blockly.copy_ = function(block) {
-  var xmlBlock = Blockly.Xml.blockToDom_(block);
+  var statement_list = [];
+  var xmlBlock = Blockly.Xml.blockToDom_(block, statement_list);
   if (Blockly.dragMode_ != 2) {
     Blockly.Xml.deleteNext(xmlBlock);
   }

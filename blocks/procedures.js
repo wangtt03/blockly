@@ -1181,7 +1181,7 @@ Blockly.Blocks['robProcedures_callnoreturn'] = {
               connection.sourceBlock_.workspace != this.workspace) {
             // Block no longer exists or has been attached elsewhere.
             // delete this.quarkConnections_[quarkName];
-          } else {paramNames
+          } else {
             input.connection.connect(connection);
           }
         }
@@ -1401,7 +1401,7 @@ Blockly.Blocks['robProcedures_callreturn'] = {
           if (connection && 
               connection.targetConnection && 
               connection.sourceBlock_.workspace != this.workspace) {
-          } else {paramNames
+          } else {
             input.connection.connect(connection);
           }
         }

@@ -514,7 +514,6 @@ Blockly.Blocks['robControls_ifElse'] = {
       } else {
         return Blockly.Msg.CONTROLS_IF_TOOLTIP_4;
       }
-      return '';
     });
   },
   mutationToDom : function() {
@@ -604,7 +603,6 @@ Blockly.Blocks['robControls_if'] = {
       } else {
         return Blockly.Msg.CONTROLS_IF_TOOLTIP_3;
       }
-      return '';
     });
   },
   mutationToDom : function() {

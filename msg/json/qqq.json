@@ -1,11 +1,4 @@
 {
-	"@metadata": {
-		"authors": [
-			"Espertus",
-			"Liuxinyu970226",
-			"Shirayuki"
-		]
-	},
 	"VARIABLES_DEFAULT_NAME": "default name - A simple, general default name for a variable, preferably short. For more context, see [[Translating:Blockly#infrequent_message_types]].\n{{Identical|Item}}",
 	"TODAY": "button text - Botton that sets a calendar to today's date.\n{{Identical|Today}}",
 	"DUPLICATE_BLOCK": "context menu - Make a copy of the selected block (and any blocks it contains).\n{{Identical|Duplicate}}",
@@ -336,6 +329,17 @@
 	"VARIABLES_SET": "block text - Change the value of a mathematical variable: '''set [the value of] x to 7'''.\n\nParameters:\n* %1 - the name of the variable.\n* %2 - the value to be assigned.",
 	"VARIABLES_SET_TOOLTIP": "tooltip - This initializes or changes the value of the named variable.",
 	"VARIABLES_SET_CREATE_GET": "context menu - Selecting this creates a block to get (change) the value of this variable.\n\nParameters:\n* %1 - the name of the variable.",
+	"VARIABLES_TYPE_NUMBER": "",
+	"VARIABLES_TYPE_BOOLEAN": "",
+	"VARIABLES_TYPE_STRING": "",
+	"VARIABLES_TYPE_ARRAY_NUMBER": "",
+	"VARIABLES_TYPE_ARRAY_STRING": "",
+	"VARIABLES_TYPE_ARRAY_BOOLEAN": "",
+	"VARIABLES_TYPE_ARRAY_COLOUR": "",
+	"VARIABLES_TYPE_COLOUR": "",
+	"VARIABLES_TYPE_CONNECTION": "",
+	"VARIABLES_TITLE": "",
+	"START_PROGRAM": "",
 	"PROCEDURES_DEFNORETURN_HELPURL": "url - Information about defining [https://en.wikipedia.org/wiki/Procedure_(computer_science) functions] that do not have return values.",
 	"PROCEDURES_DEFNORETURN_TITLE": "block text - This precedes the name of the function when defining it.  See [https://blockly-demo.appspot.com/static/apps/code/index.html?lang=en#c84aoc this sample function definition].",
 	"PROCEDURES_DEFNORETURN_PROCEDURE": "default name - This acts as a placeholder for the name of a function on a function definition block, as shown on [https://blockly-demo.appspot.com/static/apps/code/index.html?lang=en#w7cfju this block]. The user will replace it with the function's name.",
@@ -353,6 +357,8 @@
 	"PROCEDURES_CALLNORETURN_TOOLTIP": "tooltip - This block causes the body (blocks inside) of the named function definition to be run.",
 	"PROCEDURES_CALLRETURN_HELPURL": "url - Information about calling [https://en.wikipedia.org/wiki/Procedure_(computer_science) functions] that return values.",
 	"PROCEDURES_CALLRETURN_TOOLTIP": "tooltip - This block causes the body (blocks inside) of the named function definition to be run.\n\nParameters:\n* %1 - the name of the function.",
+	"PROCEDURES_VARIABLES_ERROR": "",
+	"PROCEDURES_VARIABLES_LOOP_ERROR": "",
 	"PROCEDURES_MUTATORCONTAINER_TITLE": "block text - This text appears on a block in a window that appears when the user clicks on the plus sign or star on a function definition block.  It refers to the set of parameters (referred to by the simpler term 'inputs') to the function.  See [[Translating:Blockly#function_definitions]].",
 	"PROCEDURES_MUTATORCONTAINER_TOOLTIP": "tooltip",
 	"PROCEDURES_MUTATORARG_TITLE": "block text - This text appears on a block in a window that appears when the user clicks on the plus sign or star on a function definition block].  It appears on the block for adding an individual parameter (referred to by the simpler term 'inputs') to the function. See [[Translating:Blockly#function_definitions]].",
