@@ -103,7 +103,7 @@ Blockly.Blocks['variables_get'] = {
    * @this Blockly.Block
    */
   onchange : function() {
-    if (!this.workspace || !Blockly.getMainWorkspace().variableDeclaration) {
+    if (this.isInFlyout || !this.workspace || !Blockly.getMainWorkspace().variableDeclaration) {
       // Block has been deleted.
       return;
     }

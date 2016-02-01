@@ -313,7 +313,7 @@ Blockly.Css.CONTENT = [
   '}',
   
   '.blocklyCon {',
-    'fill: #ddd;',
+    'fill: #eee;',
     'fill-opacity: 1;',
   '}',
 
@@ -401,14 +401,14 @@ Blockly.Css.CONTENT = [
 
   /* Category tree in Toolbox. */
   '.blocklyToolboxDiv {',
-    'background-color: #ddd;',
+    'background-color: #eee;',
     'overflow-x: visible;',
     'overflow-y: auto;',
     'position: absolute;',
   '}',
 
   '.blocklyTreeRoot {',
-    'padding: 4px 0;',
+    'padding: 10px 0;',
   '}',
 
   '.blocklyTreeRoot:focus {',
@@ -427,7 +427,7 @@ Blockly.Css.CONTENT = [
     'height: 40px;',
     'line-height: 0;',
     'margin-bottom: 6px;',
-    'white-space: nowrap;',
+//  'white-space: nowrap;',
   '}',
 
 //  '.blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow {',
@@ -493,7 +493,7 @@ Blockly.Css.CONTENT = [
     'position: relative;',
     'top: 20px;',
     'float: left;',
-    'font-size: 16px;',
+    'font-size: 16pt;',
     'color: #fff;',
     'padding: 0 6px 0 3px;',
   '}',

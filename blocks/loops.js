@@ -120,20 +120,109 @@ Blockly.Blocks['controls_whileUntil'] = {
   }
 };
 
+//Blockly.Blocks['controls_for'] = {
+//  /**
+//   * Block for 'for' loop.
+//   * @this Blockly.Block
+//   */
+//  init: function() {
+//    this.jsonInit({
+//      "message0": Blockly.Msg.CONTROLS_FOR_TITLE,
+//      "args0": [
+//        {
+//          "type": "field_variable",
+//          "name": "VAR",
+//          "variable": null
+//        },
+//        {
+//          "type": "input_value",
+//          "name": "FROM",
+//          "check": "Number",
+//          "align": "RIGHT"
+//        },
+//        {
+//          "type": "input_value",
+//          "name": "TO",
+//          "check": "Number",
+//          "align": "RIGHT"
+//        },
+//        {
+//          "type": "input_value",
+//          "name": "BY",
+//          "check": "Number",
+//          "align": "RIGHT"
+//        }
+//      ],
+//      "inputsInline": true,
+//      "previousStatement": null,
+//      "nextStatement": null,
+//      "colour": Blockly.Blocks.loops.HUE,
+//      "helpUrl": Blockly.Msg.CONTROLS_FOR_HELPURL
+//    });
+//    this.appendStatementInput('DO')
+//        .appendField(Blockly.Msg.CONTROLS_FOR_INPUT_DO);
+//    // Assign 'this' to a variable for use in the tooltip closure below.
+//    var thisBlock = this;
+//    this.setTooltip(function() {
+//      return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1',
+//          thisBlock.getFieldValue('VAR'));
+//    });
+//  },
+//  /**
+//   * Return all variables referenced by this block.
+//   * @return {!Array.<string>} List of variable names.
+//   * @this Blockly.Block
+//   */
+//  getVars: function() {
+//    return [this.getFieldValue('VAR')];
+//  },
+//  /**
+//   * Notification that a variable is renaming.
+//   * If the name matches one of this block's variables, rename it.
+//   * @param {string} oldName Previous name of variable.
+//   * @param {string} newName Renamed variable.
+//   * @this Blockly.Block
+//   */
+//  renameVar: function(oldName, newName) {
+//    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+//      this.setFieldValue(newName, 'VAR');
+//    }
+//  },
+//  /**
+//   * Add menu option to create getter block for loop variable.
+//   * @param {!Array} options List of menu options to add to.
+//   * @this Blockly.Block
+//   */
+//  customContextMenu: function(options) {
+//    if (!this.isCollapsed()) {
+//      var option = {enabled: true};
+//      var name = this.getFieldValue('VAR');
+//      option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+//      var xmlField = goog.dom.createDom('field', null, name);
+//      xmlField.setAttribute('name', 'VAR');
+//      var xmlBlock = goog.dom.createDom('block', null, xmlField);
+//      xmlBlock.setAttribute('type', 'variables_get');
+//      option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+//      options.push(option);
+//    }
+//  }
+//};
+
 Blockly.Blocks['controls_for'] = {
-  /**
-   * Block for 'for' loop.
-   * @this Blockly.Block
-   */
-  init: function() {
-    this.jsonInit({
-      "message0": Blockly.Msg.CONTROLS_FOR_TITLE,
-      "args0": [
-        {
-          "type": "field_variable",
-          "name": "VAR",
-          "variable": null
-        },
+    /**
+     * Block for 'for' loop. Roberta version.
+     * 
+     * @this Blockly.Block
+     */
+    init : function() {
+        this.setHelpUrl(Blockly.Msg.CONTROLS_FOR_HELPURL);
+        this.setColour(Blockly.CAT_CONTROL_RGB);
+        this.nameOld = 'i';
+        var nameField = new Blockly.FieldTextInput('i', this.validateName);
+        this.appendDummyInput().
+             appendField(Blockly.Msg.CONTROLS_FOR_INPUT_WITH).
+             appendField(nameField, 'VAR');
+        this.interpolate_(Blockly.Msg.CONTROLS_FOR_INPUT_FROM_TO_BY,[
         {
           "type": "input_value",
           "name": "FROM",
@@ -151,97 +240,219 @@ Blockly.Blocks['controls_for'] = {
           "name": "BY",
           "check": "Number",
           "align": "RIGHT"
-        }
-      ],
-      "inputsInline": true,
-      "previousStatement": null,
-      "nextStatement": null,
-      "colour": Blockly.Blocks.loops.HUE,
-      "helpUrl": Blockly.Msg.CONTROLS_FOR_HELPURL
-    });
-    this.appendStatementInput('DO')
-        .appendField(Blockly.Msg.CONTROLS_FOR_INPUT_DO);
-    // Assign 'this' to a variable for use in the tooltip closure below.
+        }], Blockly.ALIGN_RIGHT);
+        this.appendStatementInput('DO').appendField(Blockly.Msg.CONTROLS_FOR_INPUT_DO);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setInputsInline(true);
+        this.declarationType_ = 'Number';
+        // Assign 'this' to a variable for use in the tooltip closure below.
+        
+        this.setTooltip(function() {
+            return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1', thisBlock.getFieldValue('VAR'));
+        });
+    },
+  /**
+   * Initialization of the block has completed, clean up anything that may be
+   * inconsistent as a result of the XML loading.
+   * @this Blockly.Block
+   */
+  validate: function () {
     var thisBlock = this;
-    this.setTooltip(function() {
-      return Blockly.Msg.CONTROLS_FOR_TOOLTIP.replace('%1',
-          thisBlock.getFieldValue('VAR'));
-    });
+    if (Blockly.Variables.isLegalName(thisBlock.getFieldValue('VAR'), thisBlock)) {
+      return;
+    } else {
+      var name = Blockly.Variables.generateUniqueName(Blockly.getMainWorkspace());
+      this.setFieldValue(name, 'VAR');
+    }   
   },
   /**
-   * Return all variables referenced by this block.
-   * @return {!Array.<string>} List of variable names.
+   * Obtain a valid name for the variable.
+   * Merge runs of whitespace.  Strip leading and trailing whitespace.
+   * Check for basic naming conventions and doubles
+   * @param {string} name User-supplied name.
+   * @return {?string} Valid name, or null if a name was not specified or is invalid
+   * @private
    * @this Blockly.Block
    */
-  getVars: function() {
-    return [this.getFieldValue('VAR')];
-  },
-  /**
-   * Notification that a variable is renaming.
-   * If the name matches one of this block's variables, rename it.
-   * @param {string} oldName Previous name of variable.
-   * @param {string} newName Renamed variable.
-   * @this Blockly.Block
-   */
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
-      this.setFieldValue(newName, 'VAR');
+  validateName: function (name) {
+    var block = this.sourceBlock_;
+    name = name.replace(/[\s\xa0]+/g, '').replace(/^ | $/g, '');
+    // no name set -> invalid
+    if (name === '')
+      return null;
+    if (!name.match(/^[a-zA-Z][a-zA-Z_$0-9]*$/))
+      return null;
+    // Ensure two identically-named variables don't exist.
+    if (Blockly.Variables.isLegalName(name, block)) {
+      Blockly.Variables.renameVariable (block.nameOld, name, Blockly.getMainWorkspace());
+      block.nameOld = name;
+      return name;
+    } else {
+      return null;
     }
+    
   },
-  /**
-   * Add menu option to create getter block for loop variable.
-   * @param {!Array} options List of menu options to add to.
-   * @this Blockly.Block
-   */
-  customContextMenu: function(options) {
-    if (!this.isCollapsed()) {
-      var option = {enabled: true};
-      var name = this.getFieldValue('VAR');
-      option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
-      var xmlField = goog.dom.createDom('field', null, name);
-      xmlField.setAttribute('name', 'VAR');
-      var xmlBlock = goog.dom.createDom('block', null, xmlField);
-      xmlBlock.setAttribute('type', 'variables_get');
-      option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
-      options.push(option);
+    getType : function() {
+        return this.declarationType_;
+    },
+    /**
+    * Return all variables referenced by this block.
+    * @return {!Array.<string>} List of variable names.
+    * @this Blockly.Block
+    */
+    getVars: function() {
+      return [this.getFieldValue('VAR')];
+    },
+    /**
+     * Return all variables referenced by this block.
+     * 
+     * @return {!Array.<string>} List of variable names.
+     * @this Blockly.Block
+     */
+    getVarDecl : function() {
+        return [ this.getFieldValue('VAR') ];
+    },
+    /**
+     * Add menu option to create getter block for loop variable.
+     * 
+     * @param {!Array}
+     *            options List of menu options to add to.
+     * @this Blockly.Block
+     */
+    customContextMenu : function(options) {
+        if (!this.isCollapsed()) {
+            var option = {
+                enabled : true
+            };
+            var name = this.getFieldValue('VAR');
+            option.text = Blockly.Msg.VARIABLES_SET_CREATE_GET.replace('%1', name);
+            var xmlField = goog.dom.createDom('field', null, name);
+            xmlField.setAttribute('name', 'VAR');
+            var xmlBlock = goog.dom.createDom('block', null, xmlField);
+            xmlBlock.setAttribute('type', 'variables_get');
+            option.callback = Blockly.ContextMenu.callbackFactory(this, xmlBlock);
+            options.push(option);
+        }
     }
-  }
 };
+
+//Blockly.Blocks['controls_forEach'] = {
+//  /**
+//   * Block for 'for each' loop.
+//   * @this Blockly.Block
+//   */
+//  init: function() {
+//    this.jsonInit({
+//      "message0": Blockly.Msg.CONTROLS_FOREACH_TITLE,
+//      "args0": [
+//        {
+//          "type": "field_variable",
+//          "name": "VAR",
+//          "variable": null
+//        },
+//        {
+//          "type": "input_value",
+//          "name": "LIST",
+//          "check": "Array"
+//        }
+//      ],
+//      "previousStatement": null,
+//      "nextStatement": null,
+//      "colour": Blockly.Blocks.loops.HUE,
+//      "helpUrl": Blockly.Msg.CONTROLS_FOREACH_HELPURL
+//    });
+//    this.appendStatementInput('DO')
+//        .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_DO);
+//    // Assign 'this' to a variable for use in the tooltip closure below.
+//    var thisBlock = this;
+//    this.setTooltip(function() {
+//      return Blockly.Msg.CONTROLS_FOREACH_TOOLTIP.replace('%1',
+//          thisBlock.getFieldValue('VAR'));
+//    });
+//  },
+//  /**
+//   * Return all variables referenced by this block.
+//   * @return {!Array.<string>} List of variable names.
+//   * @this Blockly.Block
+//   */
+//  getVars: function() {
+//    return [this.getFieldValue('VAR')];
+//  },
+//  /**
+//   * Notification that a variable is renaming.
+//   * If the name matches one of this block's variables, rename it.
+//   * @param {string} oldName Previous name of variable.
+//   * @param {string} newName Renamed variable.
+//   * @this Blockly.Block
+//   */
+//  renameVar: function(oldName, newName) {
+//    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
+//      this.setFieldValue(newName, 'VAR');
+//    }
+//  },
+//  customContextMenu: Blockly.Blocks['controls_for'].customContextMenu
+//};
 
 Blockly.Blocks['controls_forEach'] = {
   /**
-   * Block for 'for each' loop.
+   * Block for 'for each' loop. Roberta version.
    * @this Blockly.Block
    */
-  init: function() {
-    this.jsonInit({
-      "message0": Blockly.Msg.CONTROLS_FOREACH_TITLE,
-      "args0": [
-        {
-          "type": "field_variable",
-          "name": "VAR",
-          "variable": null
-        },
-        {
-          "type": "input_value",
-          "name": "LIST",
-          "check": "Array"
-        }
-      ],
-      "previousStatement": null,
-      "nextStatement": null,
-      "colour": Blockly.Blocks.loops.HUE,
-      "helpUrl": Blockly.Msg.CONTROLS_FOREACH_HELPURL
-    });
-    this.appendStatementInput('DO')
-        .appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_DO);
+  init : function() {
+    this.setHelpUrl(Blockly.Msg.CONTROLS_FOREACH_HELPURL);
+    this.setColour(Blockly.CAT_CONTROL_RGB);
+    var name = Blockly.Variables.findLegalName(Blockly.Msg.VARIABLES_DEFAULT_NAME, this);
+    this.nameOld = 'i';
+    var nameField = new Blockly.FieldTextInput('i', this.validateName);
+    var declType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ],
+                                               [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ],
+                                               [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
+                                               [ Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number' ],
+                                               [ Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String' ],
+                                               [ Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean' ],
+                                               [ Blockly.Msg.VARIABLES_TYPE_ARRAY_COLOUR, 'Array_Colour' ],
+                                               [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ] ], 
+                       function(option) {
+                         if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+                           this.sourceBlock_.updateType(option);
+                         }
+                       });
+    this.appendValueInput('LIST').
+         appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_ITEM).appendField(declType, 'TYPE').
+         appendField(nameField, 'VAR').
+         appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_INLIST).
+         setCheck('Array_Number');
+    if (Blockly.Msg.CONTROLS_FOREACH_INPUT_INLIST_TAIL) {
+      this.appendDummyInput().appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_INLIST_TAIL);
+      this.setInputsInline(true);
+    }
+    this.appendStatementInput('DO').appendField(Blockly.Msg.CONTROLS_FOREACH_INPUT_DO);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
     // Assign 'this' to a variable for use in the tooltip closure below.
     var thisBlock = this;
+    this.declarationType_ = 'Number';
     this.setTooltip(function() {
-      return Blockly.Msg.CONTROLS_FOREACH_TOOLTIP.replace('%1',
-          thisBlock.getFieldValue('VAR'));
-    });
+         return Blockly.Msg.CONTROLS_FOREACH_TOOLTIP.replace('%1', thisBlock.getFieldValue('VAR'));
+      });
   },
+  /**
+   * Initialization of the block has completed, clean up anything that may be
+   * inconsistent as a result of the XML loading.
+   * @this Blockly.Block
+   */
+  validate: Blockly.Blocks['controls_for'].validate,
+  /**
+   * Obtain a valid name for the variable.
+   * Merge runs of whitespace.  Strip leading and trailing whitespace.
+   * Check for basic naming conventions and doubles
+   * @param {string} name User-supplied name.
+   * @return {?string} Valid name, or null if a name was not specified or is invalid
+   * @private
+   * @this Blockly.Block
+   */
+  validateName: Blockly.Blocks['controls_for'].validateName,
   /**
    * Return all variables referenced by this block.
    * @return {!Array.<string>} List of variable names.
@@ -251,18 +462,19 @@ Blockly.Blocks['controls_forEach'] = {
     return [this.getFieldValue('VAR')];
   },
   /**
-   * Notification that a variable is renaming.
-   * If the name matches one of this block's variables, rename it.
-   * @param {string} oldName Previous name of variable.
-   * @param {string} newName Renamed variable.
+   * Return all variables referenced by this block.
+   * @return {!Array.<string>} List of variable names.
    * @this Blockly.Block
    */
-  renameVar: function(oldName, newName) {
-    if (Blockly.Names.equals(oldName, this.getFieldValue('VAR'))) {
-      this.setFieldValue(newName, 'VAR');
-    }
+  getVarDecl : function() {
+    return [ this.getFieldValue('VAR') ];
   },
-  customContextMenu: Blockly.Blocks['controls_for'].customContextMenu
+  updateType : function(option) {
+    this.declarationType_ = option;
+    this.getInput('LIST').connection.setCheck('Array_' + this.declarationType_);
+    Blockly.Variables.updateType(this.getFieldValue('VAR'), option);
+  },
+  customContextMenu : Blockly.Blocks['controls_for'].customContextMenu
 };
 
 Blockly.Blocks['controls_flow_statements'] = {

@@ -260,73 +260,191 @@ Blockly.Blocks['controls_if_else'] = {
   }
 };
 
+//Blockly.Blocks['logic_compare'] = {
+//  /**
+//   * Block for comparison operator.
+//   * @this Blockly.Block
+//   */
+//  init: function() {
+//    var OPERATORS = this.RTL ? [
+//          ['=', 'EQ'],
+//          ['\u2260', 'NEQ'],
+//          ['>', 'LT'],
+//          ['\u2265', 'LTE'],
+//          ['<', 'GT'],
+//          ['\u2264', 'GTE']
+//        ] : [
+//          ['=', 'EQ'],
+//          ['\u2260', 'NEQ'],
+//          ['<', 'LT'],
+//          ['\u2264', 'LTE'],
+//          ['>', 'GT'],
+//          ['\u2265', 'GTE']
+//        ];
+//    this.setHelpUrl(Blockly.Msg.LOGIC_COMPARE_HELPURL);
+//    this.setColour(Blockly.Blocks.logic.HUE);
+//    this.setOutput(true, 'Boolean');
+//    this.appendValueInput('A');
+//    this.appendValueInput('B')
+//        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
+//    this.setInputsInline(true);
+//    // Assign 'this' to a variable for use in the tooltip closure below.
+//    var thisBlock = this;
+//    this.setTooltip(function() {
+//      var op = thisBlock.getFieldValue('OP');
+//      var TOOLTIPS = {
+//        'EQ': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_EQ,
+//        'NEQ': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_NEQ,
+//        'LT': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LT,
+//        'LTE': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LTE,
+//        'GT': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GT,
+//        'GTE': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GTE
+//      };
+//      return TOOLTIPS[op];
+//    });
+//    this.prevBlocks_ = [null, null];
+//  },
+//  /**
+//   * Called whenever anything on the workspace changes.
+//   * Prevent mismatched types from being compared.
+//   * @this Blockly.Block
+//   */
+//  onchange: function() {
+//    var blockA = this.getInputTargetBlock('A');
+//    var blockB = this.getInputTargetBlock('B');
+//    // Disconnect blocks that existed prior to this change if they don't match.
+//    if (blockA && blockB &&
+//        !blockA.outputConnection.checkType_(blockB.outputConnection)) {
+//      // Mismatch between two inputs.  Disconnect previous and bump it away.
+//      for (var i = 0; i < this.prevBlocks_.length; i++) {
+//        var block = this.prevBlocks_[i];
+//        if (block === blockA || block === blockB) {
+//          block.setParent(null);
+//          block.bumpNeighbours_();
+//        }
+//      }
+//    }
+//    this.prevBlocks_[0] = blockA;
+//    this.prevBlocks_[1] = blockB;
+//  }
+//};
+
 Blockly.Blocks['logic_compare'] = {
-  /**
-   * Block for comparison operator.
-   * @this Blockly.Block
-   */
-  init: function() {
-    var OPERATORS = this.RTL ? [
-          ['=', 'EQ'],
-          ['\u2260', 'NEQ'],
-          ['>', 'LT'],
-          ['\u2265', 'LTE'],
-          ['<', 'GT'],
-          ['\u2264', 'GTE']
-        ] : [
-          ['=', 'EQ'],
-          ['\u2260', 'NEQ'],
-          ['<', 'LT'],
-          ['\u2264', 'LTE'],
-          ['>', 'GT'],
-          ['\u2265', 'GTE']
-        ];
-    this.setHelpUrl(Blockly.Msg.LOGIC_COMPARE_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
-    this.setOutput(true, 'Boolean');
-    this.appendValueInput('A');
-    this.appendValueInput('B')
-        .appendField(new Blockly.FieldDropdown(OPERATORS), 'OP');
-    this.setInputsInline(true);
-    // Assign 'this' to a variable for use in the tooltip closure below.
-    var thisBlock = this;
-    this.setTooltip(function() {
-      var op = thisBlock.getFieldValue('OP');
-      var TOOLTIPS = {
-        'EQ': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_EQ,
-        'NEQ': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_NEQ,
-        'LT': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LT,
-        'LTE': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LTE,
-        'GT': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GT,
-        'GTE': Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GTE
-      };
-      return TOOLTIPS[op];
-    });
-    this.prevBlocks_ = [null, null];
-  },
-  /**
-   * Called whenever anything on the workspace changes.
-   * Prevent mismatched types from being compared.
-   * @this Blockly.Block
-   */
-  onchange: function() {
-    var blockA = this.getInputTargetBlock('A');
-    var blockB = this.getInputTargetBlock('B');
-    // Disconnect blocks that existed prior to this change if they don't match.
-    if (blockA && blockB &&
-        !blockA.outputConnection.checkType_(blockB.outputConnection)) {
-      // Mismatch between two inputs.  Disconnect previous and bump it away.
-      for (var i = 0; i < this.prevBlocks_.length; i++) {
-        var block = this.prevBlocks_[i];
-        if (block === blockA || block === blockB) {
-          block.setParent(null);
-          block.bumpNeighbours_();
+    /**
+     * Block for comparison operator.
+     * 
+     * @this Blockly.Block
+     */
+    init : function() {
+        var OPERATORS = Blockly.RTL ? [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ], [ '>', 'LT' ], [ '\u2265', 'LTE' ], [ '<', 'GT' ], [ '\u2264', 'GTE' ] ] : [
+                [ '=', 'EQ' ], [ '\u2260', 'NEQ' ], [ '<', 'LT' ], [ '\u2264', 'LTE' ], [ '>', 'GT' ], [ '\u2265', 'GTE' ] ];
+        this.setHelpUrl(Blockly.Msg.LOGIC_COMPARE_HELPURL);
+        this.setColour(Blockly.CAT_LOGIC_RGB);
+        this.setOutput(true, 'Boolean');
+        this.appendValueInput('A');
+        this.appendDummyInput('OP_DROP').appendField(new Blockly.FieldDropdown(OPERATORS), 'OP')
+        this.appendValueInput('B');
+        this.setInputsInline(true);
+        // Assign 'this' to a variable for use in the tooltip closure below.
+        var thisBlock = this;
+        this.setTooltip(function() {
+            var op = thisBlock.getFieldValue('OP');
+            var TOOLTIPS = {
+                'EQ' : Blockly.Msg.LOGIC_COMPARE_TOOLTIP_EQ,
+                'NEQ' : Blockly.Msg.LOGIC_COMPARE_TOOLTIP_NEQ,
+                'LT' : Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LT,
+                'LTE' : Blockly.Msg.LOGIC_COMPARE_TOOLTIP_LTE,
+                'GT' : Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GT,
+                'GTE' : Blockly.Msg.LOGIC_COMPARE_TOOLTIP_GTE
+            };
+            return TOOLTIPS[op];
+        });
+        this.operatorRange_ = 'NUM';
+    },
+    /**
+     * Create XML to represent the operator's range.
+     * 
+     * @return {Element} XML storage element.
+     * @this Blockly.Block
+     */
+    mutationToDom : function() {
+        var container = document.createElement('mutation');
+        container.setAttribute('operator_range', this.operatorRange_);
+        return container;
+    },
+    /**
+     * Parse XML to restore the operator's range.
+     * 
+     * @param {!Element}
+     *            xmlElement XML storage element.
+     * @this Blockly.Block
+     */
+    domToMutation : function(xmlElement) {
+        this.operatorRange_ = xmlElement.getAttribute('operator_range');
+        this.updateShape(this.operatorRange_);
+    },
+    /**
+     * Modify this block to have (or not have) an input for 'is divisible by'.
+     * 
+     * @param {boolean}
+     *            divisorInput True if this block has a divisor input.
+     * @private
+     * @this Blockly.Block
+     */
+    updateShape : function(range) {
+        // Set the range of operators.
+        if (range) {
+            this.operatorRange_ = range;
+            var OPERATORS;
+            var valueB = this.getInputTargetBlock('B');
+            this.removeInput('B');
+            this.removeInput('OP_DROP');
+            if (range == 'NUM_REV') {
+                OPERATORS = Blockly.RTL ? [ [ '<', 'GT' ], [ '\u2264', 'GTE' ], [ '>', 'LT' ], [ '\u2265', 'LTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [
+                        [ '>', 'GT' ], [ '\u2265', 'GTE' ], [ '<', 'LT' ], [ '\u2264', 'LTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+            } else if (range == 'BOOL') {
+                var OPERATORS = Blockly.RTL ? [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+            } else if (range == 'COLOUR') {
+                OPERATORS = Blockly.RTL ? [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+            } else {
+                OPERATORS = Blockly.RTL ? [ [ '>', 'LT' ], [ '\u2265', 'LTE' ], [ '<', 'GT' ], [ '\u2264', 'GTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [
+                        [ '<', 'LT' ], [ '\u2264', 'LTE' ], [ '>', 'GT' ], [ '\u2265', 'GTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+
+            }
+            this.appendDummyInput('OP_DROP').appendField(new Blockly.FieldDropdown(OPERATORS), 'OP')
+            var inputB = this.appendValueInput('B');
+            if (valueB) {
+                inputB.connection.connect(valueB);
+            }
         }
-      }
+    },
+    /**
+     * Called whenever anything on the workspace changes. Prevent mismatched types from being compared. modified by B. -> use internal check function
+     * 
+     * @this Blockly.Block
+     */
+    onchange : function() {
+        if (!this.workspace || Blockly.Block.dragMode_ == 2) {
+            // Block has been deleted or is in move
+            return;
+        }
+        var blockA = this.getInputTargetBlock('A');
+        var blockB = this.getInputTargetBlock('B');
+        if (blockA && blockB) {
+            return;
+        }
+        if (blockA) {
+            this.getInput('B').setCheck(blockA.outputConnection.check_);
+        } else {
+            this.getInput('B').setCheck(null);
+        }
+        if (blockB) {
+            this.getInput('A').setCheck(blockB.outputConnection.check_);
+        } else {
+            this.getInput('A').setCheck(null);
+        }
+        this.render();
     }
-    this.prevBlocks_[0] = blockA;
-    this.prevBlocks_[1] = blockB;
-  }
 };
 
 Blockly.Blocks['logic_operation'] = {

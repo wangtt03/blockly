@@ -70,10 +70,10 @@ Blockly.Xml.blockToDom_ = function(block, statement_list) {
     var repe = false;
     statement_list.push(element);
     element.setAttribute('type', block.type);
-    if (Blockly.Realtime.isEnabled()) {
-        // Only used by realtime.
-        element.setAttribute('id', block.id);
-    }
+    // if (Blockly.Realtime.isEnabled()) {
+    // Only used by realtime and Roberta
+    element.setAttribute('id', block.id);
+    // }
     if (block.mutationToDom) {
         // Custom data for an advanced block.
         var mutation = block.mutationToDom();
@@ -652,7 +652,7 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild, opt_reuseBlock, 
     case 'field':
         var field = block.getField(name);
         if (!field) {
-            console.warn('Ignoring non-existent field ' + name + ' in block ' + prototypeName);
+            console.warn('Ignoring non-existent field ' + name + ' in block ' + block.type);
             break;
         }
         field.setValue(xmlChild.textContent);
@@ -661,7 +661,7 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild, opt_reuseBlock, 
     case 'statement':
         input = block.getInput(name);
         if (!input) {
-            console.warn('Ignoring non-existent input ' + name + ' in block ' + prototypeName);
+            console.warn('Ignoring non-existent input ' + name + ' in block ' + block.type);
             break;
         }
         if (childShadowNode) {
