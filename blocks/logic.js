@@ -563,6 +563,10 @@ Blockly.Blocks['robControls_ifElse'] = {
     } else if (num == 0) {
       this.elseIfCount_ = 0;
     } else if (num == -1) {
+      var target = this.getInputTargetBlock('IF' + this.elseIfCount_);
+      if (target) {
+        target.unplug(false, true);
+      }
       this.removeInput('ELSE');
       this.removeInput('DO' + this.elseIfCount_);
       this.removeInput('IF' + this.elseIfCount_);
@@ -641,6 +645,10 @@ Blockly.Blocks['robControls_if'] = {
       this.appendValueInput('IF' + this.elseIfCount_).appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF).setCheck('Boolean');
       this.appendStatementInput('DO' + this.elseIfCount_).appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
     } else if (num == -1) {
+      var target = this.getInputTargetBlock('IF' + this.elseIfCount_);
+      if (target) {
+        target.unplug(false, true);
+      }
       this.removeInput('DO' + this.elseIfCount_);
       this.removeInput('IF' + this.elseIfCount_);
       this.elseIfCount_--;

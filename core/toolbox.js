@@ -100,7 +100,9 @@ Blockly.Toolbox.prototype.init = function() {
   // Create an HTML container for the Toolbox menu.
   this.HtmlDiv = goog.dom.createDom('div', 'blocklyToolboxDiv');
   this.HtmlDiv.setAttribute('dir', workspace.RTL ? 'RTL' : 'LTR');
-  document.body.appendChild(this.HtmlDiv);
+  
+  // for tabbed workspaces
+  workspace.svgGroup_.parentNode.parentNode.appendChild(this.HtmlDiv);
 
   // Clicking on toolbar closes popups.
   Blockly.bindEvent_(this.HtmlDiv, 'mousedown', this,
@@ -201,7 +203,12 @@ Blockly.Toolbox.prototype.populate_ = function(newTree) {
       }
       switch (childIn.tagName.toUpperCase()) {
         case 'CATEGORY':
-          var childOut = rootOut.createNode(childIn.getAttribute('name'));
+          var catMsg = childIn.getAttribute('name');
+          var catname = Blockly.Msg[catMsg];
+          if (!catname) {
+            catname = catMsg;
+          }
+          var childOut = rootOut.createNode(catname);
           childOut.blocks = [];
           treeOut.add(childOut);
           var custom = childIn.getAttribute('custom');
@@ -224,7 +231,7 @@ Blockly.Toolbox.prototype.populate_ = function(newTree) {
           }
           var svg = childIn.getAttribute('svg');
           if (svg) {
-            var rgbName = 'CAT_' + childIn.getAttribute('name').toUpperCase() + '_RGB';
+            var rgbName = 'CAT_' + childIn.getAttribute('name').toUpperCase().replace('TOOLBOX_','') + '_RGB';
             var colour = Blockly[rgbName];
             if (colour) {
               childOut.hexColour = colour;
@@ -270,27 +277,31 @@ Blockly.Toolbox.prototype.populate_ = function(newTree) {
  *     Defaults to the root node.
  * @private
  */
-Blockly.Toolbox.prototype.addColour_ = function(opt_tree, opt_sup) {
+Blockly.Toolbox.prototype.addColour_ = function(opt_tree, opt_sub) {
   var tree = opt_tree || this.tree_; 
+  var currentColour = tree.hexColour;
   var children = tree.getChildren();
   for (var i = 0, child; child = children[i]; i++) {
     var element = child.getRowElement();
     if (element) {
       if (this.hasColours_) {
         var border = '8px solid ' + (child.hexColour || '#ddd'); 
-      } else if (this.hasSvg_ && element.className === "blocklyTreeRow") {
-        child.setAfterLabelHtml(this.createSvg_(child.hexColour).outerHTML);       
+      } else if (this.hasSvg_ && element.className === "blocklyTreeRow") {        
+        if (opt_sub) {
+          child.hexColour = currentColour;  
+        } 
+        child.setAfterLabelHtml(this.createSvg_(child.hexColour).outerHTML); 
         element.style['background-color']= child.hexColour;
         if (this.workspace_.RTL) {
           child.getAfterLabelElement().style.float="left";
           element.style['padding-right']="0";
-          if (opt_sup) {
+          if (opt_sub) {
             element.style['margin-right']="20px";
           }
         } else {
           child.getAfterLabelElement().style.float="right";
           element.style['padding-left']="0";
-          if (opt_sup) {
+          if (opt_sub) {
             element.style['margin-left']="20px";
           }
         }
@@ -330,7 +341,7 @@ Blockly.Toolbox.prototype.createSvg_ = function(hexColour) {
   }  
   var svgFlyoutPath = Blockly.createSvgElement('path', {
       'class' : 'blocklyCon',
-      'd' : 'm0,40 h15v-40 h-15 v40 z'
+      'd' : 'm1,41 h15v-42 h-15 v42 z'
   }, svgCatGroup);
   var svgCatPath = Blockly.createSvgElement('path', {
       'fill' : hexColour,
@@ -338,7 +349,7 @@ Blockly.Toolbox.prototype.createSvg_ = function(hexColour) {
   }, svgCatGroup); 
   var svgCatEndPath = Blockly.createSvgElement('path', {
       'class' : 'blocklyToolboxBackground',
-      'stroke' : '#ddd',
+      'stroke' : '#eee',
       'stroke-width' : '2',
       'fill' : 'none',
       'd' : 'M1,40 v-10 l7.8,0.5 l2.5-5.5 c3-10.7,0.3-16.3-10.3-15.7 v-10'

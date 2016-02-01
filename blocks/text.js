@@ -740,6 +740,10 @@ Blockly.Blocks['robText_join'] = {
       this.itemCount_++;
     } else if (num == -1) {
       this.itemCount_--;
+      var target = this.getInputTargetBlock('ADD' + this.itemCount_);
+      if (target) {
+        target.unplug(false, true);
+      }
       this.removeInput('ADD' + this.itemCount_);
     }
     if (this.itemCount_ == 2) {

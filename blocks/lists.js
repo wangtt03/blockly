@@ -839,7 +839,7 @@ Blockly.Blocks['robLists_create_with'] = {
       this.itemCount_--;
       var target = this.getInputTargetBlock('ADD' + this.itemCount_);
       if (target) {
-        target.dispose();
+        target.unplug(false, true);
       }
       this.removeInput('ADD' + this.itemCount_);
     }
@@ -1336,7 +1336,7 @@ Blockly.Blocks['robLists_setIndex'] = {
     if (this.getInput('ORDINAL')) {
       this.moveInputBefore('ORDINAL', 'TO');
     }
-
+-
     this.getInput('AT').appendField(menu, 'WHERE');
   },
   onchange: function() {
