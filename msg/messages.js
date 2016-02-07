@@ -1585,3 +1585,18 @@ Blockly.Msg.CONNECT = 'connect to robot name';
 Blockly.Msg.VARIABLES_TYPE_CONNECTION = 'Connection';
 Blockly.Msg.WAIT_FOR_CONNECTION = 'wait for connection';
 
+Blockly.Msg.FIELD_REQUIRED = 'This field cannot be empty!';
+Blockly.Msg.PASSWORD_MIN_LENGTH = 'Password min length is 6!';
+Blockly.Msg.TOKEN_LENGTH = 'Token length is 8 characters!';
+Blockly.Msg.SECOND_PASSWORD_EQUAL = 'The two passwords must be equal!';
+Blockly.Msg.VALID_EMAIL_ADDRESS = 'Please enter valid email address!';
+Blockly.Msg.EMAIL_SEND = 'Send!!!';
+Blockly.Msg.REGISTER_USER = 'Register!';
+Blockly.Msg.PASSWORD_RECOVERY = 'Password Recovery'
+Blockly.Msg.POPUP_NEW_PASSWORD = 'New Password';
+Blockly.Msg.POPUP_OLD_PASSWORD = 'Old Password';
+Blockly.Msg.POPUP_REPEAT_PASSWORD = 'Repeat password';
+Blockly.Msg.POPUP_CHANGE_PASSWORD = 'Change password';
+Blockly.Msg.POPUP_CHANGE_USER_PASSWORD = 'Change User Password';
+Blockly.Msg.ORA_USER_EMAIL_ONE_ERROR_USER_NOT_EXISTS_WITH_THIS_EMAIL = 'Account not found with this email address!';
+
