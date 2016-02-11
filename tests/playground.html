@@ -41,11 +41,11 @@
 <script src="../generators/dart/colour.js"></script>
 <script src="../generators/dart/variables.js"></script>
 <script src="../generators/dart/procedures.js"></script>
-<script src="../msg/messages.js"></script>
+<script src="../msg/js/de.js"></script>
 <script src="../core/blockly.js"></script>
 <script src="../core/css.js"></script>
 <script src="../core/inject.js"></script>
-<script src="../core/field_variable.js"></script>
+<script src="../core/field_robColour.js"></script>
 <script src="../core/workspace.js"></script>
 <script src="../core/workspace_svg.js"></script>
 <script src="../core/icon.js"></script>
@@ -107,7 +107,7 @@ function start() {
               minScale: .25,
               scaleSpeed: 1.1
              },
-           checkInTask:['start', '_def', 'event'],
+           checkInTask:['start', '_def', 'event', 'EV3'],
            variableDeclaration: true
           });
 }
@@ -162,7 +162,7 @@ function spaghetti(n) {
   console.timeEnd('Spaghetti domToWorkspace');
 }
 var spaghettiXml = [
-  '  <block type="controls_if">',
+  '  <block type="robControls_if">',
   '    <value name="IF0">',
   '      <block type="logic_compare">',
   '        <field name="OP">EQ</field>',

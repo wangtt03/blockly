@@ -868,7 +868,9 @@ Blockly.Blocks['robLists_create_with'] = {
       var block = this.getNewValue();
       block.initSvg()
       block.render();
+      block.setShadow(true);
       input.connection.connect(block.outputConnection);
+      input.connection.setShadowDom(Blockly.Xml.blockToDom_(block, []));
     }
     // update output
     this.changeOutput('Array_' + this.listType_);
@@ -887,6 +889,9 @@ Blockly.Blocks['robLists_create_with'] = {
       return block;
     case 'Colour':
       block = this.workspace.newBlock('robColour_picker');
+      return block;
+    case 'Connection':
+      block = this.workspace.newBlock('logic_null');
       return block;
     }
   }
@@ -1336,7 +1341,6 @@ Blockly.Blocks['robLists_setIndex'] = {
     if (this.getInput('ORDINAL')) {
       this.moveInputBefore('ORDINAL', 'TO');
     }
--
     this.getInput('AT').appendField(menu, 'WHERE');
   },
   onchange: function() {

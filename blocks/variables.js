@@ -257,7 +257,8 @@ Blockly.Blocks['robGlobalvariables_declare'] = {
       [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
       [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
       [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String']
+      [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+      [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
     ], function(option) {
       if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
         this.sourceBlock_.updateType(option);
@@ -415,11 +416,11 @@ Blockly.Blocks['robGlobalvariables_declare'] = {
         block.initSvg();
         block.render();
         block.setShadow(true);
-        value.connection.connect(block.outputConnection);
-        value.connection.setShadowDom(Blockly.Xml.blockToDom_(block));
         if (option.substr(0, 5) === 'Array') {
           block.updateType_(option.substr(6));
         }
+        value.connection.connect(block.outputConnection);
+        value.connection.setShadowDom(Blockly.Xml.blockToDom_(block, []));
       }
     }
   },
@@ -447,7 +448,8 @@ Blockly.Blocks['robLocalvariables_declare'] = {
       [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
       [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
       [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String']
+      [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+      [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
     ], function(option) {
       if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
         this.sourceBlock_.updateType(option);
@@ -462,7 +464,7 @@ Blockly.Blocks['robLocalvariables_declare'] = {
          appendField(':').
          appendField(declType, 'TYPE');
     this.setPreviousStatement(true, 'declaration_only');
-    //this.setTooltip(Blockly.Msg.VARIABLES_LOCAL_DECLARE_TOOLTIP);
+    this.setTooltip(Blockly.Msg.VARIABLES_LOCAL_DECLARE_TOOLTIP);
     this.setMutatorMinus(new Blockly.MutatorMinus(this));
     this.setMovable(false);
     this.setDeletable(false);
