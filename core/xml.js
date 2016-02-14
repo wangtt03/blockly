@@ -74,7 +74,7 @@ Blockly.Xml.blockToDom_ = function(block, statement_list) {
             element.appendChild(mutation);
             if (mutation !== undefined
                     && mutation != null
-                    && (block.type == 'controls_if' || block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for')) {
+                    && (block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for')) {
                 element.appendChild(repetitions);
                 repe = true;
             }
@@ -433,7 +433,6 @@ Blockly.Xml.domToBlockHeadless_ = function(workspace, xmlBlockList) {
     } else {
         xmlBlock = xmlBlockList;
     }
-
     var block = null;
     var prototypeName = xmlBlock.getAttribute('type');
     if (!prototypeName) {
@@ -539,21 +538,33 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild, blockChild) {
     var childBlockNode = null;
     var childShadowNode = null;
     var shadowActive = false;
-    for (var j = 0, grandchildNode; grandchildNode = xmlChild.childNodes[j]; j++) {
+//    for (var j = 0, grandchildNode; grandchildNode = xmlChild.childNodes[j]; j++) {
+//        if (grandchildNode.nodeType == 1) {
+//            if (grandchildNode.nodeName.toLowerCase() == 'block') {
+//                childBlockNode = grandchildNode;
+//            } else if (grandchildNode.nodeName.toLowerCase() == 'shadow') {
+//                childShadowNode = grandchildNode;
+//            }
+//        }
+//    }
+    var RealGrandchildList = [];
+    for (var y = 0, grandchildNode; grandchildNode = xmlChild.childNodes[y]; y++) {
         if (grandchildNode.nodeType == 1) {
-            if (grandchildNode.nodeName.toLowerCase() == 'block') {
-                childBlockNode = grandchildNode;
-            } else if (grandchildNode.nodeName.toLowerCase() == 'shadow') {
-                childShadowNode = grandchildNode;
-            }
+            RealGrandchildList.push(grandchildNode);
         }
+    }    
+    if (RealGrandchildList.length > 0) {
+      if (RealGrandchildList[0].nodeName.toLowerCase() == 'block') {
+        childBlockNode = RealGrandchildList[0];
+      } else if (RealGrandchildList[0].nodeName.toLowerCase() == 'shadow') {
+        childShadowNode = RealGrandchildList[0];
+      }
     }
     // Use the shadow block if there is no child block.
     if (!childBlockNode && childShadowNode) {
       childBlockNode = childShadowNode;
       shadowActive = true;
     }
-
     var name = xmlChild.getAttribute('name');
     switch (xmlChild.nodeName.toLowerCase()) {
     case 'mutation':
@@ -629,11 +640,12 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild, blockChild) {
             console.warn('Ignoring non-existent input ' + name + ' in block ' + prototypeName);
             break;
         }
+        
         if (childShadowNode) {
             input.connection.setShadowDom(childShadowNode);
         }
         if (childBlockNode) {
-            blockChild = Blockly.Xml.domToBlockHeadless_(workspace, childBlockNode);
+            blockChild = Blockly.Xml.domToBlockHeadless_(workspace, RealGrandchildList);
             if (blockChild.outputConnection) {
                 input.connection.connect(blockChild.outputConnection);
             } else if (blockChild.previousConnection) {

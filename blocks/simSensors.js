@@ -140,15 +140,15 @@ Blockly.Blocks['sim_getSample'] = {
             var block = null;
             logComp.updateShape(type);
             if (type == 'NUM') {
-                block = Blockly.Block.obtain(Blockly.mainWorkspace, 'math_number');
+                block = this.workspace.newBlock('math_number');
                 block.setFieldValue(value.toString(), 'NUM');
             } else if (type == 'NUM_REV') {
-                block = Blockly.Block.obtain(Blockly.mainWorkspace, 'math_number');
+                block = this.workspace.newBlock('math_number');
                 block.setFieldValue(value.toString(), 'NUM');
             } else if (type == 'BOOL') {
-                block = Blockly.Block.obtain(Blockly.mainWorkspace, 'logic_boolean');
+                block = this.workspace.newBlock('logic_boolean');
             } else {
-                block = Blockly.Block.obtain(Blockly.mainWorkspace, 'robColour_picker');
+                block = this.workspace.newBlock('robColour_picker');
                 block.setFieldValue('#b30006', 'COLOUR')
             }
             block.initSvg();

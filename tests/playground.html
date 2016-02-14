@@ -452,7 +452,7 @@ h1 {
                 </value>
             </block>
             <block type='controls_whileUntil'></block>
-            <block type='controls_for'>
+            <block type='robControls_for'>
                 <value name='FROM'> 
                     <block type='math_number'> 
                         <field name='NUM'>1</field> 
@@ -469,7 +469,7 @@ h1 {
                     </block>
                 </value>  
             </block> 
-            <block type='controls_forEach'>
+            <block type='robControls_forEach'>
             </block> 
             <block type='controls_flow_statements'></block>
         </category> 
@@ -498,25 +498,6 @@ h1 {
                     </block> 
                 </value>
             </block> 
-          <block type='robControls_wait_for'>
-            <value name='WAIT0'>
-              <block type='logic_compare'>
-                <mutation operator_range="COLOUR"></mutation>
-                <field name="OP">EQ</field>
-                <value name="A">
-                  <block type="sim_getSample" id="191" intask="true" deletable="false" movable="false">
-                     <mutation input="COLOUR_COLOUR"></mutation>
-                     <field name="SENSORTYPE">COLOUR_COLOUR</field>
-                  </block>
-                </value>
-                <value name="B">
-                  <block type="robColour_picker" id="197" intask="true">
-                    <field name="COLOUR">#000000</field>
-                  </block>
-                </value>
-              </block> 
-            </value>
-          </block>
         </category>
         <category name='Tasks'> 
             <block type='robControls_start'></block> 
@@ -537,7 +518,7 @@ h1 {
         <block type='math_trig'></block>
         <block type='math_constant'></block>
         <block type='math_number_property'></block>
-        <block type='math_change'>
+        <block type='robMath_change'>
             <value name='DELTA'>
                 <block type='math_number'>
                     <field name='NUM'>1</field>
@@ -576,9 +557,9 @@ h1 {
     <category name='TOOLBOX_TEXT' svg="true">
         <block type='text'></block>
         <block type='robText_join'></block>
-        <block type='text_append'>
+        <block type='robText_append'>
             <value name='TEXT'>
-                <block type='text'></block> 
+                <shadow type='text'></shadow> 
             </value>
         </block>
     </category>

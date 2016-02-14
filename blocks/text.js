@@ -753,3 +753,25 @@ Blockly.Blocks['robText_join'] = {
     }
   }
 };
+
+Blockly.Blocks['robText_append'] = {
+  /**
+   * Block for appending to a variable in place.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.setHelpUrl(Blockly.Msg.TEXT_APPEND_HELPURL);
+    this.setColour(Blockly.Blocks.texts.HUE);
+    this.setInputsInline(true);
+    this.appendValueInput('VAR').appendField(Blockly.Msg.TEXT_APPEND_TO).setCheck('String');
+    this.appendValueInput('TEXT').appendField(Blockly.Msg.TEXT_APPEND_APPENDTEXT);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      return Blockly.Msg.TEXT_APPEND_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
+    });
+  }
+};

@@ -305,6 +305,37 @@ Blockly.Blocks['logic_compare'] = {
     this.prevBlocks_ = [null, null];
   },
   /**
+   * Modify this block to have a appropriate operator. Only used in Roberta blocks.
+   * @param {String} operator
+   * @this Blockly.Block
+   */
+  updateShape : function(range) {
+    // Set the range of operators.
+    if (range) {
+      this.operatorRange_ = range;
+      var OPERATORS;
+      var valueB = this.getInputTargetBlock('B');
+      this.removeInput('B');
+      this.removeInput('OP_DROP');
+      if (range == 'NUM_REV') {
+        OPERATORS = Blockly.RTL ? [ [ '<', 'GT' ], [ '\u2264', 'GTE' ], [ '>', 'LT' ], [ '\u2265', 'LTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [
+                    [ '>', 'GT' ], [ '\u2265', 'GTE' ], [ '<', 'LT' ], [ '\u2264', 'LTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+      } else if (range == 'BOOL') {
+        OPERATORS = Blockly.RTL ? [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+      } else if (range == 'COLOUR') {
+        OPERATORS = Blockly.RTL ? [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+      } else {
+        OPERATORS = Blockly.RTL ? [ [ '>', 'LT' ], [ '\u2265', 'LTE' ], [ '<', 'GT' ], [ '\u2264', 'GTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [
+                    [ '<', 'LT' ], [ '\u2264', 'LTE' ], [ '>', 'GT' ], [ '\u2265', 'GTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+      }
+      this.appendDummyInput('OP_DROP').appendField(new Blockly.FieldDropdown(OPERATORS), 'OP')
+      var inputB = this.appendValueInput('B');
+      if (valueB) {
+        inputB.connection.connect(valueB);
+      }
+    }
+  },
+  /**
    * Called whenever anything on the workspace changes.
    * Prevent mismatched types from being compared.
    * @this Blockly.Block
@@ -334,15 +365,18 @@ Blockly.Blocks['logic_compare'] = {
     }
     var blockA = this.getInputTargetBlock('A');
     var blockB = this.getInputTargetBlock('B');
-    if (blockA) {
-      this.getInput('B').setCheck(blockA.outputConnection.check_);
-    } else {
-      this.getInput('B').setCheck(null);
-    }
-    if (blockB) {
+    if (blockA && blockB && (blockA.outputConnection.check_[0] === blockB.outputConnection.check_[0])) {
+      return;
+    } else if (blockA && blockB) {
+      this.getInput('A').setCheck(blockA.outputConnection.check_);
+      this.getInput('B').setCheck(blockA.outputConnection.check_)
+    } else if (blockA) {
+      this.getInput('B').setCheck(blockA.outputConnection.check_)
+    } else if (blockB) {
       this.getInput('A').setCheck(blockB.outputConnection.check_);
     } else {
       this.getInput('A').setCheck(null);
+      this.getInput('B').setCheck(null);
     }
     this.render();
   }

@@ -371,20 +371,20 @@ Blockly.Blocks['robControls_wait_for'] = {
                 this.appendStatementInput('DO0').appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
             this.appendValueInput('WAIT' + this.waitCount_).appendField(Blockly.Msg.WAIT_OR).setCheck('Boolean');
             this.appendStatementInput('DO' + this.waitCount_).appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
-            var lc = Blockly.Block.obtain(Blockly.mainWorkspace, 'logic_compare');
+            var lc = this.workspace.newBlock('logic_compare');
             lc.initSvg();
             lc.render();
             lc.updateShape('BOOL');
             var connection = this.getInput('WAIT' + this.waitCount_).connection;
             connection.connect(lc.outputConnection);
 
-            var s = Blockly.Block.obtain(Blockly.mainWorkspace, 'robSensors_getSample');
+            var s = this.workspace.newBlock('robSensors_getSample');
             s.initSvg();
             s.render();
             connection = lc.getInput('A').connection;
             connection.connect(s.outputConnection);
 
-            var v = Blockly.Block.obtain(Blockly.mainWorkspace, 'logic_boolean');
+            var v = this.workspace.newBlock('logic_boolean');
             v.initSvg();
             v.render();
             connection = lc.getInput('B').connection;
