@@ -32,7 +32,9 @@ goog.require('goog.dom');
 
 /**
  * Encode a block tree as XML.
- * @param {!Blockly.Workspace} workspace The workspace containing blocks.
+ * 
+ * @param {!Blockly.Workspace}
+ *            workspace The workspace containing blocks.
  * @return {!Element} XML document.
  */
 Blockly.Xml.workspaceToDom = function(workspace, type) {
@@ -56,7 +58,9 @@ Blockly.Xml.workspaceToDom = function(workspace, type) {
 
 /**
  * Encode a block subtree as XML.
- * @param {!Blockly.Block} block The root block to encode.
+ * 
+ * @param {!Blockly.Block}
+ *            block The root block to encode.
  * @return {!Element} Tree of XML elements.
  * @private
  */
@@ -72,8 +76,7 @@ Blockly.Xml.blockToDom_ = function(block, statement_list) {
         var mutation = block.mutationToDom();
         if (mutation && (mutation.hasChildNodes() || mutation.hasAttributes())) {
             element.appendChild(mutation);
-            if (mutation !== undefined
-                    && mutation != null
+            if (mutation !== undefined && mutation != null
                     && (block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for')) {
                 element.appendChild(repetitions);
                 repe = true;
@@ -155,7 +158,10 @@ Blockly.Xml.blockToDom_ = function(block, statement_list) {
         }
         container.setAttribute('name', input.name);
         if (!empty) {
-            element.appendChild(container);
+            if (!repe)
+                element.appendChild(container);
+            else
+                repetitions.appendChild(container);
         }
     }
     if (block.inputsInlineDefault != block.inputsInline) {
@@ -212,7 +218,9 @@ Blockly.Xml.appendlistToDom = function(parentDom, block) {
 
 /**
  * Deeply clone the shadow's DOM so that changes don't back-wash to the block.
- * @param {!Element} shadow A tree of XML elements.
+ * 
+ * @param {!Element}
+ *            shadow A tree of XML elements.
  * @return {!Element} A tree of XML elements.
  * @private
  */
@@ -248,7 +256,9 @@ Blockly.Xml.cloneShadow_ = function(shadow) {
 
 /**
  * Remove any 'next' block (statements in a stack).
- * @param {!Element} xmlBlock XML block element.
+ * 
+ * @param {!Element}
+ *            xmlBlock XML block element.
  */
 Blockly.Xml.deleteNext = function(xmlBlock) {
     for (var i = 0, child; child = xmlBlock.childNodes[i]; i++) {
@@ -276,7 +286,9 @@ Blockly.Xml.domToText = function(dom) {
 
 /**
  * Converts a DOM structure into properly indented text.
- * @param {!Element} dom A tree of XML elements.
+ * 
+ * @param {!Element}
+ *            dom A tree of XML elements.
  * @return {string} Text representation.
  */
 Blockly.Xml.domToPrettyText = function(dom) {
@@ -307,27 +319,32 @@ Blockly.Xml.domToPrettyText = function(dom) {
 };
 
 /**
- * Converts plain text into a DOM structure.
- * Throws an error if XML doesn't parse.
- * @param {string} text Text representation.
+ * Converts plain text into a DOM structure. Throws an error if XML doesn't
+ * parse.
+ * 
+ * @param {string}
+ *            text Text representation.
  * @return {!Element} A tree of XML elements.
  */
 Blockly.Xml.textToDom = function(text) {
-  var oParser = new DOMParser();
-  var dom = oParser.parseFromString(text, 'text/xml');
-  // The DOM should have one and only one top-level node, an XML tag.
-  if (!dom || !dom.firstChild || (dom.firstChild.nodeName.toLowerCase() != 'block_set' && dom.firstChild.nodeName.toLowerCase() != 'toolbox_set')
+    var oParser = new DOMParser();
+    var dom = oParser.parseFromString(text, 'text/xml');
+    // The DOM should have one and only one top-level node, an XML tag.
+    if (!dom || !dom.firstChild || (dom.firstChild.nodeName.toLowerCase() != 'block_set' && dom.firstChild.nodeName.toLowerCase() != 'toolbox_set')
             || dom.firstChild !== dom.lastChild) {
-    // Whatever we got back from the parser is not XML.
-    throw 'Blockly.Xml.textToDom did not obtain a valid XML tree.';
-  }
-  return dom.firstChild;
+        // Whatever we got back from the parser is not XML.
+        throw 'Blockly.Xml.textToDom did not obtain a valid XML tree.';
+    }
+    return dom.firstChild;
 };
 
 /**
  * Decode an XML DOM and create blocks on the workspace.
- * @param {!Blockly.Workspace} workspace The workspace.
- * @param {!Element} xml XML DOM.
+ * 
+ * @param {!Blockly.Workspace}
+ *            workspace The workspace.
+ * @param {!Element}
+ *            xml XML DOM.
  */
 Blockly.Xml.domToWorkspace = function(workspace, xml) {
     var xmlBlockList = [];
@@ -379,15 +396,18 @@ Blockly.Xml.domToWorkspace = function(workspace, xml) {
             block.moveBy(Blockly.RTL ? width - xmlBlockPos[i].x : xmlBlockPos[i].x, xmlBlockPos[i].y);
         }
     }
-    
+
     Blockly.Field.stopCache();
 };
 
 /**
  * Decode an XML block tag and create a block (and possibly sub blocks) on the
  * workspace.
- * @param {!Blockly.Workspace} workspace The workspace.
- * @param {!Element} xmlBlock XML block element.
+ * 
+ * @param {!Blockly.Workspace}
+ *            workspace The workspace.
+ * @param {!Element}
+ *            xmlBlock XML block element.
  * @return {!Blockly.Block} The root block created.
  */
 Blockly.Xml.domToBlock = function(workspace, xmlBlockList) {
@@ -422,8 +442,11 @@ Blockly.Xml.domToBlock = function(workspace, xmlBlockList) {
 /**
  * Decode an XML block tag and create a block (and possibly sub blocks) on the
  * workspace.
- * @param {!Blockly.Workspace} workspace The workspace.
- * @param {!Element} xmlBlock XML block element.
+ * 
+ * @param {!Blockly.Workspace}
+ *            workspace The workspace.
+ * @param {!Element}
+ *            xmlBlock XML block element.
  * @return {!Blockly.Block} The root block created.
  * @private
  */
@@ -552,18 +575,18 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild, blockChild) {
         if (grandchildNode.nodeType == 1) {
             RealGrandchildList.push(grandchildNode);
         }
-    }    
+    }
     if (RealGrandchildList.length > 0) {
-      if (RealGrandchildList[0].nodeName.toLowerCase() == 'block') {
-        childBlockNode = RealGrandchildList[0];
-      } else if (RealGrandchildList[0].nodeName.toLowerCase() == 'shadow') {
-        childShadowNode = RealGrandchildList[0];
-      }
+        if (RealGrandchildList[0].nodeName.toLowerCase() == 'block') {
+            childBlockNode = RealGrandchildList[0];
+        } else if (RealGrandchildList[0].nodeName.toLowerCase() == 'shadow') {
+            childShadowNode = RealGrandchildList[0];
+        }
     }
     // Use the shadow block if there is no child block.
     if (!childBlockNode && childShadowNode) {
-      childBlockNode = childShadowNode;
-      shadowActive = true;
+        childBlockNode = childShadowNode;
+        shadowActive = true;
     }
     var name = xmlChild.getAttribute('name');
     switch (xmlChild.nodeName.toLowerCase()) {
@@ -640,12 +663,12 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild, blockChild) {
             console.warn('Ignoring non-existent input ' + name + ' in block ' + prototypeName);
             break;
         }
-        
+
         if (childShadowNode) {
             input.connection.setShadowDom(childShadowNode);
         }
         if (childBlockNode) {
-            blockChild = Blockly.Xml.domToBlockHeadless_(workspace, RealGrandchildList);
+            blockChild = Blockly.Xml.domToBlockHeadless_(workspace, childBlockNode);
             if (blockChild.outputConnection) {
                 input.connection.connect(blockChild.outputConnection);
             } else if (blockChild.previousConnection) {
@@ -660,19 +683,20 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild, blockChild) {
             block.nextConnection.setShadowDom(childShadowNode);
         }
         if (childBlockNode) {
-          if (!block.nextConnection) {
-            throw 'Next statement does not exist.';
-          } else if (block.nextConnection.targetConnection) {
-            // This could happen if there is more than one XML 'next' tag.
-            throw 'Next statement is already connected.';
-          }
-          blockChild = Blockly.Xml.domToBlockHeadless_(workspace,
-              childBlockNode);
-          if (!blockChild.previousConnection) {
-            throw 'Next block does not have previous statement.';
-          }
-          block.nextConnection.connect(blockChild.previousConnection);
+            if (!block.nextConnection) {
+                throw 'Next statement does not exist.';
+            } else if (block.nextConnection.targetConnection) {
+                // This could happen if there is more than one XML 'next' tag.
+                throw 'Next statement is already connected.';
+            }
+            blockChild = Blockly.Xml.domToBlockHeadless_(workspace, childBlockNode);
+            if (!blockChild.previousConnection) {
+                throw 'Next block does not have previous statement.';
+            }
+            block.nextConnection.connect(blockChild.previousConnection);
         }
+        break;
+    case 'repetitions':
         break;
     default:
         // Unknown tag; ignore.  Same principle as HTML parsers.
