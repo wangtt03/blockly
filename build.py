@@ -366,8 +366,7 @@ class Gen_langfiles(threading.Thread):
   def _rebuild(self, srcs, dests):
     # Determine whether any of the files in srcs is newer than any in dests.
     try:
-      return (max(os.path.getmtime(src) for src in srcs) >
-              min(os.path.getmtime(dest) for dest in dests))
+      return True
     except OSError as e:
       # Was a file not found?
       if e.errno == errno.ENOENT:
@@ -391,6 +390,7 @@ class Gen_langfiles(threading.Thread):
             "python",
             os.path.join("i18n", "js_to_json.py"),
             "--input_file", "msg/messages.js",
+            "--robInput_file", "robMsg/robMessages.js",
             "--output_dir", "msg/json/",
             "--quiet"])
       except (subprocess.CalledProcessError, OSError) as e:
