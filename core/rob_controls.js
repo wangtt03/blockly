@@ -146,13 +146,14 @@ Blockly.RobControls.prototype.createDom = function() {
   var workspace = this.workspace_;
   this.svgGroup_ = Blockly.createSvgElement('g', {'class': 'blocklyButtons'}, null);
   var runOnBrick = this.createButton_(this.PATH_RUNONROBOT_, 0);
-  runOnBrick.setAttribute("id", "#runOnBrick");
+  runOnBrick.setAttribute("id", "runOnBrick");
   var runInSim = this.createButton_(this.PATH_RUNINSIM_, 1);
-  runInSim.setAttribute("id", "#runInSim");
+  runInSim.setAttribute("id", "runInSim");
   var saveProgram = this.createButton_(this.PATH_SAVEPROGRAM_, 2);
-  saveProgram.setAttribute("id", "#saveProgram");
+  saveProgram.setAttribute("id", "saveProgram");
   var showCode = this.createButton_(this.PATH_SHOWCODE_, 3);
-  showCode.setAttribute("id", "#showCode");
+  showCode.setAttribute("id", "showCode");
+  console.log(document.getElementById("showCode"));
   
   if (this.zoom_) {
     var zoominSvg = this.createButton_(this.PATH_ZOOMIN_, 4);
@@ -207,6 +208,7 @@ Blockly.RobControls.prototype.createDom = function() {
   this.saveProgram = saveProgram;
   this.runInSim = runInSim;
   this.showCode = showCode;
+
   return this.svgGroup_;
 };
 
@@ -229,8 +231,8 @@ Blockly.RobControls.prototype.createButton_ = function(path, pos) {
        'ry': '2',
        'width':'48',
        'height':'48',
-       },
-       button);
+      },
+      button);
   Blockly.createSvgElement('path',
       {'class': 'blocklyButtonPath',
        'd': path,
@@ -238,8 +240,9 @@ Blockly.RobControls.prototype.createButton_ = function(path, pos) {
        'fill-rule': 'evenodd',
        'fill':'#fff',
        'stroke-width': '0px',
-       'fill': '#333'},
-       button);
+       'fill': '#333'
+      },
+      button);
   return button;
 }
 
