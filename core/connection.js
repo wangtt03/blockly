@@ -649,7 +649,9 @@ Blockly.Connection.prototype.setCheck = function(check) {
       // Bump away.
       this.sourceBlock_.bumpNeighbours_();
     }
-    this.sourceBlock_.render();
+    if (this.sourceBlock_.rendered) {
+      this.sourceBlock_.render();
+    }
   } else {
     this.check_ = null;
   }
