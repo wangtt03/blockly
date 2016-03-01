@@ -664,6 +664,7 @@ Blockly.Msg.START = "Inicio del programa";
 Blockly.Msg.START_ACTIVITY = "actividad";
 Blockly.Msg.START_ACTIVITY_TOOLTIP = "Inicia una actividad adicional";
 Blockly.Msg.START_PROGRAM = "Inicio del programa";
+Blockly.Msg.START_PROGRAM_DEBUG = "show sensor data";  // untranslated
 Blockly.Msg.START_TOOLTIP = "Punto de inicio del programa principal";
 Blockly.Msg.TAB_CONFIGURATION = "Configuración del robot";
 Blockly.Msg.TAB_PROGRAM = "Programa";

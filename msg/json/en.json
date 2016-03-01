@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2016-03-01 17:14:28.118015",
+		"lastupdated": "2016-03-01 20:24:23.683135",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -531,6 +531,7 @@
 	"START": "start",
 	"START_ACTIVITY": "activity",
 	"START_PROGRAM": "program-start",
+	"START_PROGRAM_DEBUG": "show sensor data",
 	"MODE": "mode",
 	"MODE_DISTANCE": "distance",
 	"MODE_PRESENCE": "presence",

@@ -664,6 +664,7 @@ Blockly.Msg.START = "start";  // untranslated
 Blockly.Msg.START_ACTIVITY = "activity";  // untranslated
 Blockly.Msg.START_ACTIVITY_TOOLTIP = "Starts additional activity.";  // untranslated
 Blockly.Msg.START_PROGRAM = "program-start";  // untranslated
+Blockly.Msg.START_PROGRAM_DEBUG = "show sensor data";  // untranslated
 Blockly.Msg.START_TOOLTIP = "The starting point for the main program.";  // untranslated
 Blockly.Msg.TAB_CONFIGURATION = "Robot configuration";  // untranslated
 Blockly.Msg.TAB_PROGRAM = "Program";  // untranslated

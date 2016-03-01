@@ -228,6 +228,7 @@ Blockly.Msg.SENSOR_WAIT_PRESSED_RELEASED = 'pressed or released';
 Blockly.Msg.START = 'start';
 Blockly.Msg.START_ACTIVITY = 'activity';
 Blockly.Msg.START_PROGRAM = 'program-start';
+Blockly.Msg.START_PROGRAM_DEBUG = 'show sensor data';
 Blockly.Msg.MODE = 'mode';
 Blockly.Msg.MODE_DISTANCE = 'distance';
 Blockly.Msg.MODE_PRESENCE = 'presence';

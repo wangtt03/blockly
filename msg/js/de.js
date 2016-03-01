@@ -664,6 +664,7 @@ Blockly.Msg.START = "Starte";
 Blockly.Msg.START_ACTIVITY = "Aktivität";
 Blockly.Msg.START_ACTIVITY_TOOLTIP = "Startet zusätzliche Aktivität.";
 Blockly.Msg.START_PROGRAM = "Programmstart";
+Blockly.Msg.START_PROGRAM_DEBUG = "Programmstart";
 Blockly.Msg.START_TOOLTIP = "Startblock für das Hauptprogramm.";
 Blockly.Msg.TAB_CONFIGURATION = "Roboterkonfiguration";
 Blockly.Msg.TAB_PROGRAM = "Programm";
