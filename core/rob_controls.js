@@ -302,8 +302,8 @@ Blockly.RobControls.prototype.position = function() {
     this.left_ = metrics.viewWidth + metrics.absoluteLeft -
         this.WIDTH_ - this.MARGIN_SIDE_; //- Blockly.Scrollbar.scrollbarThickness;
   }
-  if (this.simVisible_ && this.smallScreen_){
-    this.left_+=160;
+  if (this.simVisible_){
+    this.left_ += 159;
   }
   this.top_ = metrics.viewHeight + metrics.absoluteTop -
       this.HEIGHT_ - this.MARGIN_BOTTOM_; //- Blockly.Scrollbar.scrollbarThickness;
@@ -336,8 +336,7 @@ Blockly.RobControls.prototype.showZoom = function(visible) {
   this.zoomVisible_ = visible;
 };
 
-Blockly.RobControls.prototype.toogleSim = function(opt_smallScreen) {
-  this.smallScreen_ = opt_smallScreen || false; 
+Blockly.RobControls.prototype.toogleSim = function() {
   if (!this.simVisible_ ) {     
     this.runInSim.setAttribute('class', 'robButtonHidden ');
     this.simStop.setAttribute('class', 'robButton simStop');
