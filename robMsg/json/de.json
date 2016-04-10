@@ -357,6 +357,7 @@
   "POPUP_STARTUP_DETAILS": "Details ansehen.",
   "POPUP_ROBOT_BUSY": "Your robot is busy. Please wait until the current program has finished.",
   "POPUP_CONTINUE":"Trotzdem weiter",
+  "POPUP_PROGRAM_TERMINATED_UNEXPECTED": "Dein Programm konnte auf dem Roboter nicht ausgeführt werden!",
   "PROCEDURES_DEFNORETURN_PROCEDURE":"macheEtwas",
   "PROCEDURES_TITLE":"\" Funktion genutzt werden.",
   "PROCEDURES_VARIABLES_ERROR": "Fehler: Dieser Block kann nur innerhalb der \"",
