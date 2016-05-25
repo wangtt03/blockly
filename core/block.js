@@ -31,7 +31,10 @@ goog.require('Blockly.Comment');
 goog.require('Blockly.Connection');
 goog.require('Blockly.Input');
 goog.require('Blockly.Mutator');
+goog.require('Blockly.MutatorPlus');
+goog.require('Blockly.MutatorMinus');
 goog.require('Blockly.Warning');
+goog.require('Blockly.Error');
 goog.require('Blockly.Workspace');
 goog.require('Blockly.Xml');
 goog.require('goog.array');
@@ -113,6 +116,11 @@ Blockly.Block = function(workspace, prototypeName, opt_id) {
    * @private
    */
   this.collapsed_ = false;
+  
+  /**
+  * @type {boolean} 
+  */
+  this.inTask = true;
 
   /** @type {string|Blockly.Comment} */
   this.comment = null;
@@ -129,6 +137,8 @@ Blockly.Block = function(workspace, prototypeName, opt_id) {
   this.isInFlyout = workspace.isFlyout;
   /** @type {boolean} */
   this.RTL = workspace.RTL;
+  /** @type {boolean} */
+  this.variableDeclaration = workspace.variableDeclaration;
 
   // Copy the type-specific functions and data from the prototype.
   if (prototypeName) {
@@ -351,6 +361,7 @@ Blockly.Block.prototype.bumpNeighbours_ = function() {
             otherConnection.bumpAwayFrom_(connection);
           } else {
             connection.bumpAwayFrom_(otherConnection);
+            connection.sourceBlock_.setInTask(false);
           }
         }
       }
@@ -883,6 +894,14 @@ Blockly.Block.prototype.getInheritedDisabled = function() {
 };
 
 /**
+ * Set whether the block is in task or not.
+ * @param {boolean} intask True if block belongs to a valid task.
+ */
+Blockly.Block.prototype.setInTask = function(inTask) {  
+  this.inTask = inTask;
+};
+
+/**
  * Get whether the block is collapsed or not.
  * @return {boolean} True if collapsed.
  */
@@ -1306,12 +1325,37 @@ Blockly.Block.prototype.setWarningText = function(text) {
 };
 
 /**
+ * Set this block's error text.
+ * @param {?string} text The text, or null to delete.
+ */
+Blockly.Block.prototype.setErrorText = function(text) {
+  // NOP.
+};
+
+/**
  * Give this block a mutator dialog.
  * @param {Blockly.Mutator} mutator A mutator dialog instance or null to remove.
  */
 Blockly.Block.prototype.setMutator = function(mutator) {
   // NOP.
 };
+
+/**
+ * Give this block a mutatorPlus icon.
+ * @param {Blockly.Mutator} mutator A mutator icon instance or null to remove.
+ */
+Blockly.Block.prototype.setMutatorPlus = function(mutatorPlus) {
+  // NOP.
+};
+
+/**
+ * Give this block a mutatorMinus icon.
+ * @param {Blockly.Mutator} mutator A mutator icon instance or null to remove.
+ */
+Blockly.Block.prototype.setMutatorMinus = function(mutatorMinus) {
+  // NOP.
+};
+
 
 /**
  * Return the coordinates of the top-left corner of this block relative to the

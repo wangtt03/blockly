@@ -17,7 +17,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 /**
  * @fileoverview Utility functions for handling procedures.
  * @author fraser@google.com (Neil Fraser)
@@ -137,10 +136,11 @@ Blockly.Procedures.isLegalName = function(name, workspace, opt_exclude) {
 Blockly.Procedures.rename = function(text) {
   // Strip leading and trailing whitespace.  Beyond this, all names are legal.
   text = text.replace(/^[\s\xa0]+|[\s\xa0]+$/g, '');
-
+ 
   // Ensure two identically-named procedures don't exist.
   text = Blockly.Procedures.findLegalName(text, this.sourceBlock_);
   // Rename any callers.
+  
   var blocks = this.sourceBlock_.workspace.getAllBlocks();
   for (var i = 0; i < blocks.length; i++) {
     if (blocks[i].renameProcedure) {
@@ -151,32 +151,83 @@ Blockly.Procedures.rename = function(text) {
 };
 
 /**
+ * Check and rename a procedure.  Called by the editable field.
+ * @param {string} text The proposed new name.
+ * @return {string} The accepted name.
+ * @this {!Blockly.Field}
+ */
+Blockly.Procedures.robRename = function(text) {
+ // Strip leading and trailing whitespace.  Beyond this, all names are legal.
+  text = text.replace(/^[\s\xa0]+|[\s\xa0]+$/g, '');
+  if (text === '')
+    return null;
+    // java convention naming?
+  if (!text.match(/^[a-zA-Z][a-zA-Z0-9_]*$/))
+    return null;
+  // Ensure two identically-named procedures don't exist.
+  text = Blockly.Procedures.findLegalName(text, this.sourceBlock_);
+  // Rename any callers.  
+  var blocks = this.sourceBlock_.workspace.getAllBlocks();
+  for (var i = 0; i < blocks.length; i++) {
+    if (blocks[i].renameProcedure) {
+      blocks[i].renameProcedure(this.nameOld, text);
+    }
+  }
+  this.nameOld = text;
+  return text;
+};
+
+/**
  * Construct the blocks required by the flyout for the procedure category.
  * @param {!Blockly.Workspace} workspace The workspace contianing procedures.
  * @return {!Array.<!Element>} Array of XML block elements.
  */
 Blockly.Procedures.flyoutCategory = function(workspace) {
   var xmlList = [];
-  if (Blockly.Blocks['procedures_defnoreturn']) {
-    // <block type="procedures_defnoreturn" gap="16"></block>
-    var block = goog.dom.createDom('block');
-    block.setAttribute('type', 'procedures_defnoreturn');
-    block.setAttribute('gap', 16);
-    xmlList.push(block);
-  }
-  if (Blockly.Blocks['procedures_defreturn']) {
-    // <block type="procedures_defreturn" gap="16"></block>
-    var block = goog.dom.createDom('block');
-    block.setAttribute('type', 'procedures_defreturn');
-    block.setAttribute('gap', 16);
-    xmlList.push(block);
-  }
-  if (Blockly.Blocks['procedures_ifreturn']) {
-    // <block type="procedures_ifreturn" gap="16"></block>
-    var block = goog.dom.createDom('block');
-    block.setAttribute('type', 'procedures_ifreturn');
-    block.setAttribute('gap', 16);
-    xmlList.push(block);
+  if (!workspace.variableDeclaration) {
+    if (Blockly.Blocks['procedures_defnoreturn']) {
+      // <block type="procedures_defnoreturn" gap="16"></block>
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'procedures_defnoreturn');
+      block.setAttribute('gap', 16);
+      xmlList.push(block);
+    }
+    if (Blockly.Blocks['procedures_defreturn']) {
+      // <block type="procedures_defreturn" gap="16"></block>
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'procedures_defreturn');
+      block.setAttribute('gap', 16);
+      xmlList.push(block);
+    }
+    if (Blockly.Blocks['procedures_ifreturn']) {
+      // <block type="procedures_ifreturn" gap="16"></block>
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'procedures_ifreturn');
+      block.setAttribute('gap', 16);
+      xmlList.push(block);
+    }
+  } else {
+    if (Blockly.Blocks['robProcedures_defnoreturn']) {
+      // <block type="procedures_defnoreturn" gap="16"></block>
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'robProcedures_defnoreturn');
+      block.setAttribute('gap', 16);
+      xmlList.push(block);
+    }
+    if (Blockly.Blocks['robProcedures_defreturn']) {
+      // <block type="procedures_defreturn" gap="16"></block>
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'robProcedures_defreturn');
+      block.setAttribute('gap', 16);
+      xmlList.push(block);
+    }
+    if (Blockly.Blocks['robProcedures_ifreturn']) {
+      // <block type="procedures_ifreturn" gap="16"></block>
+      var block = goog.dom.createDom('block');
+      block.setAttribute('type', 'robProcedures_ifreturn');
+      block.setAttribute('gap', 16);
+      xmlList.push(block);
+    }
   }
   if (xmlList.length) {
     // Add slightly larger gap between system blocks and user calls.
@@ -198,18 +249,46 @@ Blockly.Procedures.flyoutCategory = function(workspace) {
       var mutation = goog.dom.createDom('mutation');
       mutation.setAttribute('name', name);
       block.appendChild(mutation);
-      for (var t = 0; t < args.length; t++) {
-        var arg = goog.dom.createDom('arg');
-        arg.setAttribute('name', args[t]);
-        mutation.appendChild(arg);
+      if (!workspace.variableDeclaration) {
+        for (var t = 0; t < args.length; t++) {
+          var arg = goog.dom.createDom('arg');
+          arg.setAttribute('name', args[t]);
+          mutation.appendChild(arg);
+        }
+      } else {
+        var declarations = procedureList[i][1].getDescendants();
+        if (declarations) {
+          for (var t = 0; t < declarations.length; t++) {
+            if (declarations[t].getProcedureDef)
+              continue;
+            if (declarations[t].getVarDecl) {
+              var arg = goog.dom.createDom('arg');
+              arg.setAttribute('name', declarations[t].getVarDecl()[0]);
+              arg.setAttribute('type', declarations[t].getType());
+              mutation.appendChild(arg);
+            } else {
+              break;
+            }
+          }
+        }
+        if (templateName === 'robProcedures_callreturn') {
+          var returnType = procedureList[i][1].returnType_;
+          if (returnType) {
+            mutation.setAttribute('output_type', returnType);
+          }
+        }
       }
       xmlList.push(block);
     }
   }
-
   var tuple = Blockly.Procedures.allProcedures(workspace);
-  populateProcedures(tuple[0], 'procedures_callnoreturn');
-  populateProcedures(tuple[1], 'procedures_callreturn');
+  if (!workspace.variableDeclaration) {
+    populateProcedures(tuple[0], 'procedures_callnoreturn');
+    populateProcedures(tuple[1], 'procedures_callreturn');
+  } else {
+    populateProcedures(tuple[0], 'robProcedures_callnoreturn');
+    populateProcedures(tuple[1], 'robProcedures_callreturn');
+  }
   return xmlList;
 };
 
@@ -227,7 +306,7 @@ Blockly.Procedures.getCallers = function(name, workspace) {
     if (blocks[i].getProcedureCall) {
       var procName = blocks[i].getProcedureCall();
       // Procedure name may be null if the block is only half-built.
-      if (procName && Blockly.Names.equals(procName, name)) {
+      if (procName && (Blockly.Names.equals(procName, name) || procName === 'robProcedures_ifreturn')) {
         callers.push(blocks[i]);
       }
     }
@@ -272,6 +351,21 @@ Blockly.Procedures.mutateCallers = function(defBlock) {
       Blockly.Events.fire(new Blockly.Events.Change(
           caller, 'mutation', null, oldMutation, newMutation));
       Blockly.Events.recordUndo = oldRecordUndo;
+    }
+  }
+};
+
+/**
+ * Find all callers which use this specified variable and update them. 
+ * @param {string} name Variable to update.
+ * @param {string} type New data type.
+ */
+Blockly.Procedures.updateCallers = function(varName, varType, workspace, action, opt_procedure) {
+  var procedure = opt_procedure || Blockly.Variables.getProcedureName(varName);
+  if (procedure) {
+    var callers = Blockly.Procedures.getCallers(procedure, workspace);
+    for (var x = 0; x < callers.length; x++) {
+      callers[x].updateProcedureParameters(varName, varType, action);
     }
   }
 };

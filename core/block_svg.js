@@ -55,13 +55,13 @@ Blockly.BlockSvg = function(workspace, prototypeName, opt_id) {
    */
   this.svgGroup_ = Blockly.createSvgElement('g', {}, null);
 
-  /**
-   * @type {SVGElement}
-   * @private
-   */
-  this.svgPathDark_ = Blockly.createSvgElement('path',
-      {'class': 'blocklyPathDark', 'transform': 'translate(1,1)'},
-      this.svgGroup_);
+//  /**
+//   * @type {SVGElement}
+//   * @private
+//   */
+//  this.svgPathDark_ = Blockly.createSvgElement('path',
+//      {'class': 'blocklyPathDark', 'transform': 'translate(1,1)'},
+//      this.svgGroup_);
 
   /**
    * @type {SVGElement}
@@ -70,12 +70,13 @@ Blockly.BlockSvg = function(workspace, prototypeName, opt_id) {
   this.svgPath_ = Blockly.createSvgElement('path', {'class': 'blocklyPath'},
       this.svgGroup_);
 
+  this.svgPathInput_ = [];
   /**
    * @type {SVGElement}
    * @private
    */
-  this.svgPathLight_ = Blockly.createSvgElement('path',
-      {'class': 'blocklyPathLight'}, this.svgGroup_);
+//  this.svgPathLight_ = Blockly.createSvgElement('path',
+//      {'class': 'blocklyPathLight'}, this.svgGroup_);
   this.svgPath_.tooltip = this;
 
   /** @type {boolean} */
@@ -187,6 +188,18 @@ Blockly.BlockSvg.prototype.unselect = function() {
 Blockly.BlockSvg.prototype.mutator = null;
 
 /**
+ * Block's mutatorPlus icon (if any).
+ * @type {Blockly.MutatorPlus}
+ */
+Blockly.BlockSvg.prototype.mutatorPlus = null;
+
+/**
+ * Block's mutatorMinus icon (if any).
+ * @type {Blockly.MutatorMinus}
+ */
+Blockly.BlockSvg.prototype.mutatorMinus = null;
+
+/**
  * Block's comment icon (if any).
  * @type {Blockly.Comment}
  */
@@ -199,7 +212,13 @@ Blockly.BlockSvg.prototype.comment = null;
 Blockly.BlockSvg.prototype.warning = null;
 
 /**
- * Returns a list of mutator, comment, and warning icons.
+ * Block's warning icon (if any).
+ * @type {Blockly.Error}
+ */
+Blockly.BlockSvg.prototype.error = null;
+
+/**
+ * Returns a list of mutator, comment, error, and warning icons.
  * @return {!Array} List of icons.
  */
 Blockly.BlockSvg.prototype.getIcons = function() {
@@ -207,11 +226,20 @@ Blockly.BlockSvg.prototype.getIcons = function() {
   if (this.mutator) {
     icons.push(this.mutator);
   }
+  if (this.mutatorPlus) {
+    icons.push(this.mutatorPlus);
+  }
+  if (this.mutatorMinus) {
+    icons.push(this.mutatorMinus);
+  }
   if (this.comment) {
     icons.push(this.comment);
   }
   if (this.warning) {
     icons.push(this.warning);
+  }
+  if (this.error) {
+    icons.push(this.error);
   }
   return icons;
 };
@@ -530,6 +558,9 @@ Blockly.BlockSvg.prototype.onMouseDown_ = function(e) {
     e.stopPropagation();
     return;
   }
+  if (this.workspace.robControls) {
+    this.workspace.robControls.showZoom(false);
+  }
   this.workspace.markFocused();
   // Update Blockly's knowledge of its own location.
   Blockly.svgResize(this.workspace);
@@ -616,6 +647,22 @@ Blockly.BlockSvg.prototype.onMouseUp_ = function(e) {
     // resize to contain the newly positioned block.  Force a second resize
     // now that the block has been deleted.
     Blockly.asyncSvgResize(this.workspace);
+  }
+// Check if this block is part of a task or event if desired
+  if (Blockly.getMainWorkspace().checkInTask && Blockly.selected) {
+    var rootBlock = this.getRootBlock();
+    var inTask = false;
+    var validRoots = Blockly.getMainWorkspace().checkInTask;
+    for (var i = 0; i < validRoots.length; i++) {
+      if (rootBlock.type.indexOf(validRoots[i]) >= 0) {
+        inTask = true;
+        break;
+      }
+    }
+    var descendants = rootBlock.getDescendants();
+    for (var j = 0; j < descendants.length; j++) {
+      descendants[j].setInTask(inTask);
+    }
   }
   if (Blockly.highlightedConnection_) {
     Blockly.highlightedConnection_.unhighlight();
@@ -1012,8 +1059,8 @@ Blockly.BlockSvg.prototype.dispose = function(healStack, animate) {
   // Sever JavaScript to DOM connections.
   this.svgGroup_ = null;
   this.svgPath_ = null;
-  this.svgPathLight_ = null;
-  this.svgPathDark_ = null;
+//  this.svgPathLight_ = null;
+//  this.svgPathDark_ = null;
   Blockly.Field.stopCache();
 };
 
@@ -1201,18 +1248,19 @@ Blockly.BlockSvg.prototype.updateColour = function() {
   }
   var hexColour = this.getColour();
   var rgb = goog.color.hexToRgb(hexColour);
-  if (this.isShadow()) {
-    rgb = goog.color.lighten(rgb, 0.6);
-    hexColour = goog.color.rgbArrayToHex(rgb);
-    this.svgPathLight_.style.display = 'none';
-    this.svgPathDark_.setAttribute('fill', hexColour);
-  } else {
-    this.svgPathLight_.style.display = '';
-    var hexLight = goog.color.rgbArrayToHex(goog.color.lighten(rgb, 0.3));
-    var hexDark = goog.color.rgbArrayToHex(goog.color.darken(rgb, 0.2));
-    this.svgPathLight_.setAttribute('stroke', hexLight);
-    this.svgPathDark_.setAttribute('fill', hexDark);
-  }
+//  if (this.isShadow()) {
+//    rgb = goog.color.lighten(rgb, 0.6);
+//    hexColour = goog.color.rgbArrayToHex(rgb);
+//    this.svgPathLight_.style.display = 'none';
+//  }
+//    this.svgPathDark_.setAttribute('fill', hexColour);
+//  } else {
+//    this.svgPathLight_.style.display = '';
+//    var hexLight = goog.color.rgbArrayToHex(goog.color.lighten(rgb, 0.3));
+//    var hexDark = goog.color.rgbArrayToHex(goog.color.darken(rgb, 0.2));
+//    this.svgPathLight_.setAttribute('stroke', hexLight);
+//    this.svgPathDark_.setAttribute('fill', hexDark);
+//  }
   this.svgPath_.setAttribute('fill', hexColour);
 
   var icons = this.getIcons();
@@ -1234,17 +1282,19 @@ Blockly.BlockSvg.prototype.updateColour = function() {
 Blockly.BlockSvg.prototype.updateDisabled = function() {
   var hasClass = Blockly.hasClass_(/** @type {!Element} */ (this.svgGroup_),
                                    'blocklyDisabled');
-  if (this.disabled || this.getInheritedDisabled()) {
+  if (this.disabled || this.getInheritedDisabled() || !this.inTask) {
     if (!hasClass) {
       Blockly.addClass_(/** @type {!Element} */ (this.svgGroup_),
                         'blocklyDisabled');
-      this.svgPath_.setAttribute('fill',
-          'url(#' + this.workspace.options.disabledPatternId + ')');
+//      this.svgPath_.setAttribute('fill',
+//          'url(#' + this.workspace.options.disabledPatternId + ')');
+      this.svgPath_.setAttribute('stroke', '#000000');
     }
   } else {
     if (hasClass) {
       Blockly.removeClass_(/** @type {!Element} */ (this.svgGroup_),
                            'blocklyDisabled');
+      this.svgPath_.setAttribute('stroke', 'none');
       this.updateColour();
     }
   }
@@ -1375,6 +1425,88 @@ Blockly.BlockSvg.prototype.setWarningText = function(text, opt_id) {
 };
 
 /**
+ * Set this block's error text.
+ * @param {?string} text The text, or null to delete.
+ * @param {string=} opt_id An optional ID for the error text to be able to
+ *     maintain multiple errors.
+ */
+Blockly.BlockSvg.prototype.setErrorText = function(text, opt_id) {
+  if (!this.setErrorText.pid_) {
+    // Create a database of error PIDs.
+    // Only runs once per block (and only those with errors).
+    this.setErrorText.pid_ = Object.create(null);
+  }
+  var id = opt_id || '';
+  if (!id) {
+    // Kill all previous pending processes, this edit supercedes them all.
+    for (var n in this.setErrorText.pid_) {
+      clearTimeout(this.setErrorText.pid_[n]);
+      delete this.setErrorText.pid_[n];
+    }
+  } else if (this.setErrorText.pid_[id]) {
+    // Only queue up the latest change.  Kill any earlier pending process.
+    clearTimeout(this.setErrorText.pid_[id]);
+    delete this.setErrorText.pid_[id];
+  }
+  if (Blockly.dragMode_ == 2) {
+    // Don't change the error text during a drag.
+    // Wait until the drag finishes.
+    var thisBlock = this;
+    this.setErrorText.pid_[id] = setTimeout(function() {
+      if (thisBlock.workspace) {  // Check block wasn't deleted.
+        delete thisBlock.setErrorText.pid_[id];
+        thisBlock.setErrorText(text, id);
+      }
+    }, 100);
+    return;
+  }
+  if (this.isInFlyout) {
+    text = null;
+  }
+
+  // Bubble up to add a error on top-most collapsed block.
+  var parent = this.getSurroundParent();
+  var collapsedParent = null;
+  while (parent) {
+    if (parent.isCollapsed()) {
+      collapsedParent = parent;
+    }
+    parent = parent.getSurroundParent();
+  }
+  if (collapsedParent) {
+    collapsedParent.setErrorText(text, 'collapsed ' + this.id + ' ' + id);
+  }
+
+  var changedState = false;
+  if (goog.isString(text)) {
+    if (!this.error) {
+      this.error = new Blockly.Error(this);
+      changedState = true;
+    }
+    this.error.setText(/** @type {string} */ (text), id);
+  } else {
+    // Dispose all errors if no id is given.
+    if (this.error && !id) {
+      this.error.dispose();
+      changedState = true;
+    } else if (this.error) {
+      var oldText = this.error.getText();
+      this.error.setText('', id);
+      var newText = this.error.getText();
+      if (!newText) {
+        this.error.dispose();
+      }
+      changedState = oldText == newText;
+    }
+  }
+  if (changedState && this.rendered) {
+    this.render();
+    // Adding or removing a error icon will cause the block to change shape.
+    this.bumpNeighbours_();
+  }
+};
+
+/**
  * Give this block a mutator dialog.
  * @param {Blockly.Mutator} mutator A mutator dialog instance or null to remove.
  */
@@ -1390,12 +1522,59 @@ Blockly.BlockSvg.prototype.setMutator = function(mutator) {
 };
 
 /**
+ * Give this block a mutatorPlus button.
+ * @param {Blockly.MutatorPlus} mutatorPlus A mutatorPlus instance or null to remove.
+ */
+Blockly.BlockSvg.prototype.setMutatorPlus = function(mutatorPlus) {
+  if (this.mutatorPlus && this.mutatorPlus !== mutatorPlus) {
+    this.mutatorPlus.dispose();
+  }
+  if (mutatorPlus) {
+    mutatorPlus.block_ = this;
+    this.mutatorPlus = mutatorPlus;
+    if (this.rendered) {
+      this.mutatorPlus.createIcon();
+    }
+  }
+};
+
+/**
+ * Give this block a mutatorMinus button.
+ * @param {Blockly.MutatorMinus} mutatorMinus A mutatorMinus instance or null to remove.
+ */
+Blockly.BlockSvg.prototype.setMutatorMinus = function(mutatorMinus) {
+  if (this.mutatorMinus && this.mutatorMinus !== mutatorMinus) {
+    this.mutatorMinus.dispose();
+  }
+  if (mutatorMinus) {
+    mutatorMinus.block_ = this;
+    this.mutatorMinus = mutatorMinus;
+    if (this.rendered) {
+      this.mutatorMinus.createIcon();
+    }
+  }
+};
+
+/**
  * Set whether the block is disabled or not.
  * @param {boolean} disabled True if disabled.
  */
 Blockly.BlockSvg.prototype.setDisabled = function(disabled) {
   if (this.disabled != disabled) {
     Blockly.BlockSvg.superClass_.setDisabled.call(this, disabled);
+    if (this.rendered) {
+      this.updateDisabled();
+    }
+  }
+};
+
+/**
+ * Set whether the block is in task or not.
+ * @param {boolean} intask True if block belongs to a valid task.
+ */
+Blockly.BlockSvg.prototype.setInTask = function(inTask) {
+  if (this.inTask != inTask) {
+    Blockly.BlockSvg.superClass_.setInTask.call(this, inTask);
     if (this.rendered) {
       this.updateDisabled();
     }

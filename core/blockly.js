@@ -32,6 +32,7 @@ goog.require('Blockly.Events');
 goog.require('Blockly.FieldAngle');
 goog.require('Blockly.FieldCheckbox');
 goog.require('Blockly.FieldColour');
+goog.require('Blockly.FieldRobColour');
 // Date picker commented out since it increases footprint by 60%.
 // Add it only if you need it.
 //goog.require('Blockly.FieldDate');
@@ -363,7 +364,8 @@ Blockly.longStop_ = function() {
  * @private
  */
 Blockly.copy_ = function(block) {
-  var xmlBlock = Blockly.Xml.blockToDom(block);
+  var statement_list = [];
+  var xmlBlock = Blockly.Xml.blockToDom_(block, statement_list);
   if (Blockly.dragMode_ != Blockly.DRAG_FREE) {
     Blockly.Xml.deleteNext(xmlBlock);
   }

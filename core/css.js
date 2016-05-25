@@ -132,7 +132,7 @@ Blockly.Css.setCursor = function(cursor) {
  */
 Blockly.Css.CONTENT = [
   '.blocklySvg {',
-    'background-color: #fff;',
+//    'background-color: #fff;',
     'outline: none;',
     'overflow: hidden;',  /* IE overflows by default. */
   '}',
@@ -144,15 +144,14 @@ Blockly.Css.CONTENT = [
   '}',
 
   '.blocklyTooltipDiv {',
-    'background-color: #ffffc7;',
-    'border: 1px solid #ddc;',
-    'box-shadow: 4px 4px 20px 1px rgba(0,0,0,.15);',
-    'color: #000;',
+    'background-color: #333;',
+    'border-radius: 2px;',
+    'color: #fff;',
     'display: none;',
     'font-family: sans-serif;',
     'font-size: 9pt;',
     'opacity: 0.9;',
-    'padding: 2px;',
+    'padding: 5px;',
     'position: absolute;',
     'z-index: 1000;',
   '}',
@@ -173,8 +172,8 @@ Blockly.Css.CONTENT = [
   '}',
 
   '.blocklyHighlightedConnectionPath {',
-    'fill: none;',
-    'stroke: #fc3;',
+    'fill: #FFDC00;',
+    'stroke: #FFDC00;',
     'stroke-width: 4px;',
   '}',
 
@@ -185,7 +184,7 @@ Blockly.Css.CONTENT = [
   '}',
 
   '.blocklySelected>.blocklyPath {',
-    'stroke: #fc3;',
+    'stroke: #FFDC00;',
     'stroke-width: 3px;',
   '}',
 
@@ -204,8 +203,8 @@ Blockly.Css.CONTENT = [
   '}',
 
   '.blocklyDisabled>.blocklyPath {',
-    'fill-opacity: .5;',
-    'stroke-opacity: .5;',
+    'fill-opacity: .3;',
+    'stroke-opacity: .3;',
   '}',
 
   '.blocklyDisabled>.blocklyPathLight,',
@@ -218,6 +217,11 @@ Blockly.Css.CONTENT = [
     'fill: #fff;',
     'font-family: sans-serif;',
     'font-size: 11pt;',
+  '}',
+  '.blocklyText.brick_label {',
+    'fill: #000;',
+    'font-weight: bold;',
+    'font-size: 14pt;',
   '}',
 
   '.blocklyNonEditableText>text {',
@@ -281,6 +285,23 @@ Blockly.Css.CONTENT = [
   '.blocklyIconSymbol {',
     'fill: #fff;',
   '}',
+  
+  '.blocklyIconMarkWarningError {',
+    'fill: #000;',
+  '}',
+  
+  'g .blocklyIconGroup:hover path[class="blocklyIconMarkWarningError"] {',
+    'fill: #fff;',
+    'cursor: pointer',
+  '}', 
+  'g .blocklyIconGroup:hover circle[class="blocklyIconMarkWarningError"] {',
+    'fill: #fff;',
+    'cursor: pointer',
+  '}', 
+  
+  '.blocklyIconMarkWarningError:hover {',
+    'fill: #fff;',
+  '}',
 
   '.blocklyMinimalBody {',
     'margin: 0;',
@@ -288,11 +309,12 @@ Blockly.Css.CONTENT = [
   '}',
 
   '.blocklyCommentTextarea {',
-    'background-color: #ffc;',
+    'background-color: #fff;',
     'border: 0;',
     'margin: 0;',
     'padding: 2px;',
     'resize: none;',
+    'outline: 0 none',
   '}',
 
   '.blocklyHtmlInput {',
@@ -303,7 +325,8 @@ Blockly.Css.CONTENT = [
     'margin: 0;',
     'outline: none;',
     'padding: 0 1px;',
-    'width: 100%',
+    'width: 100%;',
+    'line-height: normal;',
   '}',
 
   '.blocklyMainBackground {',
@@ -318,16 +341,25 @@ Blockly.Css.CONTENT = [
   '}',
 
   '.blocklyFlyoutBackground {',
-    'fill: #ddd;',
-    'fill-opacity: .8;',
+    'fill-opacity: .35;',
+  '}',
+  
+  '.blocklyCon {',
+    'fill: #eee;',
+    'fill-opacity: 1;',
   '}',
 
+  '.blocklyConSelected {',
+    'fill-opacity: .65;',
+  '}',
+  
   '.blocklyScrollbarBackground {',
     'opacity: 0;',
+    'display: none;',
   '}',
 
   '.blocklyScrollbarKnob {',
-    'fill: #ccc;',
+    'display: none;',
   '}',
 
   '.blocklyScrollbarBackground:hover+.blocklyScrollbarKnob,',
@@ -346,6 +378,32 @@ Blockly.Css.CONTENT = [
   '.blocklyZoom>image:active {',
     'opacity: .8;',
   '}',
+  
+  'rect[class="blocklyButtonBack"] { ',
+    'fill: #fff;',
+  '}',
+  
+  'g .robButtonHidden {',
+    'display: none',
+  '}', 
+  
+  'g .robButton:hover rect[class="blocklyButtonBack"] {',
+    'fill: #BACC1E;',
+    'cursor: pointer',
+  '}', 
+  
+  'g .robButton:hover path[class="blocklyButtonPath"] {',
+    'cursor: pointer',
+  '}', 
+  
+  'g .robButton.disabled {',
+    'pointer-events: none;',
+  '}', 
+  
+  'g .robButton.disabled path[class="blocklyButtonPath"] {',
+    'fill: #bbb',
+  '}', 
+  
 
   /* Darken flyout scrollbars due to being on a grey background. */
   /* By contrast, workspace scrollbars are on a white background. */
@@ -401,26 +459,39 @@ Blockly.Css.CONTENT = [
 
   /* Category tree in Toolbox. */
   '.blocklyToolboxDiv {',
-    'background-color: #ddd;',
-    'overflow-x: visible;',
-    'overflow-y: auto;',
+    'background-color: #eee;',
+    'overflow-x: hidden;',
+    'overflow-y: visible;',
     'position: absolute;',
   '}',
 
   '.blocklyTreeRoot {',
-    'padding: 4px 0;',
+    'padding: 10px 0;',
   '}',
 
   '.blocklyTreeRoot:focus {',
     'outline: none;',
   '}',
 
+//  '.blocklyTreeRow {',
+//    'height: 22px;',
+//    'line-height: 22px;',
+//    'margin-bottom: 3px;',
+//    'padding-right: 8px;',
+//    'white-space: nowrap;',
+//  '}',
+  
   '.blocklyTreeRow {',
-    'height: 22px;',
-    'line-height: 22px;',
-    'margin-bottom: 3px;',
-    'padding-right: 8px;',
-    'white-space: nowrap;',
+    'height: 40px;',
+    'line-height: 0;',
+    'margin-bottom: 6px;',
+   '}',
+  
+  '.blocklyToolboxDiv.small .blocklyTreeRow {',
+    'width: 55px;',
+  '}',
+  '.blocklyToolboxDiv.scroll.small .blocklyTreeRow {',
+    'width: 70px;', // 55px + 17px (usually the browsers scrollbar width)
   '}',
 
   '.blocklyHorizontalTree {',
@@ -433,14 +504,34 @@ Blockly.Css.CONTENT = [
     'margin: 1px 0 8px 5px;',
   '}',
 
-  '.blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow {',
-    'margin-left: 8px;',
+//  '.blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow {',
+//    'margin-left: 8px;',
+//  '}',
+  '.blocklyTreeRow:hover {',
+    'cursor: pointer',
   '}',
 
   '.blocklyTreeRow:not(.blocklyTreeSelected):hover {',
     'background-color: #e4e4e4;',
+    'cursor: pointer',
   '}',
-
+  
+  '.toolboxIcon {',
+    'display: inline-block;',
+    'position: relative;',
+    'top: 20px;',
+    'left: 8px;',
+    'font-size: 24px;',
+    'color: #fff;',
+    'float: left;',
+    'height: 0;',
+    'visibility: hidden',
+  '}',
+  
+  '.blocklyToolboxDiv.small .toolboxIcon {',
+    'visibility: visible', 
+  '}',
+  
   '.blocklyTreeSeparator {',
     'border-bottom: solid #e5e5e5 1px;',
     'height: 0;',
@@ -461,7 +552,9 @@ Blockly.Css.CONTENT = [
     'vertical-align: middle;',
     'width: 16px;',
   '}',
-
+  '.toolboxIcon.typcn:before {',
+    'line-height:0',
+  '}',
   '.blocklyTreeIconClosedLtr {',
     'background-position: -32px -1px;',
   '}',
@@ -491,14 +584,60 @@ Blockly.Css.CONTENT = [
     'background-position: -48px -1px;',
   '}',
 
+//  '.blocklyTreeLabel {',
+//    'cursor: default;',
+//    'font-family: sans-serif;',
+//    'font-size: 16px;',
+//    'padding: 0 3px;',
+//    'vertical-align: middle;',
+//  '}',
   '.blocklyTreeLabel {',
-    'cursor: default;',
     'font-family: sans-serif;',
-    'font-size: 16px;',
-    'padding: 0 3px;',
-    'vertical-align: middle;',
+    'position: relative;',
+    'top: 20px;',
+    'float: left;',
+    'font-size: 16pt;',
+    'color: #fff;',
+    'padding: 0 0 0 3px;',
   '}',
-
+  
+  '.blocklyTreeSub {', 
+    '  font-size: 10pt;', 
+  '}',
+  
+  '.blocklyToolboxDiv.small  .blocklyTreeLabel {',
+    'visibility: hidden',
+  '}',
+  
+  '.blocklyTreeRow::after {',
+    'background-image: url(\'data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\"><g><path class=\"blocklyConSelected\" fill=\"%23eee\" d=\"M1,41 v-11 l7.8,0.5 l2.5-5.5 c3-10.7,0.3-16.3-10.3-15.7 v-10 h30v41h-30z\"></path><path class=\"blocklyToolboxBackground\" stroke=\"%23eee\" stroke-width=\"2\" fill=\"none\" d=\"M1,40 v-10 l7.8,0.5 l2.5-5.5 c3-10.7,0.3-16.3-10.3-15.7 v-10\"></path></g></svg>\');',
+    'content: "";',
+    'width: 15px;',
+    'height: 40px;',
+    'float: right;',
+    'display: inline-block;',
+  '}',
+  
+  '.blocklyTreeRow.selected::after {',
+    'background-image: url(\'data:image/svg+xml;charset=UTF-8,<svg xmlns=\"http://www.w3.org/2000/svg\"><g><path class=\"blocklyConSelected\" fill-opacity=\"0.7\" fill=\"%23eee\" d=\"M1,41 v-11 l7.8,0.5 l2.5-5.5 c3-10.7,0.3-16.3-10.3-15.7 v-10 h30v41h-30z\"></path><path class=\"blocklyToolboxBackground\" stroke=\"%23eee\" stroke-width=\"2\" fill=\"none\" d=\"M1,40 v-10 l7.8,0.5 l2.5-5.5 c3-10.7,0.3-16.3-10.3-15.7 v-10\"></path></g></svg>\');',
+  '}',
+ 
+  '.blocklyToolboxDiv[dir="RTL"] .blocklyTreeRow .blocklyTreeLabel {',
+    'float: right;',
+    'padding: 0 3px 0 6px;',
+  '}',
+  
+  '.blocklyToolboxDiv.scroll .blocklyTreeRow::after {',
+    'width: 15px;',
+  '}',
+  
+   '.blocklyToolboxDiv.scroll.small .blocklyTreeRow::after {',
+    'width: 30px;',
+  '}',
+   '.blocklyToolboxDiv.scroll.small .blocklyTreeLabel {',
+    'padding: 0 17px 0 3px;',
+  '}',
+ 
   '.blocklyTreeSelected .blocklyTreeLabel {',
     'color: #fff;',
   '}',

@@ -32,6 +32,7 @@ goog.require('Blockly.ConnectionDB');
 goog.require('Blockly.Options');
 goog.require('Blockly.ScrollbarPair');
 goog.require('Blockly.Trashcan');
+goog.require('Blockly.RobControls');
 goog.require('Blockly.Workspace');
 goog.require('Blockly.Xml');
 goog.require('Blockly.ZoomControls');
@@ -170,7 +171,9 @@ Blockly.WorkspaceSvg.prototype.createDom = function(opt_backgroundClass) {
   if (this.options.hasTrashcan) {
     bottom = this.addTrashcan_(bottom);
   }
-  if (this.options.zoomOptions && this.options.zoomOptions.controls) {
+  if (this.options.robControls && this.options.zoomOptions && this.options.zoomOptions.controls) {
+    this.addRobControls_(this.options.zoomOptions.controls);
+  } else if (this.options.zoomOptions && this.options.zoomOptions.controls) {
     bottom = this.addZoomControls_(bottom);
   }
   Blockly.bindEvent_(this.svgGroup_, 'mousedown', this, this.onMouseDown_);
@@ -227,6 +230,10 @@ Blockly.WorkspaceSvg.prototype.dispose = function() {
     this.zoomControls_.dispose();
     this.zoomControls_ = null;
   }
+  if (this.robControls) {
+    this.robControls.dispose();
+    this.robControls = null;
+  }
   if (!this.options.parentWorkspace) {
     // Top-most workspace.  Dispose of the SVG too.
     goog.dom.removeNode(this.getParentSvg());
@@ -270,7 +277,18 @@ Blockly.WorkspaceSvg.prototype.addZoomControls_ = function(bottom) {
   this.zoomControls_ = new Blockly.ZoomControls(this);
   var svgZoomControls = this.zoomControls_.createDom();
   this.svgGroup_.appendChild(svgZoomControls);
-  return this.zoomControls_.init(bottom);
+  return this.zoomControls_.init(bottom); 
+};
+
+/**
+ * Add OpenRoberta controls.
+ * @private
+ */
+Blockly.WorkspaceSvg.prototype.addRobControls_ = function(zoom) {
+  /** @type {Blockly.RobControls} */
+  this.robControls = new Blockly.RobControls(this, zoom);
+  var svgRobControls_ = this.robControls.createDom();
+  this.svgGroup_.appendChild(svgRobControls_);
 };
 
 /**
@@ -284,6 +302,7 @@ Blockly.WorkspaceSvg.prototype.addFlyout_ = function() {
     RTL: this.RTL,
     horizontalLayout: this.horizontalLayout,
     toolboxPosition: this.options.toolboxPosition,
+    variableDeclaration: this.variableDeclaration
   };
   /** @type {Blockly.Flyout} */
   this.flyout_ = new Blockly.Flyout(workspaceOptions);
@@ -305,7 +324,9 @@ Blockly.WorkspaceSvg.prototype.resize = function() {
   if (this.trashcan) {
     this.trashcan.position();
   }
-  if (this.zoomControls_) {
+  if (this.robControls) {  
+    this.robControls.position();
+  } else if (this.zoomControls_) {  
     this.zoomControls_.position();
   }
   if (this.scrollbar) {
@@ -565,6 +586,9 @@ Blockly.WorkspaceSvg.prototype.isDeleteArea = function(e) {
  * @private
  */
 Blockly.WorkspaceSvg.prototype.onMouseDown_ = function(e) {
+  if (this.robControls && this.robControls.showZoom) {
+    this.robControls.showZoom(false);
+  }
   this.markFocused();
   if (Blockly.isTargetInput_(e)) {
     return;
@@ -582,29 +606,51 @@ Blockly.WorkspaceSvg.prototype.onMouseDown_ = function(e) {
   if (Blockly.isRightButton(e)) {
     // Right-click.
     this.showContextMenu_(e);
-  } else if (this.scrollbar) {
-    // If the workspace is editable, only allow scrolling when gripping empty
-    // space.  Otherwise, allow scrolling when gripping anywhere.
-    this.isScrolling = true;
-    // Record the current mouse position.
-    this.startDragMouseX = e.clientX;
-    this.startDragMouseY = e.clientY;
-    this.startDragMetrics = this.getMetrics();
-    this.startScrollX = this.scrollX;
-    this.startScrollY = this.scrollY;
-
-    // If this is a touch event then bind to the mouseup so workspace drag mode
-    // is turned off and double move events are not performed on a block.
-    // See comment in inject.js Blockly.init_ as to why mouseup events are
-    // bound to the document instead of the SVG's surface.
-    if ('mouseup' in Blockly.bindEvent_.TOUCH_MAP) {
-      Blockly.onTouchUpWrapper_ = Blockly.onTouchUpWrapper_ || [];
-      Blockly.onTouchUpWrapper_ = Blockly.onTouchUpWrapper_.concat(
-          Blockly.bindEvent_(document, 'mouseup', null, Blockly.onMouseUp_));
+  } else {
+    // Beate: Close all bubbles with a click on the document
+    var allBlocks = this.getAllBlocks();
+    for (var i = 0; i < allBlocks.length; i++) {
+      var icons = allBlocks[i].getIcons();
+      for (var k = 0; k < icons.length; k++) {
+        if (icons[k].bubble_) {
+          var block = icons[k].block_;
+          // Beate: Errors and warnings that are visible will be closed and deleted
+          if (icons[k].block_.error) {
+            block.error.dispose();
+            block.render();
+          } else if (icons[k].block_.warning) {
+            block.warning.dispose();
+            block.render();
+          } else {
+            icons[k].setVisible(false);
+          }
+        }
+      }
     }
-    Blockly.onMouseMoveWrapper_ = Blockly.onMouseMoveWrapper_ || [];
-    Blockly.onMouseMoveWrapper_ = Blockly.onMouseMoveWrapper_.concat(
+    if (this.scrollbar) {
+      // If the workspace is editable, only allow scrolling when gripping empty
+      // space.  Otherwise, allow scrolling when gripping anywhere.
+      this.isScrolling = true;
+      // Record the current mouse position.
+      this.startDragMouseX = e.clientX;
+      this.startDragMouseY = e.clientY;
+      this.startDragMetrics = this.getMetrics();
+      this.startScrollX = this.scrollX;
+      this.startScrollY = this.scrollY;
+
+      // If this is a touch event then bind to the mouseup so workspace drag mode
+      // is turned off and double move events are not performed on a block.
+      // See comment in inject.js Blockly.init_ as to why mouseup events are
+      // bound to the document instead of the SVG's surface.
+      if ('mouseup' in Blockly.bindEvent_.TOUCH_MAP) {
+        Blockly.onTouchUpWrapper_ = Blockly.onTouchUpWrapper_ || [];
+        Blockly.onTouchUpWrapper_ = Blockly.onTouchUpWrapper_.concat(
+          Blockly.bindEvent_(document, 'mouseup', null, Blockly.onMouseUp_));
+      }
+      Blockly.onMouseMoveWrapper_ = Blockly.onMouseMoveWrapper_ || [];
+      Blockly.onMouseMoveWrapper_ = Blockly.onMouseMoveWrapper_.concat(
         Blockly.bindEvent_(document, 'mousemove', null, Blockly.onMouseMove_));
+    }
   }
   // This event has been handled.  No need to bubble up to the document.
   e.stopPropagation();
@@ -952,6 +998,20 @@ Blockly.WorkspaceSvg.prototype.updateToolbox = function(tree) {
     this.options.languageTree = tree;
     this.flyout_.show(tree.childNodes);
   }
+};
+
+/**
+ * Modify the block tree on the existing toolbox.
+ * @param {Node|string} tree DOM tree of blocks, or text representation of same.
+ */
+Blockly.WorkspaceSvg.prototype.updateRobControls = function() {
+  if (!this.robControls) {
+    return;
+  }
+  this.robControls.dispose();
+  if (this.options.robControls && this.options.zoomOptions && this.options.zoomOptions.controls) {
+    this.addRobControls_(this.options.zoomOptions.controls);
+  } 
 };
 
 /**

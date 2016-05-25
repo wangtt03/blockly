@@ -531,7 +531,7 @@ Blockly.Flyout.prototype.hide = function() {
  * @param {!Array|string} xmlList List of blocks to show.
  *     Variables and procedures have a custom set of blocks.
  */
-Blockly.Flyout.prototype.show = function(xmlList) {
+Blockly.Flyout.prototype.show = function(xmlList, opt_colour) {
   this.hide();
   this.clearOldBlocks_();
 
@@ -546,6 +546,10 @@ Blockly.Flyout.prototype.show = function(xmlList) {
   }
 
   this.svgGroup_.style.display = 'block';
+  if (opt_colour) {
+    this.svgBackground_.setAttribute('fill', opt_colour);
+  }
+  
   // Create the blocks to be shown in this flyout.
   var blocks = [];
   var gaps = [];
@@ -897,9 +901,9 @@ Blockly.Flyout.prototype.placeNewBlock_ = function(originBlock) {
     scale = targetWorkspace.scale;
     xyOld.y += scrollY / scale - scrollY;
   }
-
   // Create the new block by cloning the block in the flyout (via XML).
-  var xml = Blockly.Xml.blockToDom(originBlock);
+  var statement_list = [];
+  var xml = Blockly.Xml.blockToDom(originBlock, statement_list);
   var block = Blockly.Xml.domToBlock(xml, targetWorkspace);
   var svgRootNew = block.getSvgRoot();
   if (!svgRootNew) {

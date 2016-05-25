@@ -65,6 +65,81 @@ Blockly.HSV_SATURATION = 0.45;
 Blockly.HSV_VALUE = 0.65;
 
 /**
+ * The rgb value for block colours in logic category.
+ */
+Blockly.CAT_LOGIC_RGB = "#33B8CA";
+/**
+ * The rgb value for block colours in colour category.
+ */
+Blockly.CAT_COLOUR_RGB = "#EBC300";
+/**
+ * The rgb value for block colours in lists category.
+ */
+Blockly.CAT_LIST_RGB = "#39378B";
+/**
+ * The rgb value for block colours in math category.
+ */
+Blockly.CAT_MATH_RGB = "#005A94";
+/**
+ * The rgb value for block colours in procedures category.
+ */
+Blockly.CAT_PROCEDURE_RGB = "#179C7D";
+/**
+ * The rgb value for block colours in actions category.
+ */
+Blockly.CAT_ACTION_RGB = "#F29400";
+/**
+ * The rgb value for block colours in activity category.
+ */
+Blockly.CAT_ACTIVITY_RGB = "#E2001A";
+/**
+ * The rgb value for block colours in controls category.
+ */
+Blockly.CAT_CONTROL_RGB = "#EB6A0A";
+/**
+ * The rgb value for block colours in sensors category.
+ */
+Blockly.CAT_SENSOR_RGB = "#8FA402";
+/**
+ * The rgb value for block colours in text category.
+ */
+Blockly.CAT_TEXT_RGB = "#BACC1E";
+/**
+ * The rgb value for block colours in variables category.
+ */
+Blockly.CAT_VARIABLE_RGB = "#9085BA";
+/**
+ * The rgb value for block colours in communication category.
+ */
+Blockly.CAT_COMMUNICATION_RGB = "#FF69B4";
+
+/**
+ * Lookup table for icon - categories.
+ * @const
+ */
+Blockly.CAT_ICON = [];
+Blockly.CAT_ICON['brick'] = 'roberta';
+Blockly.CAT_ICON['TOOLBOX_ACTION'] = 'action';
+Blockly.CAT_ICON['TOOLBOX_MOVE'] = 'move';
+Blockly.CAT_ICON['TOOLBOX_DRIVE'] = 'steering_wheel';
+Blockly.CAT_ICON['TOOLBOX_DISPLAY'] = 'message-typing';
+Blockly.CAT_ICON['TOOLBOX_SOUND'] = 'volume-up';
+Blockly.CAT_ICON['TOOLBOX_LIGHT'] = 'led';
+Blockly.CAT_ICON['TOOLBOX_SENSOR'] = 'sensor';
+Blockly.CAT_ICON['TOOLBOX_CONTROL'] = 'flow-children';
+Blockly.CAT_ICON['TOOLBOX_DECISION'] = 'flow-merge';
+Blockly.CAT_ICON['TOOLBOX_WAIT'] = 'wait';
+Blockly.CAT_ICON['TOOLBOX_LOOP'] = 'loop';
+Blockly.CAT_ICON['TOOLBOX_LOGIC'] = 'logic';
+Blockly.CAT_ICON['TOOLBOX_MATH'] = 'math';
+Blockly.CAT_ICON['TOOLBOX_TEXT'] = 'sort-alphabetically-outline';
+Blockly.CAT_ICON['TOOLBOX_LIST'] = 'th-small-outline';
+Blockly.CAT_ICON['TOOLBOX_COLOUR'] = 'brush';
+Blockly.CAT_ICON['TOOLBOX_VARIABLE'] = 'variable';
+Blockly.CAT_ICON['TOOLBOX_PROCEDURE'] = 'plus-outline';
+Blockly.CAT_ICON['TOOLBOX_COMMUNICATION'] = 'messages';
+
+/**
  * Sprited icons and images.
  */
 Blockly.SPRITE = {
@@ -163,6 +238,23 @@ Blockly.OPPOSITE_TYPE[Blockly.OUTPUT_VALUE] = Blockly.INPUT_VALUE;
 Blockly.OPPOSITE_TYPE[Blockly.NEXT_STATEMENT] = Blockly.PREVIOUS_STATEMENT;
 Blockly.OPPOSITE_TYPE[Blockly.PREVIOUS_STATEMENT] = Blockly.NEXT_STATEMENT;
 
+/**
+ * Lookup table for determining the color of a data type .
+ * @const
+ */
+Blockly.DATA_TYPE = [];
+Blockly.DATA_TYPE['Number'] = "#005A94";
+Blockly.DATA_TYPE['String'] = "#BACC1E";
+Blockly.DATA_TYPE['Boolean'] = "#33B8CA";
+Blockly.DATA_TYPE['Colour'] = "#EBC300";
+Blockly.DATA_TYPE['Connection'] = "#FF69B4";
+Blockly.DATA_TYPE['Sensor'] = "#8FA402";
+Blockly.DATA_TYPE['Actor'] = "#F29400";
+Blockly.DATA_TYPE['Array_Number'] = "#39378B";
+Blockly.DATA_TYPE['Array_String'] = "#39378B";
+Blockly.DATA_TYPE['Array_Boolean'] = "#39378B";
+Blockly.DATA_TYPE['Array_Colour'] = "#39378B";
+Blockly.DATA_TYPE['Array_Connection'] = "#39378B";
 
 /**
  * ENUM for toolbox and flyout at top of screen.

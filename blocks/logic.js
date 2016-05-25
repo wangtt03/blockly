@@ -41,7 +41,7 @@ Blockly.Blocks['controls_if'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.CONTROLS_IF_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.CAT_LOGIC_RGB);
     this.appendValueInput('IF0')
         .setCheck('Boolean')
         .appendField(Blockly.Msg.CONTROLS_IF_MSG_IF);
@@ -225,7 +225,7 @@ Blockly.Blocks['controls_if_if'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.CAT_LOGIC_RGB);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_IF_TITLE_IF);
     this.setNextStatement(true);
@@ -240,7 +240,7 @@ Blockly.Blocks['controls_if_elseif'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.CAT_LOGIC_RGB);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_ELSEIF_TITLE_ELSEIF);
     this.setPreviousStatement(true);
@@ -256,7 +256,7 @@ Blockly.Blocks['controls_if_else'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.CAT_LOGIC_RGB);
     this.appendDummyInput()
         .appendField(Blockly.Msg.CONTROLS_IF_ELSE_TITLE_ELSE);
     this.setPreviousStatement(true);
@@ -287,7 +287,7 @@ Blockly.Blocks['logic_compare'] = {
           ['\u2265', 'GTE']
         ];
     this.setHelpUrl(Blockly.Msg.LOGIC_COMPARE_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.CAT_LOGIC_RGB);
     this.setOutput(true, 'Boolean');
     this.appendValueInput('A');
     this.appendValueInput('B')
@@ -310,31 +310,86 @@ Blockly.Blocks['logic_compare'] = {
     this.prevBlocks_ = [null, null];
   },
   /**
+   * Modify this block to have a appropriate operator. Only used in Roberta blocks.
+   * @param {String} operator
+   * @this Blockly.Block
+   */
+  updateShape : function(range) {
+    // Set the range of operators.
+    if (range) {
+      this.operatorRange_ = range;
+      var OPERATORS;
+      var valueB = this.getInputTargetBlock('B');
+      this.removeInput('B', true);
+      this.removeInput('OP_DROP', true);     
+      if (range == 'NUM_REV') {
+        OPERATORS = Blockly.RTL ? [ [ '<', 'GT' ], [ '\u2264', 'GTE' ], [ '>', 'LT' ], [ '\u2265', 'LTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [
+                    [ '>', 'GT' ], [ '\u2265', 'GTE' ], [ '<', 'LT' ], [ '\u2264', 'LTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+      } else if (range == 'BOOL') {
+        OPERATORS = Blockly.RTL ? [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+      } else if (range == 'COLOUR') {
+        OPERATORS = Blockly.RTL ? [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [ [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+      } else {
+        OPERATORS = Blockly.RTL ? [ [ '>', 'LT' ], [ '\u2265', 'LTE' ], [ '<', 'GT' ], [ '\u2264', 'GTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ] : [
+                    [ '<', 'LT' ], [ '\u2264', 'LTE' ], [ '>', 'GT' ], [ '\u2265', 'GTE' ], [ '=', 'EQ' ], [ '\u2260', 'NEQ' ] ];
+      }
+      this.appendDummyInput('OP_DROP').appendField(new Blockly.FieldDropdown(OPERATORS), 'OP')
+      var inputB = this.appendValueInput('B');
+      if (valueB) {
+        inputB.connection.connect(valueB);
+      }
+    }
+  },
+  /**
    * Called whenever anything on the workspace changes.
    * Prevent mismatched types from being compared.
    * @param {!Blockly.Events.Abstract} e Change event.
    * @this Blockly.Block
    */
   onchange: function(e) {
+//    var blockA = this.getInputTargetBlock('A');
+//    var blockB = this.getInputTargetBlock('B');
+//    // Disconnect blocks that existed prior to this change if they don't match.
+//    if (blockA && blockB &&
+//        !blockA.outputConnection.checkType_(blockB.outputConnection)) {
+//      // Mismatch between two inputs.  Disconnect previous and bump it away.
+//      for (var i = 0; i < this.prevBlocks_.length; i++) {
+//        var block = this.prevBlocks_[i];
+//        if (block === blockA || block === blockB) {
+//          block.setParent(null);
+//          block.bumpNeighbours_();
+//        }
+//      }
+//    }
+//    this.prevBlocks_[0] = blockA;
+//    this.prevBlocks_[1] = blockB;
+    
+    // for roberta we need a different check to get changes in the visible type
+    if (!this.workspace || Blockly.Block.dragMode_ == 2) {
+      // Block has been deleted or is in move
+      return;
+    }
     var blockA = this.getInputTargetBlock('A');
     var blockB = this.getInputTargetBlock('B');
-    // Disconnect blocks that existed prior to this change if they don't match.
-    if (blockA && blockB &&
-        !blockA.outputConnection.checkType_(blockB.outputConnection)) {
-      // Mismatch between two inputs.  Disconnect previous and bump it away.
-      // Ensure that any disconnections are grouped with the causing event.
-      Blockly.Events.setGroup(e.group);
-      for (var i = 0; i < this.prevBlocks_.length; i++) {
-        var block = this.prevBlocks_[i];
-        if (block === blockA || block === blockB) {
-          block.unplug();
-          block.bumpNeighbours_();
-        }
+    if (blockA && blockB) {
+      if (!blockA.outputConnection.check_ || !blockB.outputConnection.check_) {
+        return;
       }
       Blockly.Events.setGroup(false);
+      if ((blockA.outputConnection.check_[0] === blockB.outputConnection.check_[0])) {
+        return;
+      } 
+      this.getInput('A').setCheck(blockA.outputConnection.check_);
+      this.getInput('B').setCheck(blockA.outputConnection.check_);
+    } else if (blockA) {
+        this.getInput('B').setCheck(blockA.outputConnection.check_)
+    } else if (blockB) {
+      this.getInput('A').setCheck(blockB.outputConnection.check_);
+    } else {
+      this.getInput('A').setCheck(null);
+      this.getInput('B').setCheck(null);
     }
-    this.prevBlocks_[0] = blockA;
-    this.prevBlocks_[1] = blockB;
+    this.render();
   }
 };
 
@@ -348,7 +403,7 @@ Blockly.Blocks['logic_operation'] = {
         [[Blockly.Msg.LOGIC_OPERATION_AND, 'AND'],
          [Blockly.Msg.LOGIC_OPERATION_OR, 'OR']];
     this.setHelpUrl(Blockly.Msg.LOGIC_OPERATION_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.CAT_LOGIC_RGB);
     this.setOutput(true, 'Boolean');
     this.appendValueInput('A')
         .setCheck('Boolean');
@@ -385,7 +440,7 @@ Blockly.Blocks['logic_negate'] = {
         }
       ],
       "output": "Boolean",
-      "colour": Blockly.Blocks.logic.HUE,
+      "colour": Blockly.CAT_LOGIC_RGB,
       "tooltip": Blockly.Msg.LOGIC_NEGATE_TOOLTIP,
       "helpUrl": Blockly.Msg.LOGIC_NEGATE_HELPURL
     });
@@ -411,7 +466,7 @@ Blockly.Blocks['logic_boolean'] = {
         }
       ],
       "output": "Boolean",
-      "colour": Blockly.Blocks.logic.HUE,
+      "colour": Blockly.CAT_LOGIC_RGB,
       "tooltip": Blockly.Msg.LOGIC_BOOLEAN_TOOLTIP,
       "helpUrl": Blockly.Msg.LOGIC_BOOLEAN_HELPURL
     });
@@ -427,7 +482,7 @@ Blockly.Blocks['logic_null'] = {
     this.jsonInit({
       "message0": Blockly.Msg.LOGIC_NULL,
       "output": null,
-      "colour": Blockly.Blocks.logic.HUE,
+      "colour": Blockly.CAT_LOGIC_RGB,
       "tooltip": Blockly.Msg.LOGIC_NULL_TOOLTIP,
       "helpUrl": Blockly.Msg.LOGIC_NULL_HELPURL
     });
@@ -441,7 +496,7 @@ Blockly.Blocks['logic_ternary'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.LOGIC_TERNARY_HELPURL);
-    this.setColour(Blockly.Blocks.logic.HUE);
+    this.setColour(Blockly.CAT_LOGIC_RGB);
     this.appendValueInput('IF')
         .setCheck('Boolean')
         .appendField(Blockly.Msg.LOGIC_TERNARY_CONDITION);
@@ -482,5 +537,183 @@ Blockly.Blocks['logic_ternary'] = {
       }
     }
     this.prevParentConnection_ = parentConnection;
+  }
+};
+
+Blockly.Blocks['robControls_ifElse'] = {
+  /**
+   * Block for if/elseif/else condition. Roberta version.
+   * @this Blockly.Block
+   */
+  init : function() {
+    this.setColour(Blockly.CAT_CONTROL_RGB);
+    this.appendValueInput('IF0').appendField(Blockly.Msg.CONTROLS_IF_MSG_IF).setCheck('Boolean');
+    this.appendStatementInput('DO0').appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
+    this.appendStatementInput('ELSE').appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSE);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setMutatorPlus(new Blockly.MutatorPlus(this));
+    this.elseIfCount_ = 0;
+    this.elseCount_ = 1;
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      if (thisBlock.elseIfCount_ === 0) {
+        return Blockly.Msg.CONTROLS_IF_TOOLTIP_2;
+      } else {
+        return Blockly.Msg.CONTROLS_IF_TOOLTIP_4;
+      }
+    });
+  },
+  mutationToDom : function() {
+    if (!this.elseIfCount_ && !this.elseCount_) {
+      return null;
+    }
+    var container = document.createElement('mutation');
+      if (this.elseIfCount_) {
+        container.setAttribute('elseIf', this.elseIfCount_);
+      }
+      if (this.elseCount_) {
+        container.setAttribute('else', 1);
+      }
+      return container;
+  },
+  /**
+   * Parse XML to restore the ifElse inputs.
+   * @param {!Element} xmlElement XML storage element.
+   * @this Blockly.Block
+   */
+  domToMutation : function(xmlElement) {
+    if (xmlElement.hasAttribute('elseif')) {
+      this.elseIfCount_ = parseInt(xmlElement.getAttribute('elseif'), 10);
+    }
+    this.removeInput('ELSE');
+    for (var x = 1; x <= this.elseIfCount_; x++) {
+      this.appendValueInput('IF' + x).appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF).setCheck('Boolean');
+      this.appendStatementInput('DO' + x).appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
+    }
+    this.appendStatementInput('ELSE').appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSE);
+    if (this.elseIfCount_ >= 1) {
+      this.setMutatorMinus(new Blockly.MutatorMinus(this));
+    }
+  },
+  /**
+   * Update the shape according to the number of elseIf inputs.
+   * @param {Number} number of elseIf inputs.
+   * @this Blockly.Block
+   */
+  updateShape_ : function(num) {
+    Blockly.dragMode_ = Blockly.DRAG_NONE;
+    if (num == 1) {
+      this.elseIfCount_++;
+      this.removeInput('ELSE');
+      this.appendValueInput('IF' + this.elseIfCount_).appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF).setCheck('Boolean');
+      this.appendStatementInput('DO' + this.elseIfCount_).appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
+      this.appendStatementInput('ELSE').appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSE);
+    } else if (num == 0) {
+      this.elseIfCount_ = 0;
+    } else if (num == -1) {
+      var target = this.getInputTargetBlock('IF' + this.elseIfCount_);
+      if (target) {
+        target.unplug(false);
+        target.bumpNeighbours_();
+      }
+      this.removeInput('ELSE');
+      this.removeInput('DO' + this.elseIfCount_);
+      this.removeInput('IF' + this.elseIfCount_);
+      this.appendStatementInput('ELSE').appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSE);
+      this.elseIfCount_--;
+    }
+    if (this.elseIfCount_ >= 1) {
+      if (this.elseIfCount_ == 1) {
+        this.setMutatorMinus(new Blockly.MutatorMinus(this));
+        this.render();
+      }
+    } else {
+      this.mutatorMinus.dispose();
+      this.mutatorMinus = null;
+    }
+  }
+};
+
+Blockly.Blocks['robControls_if'] = {
+  /**
+   * Block for if/elseif condition. Roberta version.
+   * @this Blockly.Block
+   */
+  init : function() {
+    this.setColour(Blockly.CAT_CONTROL_RGB);
+    this.appendValueInput('IF0').appendField(Blockly.Msg.CONTROLS_IF_MSG_IF).setCheck('Boolean');
+    this.appendStatementInput('DO0').appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
+    // this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setMutatorPlus(new Blockly.MutatorPlus(this));
+    this.elseIfCount_ = 0;
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      if (thisBlock.elseIfCount_ === 0) {
+        return Blockly.Msg.CONTROLS_IF_TOOLTIP_1;
+      } else {
+        return Blockly.Msg.CONTROLS_IF_TOOLTIP_3;
+      }
+    });
+  },
+  mutationToDom : function() {
+    if (!this.elseIfCount_) {
+      return null;
+    }
+    var container = document.createElement('mutation');
+    if (this.elseIfCount_) {
+      container.setAttribute('elseIf', this.elseIfCount_);
+    }
+    return container;
+  },
+  /**
+   * Parse XML to restore the wait inputs.
+   * @param {!Element} xmlElement XML storage element.
+   * @this Blockly.Block
+   */
+  domToMutation : function(xmlElement) {
+    this.elseIfCount_ = parseInt(xmlElement.getAttribute('elseif'), 10);
+    for (var x = 1; x <= this.elseIfCount_; x++) {
+      this.appendValueInput('IF' + x).appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF).setCheck('Boolean');
+      this.appendStatementInput('DO' + x).appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
+    }
+    if (this.elseIfCount_ >= 1) {
+      this.setMutatorMinus(new Blockly.MutatorMinus(this));
+    }
+  },
+  /**
+   * Update the shape according to the number of elseIf inputs.
+   * @param {Number} number of else inputs.
+   * @this Blockly.Block
+   */
+  updateShape_ : function(num) {
+    Blockly.dragMode_ = Blockly.DRAG_NONE;
+    if (num == 1) {
+      this.elseIfCount_++;
+      this.appendValueInput('IF' + this.elseIfCount_).appendField(Blockly.Msg.CONTROLS_IF_MSG_ELSEIF).setCheck('Boolean');
+      this.appendStatementInput('DO' + this.elseIfCount_).appendField(Blockly.Msg.CONTROLS_IF_MSG_THEN);
+    } else if (num == -1) {
+      var target = this.getInputTargetBlock('IF' + this.elseIfCount_);
+      if (target) {
+        target.unplug();
+        target.bumpNeighbours_();     
+      }
+      this.removeInput('DO' + this.elseIfCount_);
+      this.removeInput('IF' + this.elseIfCount_);
+      this.elseIfCount_--;
+    }
+    if (this.elseIfCount_ >= 1) {
+      if (this.elseIfCount_ == 1) {
+        this.setMutatorMinus(new Blockly.MutatorMinus(this));
+        this.render();
+      }
+    } else {
+      this.mutatorMinus.dispose();
+      this.mutatorMinus = null;
+    }
   }
 };

@@ -41,7 +41,7 @@ Blockly.Blocks['math_number'] = {
    */
   init: function() {
     this.setHelpUrl(Blockly.Msg.MATH_NUMBER_HELPURL);
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.CAT_MATH_RGB);
     this.appendDummyInput()
         .appendField(new Blockly.FieldNumber('0',
         Blockly.FieldTextInput.numberValidator), 'NUM');
@@ -137,7 +137,7 @@ Blockly.Blocks['math_single'] = {
         }
       ],
       "output": "Number",
-      "colour": Blockly.Blocks.math.HUE,
+      "colour": Blockly.CAT_MATH_RGB,
       "helpUrl": Blockly.Msg.MATH_SINGLE_HELPURL
     });
     // Assign 'this' to a variable for use in the tooltip closure below.
@@ -186,7 +186,7 @@ Blockly.Blocks['math_trig'] = {
         }
       ],
       "output": "Number",
-      "colour": Blockly.Blocks.math.HUE,
+      "colour": Blockly.CAT_MATH_RGB,
       "helpUrl": Blockly.Msg.MATH_TRIG_HELPURL
     });
     // Assign 'this' to a variable for use in the tooltip closure below.
@@ -229,7 +229,7 @@ Blockly.Blocks['math_constant'] = {
         }
       ],
       "output": "Number",
-      "colour": Blockly.Blocks.math.HUE,
+      "colour": Blockly.CAT_MATH_RGB,
       "tooltip": Blockly.Msg.MATH_CONSTANT_TOOLTIP,
       "helpUrl": Blockly.Msg.MATH_CONSTANT_HELPURL
     });
@@ -251,7 +251,7 @@ Blockly.Blocks['math_number_property'] = {
          [Blockly.Msg.MATH_IS_POSITIVE, 'POSITIVE'],
          [Blockly.Msg.MATH_IS_NEGATIVE, 'NEGATIVE'],
          [Blockly.Msg.MATH_IS_DIVISIBLE_BY, 'DIVISIBLE_BY']];
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.CAT_MATH_RGB);
     this.appendValueInput('NUMBER_TO_CHECK')
         .setCheck('Number');
     var dropdown = new Blockly.FieldDropdown(PROPERTIES, function(option) {
@@ -326,7 +326,7 @@ Blockly.Blocks['math_change'] = {
       ],
       "previousStatement": null,
       "nextStatement": null,
-      "colour": Blockly.Blocks.math.HUE,
+      "colour": Blockly.CAT_MATH_RGB,
       "helpUrl": Blockly.Msg.MATH_CHANGE_HELPURL
     });
     // Assign 'this' to a variable for use in the tooltip closure below.
@@ -383,19 +383,19 @@ Blockly.Blocks['math_on_list'] = {
          [Blockly.Msg.MATH_ONLIST_OPERATOR_MAX, 'MAX'],
          [Blockly.Msg.MATH_ONLIST_OPERATOR_AVERAGE, 'AVERAGE'],
          [Blockly.Msg.MATH_ONLIST_OPERATOR_MEDIAN, 'MEDIAN'],
-         [Blockly.Msg.MATH_ONLIST_OPERATOR_MODE, 'MODE'],
+     //    [Blockly.Msg.MATH_ONLIST_OPERATOR_MODE, 'MODE'],
          [Blockly.Msg.MATH_ONLIST_OPERATOR_STD_DEV, 'STD_DEV'],
          [Blockly.Msg.MATH_ONLIST_OPERATOR_RANDOM, 'RANDOM']];
     // Assign 'this' to a variable for use in the closures below.
     var thisBlock = this;
     this.setHelpUrl(Blockly.Msg.MATH_ONLIST_HELPURL);
-    this.setColour(Blockly.Blocks.math.HUE);
+    this.setColour(Blockly.CAT_MATH_RGB);
     this.setOutput(true, 'Number');
     var dropdown = new Blockly.FieldDropdown(OPERATORS, function(newOp) {
       thisBlock.updateType_(newOp);
     });
     this.appendValueInput('LIST')
-        .setCheck('Array')
+        .setCheck('Array_Number')
         .appendField(dropdown, 'OP');
     this.setTooltip(function() {
       var mode = thisBlock.getFieldValue('OP');
@@ -467,7 +467,7 @@ Blockly.Blocks['math_modulo'] = {
       ],
       "inputsInline": true,
       "output": "Number",
-      "colour": Blockly.Blocks.math.HUE,
+      "colour": Blockly.CAT_MATH_RGB,
       "tooltip": Blockly.Msg.MATH_MODULO_TOOLTIP,
       "helpUrl": Blockly.Msg.MATH_MODULO_HELPURL
     });
@@ -501,7 +501,7 @@ Blockly.Blocks['math_constrain'] = {
       ],
       "inputsInline": true,
       "output": "Number",
-      "colour": Blockly.Blocks.math.HUE,
+      "colour": Blockly.CAT_MATH_RGB,
       "tooltip": Blockly.Msg.MATH_CONSTRAIN_TOOLTIP,
       "helpUrl": Blockly.Msg.MATH_CONSTRAIN_HELPURL
     });
@@ -530,7 +530,7 @@ Blockly.Blocks['math_random_int'] = {
       ],
       "inputsInline": true,
       "output": "Number",
-      "colour": Blockly.Blocks.math.HUE,
+      "colour": Blockly.CAT_MATH_RGB,
       "tooltip": Blockly.Msg.MATH_RANDOM_INT_TOOLTIP,
       "helpUrl": Blockly.Msg.MATH_RANDOM_INT_HELPURL
     });
@@ -546,9 +546,44 @@ Blockly.Blocks['math_random_float'] = {
     this.jsonInit({
       "message0": Blockly.Msg.MATH_RANDOM_FLOAT_TITLE_RANDOM,
       "output": "Number",
-      "colour": Blockly.Blocks.math.HUE,
+      "colour": Blockly.CAT_MATH_RGB,
       "tooltip": Blockly.Msg.MATH_RANDOM_FLOAT_TOOLTIP,
       "helpUrl": Blockly.Msg.MATH_RANDOM_FLOAT_HELPURL
+    });
+  }
+};
+
+Blockly.Blocks['robMath_change'] = {
+  /**
+   * Block for adding to a variable in place.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.MATH_CHANGE_TITLE,
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "VAR",
+          "check": "Number"
+        },
+        {
+          "type": "input_value",
+          "name": "DELTA",
+          "check": "Number"
+        }
+      ],
+      "inputsInline": true,
+      "previousStatement": null,
+      "nextStatement": null,
+      "colour": Blockly.CAT_MATH_RGB,
+      "helpUrl": Blockly.Msg.MATH_CHANGE_HELPURL
+    });
+    // Assign 'this' to a variable for use in the tooltip closure below.
+    var thisBlock = this;
+    this.setTooltip(function() {
+      return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
+          thisBlock.getFieldValue('VAR'));
     });
   }
 };

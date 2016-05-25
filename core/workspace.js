@@ -44,6 +44,10 @@ Blockly.Workspace = function(opt_options) {
   /** @type {boolean} */
   this.RTL = !!this.options.RTL;
   /** @type {boolean} */
+  this.checkInTask = this.options.checkInTask;
+  /** @type {boolean} */
+  this.variableDeclaration = !!this.options.variableDeclaration;
+  /** @type {boolean} */
   this.horizontalLayout = !!this.options.horizontalLayout;
   /** @type {number} */
   this.toolboxPosition = this.options.toolboxPosition;

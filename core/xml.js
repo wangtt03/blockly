@@ -37,10 +37,15 @@ goog.require('goog.dom');
  * @return {!Element} XML document.
  */
 Blockly.Xml.workspaceToDom = function(workspace) {
-  var xml = goog.dom.createDom('xml');
+  var xml = goog.dom.createDom('block_set');
   var blocks = workspace.getTopBlocks(true);
   for (var i = 0, block; block = blocks[i]; i++) {
-    xml.appendChild(Blockly.Xml.blockToDomWithXY(block));
+    var top = goog.dom.createDom('instance');
+    Blockly.Xml.appendlistToDom(top, block);
+    var xy = block.getRelativeToSurfaceXY();
+    top.setAttribute('x', Math.round(workspace.RTL ? width - xy.x : xy.x));
+    top.setAttribute('y', Math.round(xy.y));
+    xml.appendChild(top);
   }
   return xml;
 };
@@ -50,12 +55,12 @@ Blockly.Xml.workspaceToDom = function(workspace) {
  * @param {!Blockly.Block} block The root block to encode.
  * @return {!Element} Tree of XML elements.
  */
-Blockly.Xml.blockToDomWithXY = function(block) {
+Blockly.Xml.blockToDomWithXY = function(block, statement_list) {
   var width;  // Not used in LTR.
   if (block.workspace.RTL) {
     width = block.workspace.getWidth();
   }
-  var element = Blockly.Xml.blockToDom(block);
+  var element = Blockly.Xml.blockToDom(block, statement_list);
   var xy = block.getRelativeToSurfaceXY();
   element.setAttribute('x',
       Math.round(block.workspace.RTL ? width - xy.x : xy.x));
@@ -68,17 +73,39 @@ Blockly.Xml.blockToDomWithXY = function(block) {
  * @param {!Blockly.Block} block The root block to encode.
  * @return {!Element} Tree of XML elements.
  */
-Blockly.Xml.blockToDom = function(block) {
-  var element = goog.dom.createDom(block.isShadow() ? 'shadow' : 'block');
-  element.setAttribute('type', block.type);
-  element.setAttribute('id', block.id);
-  if (block.mutationToDom) {
-    // Custom data for an advanced block.
-    var mutation = block.mutationToDom();
-    if (mutation && (mutation.hasChildNodes() || mutation.hasAttributes())) {
-      element.appendChild(mutation);
+Blockly.Xml.blockToDom = function(block, statement_list) {
+    var element = goog.dom.createDom(block.isShadow() ? 'shadow' : 'block');
+    var repetitions = goog.dom.createDom('repetitions');
+    var repe = false;
+    statement_list.push(element);
+    element.setAttribute('type', block.type);
+    element.setAttribute('id', block.id);
+    if (block.mutationToDom) {
+        // Custom data for an advanced block.
+        var mutation = block.mutationToDom();
+        if (mutation && (mutation.hasChildNodes() || mutation.hasAttributes())) {
+            element.appendChild(mutation);
+            if (mutation !== undefined && mutation != null
+                    && (block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for')) {
+                element.appendChild(repetitions);
+                repe = true;
+            }
+        }
     }
-  }
+
+    function fieldToDom(field) {
+        if (field.name && field.EDITABLE) {
+            var value = field.getValue();
+            // check for numerals with decimal comma and convert them to decimal point
+            var testNum = field.getValue().replace(/,/g, '.');
+            if (!isNaN(testNum)) {
+                value = String(testNum);
+            }
+            var container = goog.dom.createDom('field', null, value);
+            container.setAttribute('name', field.name);
+            element.appendChild(container);
+        }
+    }
   function fieldToDom(field) {
     if (field.name && field.EDITABLE) {
       var container = goog.dom.createDom('field', null, field.getValue());
@@ -89,6 +116,18 @@ Blockly.Xml.blockToDom = function(block) {
   for (var i = 0, input; input = block.inputList[i]; i++) {
     for (var j = 0, field; field = input.fieldRow[j]; j++) {
       fieldToDom(field);
+    }
+  }
+  
+  //THIS IF STATEMENET SHOULD BE TESTED
+  if (block.mutationToDom) {
+    // Custom data for an advanced block.
+    var mutation = block.mutationToDom();
+    if (mutation) {
+      if (mutation !== undefined && mutation != null && block.type == 'robProcedures_defreturn') {
+        element.appendChild(repetitions);
+        repe = true;
+      }
     }
   }
 
@@ -114,7 +153,7 @@ Blockly.Xml.blockToDom = function(block) {
     var empty = true;
     if (input.type == Blockly.DUMMY_INPUT) {
       continue;
-    } else {
+    } else {        
       var childBlock = input.connection.targetBlock();
       if (input.type == Blockly.INPUT_VALUE) {
         container = goog.dom.createDom('value');
@@ -126,7 +165,7 @@ Blockly.Xml.blockToDom = function(block) {
         container.appendChild(Blockly.Xml.cloneShadow_(shadow));
       }
       if (childBlock) {
-        container.appendChild(Blockly.Xml.blockToDom(childBlock));
+        Blockly.Xml.appendlistToDom(container, childBlock);
         empty = false;
       }
     }
@@ -144,6 +183,11 @@ Blockly.Xml.blockToDom = function(block) {
   if (block.disabled) {
     element.setAttribute('disabled', true);
   }
+  if (block.inTask) {
+    element.setAttribute('intask', true);
+  } else {
+    element.setAttribute('intask', false);
+  }
   if (!block.isDeletable() && !block.isShadow()) {
     element.setAttribute('deletable', false);
   }
@@ -155,17 +199,31 @@ Blockly.Xml.blockToDom = function(block) {
   }
 
   var nextBlock = block.getNextBlock();
-  if (nextBlock) {
-    var container = goog.dom.createDom('next', null,
-        Blockly.Xml.blockToDom(nextBlock));
-    element.appendChild(container);
-  }
+    if (nextBlock) {
+        Blockly.Xml.blockToDom(nextBlock, statement_list);
+    }
   var shadow = block.nextConnection && block.nextConnection.getShadowDom();
   if (shadow && (!nextBlock || !nextBlock.isShadow())) {
     container.appendChild(Blockly.Xml.cloneShadow_(shadow));
   }
 
   return element;
+};
+
+/**
+ * Appends list of XML DOM to a parent XML DOM element.
+ * 
+ * @param {!Element}
+ *            parentDom a XML DOM element.
+ * @param {!Object}
+ *            block XML DOM element.
+ */
+Blockly.Xml.appendlistToDom = function(parentDom, block) {
+    var statement_list = [];
+    Blockly.Xml.blockToDom(block, statement_list);
+    for (var j = 0; j < statement_list.length; j++) {
+        parentDom.appendChild(statement_list[j]);
+    }
 };
 
 /**
@@ -213,7 +271,9 @@ Blockly.Xml.cloneShadow_ = function(shadow) {
  */
 Blockly.Xml.domToText = function(dom) {
   var oSerializer = new XMLSerializer();
-  return oSerializer.serializeToString(dom);
+  var text = oSerializer.serializeToString(dom);
+  text = text.replace('http://www.w3.org/1999/xhtml', 'http://de.fhg.iais.roberta.blockly');
+  return text
 };
 
 /**
@@ -243,6 +303,7 @@ Blockly.Xml.domToPrettyText = function(dom) {
   // E.g. <foo></foo>
   var text = lines.join('\n');
   text = text.replace(/(<(\w+)\b[^>]*>[^\n]*)\n *<\/\2>/g, '$1</$2>');
+  text = text.replace('http://www.w3.org/1999/xhtml', 'http://de.fhg.iais.roberta.blockly');
   // Trim leading blank line.
   return text.replace(/^\n/, '');
 };
@@ -257,11 +318,10 @@ Blockly.Xml.textToDom = function(text) {
   var oParser = new DOMParser();
   var dom = oParser.parseFromString(text, 'text/xml');
   // The DOM should have one and only one top-level node, an XML tag.
-  if (!dom || !dom.firstChild ||
-      dom.firstChild.nodeName.toLowerCase() != 'xml' ||
-      dom.firstChild !== dom.lastChild) {
-    // Whatever we got back from the parser is not XML.
-    throw 'Blockly.Xml.textToDom did not obtain a valid XML tree.';
+  if (!dom || !dom.firstChild || (dom.firstChild.nodeName.toLowerCase() != 'block_set' && dom.firstChild.nodeName.toLowerCase() != 'toolbox_set')
+           || dom.firstChild !== dom.lastChild) {
+     // Whatever we got back from the parser is not XML.
+     throw 'Blockly.Xml.textToDom did not obtain a valid XML tree.';
   }
   return dom.firstChild;
 };
@@ -279,6 +339,8 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
     console.warn('Deprecated call to Blockly.Xml.domToWorkspace, ' +
                  'swap the arguments.');
   }
+  var xmlBlockList = [];
+  var xmlBlockPos = [];
   var width;  // Not used in LTR.
   if (workspace.RTL) {
     width = workspace.getWidth();
@@ -295,15 +357,42 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
   for (var i = 0; i < childCount; i++) {
     var xmlChild = xml.childNodes[i];
     var name = xmlChild.nodeName.toLowerCase();
-    if (name == 'block' || name == 'shadow') {
-      var block = Blockly.Xml.domToBlock(xmlChild, workspace);
+    if (name == 'instance') {
+      var xmlChildList = [];
       var blockX = parseInt(xmlChild.getAttribute('x'), 10);
       var blockY = parseInt(xmlChild.getAttribute('y'), 10);
-      if (!isNaN(blockX) && !isNaN(blockY)) {
-        block.moveBy(workspace.RTL ? width - blockX : blockX, blockY);
+      xmlBlockPos.push({
+        x : blockX,
+        y : blockY
+      });
+      if (xmlChild.childNodes) {
+        for (var p = 0; p < xmlChild.childNodes.length; p++) {
+          var nameChild = xmlChild.childNodes[p].nodeName.toLowerCase();
+          if (nameChild == 'block' || nameChild == 'shadow') {
+             xmlChildList.push(xmlChild.childNodes[p]);
+          }
+        }
       }
-    }
+    xmlBlockList.push(xmlChildList);
+      }
+  
   }
+  
+      // make sure the start block is in the first column, to avoid errors while instantiating blocks with global variables before the variable declaration
+    for (var i = 0; i < xmlBlockList.length; i++) {
+        if (xmlBlockList[i][0].getAttribute('type') == 'robControls_start') {
+            xmlBlockList[i] = xmlBlockList.splice(0, 1, xmlBlockList[i])[0];
+            xmlBlockPos[i] = xmlBlockPos.splice(0, 1, xmlBlockPos[i])[0];
+            break;
+        }
+    }
+    // create blocks in the right order
+    for (var i = 0; i < xmlBlockList.length; i++) {
+        var block = Blockly.Xml.domToBlock(workspace, xmlBlockList[i]);
+        if (!isNaN(xmlBlockPos[i].x) && !isNaN(xmlBlockPos[i].y)) {
+            block.moveBy(Blockly.RTL ? width - xmlBlockPos[i].x : xmlBlockPos[i].x, xmlBlockPos[i].y);
+        }
+    }
   if (!existingGroup) {
     Blockly.Events.setGroup(false);
   }
@@ -317,33 +406,33 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
  * @param {!Blockly.Workspace} workspace The workspace.
  * @return {!Blockly.Block} The root block created.
  */
-Blockly.Xml.domToBlock = function(xmlBlock, workspace) {
-  if (xmlBlock instanceof Blockly.Workspace) {
-    var swap = xmlBlock;
-    xmlBlock = workspace;
+Blockly.Xml.domToBlock = function(xmlBlockList, workspace) {
+  if (xmlBlockList instanceof Blockly.Workspace) {
+    var swap = xmlBlockList;
+    xmlBlockList = workspace;
     workspace = swap;
     console.warn('Deprecated call to Blockly.Xml.domToBlock, ' +
                  'swap the arguments.');
   }
   // Create top-level block.
   Blockly.Events.disable();
-  var topBlock = Blockly.Xml.domToBlockHeadless_(xmlBlock, workspace);
-  if (workspace.rendered) {
-    // Hide connections to speed up assembly.
-    topBlock.setConnectionsHidden(true);
-    // Generate list of all blocks.
-    var blocks = topBlock.getDescendants();
-    // Render each block.
-    for (var i = blocks.length - 1; i >= 0; i--) {
-      blocks[i].initSvg();
-    }
-    for (var i = blocks.length - 1; i >= 0; i--) {
-      blocks[i].render(false);
-    }
-    // Populating the connection database may be defered until after the blocks
-    // have renderend.
-    setTimeout(function() {
-      if (topBlock.workspace) {  // Check that the block hasn't been deleted.
+    var topBlock = Blockly.Xml.domToBlockHeadless_(xmlBlockList, workspace);
+    if (workspace.rendered) {
+      // Hide connections to speed up assembly.
+      topBlock.setConnectionsHidden(true);
+      // Generate list of all blocks.
+      var blocks = topBlock.getDescendants();
+      // Render each block.
+      for (var i = blocks.length - 1; i >= 0; i--) {
+        blocks[i].initSvg();
+      }
+      for (var i = blocks.length - 1; i >= 0; i--) {
+        blocks[i].render(false);
+      }
+      // Populating the connection database may be defered until after the blocks
+      // have renderend.
+      setTimeout(function() {
+      if (topBlock.workspace) { // Check that the block hasn't been deleted.
         topBlock.setConnectionsHidden(false);
       }
     }, 1);
@@ -366,169 +455,259 @@ Blockly.Xml.domToBlock = function(xmlBlock, workspace) {
  * @return {!Blockly.Block} The root block created.
  * @private
  */
-Blockly.Xml.domToBlockHeadless_ = function(xmlBlock, workspace) {
-  var block = null;
-  var prototypeName = xmlBlock.getAttribute('type');
-  if (!prototypeName) {
-    throw 'Block type unspecified: \n' + xmlBlock.outerHTML;
-  }
-  var id = xmlBlock.getAttribute('id');
-  block = workspace.newBlock(prototypeName, id);
-
-  var blockChild = null;
-  for (var i = 0, xmlChild; xmlChild = xmlBlock.childNodes[i]; i++) {
-    if (xmlChild.nodeType == 3) {
-      // Ignore any text at the <block> level.  It's all whitespace anyway.
-      continue;
+Blockly.Xml.domToBlockHeadless_ = function(xmlBlockList, workspace) {
+    if (xmlBlockList.constructor === Array) {
+        var xmlBlock = xmlBlockList[0];
+    } else {
+        xmlBlock = xmlBlockList;
     }
+    var block = null;
+    var prototypeName = xmlBlock.getAttribute('type');
+    if (!prototypeName) {
+        throw 'Block type unspecified: \n' + xmlBlock.outerHTML;
+    }
+    var id = xmlBlock.getAttribute('id');
+    block = workspace.newBlock(prototypeName, id);
+
+    var blockChild = null;
+    for (var i = 0, xmlChild; xmlChild = xmlBlock.childNodes[i]; i++) {
+        if (xmlChild.nodeType == 3) {
+            // Ignore any text at the <block> level.  It's all whitespace anyway.
+            continue;
+        }
+
+        if (xmlChild.nodeName != 'repetitions') {
+            Blockly.Xml.childToBlock(workspace, block, xmlChild);
+        } else {
+            for (var u = 0, xmlRepetChild; xmlRepetChild = xmlChild.childNodes[u]; u++) {
+                if (xmlRepetChild.nodeType == 3) {
+                    // Extra whitespace between tags does not concern us.
+                    continue;
+                }
+                Blockly.Xml.childToBlock(workspace, block, xmlRepetChild);
+            }
+        }
+    }
+
+    var inline = xmlBlock.getAttribute('inline');
+    if (inline) {
+        block.setInputsInline(inline == 'true');
+    }
+    var disabled = xmlBlock.getAttribute('disabled');
+    if (disabled) {
+        block.setDisabled(disabled == 'true');
+    }
+    var inTask = xmlBlock.getAttribute('intask');
+    if (inTask) {
+        block.setInTask(inTask == 'true');
+    }
+    var deletable = xmlBlock.getAttribute('deletable');
+    if (deletable) {
+        block.setDeletable(deletable == 'true');
+    }
+    var movable = xmlBlock.getAttribute('movable');
+    if (movable) {
+        block.setMovable(movable == 'true');
+    }
+    var editable = xmlBlock.getAttribute('editable');
+    if (editable) {
+        block.setEditable(editable == 'true');
+    }
+    var collapsed = xmlBlock.getAttribute('collapsed');
+    if (collapsed) {
+        block.setCollapsed(collapsed == 'true');
+    }
+    if (xmlBlock.nodeName.toLowerCase() == 'shadow') {
+        block.setShadow(true);
+    }
+    // Give the block a chance to clean up any initial inputs.
+    if (block.validate) {
+        block.validate();
+    }
+    if (xmlBlockList.constructor === Array) {
+        var nextBlockList = xmlBlockList.slice(1, xmlBlockList.length);
+        if (nextBlockList.length != 0) {
+            if (!block.nextConnection) {
+                throw 'Next statement does not exist.';
+            } else if (block.nextConnection.targetConnection) {
+                // This could happen if there is more than one XML 'next' tag.
+                throw 'Next statement is already connected.';
+            }
+            blockChild = Blockly.Xml.domToBlockHeadless_(nextBlockList, workspace);
+            if (!blockChild.previousConnection) {
+                throw 'Next block does not have previous statement.';
+            }
+            block.nextConnection.connect(blockChild.previousConnection);
+        }
+    }
+
+    return block;
+};
+
+/**
+ * Decode an XML block tag and create a block (and possibly sub blocks) on the
+ * workspace. Extracted from the original method and modified so can from
+ * <repetition> element to generate child blocks
+ * 
+ * @param {!Blockly.Workspace}
+ *            workspace The workspace.
+ * @param {!Element}
+ *            block XML block element.
+ * @param {!Element}
+ *            xmlBlock XML block element.
+ * @param {!Element}
+ *            blockChild XML block element.
+ */
+Blockly.Xml.childToBlock = function(workspace, block, xmlChild) {
+
     var input;
 
     // Find any enclosed blocks or shadows in this tag.
     var childBlockNode = null;
     var childShadowNode = null;
-    for (var j = 0, grandchildNode; grandchildNode = xmlChild.childNodes[j];
-         j++) {
-      if (grandchildNode.nodeType == 1) {
-        if (grandchildNode.nodeName.toLowerCase() == 'block') {
-          childBlockNode = grandchildNode;
-        } else if (grandchildNode.nodeName.toLowerCase() == 'shadow') {
-          childShadowNode = grandchildNode;
+    var blockChild = null;
+    var shadowActive = false;
+
+
+    var RealGrandchildList = [];
+    for (var y = 0, grandchildNode; grandchildNode = xmlChild.childNodes[y]; y++) {
+        if (grandchildNode.nodeType == 1) {
+            RealGrandchildList.push(grandchildNode);
         }
-      }
+    }
+    for (var j = 0; j<RealGrandchildList.length; j++) {
+        if (RealGrandchildList.length > 0) {
+            if (RealGrandchildList[j].nodeName.toLowerCase() == 'block') {
+                childBlockNode = RealGrandchildList[j];
+            } else if (RealGrandchildList[j].nodeName.toLowerCase() == 'shadow') {
+                childShadowNode = RealGrandchildList[j];
+            }
+        }
     }
     // Use the shadow block if there is no child block.
     if (!childBlockNode && childShadowNode) {
-      childBlockNode = childShadowNode;
+        childBlockNode = childShadowNode;
+        shadowActive = true;
     }
-
     var name = xmlChild.getAttribute('name');
     switch (xmlChild.nodeName.toLowerCase()) {
-      case 'mutation':
+    case 'mutation':
         // Custom data for an advanced block.
         if (block.domToMutation) {
-          block.domToMutation(xmlChild);
-          if (block.initSvg) {
-            // Mutation may have added some elements that need initalizing.
-            block.initSvg();
-          }
+            block.domToMutation(xmlChild);
+            if (block.initSvg) {
+                // Mutation may have added some elements that need initalizing.
+                block.initSvg();
+            }
         }
         break;
-      case 'comment':
+    case 'comment':
         block.setCommentText(xmlChild.textContent);
         var visible = xmlChild.getAttribute('pinned');
-        if (visible && !block.isInFlyout) {
-          // Give the renderer a millisecond to render and position the block
-          // before positioning the comment bubble.
-          setTimeout(function() {
-            if (block.comment && block.comment.setVisible) {
-              block.comment.setVisible(visible == 'true');
-            }
-          }, 1);
+        if (visible) {
+            // Give the renderer a millisecond to render and position the block
+            // before positioning the comment bubble.
+            setTimeout(function() {
+                if (block.comment && block.comment.setVisible) {
+                    block.comment.setVisible(visible == 'true');
+                }
+            }, 1);
         }
         var bubbleW = parseInt(xmlChild.getAttribute('w'), 10);
         var bubbleH = parseInt(xmlChild.getAttribute('h'), 10);
-        if (!isNaN(bubbleW) && !isNaN(bubbleH) &&
-            block.comment && block.comment.setVisible) {
-          block.comment.setBubbleSize(bubbleW, bubbleH);
+        if (!isNaN(bubbleW) && !isNaN(bubbleH) && block.comment && block.comment.setVisible) {
+            block.comment.setBubbleSize(bubbleW, bubbleH);
         }
         break;
-      case 'data':
+    case 'warning':
+        block.setWarningText(Blockly.Msg[xmlChild.textContent]);
+        var visible = xmlChild.getAttribute('pinned');
+        if (visible) {
+            block.warning.setVisible(visible == 'true');
+        }
+        var bubbleW = parseInt(xmlChild.getAttribute('w'), 10);
+        var bubbleH = parseInt(xmlChild.getAttribute('h'), 10);
+        if (!isNaN(bubbleW) && !isNaN(bubbleH) && block.warning && block.warning.isVisible()) {
+            block.warning.bubble_.setBubbleSize(bubbleW, bubbleH);
+        }
+        break;
+    case 'error':
+        block.setErrorText(Blockly.Msg[xmlChild.textContent]);
+        var visible = xmlChild.getAttribute('pinned');
+        if (visible) {
+            block.error.setVisible(visible == 'true');
+        }
+        var bubbleW = parseInt(xmlChild.getAttribute('w'), 10);
+        var bubbleH = parseInt(xmlChild.getAttribute('h'), 10);
+        if (!isNaN(bubbleW) && !isNaN(bubbleH) && block.error && block.error.isVisible()) {
+            block.error.bubble_.setBubbleSize(bubbleW, bubbleH);
+        }
+        break;
+    case 'data':
         block.data = xmlChild.textContent;
         break;
-      case 'title':
+    case 'title':
         // Titles were renamed to field in December 2013.
         // Fall through.
-      case 'field':
+    case 'field':
         var field = block.getField(name);
         if (!field) {
-          console.warn('Ignoring non-existent field ' + name + ' in block ' +
-                       prototypeName);
-          break;
+            console.warn('Ignoring non-existent field ' + name + ' in block ' + prototypeName);
+            break;
         }
         field.setValue(xmlChild.textContent);
         break;
-      case 'value':
-      case 'statement':
+    case 'value':
+    case 'statement':
         input = block.getInput(name);
         if (!input) {
-          console.warn('Ignoring non-existent input ' + name + ' in block ' +
-                       prototypeName);
-          break;
+            console.warn('Ignoring non-existent input ' + name + ' in block ' + prototypeName);
+            break;
         }
+
         if (childShadowNode) {
-          input.connection.setShadowDom(childShadowNode);
+            input.connection.setShadowDom(childShadowNode);
         }
-        if (childBlockNode) {
-          blockChild = Blockly.Xml.domToBlockHeadless_(childBlockNode,
-              workspace);
-          if (blockChild.outputConnection) {
-            input.connection.connect(blockChild.outputConnection);
-          } else if (blockChild.previousConnection) {
-            input.connection.connect(blockChild.previousConnection);
-          } else {
-            throw 'Child block does not have output or previous statement.';
-          }
+        if (childBlockNode) {           
+            if (!childShadowNode) {
+                blockChild = Blockly.Xml.domToBlockHeadless_(RealGrandchildList, workspace);
+            } else {
+                blockChild = Blockly.Xml.domToBlockHeadless_(childBlockNode, workspace);    
+            }          
+            if (blockChild.outputConnection) {
+                input.connection.connect(blockChild.outputConnection);
+            } else if (blockChild.previousConnection) {
+                input.connection.connect(blockChild.previousConnection);
+            } else {
+                throw 'Child block does not have output or previous statement.';
+            }
         }
         break;
-      case 'next':
+    case 'next':
         if (childShadowNode && block.nextConnection) {
-          block.nextConnection.setShadowDom(childShadowNode);
+            block.nextConnection.setShadowDom(childShadowNode);
         }
         if (childBlockNode) {
-          if (!block.nextConnection) {
-            throw 'Next statement does not exist.';
-          } else if (block.nextConnection.isConnected()) {
-            // This could happen if there is more than one XML 'next' tag.
-            throw 'Next statement is already connected.';
-          }
-          blockChild = Blockly.Xml.domToBlockHeadless_(childBlockNode,
-              workspace);
-          if (!blockChild.previousConnection) {
-            throw 'Next block does not have previous statement.';
-          }
-          block.nextConnection.connect(blockChild.previousConnection);
+            if (!block.nextConnection) {
+                throw 'Next statement does not exist.';
+            } else if (block.nextConnection.targetConnection) {
+                // This could happen if there is more than one XML 'next' tag.
+                throw 'Next statement is already connected.';
+            }
+            blockChild = Blockly.Xml.domToBlockHeadless_(childBlockNode, workspace);
+            if (!blockChild.previousConnection) {
+                throw 'Next block does not have previous statement.';
+            }
+            block.nextConnection.connect(blockChild.previousConnection);
         }
         break;
-      default:
+    case 'repetitions':
+        break;
+    default:
         // Unknown tag; ignore.  Same principle as HTML parsers.
         console.warn('Ignoring unknown tag: ' + xmlChild.nodeName);
     }
-  }
-
-  var inline = xmlBlock.getAttribute('inline');
-  if (inline) {
-    block.setInputsInline(inline == 'true');
-  }
-  var disabled = xmlBlock.getAttribute('disabled');
-  if (disabled) {
-    block.setDisabled(disabled == 'true');
-  }
-  var deletable = xmlBlock.getAttribute('deletable');
-  if (deletable) {
-    block.setDeletable(deletable == 'true');
-  }
-  var movable = xmlBlock.getAttribute('movable');
-  if (movable) {
-    block.setMovable(movable == 'true');
-  }
-  var editable = xmlBlock.getAttribute('editable');
-  if (editable) {
-    block.setEditable(editable == 'true');
-  }
-  var collapsed = xmlBlock.getAttribute('collapsed');
-  if (collapsed) {
-    block.setCollapsed(collapsed == 'true');
-  }
-  if (xmlBlock.nodeName.toLowerCase() == 'shadow') {
-    block.setShadow(true);
-  }
-  // Give the block a chance to clean up any initial inputs.
-  if (block.validate) {
-    block.validate();
-  }
-  return block;
 };
-
 /**
  * Remove any 'next' block (statements in a stack).
  * @param {!Element} xmlBlock XML block element.

@@ -122,6 +122,9 @@ Blockly.Options = function(options) {
   this.gridOptions = Blockly.Options.parseGridOptions_(options);
   this.zoomOptions = Blockly.Options.parseZoomOptions_(options);
   this.toolboxPosition = toolboxPosition;
+  this.checkInTask = options['checkInTask'] || false;
+  this.variableDeclaration = !!options['variableDeclaration'];
+  this.robControls = !!options['robControls'];
 };
 
 /**

@@ -347,7 +347,8 @@ Blockly.Events.Create = function(block) {
     return;  // Blank event to be populated by fromJson.
   }
   Blockly.Events.Create.superClass_.constructor.call(this, block);
-  this.xml = Blockly.Xml.blockToDomWithXY(block);
+  var statement_list = [];
+  this.xml = Blockly.Xml.blockToDomWithXY(block, statement_list);
   this.ids = Blockly.Events.getDescendantIds_(block);
 };
 goog.inherits(Blockly.Events.Create, Blockly.Events.Abstract);
@@ -416,7 +417,8 @@ Blockly.Events.Delete = function(block) {
     throw 'Connected blocks cannot be deleted.';
   }
   Blockly.Events.Delete.superClass_.constructor.call(this, block);
-  this.oldXml = Blockly.Xml.blockToDomWithXY(block);
+  var statement_list = [];
+  this.oldXml = Blockly.Xml.blockToDomWithXY(block, statement_list);
   this.ids = Blockly.Events.getDescendantIds_(block);
 };
 goog.inherits(Blockly.Events.Delete, Blockly.Events.Abstract);

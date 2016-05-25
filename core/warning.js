@@ -55,24 +55,42 @@ Blockly.Warning.prototype.collapseHidden = false;
  * @private
  */
 Blockly.Warning.prototype.drawIcon_ = function(group) {
-  // Triangle with rounded corners.
-  Blockly.createSvgElement('path',
-      {'class': 'blocklyIconShape',
-       'd': 'M2,15Q-1,15 0.5,12L6.5,1.7Q8,-1 9.5,1.7L15.5,12Q17,15 14,15z'},
-       group);
-  // Can't use a real '!' text character since different browsers and operating
-  // systems render it differently.
-  // Body of exclamation point.
-  Blockly.createSvgElement('path',
-      {'class': 'blocklyIconSymbol',
-       'd': 'm7,4.8v3.16l0.27,2.27h1.46l0.27,-2.27v-3.16z'},
-       group);
-  // Dot of exclamation point.
-  Blockly.createSvgElement('rect',
-      {'class': 'blocklyIconSymbol',
-       'x': '7', 'y': '11', 'height': '2', 'width': '2'},
-       group);
-};
+  // Square.
+  Blockly.createSvgElement('rect', {
+    'class': 'blocklyIconShape',
+    'height': '16', 'width': '16',
+    'fill-opacity': '0',
+    'stroke-opacity': '0'
+    }, group);
+  Blockly.createSvgElement('path', {
+    'class' : 'blocklyIconMarkWarningError',
+    'fill' : '#333',
+    'd' : 'M12 5.511c.561 0 1.119.354 1.544 1.062l5.912 9.854c.851 1.415.194 '+
+          '2.573-1.456 2.573h-12c-1.65 0-2.307-1.159-1.456-2.573l5.912-9.854' +
+          'c.425-.708.983-1.062 1.544-1.062m0-2c-1.296 0-2.482.74-3.259 2.031l'+
+          '-5.912 9.856c-.786 1.309-.872 2.705-.235 3.83s1.879 1.772 3.406 '+
+          '1.772h12c1.527 0 2.77-.646 3.406-1.771s.551-2.521-.235-3.83l-5.912 '+
+          '-9.854c-.777-1.294-1.963-2.034-3.259-2.034z',
+    'transform': 'scale(0.67)',
+    'opacity' : '1'
+    }, group);
+  Blockly.createSvgElement('path', {
+    'class' : 'blocklyIconMarkWarningError',
+    'fill' : '#333',
+    'd' : 'M13.5 10c0-.83-.671-1.5-1.5-1.5s-1.5.67-1.5 1.5c0 '+
+          '.199.041.389.111.562.554 1.376 1.389 3.438 1.389 3.438l1.391-3.438'+
+          'c.068-.173.109-.363.109-.562z',
+    'transform': 'scale(0.67)',
+    'opacity' : '1'
+    }, group);
+  Blockly.createSvgElement('circle', {
+    'class' : 'blocklyIconMarkWarningError',
+    'fill' : '#333',
+    'cx' : '8',
+    'cy' : '10.67',
+    'r' : '0.9'
+    }, group);
+  };
 
 /**
  * Create the text for the warning's bubble.
