@@ -51,11 +51,10 @@ Blockly.Blocks['robControls_start'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTIVITY_RGB);
         this.appendDummyInput().
-             appendField(Blockly.Msg.START_PROGRAM);
-//             appendField('  ').
-//             appendField(new Blockly.FieldCheckbox("FALSE"), "DEBUG").
-//             appendField(Blockly.Msg.START_PROGRAM_DEBUG);
-        this.appendStatementInput('BEATE');
+             appendField(Blockly.Msg.START_PROGRAM).
+             appendField('  ').
+             appendField(new Blockly.FieldCheckbox("FALSE"), "DEBUG").
+             appendField(Blockly.Msg.START_PROGRAM_DEBUG);
         this.declare_ = false;
         this.setPreviousStatement(false);
         this.setNextStatement(true);

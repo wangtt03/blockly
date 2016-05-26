@@ -303,57 +303,31 @@ Blockly.Blocks['robActions_display_clear'] = {
 
 Blockly.Blocks['robActions_display_matrix'] = {
     /**
-     * Display a picture on the screen.
+     * Display points on the matrix.
      * 
-     * @constructs robActions_display_picture
+     * @constructs robActions_display_matrix
      * @this.Blockly.Block
-     * @param {String/dropdown}
-     *            PICTURE - Smiley1-4
-     * @param {Number}
-     *            X Position on screen
-     * @param {Number}
-     *            Y Position on screen
      * @returns immediately
      * @memberof Block
      */
 
     init : function() {
-        // this.setHelpUrl(Blockly.Msg.DISPLAY_PICTURE_HELPURL);
         this.setColour(Blockly.CAT_ACTION_RGB);
         var checkBoxes = [];
-        for (var i = 0; i < 64; i++) {
-            checkBoxes.push(new Blockly.FieldCheckbox());
-        }
         this.appendDummyInput().appendField(Blockly.Msg.DISPLAY_SHOW + ' ' + Blockly.Msg.DISPLAY_PICTURE);
-        this.appendDummyInput().appendField(checkBoxes[0], 'POINT0').appendField(checkBoxes[1], 'POINT1').appendField(checkBoxes[2], 'POINT2').appendField(
-                checkBoxes[3], 'POINT3').appendField(checkBoxes[4], 'POINT4').appendField(checkBoxes[5], 'POINT5').appendField(checkBoxes[6], 'POINT6')
-                .appendField(checkBoxes[7], 'POINT7');
-        this.appendDummyInput().appendField(checkBoxes[8], 'POINT8').appendField(checkBoxes[9], 'POINT9').appendField(checkBoxes[10], 'POINT10').appendField(
-                checkBoxes[11], 'POINT11').appendField(checkBoxes[12], 'POINT12').appendField(checkBoxes[13], 'POINT13').appendField(checkBoxes[14], 'POINT14')
-                .appendField(checkBoxes[15], 'POINT15');
-        this.appendDummyInput().appendField(checkBoxes[16], 'POINT16').appendField(checkBoxes[17], 'POINT17').appendField(checkBoxes[18], 'POINT18').appendField(
-                checkBoxes[19], 'POINT19').appendField(checkBoxes[20], 'POINT20').appendField(checkBoxes[21], 'POINT21').appendField(checkBoxes[22], 'POINT22')
-                .appendField(checkBoxes[23], 'POINT23');
-        this.appendDummyInput().appendField(checkBoxes[24], 'POINT24').appendField(checkBoxes[25], 'POINT25').appendField(checkBoxes[26], 'POINT26').appendField(
-                checkBoxes[27], 'POINT27').appendField(checkBoxes[28], 'POINT28').appendField(checkBoxes[29], 'POINT29').appendField(checkBoxes[30], 'POINT30')
-                .appendField(checkBoxes[31], 'POINT31');
-        this.appendDummyInput().appendField(checkBoxes[32], 'POINT32').appendField(checkBoxes[33], 'POINT33').appendField(checkBoxes[34], 'POINT34').appendField(
-                checkBoxes[35], 'POINT35').appendField(checkBoxes[36], 'POINT36').appendField(checkBoxes[37], 'POINT37').appendField(checkBoxes[38], 'POINT38')
-                .appendField(checkBoxes[39], 'POINT39');
-        this.appendDummyInput().appendField(checkBoxes[40], 'POINT40').appendField(checkBoxes[41], 'POINT41').appendField(checkBoxes[42], 'POINT42').appendField(
-                checkBoxes[43], 'POINT43').appendField(checkBoxes[44], 'POINT44').appendField(checkBoxes[45], 'POINT45').appendField(checkBoxes[46], 'POINT46')
-                .appendField(checkBoxes[47], 'POINT47');
-        this.appendDummyInput().appendField(checkBoxes[48], 'POINT48').appendField(checkBoxes[49], 'POINT49').appendField(checkBoxes[50], 'POINT50').appendField(
-                checkBoxes[51], 'POINT51').appendField(checkBoxes[52], 'POINT52').appendField(checkBoxes[53], 'POINT53').appendField(checkBoxes[54], 'POINT54')
-                .appendField(checkBoxes[55], 'POINT55');
-        this.appendDummyInput().appendField(checkBoxes[56], 'POINT56').appendField(checkBoxes[57], 'POINT57').appendField(checkBoxes[58], 'POINT58').appendField(
-                checkBoxes[59], 'POINT59').appendField(checkBoxes[60], 'POINT60').appendField(checkBoxes[61], 'POINT61').appendField(checkBoxes[62], 'POINT62')
-                .appendField(checkBoxes[63], 'POINT63');
+        for (var i = 0; i < 8; i++) {
+            for (var j = 0; j < 8; j++) {
+                checkBoxes.push(new Blockly.FieldCheckbox());
 
+            }
+            this.appendDummyInput().appendField(checkBoxes[(i * 8) + 0], 'POINT' + (i * 8 + 0)).appendField(checkBoxes[(i * 8) + 1], 'POINT' + (i * 8 + 1))
+                    .appendField(checkBoxes[(i * 8) + 2], 'POINT' + (i * 8 + 2)).appendField(checkBoxes[(i * 8) + 3], 'POINT' + (i * 8 + 3)).appendField(
+                            checkBoxes[(i * 8) + 4], 'POINT' + (i * 8 + 4)).appendField(checkBoxes[(i * 8) + 5], 'POINT' + (i * 8 + 5)).appendField(
+                            checkBoxes[(i * 8) + 6], 'POINT' + (i * 8 + 6)).appendField(checkBoxes[(i * 8) + 7], 'POINT' + (i * 8 + 7));
+        }
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         // this.setTooltip(Blockly.Msg.DISPLAY_PICTURE_TOOLTIP);
-        // this.setHelp(new Blockly.Help(Blockly.Msg.DISPLAY_PICTURE_HELP));
     }
 };
 
