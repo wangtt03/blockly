@@ -260,6 +260,21 @@ Blockly.Toolbox.prototype.position = function() {
       this.width -= 1;
     }
   }
+  // check if toolbox scrollbar-y is active or not
+  var treeRoot = goog.dom.getElementByClass("blocklyTreeRoot");
+  if (treeDiv.clientHeight - treeRoot.clientHeight > 0) {
+    goog.dom.classlist.remove(treeDiv, 'scroll');
+  } else {
+    goog.dom.classlist.add(treeDiv, 'scroll');
+  };
+  // check if workspace is small (small device / simulation active)
+  var blocklyWorkspaceWidth = this.HtmlDiv.parentElement.clientWidth ||
+                       this.HtmlDiv.parentElement.parentNode.clientWidth;
+  if (blocklyWorkspaceWidth > 767 || blocklyWorkspaceWidth > 767) {
+    goog.dom.classlist.remove(treeDiv, 'small'); 
+  } else {
+    goog.dom.classlist.add(treeDiv, 'small');
+  };
   this.flyout_.position();
 };
 
