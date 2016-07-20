@@ -171,7 +171,11 @@ Blockly.Xml.blockToDom = function(block, statement_list) {
     }
     container.setAttribute('name', input.name);
     if (!empty) {
-      element.appendChild(container);
+      if (!repe) {
+        element.appendChild(container);
+      } else {
+        repetitions.appendChild(container);
+      }
     }
   }
   if (block.inputsInlineDefault != block.inputsInline) {
