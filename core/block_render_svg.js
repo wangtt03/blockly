@@ -982,7 +982,7 @@ Blockly.BlockSvg.prototype.renderDrawLeft_ =
 };
 
 Blockly.BlockSvg.prototype.drawInputType_ = function(input, y, fieldX, fieldY) {
-    if (input.connection.check_ && !input.connection.targetConnection) {
+    if (input.connection.check_ && !input.connection.targetConnection && input.connection.check_.length ==  0) {
         var type = input.connection.check_[0];
         var color = Blockly.DATA_TYPE[type];
         var svgPathInput = Blockly.createSvgElement('path', {
