@@ -86,7 +86,7 @@ Blockly.Xml.blockToDom = function(block, statement_list) {
         if (mutation && (mutation.hasChildNodes() || mutation.hasAttributes())) {
             element.appendChild(mutation);
             if (mutation !== undefined && mutation != null
-                    && (block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for')) {
+                    && (block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for' || block.type == 'robControls_wait')) {
                 element.appendChild(repetitions);
                 repe = true;
             }

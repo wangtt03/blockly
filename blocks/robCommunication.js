@@ -65,12 +65,10 @@ Blockly.Blocks['robCommunication_sendBlock'] = {
             this.data = 'ev3';
         }
 
-        this.appendValueInput('sendData').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_SEND_DATA).appendField(dataType, 'TYPE').setCheck(
-                this.dataType_);
+        this.appendValueInput('sendData').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_SEND_DATA).appendField(dataType, 'TYPE').setCheck(this.dataType_);
         this.appendDummyInput().appendField("via").setAlign(Blockly.ALIGN_RIGHT).appendField(protocol, 'PROTOCOL');
         if (channel) {
-            this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_OVER_CHANNEL).appendField(channel, 'CHANNEL')
-                    .appendField(Blockly.Msg.CONNECTION_TO_ROBOT).setCheck('Connection');
+            this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_OVER_CHANNEL).appendField(channel, 'CHANNEL').appendField(Blockly.Msg.CONNECTION_TO_ROBOT).setCheck('Connection');
         } else {
             this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_TO_CONNECTION).setCheck('Connection');
         }
@@ -84,11 +82,11 @@ Blockly.Blocks['robCommunication_sendBlock'] = {
             return false;
         }
         var container = document.createElement('mutation');
-        container.setAttribute('data_type', this.dataType_);
+        container.setAttribute('datatype', this.dataType_);
         return container;
     },
     domToMutation : function(xmlElement) {
-        this.dataType_ = xmlElement.getAttribute('data_type');
+        this.dataType_ = xmlElement.getAttribute('datatype');
         if (this.dataType_) {
             this.getInput('sendData').setCheck(this.dataType_);
         }
@@ -142,8 +140,7 @@ Blockly.Blocks['robCommunication_receiveBlock'] = {
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_RECEIVED_DATA).appendField(dataType, 'TYPE');
         this.appendDummyInput().appendField("via").setAlign(Blockly.ALIGN_RIGHT).appendField(protocol, 'PROTOCOL');
         if (channel) {
-            this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_OVER_CHANNEL).appendField(channel, 'CHANNEL')
-                    .appendField(Blockly.Msg.CONNECTION_FROM_ROBOT).setCheck('Connection');
+            this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_OVER_CHANNEL).appendField(channel, 'CHANNEL').appendField(Blockly.Msg.CONNECTION_FROM_ROBOT).setCheck('Connection');
         } else {
             this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_TO_CONNECTION).setCheck('Connection');
         }
@@ -156,11 +153,11 @@ Blockly.Blocks['robCommunication_receiveBlock'] = {
             return false;
         }
         var container = document.createElement('mutation');
-        container.setAttribute('data_type', this.dataType_);
+        container.setAttribute('datatype', this.dataType_);
         return container;
     },
     domToMutation : function(xmlElement) {
-        this.dataType_ = xmlElement.getAttribute('data_type');
+        this.dataType_ = xmlElement.getAttribute('datatype');
         if (this.dataType_) {
             this.setOutput(true, this.dataType_);
         }
