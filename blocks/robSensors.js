@@ -315,24 +315,30 @@ Blockly.Blocks['robSensors_ultrasonic_getSample'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
-        var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
+        var sensorPort;
         var mode;
         if (this.workspace.device === 'nxt') {
-            mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_DISTANCE, 'DISTANCE' ], [ Blockly.Msg.MODE_PRESENCE, 'PRESENCE' ] ], function(option) {
+           
+            mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_DISTANCE, 'DISTANCE' ] ], function(option) {
                 if (option && this.sourceBlock_.getFieldValue('MODE') !== option) {
                     this.sourceBlock_.updateShape_(option);
                 }
             });
             this.data = 'nxt';
         } else {
-            mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_DISTANCE, 'DISTANCE' ] ], function(option) {
+             mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_DISTANCE, 'DISTANCE' ], [ Blockly.Msg.MODE_PRESENCE, 'PRESENCE' ] ], function(option) {
                 if (option && this.sourceBlock_.getFieldValue('MODE') !== option) {
                     this.sourceBlock_.updateShape_(option);
                 }
             });
-            this.data = 'ev3';
         }
-        this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_ULTRASONIC).appendField(sensorPort, 'SENSORPORT');
+        if (this.workspace.device === 'ardu') {
+            sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ] ]);
+            this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_ULTRASONIC).appendField(sensorPort, 'SENSORPORT');
+        } else {
+            var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
+            this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_ULTRASONIC).appendField(sensorPort, 'SENSORPORT');
+        }
         this.sensorMode_ = 'DISTANCE';
         this.setOutput(true, 'Number');
         this.setTooltip(Blockly.Msg.ULTRASONIC_GETSAMPLE_TOOLTIP);
@@ -377,7 +383,7 @@ Blockly.Blocks['robSensors_colour_getSample'] = {
     init : function() {
         var mode;
         if (this.workspace.device === 'nxt') {
-            var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_COLOUR, 'COLOUR' ], [ Blockly.Msg.MODE_LIGHT, 'RED' ],
+            mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_COLOUR, 'COLOUR' ], [ Blockly.Msg.MODE_LIGHT, 'RED' ],
                     [ Blockly.Msg.MODE_AMBIENTLIGHT, 'AMBIENTLIGHT' ] ], function(option) {
                 if (option && this.sourceBlock_.getFieldValue('MODE') !== option) {
                     this.sourceBlock_.updateShape_(option);
@@ -395,7 +401,11 @@ Blockly.Blocks['robSensors_colour_getSample'] = {
         }
         this.setColour(Blockly.CAT_SENSOR_RGB);
         var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
-        this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_COLOUR).appendField(sensorPort, 'SENSORPORT');
+        if (this.workspace.device === 'ardu') {
+            this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_COLOUR);
+        } else {
+            this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_COLOUR).appendField(sensorPort, 'SENSORPORT');
+        }
         this.setOutput(true, 'Colour');
         this.setTooltip(Blockly.Msg.COLOUR_GETSAMPLE_TOOLTIP);
         this.sensorMode_ = 'COLOUR';
@@ -431,13 +441,23 @@ Blockly.Blocks['robSensors_infrared_getSample'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
-        var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_DISTANCE, 'DISTANCE' ], [ Blockly.Msg.MODE_PRESENCE, 'SEEK' ] ], function(option) {
-            if (option && this.sourceBlock_.getFieldValue('MODE') !== option) {
-                this.sourceBlock_.updateShape_(option);
-            }
-        });
         var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
-        this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_INFRARED).appendField(sensorPort, 'SENSORPORT');
+        var mode;
+        if (this.workspace.device === 'ardu') {
+            mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_OBSTACLE, 'DISTANCE' ], [ Blockly.Msg.MODE_PRESENCE, 'SEEK' ] ], function(option) {
+                if (option && this.sourceBlock_.getFieldValue('MODE') !== option) {
+                    this.sourceBlock_.updateShape_(option);
+                }
+            });
+            this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_INFRARED);
+        } else {
+            mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_DISTANCE, 'DISTANCE' ], [ Blockly.Msg.MODE_PRESENCE, 'SEEK' ] ], function(option) {
+                if (option && this.sourceBlock_.getFieldValue('MODE') !== option) {
+                    this.sourceBlock_.updateShape_(option);
+                }
+            });
+            this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_INFRARED).appendField(sensorPort, 'SENSORPORT');
+        }
         this.setOutput(true, 'Number');
         this.setTooltip(Blockly.Msg.INFRARED_GETSAMPLE_TOOLTIP);
         this.sensorMode_ = 'DISTANCE';
@@ -551,6 +571,29 @@ Blockly.Blocks['robSensors_gyro_getSample'] = {
     }
 };
 
+Blockly.Blocks['robSensors_compass_getSample'] = {
+    /**
+     * Get the current reading from the compass sensor.
+     * 
+     * @constructs robSensors_gyro_getSample
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            MODE - Angle or Rate
+     * @param {String/dropdown}
+     *            SENSORPORT - 1, 2, 3 or 4
+     * @returns immediately
+     * @returns {Number}
+     * @memberof Block
+     */
+
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(Blockly.Msg.SENSOR_COMPASS);
+        this.setOutput(true, 'Number');
+        //this.setTooltip(Blockly.Msg.GYRO_GETSAMPLE_TOOLTIP);
+    }
+};
+
 Blockly.Blocks['robSensors_timer_reset'] = {
     /**
      * Reset the timer.
@@ -565,7 +608,7 @@ Blockly.Blocks['robSensors_timer_reset'] = {
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         var sensorNum;
-        if (this.workspace.device === 'nxt') {
+        if (this.workspace.device === 'nxt' || this.workspace.device === 'ardu') {
             sensorNum = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_TIMER + ' 1', '1' ] ]);
             this.data = 'nxt';
         } else {
@@ -596,7 +639,7 @@ Blockly.Blocks['robSensors_timer_getSample'] = {
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         var sensorNum;
-        if (this.workspace.device === 'nxt') {
+        if (this.workspace.device === 'nxt' || this.workspace.device === 'ardu') {
             sensorNum = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_TIMER + ' 1', '1' ] ]);
             this.data = 'nxt';
         } else {

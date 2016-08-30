@@ -67,8 +67,7 @@ Blockly.Blocks['robActions_motor_on_for'] = {
         var motorPort = new Blockly.FieldDropdown(ports);
         var motorRotation = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_ROTATION, 'ROTATIONS' ], [ Blockly.Msg.MOTOR_DEGREE, 'DEGREE' ] ]);
         this.appendValueInput('POWER').appendField(motorPort, 'MOTORPORT').appendField(Blockly.Msg.ON).appendField(Blockly.Msg.MOTOR_SPEED).setCheck('Number');
-        this.appendValueInput('VALUE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.FOR).appendField(motorRotation, 'MOTORROTATION')
-                .setCheck('Number');
+        this.appendValueInput('VALUE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.FOR).appendField(motorRotation, 'MOTORROTATION').setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.MOTOR_ON_FOR_TOOLTIP);
@@ -157,8 +156,7 @@ Blockly.Blocks['robActions_motorDiff_on'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_FOREWARD, 'FOREWARD' ], [ Blockly.Msg.MOTOR_BACKWARD, 'BACKWARD' ] ]);
-        this.appendValueInput('POWER').appendField(Blockly.Msg.MOTOR_DRIVE).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).setCheck(
-                'Number');
+        this.appendValueInput('POWER').appendField(Blockly.Msg.MOTOR_DRIVE).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.MOTORDIFF_ON_TOOLTIP);
@@ -169,9 +167,12 @@ Blockly.Blocks['robActions_motorDiff_on_for'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_FOREWARD, 'FOREWARD' ], [ Blockly.Msg.MOTOR_BACKWARD, 'BACKWARDS' ] ]);
-        this.appendValueInput('POWER').appendField(Blockly.Msg.MOTOR_DRIVE).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).setCheck(
-                'Number');
-        this.appendValueInput('DISTANCE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_DISTANCE).setCheck('Number');
+        this.appendValueInput('POWER').appendField(Blockly.Msg.MOTOR_DRIVE).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).setCheck('Number');
+        if (this.workspace.device === 'ardu') {
+            this.appendValueInput('DISTANCE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.SENSOR_TIME + ' s').setCheck('Number');
+        } else {
+            this.appendValueInput('DISTANCE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_DISTANCE).setCheck('Number');
+        }
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.MOTORDIFF_ON_FOR_TOOLTIP);
@@ -193,8 +194,7 @@ Blockly.Blocks['robActions_motorDiff_turn'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_RIGHT, 'RIGHT' ], [ Blockly.Msg.MOTOR_LEFT, 'LEFT' ] ]);
-        this.appendValueInput('POWER').appendField(Blockly.Msg.MOTOR_TURN).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).setCheck(
-                'Number');
+        this.appendValueInput('POWER').appendField(Blockly.Msg.MOTOR_TURN).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.MOTORDIFF_TURN_TOOLTIP);
@@ -205,9 +205,12 @@ Blockly.Blocks['robActions_motorDiff_turn_for'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_RIGHT, 'RIGHT' ], [ Blockly.Msg.MOTOR_LEFT, 'LEFT' ] ]);
-        this.appendValueInput('POWER').appendField(Blockly.Msg.MOTOR_TURN).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).setCheck(
-                'Number');
-        this.appendValueInput('DEGREE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_DEGREE).setCheck('Number');
+        this.appendValueInput('POWER').appendField(Blockly.Msg.MOTOR_TURN).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).setCheck('Number');
+        if (this.workspace.device === 'ardu') {
+            this.appendValueInput('DEGREE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.SENSOR_TIME + ' s').setCheck('Number');
+        } else {
+            this.appendValueInput('DEGREE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_DEGREE).setCheck('Number');
+        }
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.MOTORDIFF_TURN_FOR_TOOLTIP);
@@ -218,10 +221,8 @@ Blockly.Blocks['robActions_motorDiff_curve'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_FOREWARD, 'FOREWARD' ], [ Blockly.Msg.MOTOR_BACKWARD, 'BACKWARD' ] ]);
-        this.appendValueInput('POWER_LEFT').appendField(Blockly.Msg.MOTOR_STEER).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED)
-                .appendField(Blockly.Msg.MOTOR_LEFT).setCheck('Number');
-        this.appendValueInput('POWER_RIGHT').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_SPEED).appendField(Blockly.Msg.MOTOR_RIGHT).setCheck(
-                'Number');
+        this.appendValueInput('POWER_LEFT').appendField(Blockly.Msg.MOTOR_STEER).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).appendField(Blockly.Msg.MOTOR_LEFT).setCheck('Number');
+        this.appendValueInput('POWER_RIGHT').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_SPEED).appendField(Blockly.Msg.MOTOR_RIGHT).setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.MOTORDIFF_ON_TOOLTIP);
@@ -232,11 +233,13 @@ Blockly.Blocks['robActions_motorDiff_curve_for'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_FOREWARD, 'FOREWARD' ], [ Blockly.Msg.MOTOR_BACKWARD, 'BACKWARDS' ] ]);
-        this.appendValueInput('POWER_LEFT').appendField(Blockly.Msg.MOTOR_STEER).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED)
-                .appendField(Blockly.Msg.MOTOR_LEFT).setCheck('Number');
-        this.appendValueInput('POWER_RIGHT').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_SPEED).appendField(Blockly.Msg.MOTOR_RIGHT).setCheck(
-                'Number');
-        this.appendValueInput('DISTANCE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_DISTANCE).setCheck('Number');
+        this.appendValueInput('POWER_LEFT').appendField(Blockly.Msg.MOTOR_STEER).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_SPEED).appendField(Blockly.Msg.MOTOR_LEFT).setCheck('Number');
+        this.appendValueInput('POWER_RIGHT').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_SPEED).appendField(Blockly.Msg.MOTOR_RIGHT).setCheck('Number');
+        if (this.workspace.device === 'ardu') {
+            this.appendValueInput('DISTANCE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.SENSOR_TIME + ' s').setCheck('Number');
+        } else {
+            this.appendValueInput('DISTANCE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOTOR_DISTANCE).setCheck('Number');
+        }
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.MOTORDIFF_ON_FOR_TOOLTIP);
@@ -293,12 +296,14 @@ Blockly.Blocks['robActions_display_text'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         if (this.workspace.device === 'nxt') {
-            this.appendValueInput('OUT').appendField(Blockly.Msg.DISPLAY_SHOW + ' ' + Blockly.Msg.DISPLAY_TEXT).setCheck(
-                    [ 'Number', 'Boolean', 'String', 'Colour', 'Connection' ]);
+            this.appendValueInput('OUT').appendField(Blockly.Msg.DISPLAY_SHOW + ' ' + Blockly.Msg.DISPLAY_TEXT).setCheck([ 'Number', 'Boolean', 'String',
+                    'Colour', 'Connection' ]);
         } else {
             this.appendValueInput('OUT').appendField(Blockly.Msg.DISPLAY_SHOW + ' ' + Blockly.Msg.DISPLAY_TEXT);
         }
-        this.appendValueInput('COL').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.DISPLAY_COL);
+        if (this.workspace.device !== 'ardu') {
+            this.appendValueInput('COL').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.DISPLAY_COL);
+        }
         this.appendValueInput('ROW').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.DISPLAY_ROW);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -346,10 +351,9 @@ Blockly.Blocks['robActions_display_matrix'] = {
                 checkBoxes.push(new Blockly.FieldCheckbox());
 
             }
-            this.appendDummyInput().appendField(checkBoxes[(i * 8) + 0], 'POINT' + (i * 8 + 0)).appendField(checkBoxes[(i * 8) + 1], 'POINT' + (i * 8 + 1))
-                    .appendField(checkBoxes[(i * 8) + 2], 'POINT' + (i * 8 + 2)).appendField(checkBoxes[(i * 8) + 3], 'POINT' + (i * 8 + 3)).appendField(
-                            checkBoxes[(i * 8) + 4], 'POINT' + (i * 8 + 4)).appendField(checkBoxes[(i * 8) + 5], 'POINT' + (i * 8 + 5)).appendField(
-                            checkBoxes[(i * 8) + 6], 'POINT' + (i * 8 + 6)).appendField(checkBoxes[(i * 8) + 7], 'POINT' + (i * 8 + 7));
+            this.appendDummyInput().appendField(checkBoxes[(i * 8) + 0], 'POINT' + (i * 8 + 0)).appendField(checkBoxes[(i * 8) + 1], 'POINT' + (i * 8 + 1)).appendField(checkBoxes[(i * 8) + 2], 'POINT'
+                    + (i * 8 + 2)).appendField(checkBoxes[(i * 8) + 3], 'POINT' + (i * 8 + 3)).appendField(checkBoxes[(i * 8) + 4], 'POINT' + (i * 8 + 4)).appendField(checkBoxes[(i * 8) + 5], 'POINT'
+                    + (i * 8 + 5)).appendField(checkBoxes[(i * 8) + 6], 'POINT' + (i * 8 + 6)).appendField(checkBoxes[(i * 8) + 7], 'POINT' + (i * 8 + 7));
         }
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -470,10 +474,16 @@ Blockly.Blocks['robActions_brickLight_on'] = {
         // this.setInputsInline(true);
         var dropdownColor = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_GREEN, 'GREEN' ], [ Blockly.Msg.BRICKLIGHT_ORANGE, 'ORANGE' ],
                 [ Blockly.Msg.BRICKLIGHT_RED, 'RED' ] ]);
-        var dropdownLightState = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_ON, 'ON' ], [ Blockly.Msg.BRICKLIGHT_FLASH, 'FLASH' ],
-                [ Blockly.Msg.BRICKLIGHT_DOUBLE_FLASH, 'DOUBLE_FLASH' ] ]);
         this.appendDummyInput().appendField(Blockly.Msg.BRICKLIGHT);
-        this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.BRICKLIGHT_COLOR).appendField(dropdownColor, 'SWITCH_COLOR');
+        var dropdownLightState;
+        if (this.workspace.device === 'ardu') {
+            dropdownLightState = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_ON, 'ON' ], [ Blockly.Msg.OFF, 'OFF' ] ]);
+        } else {
+            dropdownLightState = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_ON, 'ON' ], [ Blockly.Msg.BRICKLIGHT_FLASH, 'FLASH' ],
+                    [ Blockly.Msg.BRICKLIGHT_DOUBLE_FLASH, 'DOUBLE_FLASH' ] ]);
+            this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.BRICKLIGHT_COLOR).appendField(dropdownColor, 'SWITCH_COLOR');
+        }
+
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOD).appendField(dropdownLightState, 'SWITCH_BLINK');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
