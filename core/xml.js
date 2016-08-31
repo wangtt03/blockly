@@ -384,7 +384,7 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
   
       // make sure the start block is in the first column, to avoid errors while instantiating blocks with global variables before the variable declaration
     for (var i = 0; i < xmlBlockList.length; i++) {
-        if (xmlBlockList[i][0].getAttribute('type') == 'robControls_start') {
+        if (xmlBlockList[i][0].getAttribute('type') == 'robControls_start' || xmlBlockList[i][0].getAttribute('type') == 'robControls_start_ardu') {
             xmlBlockList[i] = xmlBlockList.splice(0, 1, xmlBlockList[i])[0];
             xmlBlockPos[i] = xmlBlockPos.splice(0, 1, xmlBlockPos[i])[0];
             break;

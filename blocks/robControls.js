@@ -153,7 +153,7 @@ Blockly.Blocks['robControls_start_ardu'] = {
         this.appendDummyInput().appendField(Blockly.Msg.START_PROGRAM).appendField('  ').appendField(new Blockly.FieldCheckbox("FALSE"), "DEBUG").appendField(Blockly.Msg.START_PROGRAM_DEBUG);
         this.declare_ = false;
         this.setPreviousStatement(false);
-        this.setNextStatement(true,'ardu');
+        this.setNextStatement(true, 'ardu');
         this.setDeletable(false);
         this.setMutatorPlus(new Blockly.MutatorPlus([ 'robControls_start_ardu' ]));
         this.setTooltip(Blockly.Msg.START_TOOLTIP);
