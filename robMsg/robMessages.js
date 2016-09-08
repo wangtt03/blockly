@@ -554,3 +554,6 @@ Blockly.Msg.MENU_LANGUAGE_TOOLTIP = 'languages';
 Blockly.Msg.MENU_LANGUAGE = 'languages';
 Blockly.Msg.POPUP_TOUR = 'take a tour';
 
+
+Blockly.Msg.CONFIGURATION_ERROR_MOTORS_ROTATION_DIRECTION='The direction of rotation of the left and right motor is different!';
+
