@@ -627,7 +627,13 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild) {
         block.setWarningText(Blockly.Msg[xmlChild.textContent]);
         var visible = xmlChild.getAttribute('pinned');
         if (visible) {
-            block.warning.setVisible(visible == 'true');
+            // Give the renderer a millisecond to render and position the block
+            // before positioning the comment bubble.
+            setTimeout(function() {
+                if (block.warning && block.warning.setVisible) {
+                    block.warning.setVisible(visible == 'true');
+                }
+            }, 1);
         }
         var bubbleW = parseInt(xmlChild.getAttribute('w'), 10);
         var bubbleH = parseInt(xmlChild.getAttribute('h'), 10);
@@ -639,7 +645,13 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild) {
         block.setErrorText(Blockly.Msg[xmlChild.textContent]);
         var visible = xmlChild.getAttribute('pinned');
         if (visible) {
-            block.error.setVisible(visible == 'true');
+            // Give the renderer a millisecond to render and position the block
+            // before positioning the comment bubble.
+            setTimeout(function() {
+                if (block.error && block.error.setVisible) {
+                    block.error.setVisible(visible == 'true');
+                }
+            }, 10);
         }
         var bubbleW = parseInt(xmlChild.getAttribute('w'), 10);
         var bubbleH = parseInt(xmlChild.getAttribute('h'), 10);
