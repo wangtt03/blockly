@@ -108,7 +108,7 @@ Blockly.Msg.GYRO_TOOLTIP = 'Represents gyro sensor.';
 Blockly.Msg.MOTOR_BIG_TOOLTIP = 'Represents a big motor.';
 Blockly.Msg.MOTOR_MIDDLE_TOOLTIP = 'Represents a middle motor.';
 Blockly.Msg.ACTOR_TOOLTIP = 'Represents any actor.';
-/// 
+///
 Blockly.Msg.LISTS_CREATE_TITLE = 'list';
 /// Variables Blocks.
 Blockly.Msg.VARIABLES_TITLE = 'variable';
@@ -256,7 +256,7 @@ Blockly.Msg.CONNECTION_WAIT_FOR_CONNECTION = 'wait for connection';
 Blockly.Msg.CONNECTION_START_TOOLTIP = 'Tries to make a connection to another robot via bluetooth.';
 Blockly.Msg.CONNECTION_WAIT_TOOLTIP = 'Waits for a connection via bluetooth.';
 Blockly.Msg.CONNECTION_RECEIVE_TOOLTIP = 'Waits for a message from the robot which you declare in the connection.';
-Blockly.Msg.CONNECTION_SEND_TOOLTIP = 'Sends a message to another robot.'; 
+Blockly.Msg.CONNECTION_SEND_TOOLTIP = 'Sends a message to another robot.';
 Blockly.Msg.CONNECTION_TOOLTIP = 'A robot"s connection';
 Blockly.Msg.CONNECTION_CHECK = 'connection to robot %1 active?';
 Blockly.Msg.CONNECTION_CHECK_TOOLTIP = 'check if the connection to the robot is active.';
@@ -556,4 +556,5 @@ Blockly.Msg.POPUP_TOUR = 'take a tour';
 
 
 Blockly.Msg.CONFIGURATION_ERROR_MOTORS_ROTATION_DIRECTION='The direction of rotation of the left and right motor is different!';
-
+Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_RIGHT_MOTORS='You have multiple right motors assigned to your configuration!';
+Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_LEFT_MOTORS='You have multiple left motors assigned to your configuration!';
