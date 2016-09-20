@@ -306,6 +306,7 @@ Blockly.Css.CONTENT = [
   '.blocklyMinimalBody {',
     'margin: 0;',
     'padding: 0;',
+    'transform: none;',
   '}',
 
   '.blocklyCommentTextarea {',
