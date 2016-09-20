@@ -36,48 +36,48 @@ goog.require('goog.math');
  * @constructor
  */
 Blockly.Workspace = function(opt_options) {
-    /** @type {string} */
-    this.id = Blockly.genUid();
-    Blockly.Workspace.WorkspaceDB_[this.id] = this;
-    /** @type {!Blockly.Options} */
-    this.options = opt_options || {};
-    /** @type {boolean} */
-    this.RTL = !!this.options.RTL;
-    /** @type {boolean} */
-    this.checkInTask = this.options.checkInTask;
-    /** @type {boolean} */
-    this.variableDeclaration = !!this.options.variableDeclaration;
-    /** @type {boolean} */
-    this.horizontalLayout = !!this.options.horizontalLayout;
-    /** @type {number} */
-    this.toolboxPosition = this.options.toolboxPosition;
-    this.device = '';
-    this.version = '';
-    /**
-     * @type {!Array.<!Blockly.Block>}
-     * @private
-     */
-    this.topBlocks_ = [];
-    /**
-     * @type {!Array.<!Function>}
-     * @private
-     */
-    this.listeners_ = [];
-    /**
-     * @type {!Array.<!Blockly.Events.Abstract>}
-     * @private
-     */
-    this.undoStack_ = [];
-    /**
-     * @type {!Array.<!Blockly.Events.Abstract>}
-     * @private
-     */
-    this.redoStack_ = [];
-    /**
-     * @type {!Object}
-     * @private
-     */
-    this.blockDB_ = Object.create(null);
+  /** @type {string} */
+  this.id = Blockly.genUid();
+  Blockly.Workspace.WorkspaceDB_[this.id] = this;
+  /** @type {!Blockly.Options} */
+  this.options = opt_options || {};
+  /** @type {boolean} */
+  this.RTL = !!this.options.RTL;
+  /** @type {boolean} */
+  this.checkInTask = this.options.checkInTask;
+  /** @type {boolean} */
+  this.variableDeclaration = !!this.options.variableDeclaration;
+  /** @type {boolean} */
+  this.horizontalLayout = !!this.options.horizontalLayout;
+  /** @type {number} */
+  this.toolboxPosition = this.options.toolboxPosition;
+  this.device = '';
+  this.version = '';
+  /**
+   * @type {!Array.<!Blockly.Block>}
+   * @private
+   */
+  this.topBlocks_ = [];
+  /**
+   * @type {!Array.<!Function>}
+   * @private
+   */
+  this.listeners_ = [];
+  /**
+   * @type {!Array.<!Blockly.Events.Abstract>}
+   * @private
+   */
+  this.undoStack_ = [];
+  /**
+   * @type {!Array.<!Blockly.Events.Abstract>}
+   * @private
+   */
+  this.redoStack_ = [];
+  /**
+   * @type {!Object}
+   * @private
+   */
+  this.blockDB_ = Object.create(null);
 };
 
 /**
@@ -97,10 +97,10 @@ Blockly.Workspace.prototype.MAX_UNDO = 1024;
  * Unlink from all DOM elements to prevent memory leaks.
  */
 Blockly.Workspace.prototype.dispose = function() {
-    this.listeners_.length = 0;
-    this.clear();
-    // Remove from workspace database.
-    delete Blockly.Workspace.WorkspaceDB_[this.id];
+  this.listeners_.length = 0;
+  this.clear();
+  // Remove from workspace database.
+  delete Blockly.Workspace.WorkspaceDB_[this.id];
 };
 
 /**
@@ -116,7 +116,7 @@ Blockly.Workspace.SCAN_ANGLE = 3;
  * @param {!Blockly.Block} block Block to remove.
  */
 Blockly.Workspace.prototype.addTopBlock = function(block) {
-    this.topBlocks_.push(block);
+  this.topBlocks_.push(block);
 };
 
 /**
@@ -124,17 +124,17 @@ Blockly.Workspace.prototype.addTopBlock = function(block) {
  * @param {!Blockly.Block} block Block to remove.
  */
 Blockly.Workspace.prototype.removeTopBlock = function(block) {
-    var found = false;
-    for (var child, i = 0; child = this.topBlocks_[i]; i++) {
-        if (child == block) {
-            this.topBlocks_.splice(i, 1);
-            found = true;
-            break;
-        }
+  var found = false;
+  for (var child, i = 0; child = this.topBlocks_[i]; i++) {
+    if (child == block) {
+      this.topBlocks_.splice(i, 1);
+      found = true;
+      break;
     }
-    if (!found) {
-        throw 'Block not present in workspace\'s list of top-most blocks.';
-    }
+  }
+  if (!found) {
+    throw 'Block not present in workspace\'s list of top-most blocks.';
+  }
 };
 
 /**
@@ -144,20 +144,20 @@ Blockly.Workspace.prototype.removeTopBlock = function(block) {
  * @return {!Array.<!Blockly.Block>} The top-level block objects.
  */
 Blockly.Workspace.prototype.getTopBlocks = function(ordered) {
-    // Copy the topBlocks_ list.
-    var blocks = [].concat(this.topBlocks_);
-    if (ordered && blocks.length > 1) {
-        var offset = Math.sin(goog.math.toRadians(Blockly.Workspace.SCAN_ANGLE));
-        if (this.RTL) {
-            offset *= -1;
-        }
-        blocks.sort(function(a, b) {
-            var aXY = a.getRelativeToSurfaceXY();
-            var bXY = b.getRelativeToSurfaceXY();
-            return (aXY.y + offset * aXY.x) - (bXY.y + offset * bXY.x);
-        });
+  // Copy the topBlocks_ list.
+  var blocks = [].concat(this.topBlocks_);
+  if (ordered && blocks.length > 1) {
+    var offset = Math.sin(goog.math.toRadians(Blockly.Workspace.SCAN_ANGLE));
+    if (this.RTL) {
+      offset *= -1;
     }
-    return blocks;
+    blocks.sort(function(a, b) {
+      var aXY = a.getRelativeToSurfaceXY();
+      var bXY = b.getRelativeToSurfaceXY();
+      return (aXY.y + offset * aXY.x) - (bXY.y + offset * bXY.x);
+    });
+  }
+  return blocks;
 };
 
 /**
@@ -165,27 +165,27 @@ Blockly.Workspace.prototype.getTopBlocks = function(ordered) {
  * @return {!Array.<!Blockly.Block>} Array of blocks.
  */
 Blockly.Workspace.prototype.getAllBlocks = function() {
-    var blocks = this.getTopBlocks(false);
-    for (var i = 0; i < blocks.length; i++) {
-        blocks.push.apply(blocks, blocks[i].getChildren());
-    }
-    return blocks;
+  var blocks = this.getTopBlocks(false);
+  for (var i = 0; i < blocks.length; i++) {
+    blocks.push.apply(blocks, blocks[i].getChildren());
+  }
+  return blocks;
 };
 
 /**
  * Dispose of all blocks in workspace.
  */
 Blockly.Workspace.prototype.clear = function() {
-    var existingGroup = Blockly.Events.getGroup();
-    if (!existingGroup) {
-        Blockly.Events.setGroup(true);
-    }
-    while (this.topBlocks_.length) {
-        this.topBlocks_[0].dispose();
-    }
-    if (!existingGroup) {
-        Blockly.Events.setGroup(false);
-    }
+  var existingGroup = Blockly.Events.getGroup();
+  if (!existingGroup) {
+    Blockly.Events.setGroup(true);
+  }
+  while (this.topBlocks_.length) {
+    this.topBlocks_[0].dispose();
+  }
+  if (!existingGroup) {
+    Blockly.Events.setGroup(false);
+  }
 };
 
 /**
@@ -195,7 +195,7 @@ Blockly.Workspace.prototype.clear = function() {
  * @return {number} Width.
  */
 Blockly.Workspace.prototype.getWidth = function() {
-    return 0;
+  return 0;
 };
 
 /**
@@ -207,7 +207,7 @@ Blockly.Workspace.prototype.getWidth = function() {
  * @return {!Blockly.Block} The created block.
  */
 Blockly.Workspace.prototype.newBlock = function(prototypeName, opt_id) {
-    return new Blockly.Block(this, prototypeName, opt_id);
+  return new Blockly.Block(this, prototypeName, opt_id);
 };
 
 /**
@@ -216,10 +216,10 @@ Blockly.Workspace.prototype.newBlock = function(prototypeName, opt_id) {
  * @return {number} Number of blocks left.
  */
 Blockly.Workspace.prototype.remainingCapacity = function() {
-    if (isNaN(this.options.maxBlocks)) {
-        return Infinity;
-    }
-    return this.options.maxBlocks - this.getAllBlocks().length;
+  if (isNaN(this.options.maxBlocks)) {
+    return Infinity;
+  }
+  return this.options.maxBlocks - this.getAllBlocks().length;
 };
 
 /**
@@ -227,38 +227,38 @@ Blockly.Workspace.prototype.remainingCapacity = function() {
  * @param {boolean} redo False if undo, true if redo.
  */
 Blockly.Workspace.prototype.undo = function(redo) {
-    var inputStack = redo ? this.redoStack_ : this.undoStack_;
-    var outputStack = redo ? this.undoStack_ : this.redoStack_;
-    var inputEvent = inputStack.pop();
-    if (!inputEvent) {
-        return;
-    }
-    var events = [inputEvent];
-    // Do another undo/redo if the next one is of the same group.
-    while (inputStack.length && inputEvent.group &&
-        inputEvent.group == inputStack[inputStack.length - 1].group) {
-        events.push(inputStack.pop());
-    }
-    // Push these popped events on the opposite stack.
-    for (var i = 0, event; event = events[i]; i++) {
-        outputStack.push(event);
-    }
-    events = Blockly.Events.filter(events, redo);
-    Blockly.Events.recordUndo = false;
-    for (var i = 0, event; event = events[i]; i++) {
-        event.run(redo);
-    }
-    Blockly.Events.recordUndo = true;
+  var inputStack = redo ? this.redoStack_ : this.undoStack_;
+  var outputStack = redo ? this.undoStack_ : this.redoStack_;
+  var inputEvent = inputStack.pop();
+  if (!inputEvent) {
+    return;
+  }
+  var events = [inputEvent];
+  // Do another undo/redo if the next one is of the same group.
+  while (inputStack.length && inputEvent.group &&
+      inputEvent.group == inputStack[inputStack.length - 1].group) {
+    events.push(inputStack.pop());
+  }
+  // Push these popped events on the opposite stack.
+  for (var i = 0, event; event = events[i]; i++) {
+    outputStack.push(event);
+  }
+  events = Blockly.Events.filter(events, redo);
+  Blockly.Events.recordUndo = false;
+  for (var i = 0, event; event = events[i]; i++) {
+    event.run(redo);
+  }
+  Blockly.Events.recordUndo = true;
 };
 
 /**
  * Clear the undo/redo stacks.
  */
 Blockly.Workspace.prototype.clearUndo = function() {
-    this.undoStack_.length = 0;
-    this.redoStack_.length = 0;
-    // Stop any events already in the firing queue from being undoable.
-    Blockly.Events.clearPendingUndo();
+  this.undoStack_.length = 0;
+  this.redoStack_.length = 0;
+  // Stop any events already in the firing queue from being undoable.
+  Blockly.Events.clearPendingUndo();
 };
 
 /**
@@ -268,8 +268,8 @@ Blockly.Workspace.prototype.clearUndo = function() {
  *     removeChangeListener.
  */
 Blockly.Workspace.prototype.addChangeListener = function(func) {
-    this.listeners_.push(func);
-    return func;
+  this.listeners_.push(func);
+  return func;
 };
 
 /**
@@ -277,10 +277,10 @@ Blockly.Workspace.prototype.addChangeListener = function(func) {
  * @param {Function} func Function to stop calling.
  */
 Blockly.Workspace.prototype.removeChangeListener = function(func) {
-    var i = this.listeners_.indexOf(func);
-    if (i != -1) {
-        this.listeners_.splice(i, 1);
-    }
+  var i = this.listeners_.indexOf(func);
+  if (i != -1) {
+    this.listeners_.splice(i, 1);
+  }
 };
 
 /**
@@ -288,16 +288,16 @@ Blockly.Workspace.prototype.removeChangeListener = function(func) {
  * @param {!Blockly.Events.Abstract} event Event to fire.
  */
 Blockly.Workspace.prototype.fireChangeListener = function(event) {
-    if (event.recordUndo) {
-        this.undoStack_.push(event);
-        this.redoStack_.length = 0;
-        if (this.undoStack_.length > this.MAX_UNDO) {
-            this.undoStack_.unshift();
-        }
+  if (event.recordUndo) {
+    this.undoStack_.push(event);
+    this.redoStack_.length = 0;
+    if (this.undoStack_.length > this.MAX_UNDO) {
+      this.undoStack_.unshift();
     }
-    for (var i = 0, func; func = this.listeners_[i]; i++) {
-        func(event);
-    }
+  }
+  for (var i = 0, func; func = this.listeners_[i]; i++) {
+    func(event);
+  }
 };
 
 /**
@@ -306,7 +306,7 @@ Blockly.Workspace.prototype.fireChangeListener = function(event) {
  * @return {Blockly.Block} The sought after block or null if not found.
  */
 Blockly.Workspace.prototype.getBlockById = function(id) {
-    return this.blockDB_[id] || null;
+  return this.blockDB_[id] || null;
 };
 
 /**
@@ -321,7 +321,7 @@ Blockly.Workspace.WorkspaceDB_ = Object.create(null);
  * @return {Blockly.Workspace} The sought after workspace or null if not found.
  */
 Blockly.Workspace.getById = function(id) {
-    return Blockly.Workspace.WorkspaceDB_[id] || null;
+  return Blockly.Workspace.WorkspaceDB_[id] || null;
 };
 
 /**
@@ -330,11 +330,11 @@ Blockly.Workspace.getById = function(id) {
  * @return {Blockly.Block} The sought after block or null if not found.
  */
 Blockly.Workspace.prototype.setDevice = function(device) {
-    this.device = device;
-    if (this.toolbox_)
-        this.toolbox_.flyout_.workspace_.device = device;
-    if (this.flyout_)
-        this.flyout_.workspace_.device = device;
+  this.device = device;
+  if (this.toolbox_)
+      this.toolbox_.flyout_.workspace_.device = device;
+  if (this.flyout_)
+      this.flyout_.workspace_.device = device;
 };
 
 /**
@@ -343,7 +343,7 @@ Blockly.Workspace.prototype.setDevice = function(device) {
  * @param {string} version of the generated XML.
  */
 Blockly.Workspace.prototype.setVersion = function(version) {
-    this.version = version;
+  this.version = version;
 };
 
 // Export symbols that would otherwise be renamed by Closure compiler.
