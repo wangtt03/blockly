@@ -512,7 +512,7 @@ Blockly.Blocks['robActions_sensorLight_on'] = {
         var dropdownColor = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_RED, 'RED' ], [ Blockly.Msg.BRICKLIGHT_GREEN, 'GREEN' ],
                 [ Blockly.Msg.BRICKLIGHT_BLUE, 'BLUE' ] ]);
         var dropdownLightState = new Blockly.FieldDropdown([ [ Blockly.Msg.ON, 'ON' ], [ Blockly.Msg.OFF, 'OFF' ] ]);
-        this.appendDummyInput().appendField(Blockly.Msg.MOTOR_TURN).appendField(Blockly.Msg.SENSOR_COLOUR);
+        this.appendDummyInput().appendField(Blockly.Msg.SET).appendField(Blockly.Msg.SENSOR_COLOUR);
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.BRICKLIGHT_COLOR).appendField(dropdownColor, 'SWITCH_COLOR');
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOD).appendField(dropdownLightState, 'SWITCH_STATE');
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(sensorPort, 'SENSORPORT');

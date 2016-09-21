@@ -399,12 +399,10 @@ Blockly.Blocks['robControls_wait_time'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_CONTROL_RGB);
-        this.setInputsInline(true);
         this.appendValueInput('WAIT').appendField(Blockly.Msg.WAIT).setCheck('Number');
-        this.appendDummyInput().appendField('ms');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.WAIT_TOOLTIP);
+        this.setTooltip(Blockly.Msg.WAIT_TIME_TOOLTIP);
     }
 };
 
