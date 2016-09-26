@@ -548,8 +548,8 @@ Blockly.Connection.prototype.targetBlock = function() {
 Blockly.Connection.prototype.checkType_ = function(otherConnection) {
   if (!this.check_ || !otherConnection.check_) {
     // special case for variable declarations
-    //if ((this.check_ == 'declaration_only' && !otherConnection.check_) || (!this.check_ && otherConnection.check_ == 'declaration_only'))
-    //  return false;
+    if ((this.check_ == 'declaration_only' && !otherConnection.check_) || (!this.check_ && otherConnection.check_ == 'declaration_only'))
+      return false;
     // special case for ardu startblock
     if ((this.check_ == 'ardu' && !otherConnection.check_) || (!this.check_ && otherConnection.check_ == 'ardu'))
       return false;

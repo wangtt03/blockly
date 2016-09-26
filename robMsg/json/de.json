@@ -331,7 +331,6 @@
   "POPUP_PASSWORD_RECOVERY": "Passwort zurücksetzen ...",
   "POPUP_NEW_PASSWORD": "Neues Passwort",
   "POPUP_OLD_PASSWORD": "Altes Passwort",
-  "POPUP_REPEAT_PASSWORD": "Wiederhole Passwort",
   "POPUP_CHANGE_PASSWORD": "ändere Passwort ...",
   "POPUP_RELEASE":"Version beta 1.3.2<ul class='NonIcon' style='font-size:small'><li>Zeitzonenproblem beim Speichern eines Programmes behoben</li></ul>Version beta 1.3.1<ul class='NonIcon' style='font-size:small'><li>Jetzt auch auf Spanisch!</li><li>Weitere kleinere Fehler behoben</li></ul>Version beta 1.3.0<ul class='NonIcon' style='font-size:small'><li>Jetzt neu mit Roboter Simulation!</li><li>Teile dein Programm mit Freunden</li><li>Neue Firmware Versionen jetzt über WLAN</li><li>USB Kabel Unterstützung für Chromeboooks</li><li>Weitere kleinere Fehler behoben</li></ul></br>",
   "POPUP_NEW_RELEASE": "Version beta 1.4 <ul class='NonIcon'><li>Entwickle ein Programm für den Roboter <strong>und</strong> für den simulierten Roboter</li><li>Exportiere und importiere dein Programm lokal</li><li>Neues blockly, jetzt schneller und mit Zoomfunktion.</li></ul>",
@@ -495,5 +494,6 @@
   "CONFIGURATION_ERROR_MOTORS_ROTATION_DIRECTION" : "Die Drehrichtung des linken und rechten Motors ist nicht gleich!",
   "CONFIGURATION_ERROR_MULTIPLE_RIGHT_MOTORS" : "Es kann nur ein rechter Motor in der Roboterkonfiguration sein!",
   "CONFIGURATION_ERROR_MULTIPLE_LEFT_MOTORS" : "Es kann nur ein linker Motor in der Roboterkonfiguration sein!",
-  "WAIT_TIME_TOOLTIP":"Wartet für eine bestimmte Zeit in Millisekunden."
+  "WAIT_TIME_TOOLTIP":"Wartet für eine bestimmte Zeit in Millisekunden.",
+  "ORA_TOKEN_SET_ERROR_WRONG_ROBOTTYPE" : "Der Robotertyp, den du im Menü ausgewählt hast, passt nicht zum Roboter, den du verbinden möchtest.<br>Wähle den richtigen Robotertyp im Robotermenü aus und versuche es noch einmal!"
 }

@@ -394,7 +394,7 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
     }
     // create blocks in the right order
     for (var i = 0; i < xmlBlockList.length; i++) {
-        var block = Blockly.Xml.domToBlock(workspace, xmlBlockList[i]);
+        var block = Blockly.Xml.domToBlock(xmlBlockList[i], workspace);
         if (!isNaN(xmlBlockPos[i].x) && !isNaN(xmlBlockPos[i].y)) {
             block.moveBy(Blockly.RTL ? width - xmlBlockPos[i].x : xmlBlockPos[i].x, xmlBlockPos[i].y);
         }

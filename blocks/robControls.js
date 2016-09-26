@@ -85,6 +85,7 @@ Blockly.Blocks['robControls_start'] = {
         this.declare_ = (xmlElement.getAttribute('declare') != 'false');
         if (this.declare_) {
             this.appendStatementInput('ST');
+            this.getInput('ST').connection.setCheck('declaration_only');
         }
     },
     /**
@@ -185,6 +186,7 @@ Blockly.Blocks['robControls_start_ardu'] = {
         this.declare_ = (xmlElement.getAttribute('declare') != 'false');
         if (this.declare_) {
             this.appendStatementInput('ST');
+            this.getInput('ST').connection.setCheck('declaration_only');
         }
     },
     /**
