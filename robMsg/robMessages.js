@@ -561,5 +561,5 @@ Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_RIGHT_MOTORS='You have multiple right m
 Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_LEFT_MOTORS='You have multiple left motors assigned to your configuration!';
 Blockly.Msg.WAIT_TIME_TOOLTIP = 'Waits for a certain time in milliseconds.';
 Blockly.Msg.POPUP_RELEASE = 'Version beta 1.4 <ul class="NonIcon"><li>Create one program for the real robot <strong>and</strong> for the simulated robot</li><li>Update blockly for better performance and zoom function</li></ul>';
-Blockly.Msg.POPUP_NEW_RELEASE = 'Version beta 2.0 <ul class="NonIcon"><li>NXT - create programs for LEGO Mindstorms NXT</li><li>Bot"n Roll - create programs for the educational robotic kit botnroll.com®compatible with Arduino™</li><li>Start programming with the new welcome tour</li></ul>';
+Blockly.Msg.POPUP_NEW_RELEASE = 'Version beta 2.0 <ul class="NonIcon"><li>NXT - create programs for LEGO Mindstorms NXT</li><li>Bot"n Roll - create programs for the educational robotic kit botnroll.com®compatible with Arduino™</li><li>Start programming with the new welcome tour</li><li>Improved Open Roberta Lab performance</ul>';
 Blockly.Msg.ORA_TOKEN_SET_ERROR_WRONG_ROBOTTYPE = 'You are trying to connect a robot of a different type as selected in the menu. <br> Please switch the robot type in the robot"s menu and try to connect again!';
