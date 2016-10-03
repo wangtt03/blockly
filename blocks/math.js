@@ -585,5 +585,17 @@ Blockly.Blocks['robMath_change'] = {
       return Blockly.Msg.MATH_CHANGE_TOOLTIP.replace('%1',
           thisBlock.getFieldValue('VAR'));
     });
+  },
+  onchange : function() {
+    if (!this.workspace || Blockly.Block.dragMode_ == 2) {
+      // Block has been deleted or is in move
+      return;
+    }
+    var blockVar = this.getInputTargetBlock('VAR');
+    console.log(blockVar);
+    if (blockVar && blockVar.type !== 'variables_get') {
+      blockVar.unplug();
+      blockVar.bumpNeighbours_();
+    }
   }
 };

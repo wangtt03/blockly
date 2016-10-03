@@ -158,7 +158,7 @@ Blockly.Blocks['robControls_start_ardu'] = {
         this.setDeletable(false);
         this.setMutatorPlus(new Blockly.MutatorPlus([ 'robControls_start_ardu' ]));
         this.setTooltip(Blockly.Msg.START_TOOLTIP);
-     },
+    },
     /**
      * Create XML to represent whether a statement list of variable declarations
      * should be present.
@@ -488,7 +488,12 @@ Blockly.Blocks['robControls_wait_for'] = {
             var connection = this.getInput('WAIT' + this.waitCount_).connection;
             connection.connect(lc.outputConnection);
 
-            var s = this.workspace.newBlock('robSensors_getSample');
+            var s;
+            if (this.workspace.device === 'ardu') {
+                s = this.workspace.newBlock('robSensors_getSample_ardu');
+            } else {
+                s = this.workspace.newBlock('robSensors_getSample');
+            }
             s.initSvg();
             s.render();
             connection = lc.getInput('A').connection;

@@ -46,9 +46,47 @@ Blockly.Blocks['robBrick_EV3-Brick'] = {
     }
 };
 
+/**
+ * @lends Block
+ */
+
+Blockly.Blocks['robBrick_ardu-Brick'] = {
+    /**
+     * botnroll brick
+     * 
+     * @constructs robBrick_ardu_brick
+     * @memberof Block
+     */
+
+    init : function() {
+        this.setColour('#BBBBBB');
+        this.setInputsInline(false);
+        this.appendDummyInput().appendField(new Blockly.FieldLabel('Bot\'n Roll', 'brick_label'));
+        this.appendValueInput('S1').appendField(Blockly.Msg.MOTOR_LEFT).setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendValueInput('S2').appendField(Blockly.Msg.MOTOR_RIGHT).setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendValueInput('MB').appendField(Blockly.Msg.MOTOR_LEFT).setAlign(Blockly.ALIGN_RIGHT).setCheck('Actor');
+        this.appendValueInput('MA').appendField(Blockly.Msg.MOTOR_RIGHT).setAlign(Blockly.ALIGN_RIGHT).setCheck('Actor');
+        this.appendDummyInput().appendField("Line Follower").setAlign(Blockly.ALIGN_CENTER);
+        this.appendValueInput('S3').appendField('0 - 7').setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendValueInput('S4').setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendDummyInput().appendField('Rescue Module').setAlign(Blockly.ALIGN_CENTER);
+        this.appendValueInput('S5').appendField(Blockly.Msg.MOTOR_LEFT).setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendValueInput('S6').appendField(Blockly.Msg.CENTER).setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendValueInput('S7').appendField(Blockly.Msg.MOTOR_RIGHT).setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendValueInput('S8').appendField(Blockly.Msg.MOTOR_LEFT).setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendValueInput('S9').appendField(Blockly.Msg.MOTOR_RIGHT).setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendDummyInput().appendField("Extra 'B' Search Rescue").setAlign(Blockly.ALIGN_CENTER);
+        this.appendValueInput('S10').appendField(Blockly.Msg.SENSOR_SONAR).setAlign(Blockly.ALIGN_RIGHT).setCheck('Sensor');
+        this.appendValueInput('MC').appendField(Blockly.Msg.MOTOR_PAN).setAlign(Blockly.ALIGN_RIGHT).setCheck('Actor');
+        this.appendValueInput('MD').appendField(Blockly.Msg.MOTOR_TILT).setAlign(Blockly.ALIGN_RIGHT).setCheck('Actor');
+        this.setTooltip(Blockly.Msg.ARDUBRICK_TOOLTIP);
+        this.setDeletable(false);
+    }
+};
+
 Blockly.Blocks['robBrick_ultrasonic'] = {
     /**
-     * Represent EV3 ultrasonic sensor.
+     * Represent an ultrasonic sensor.
      * 
      * @constructs robBrick_ultrasonic
      * @memberof Block
@@ -57,6 +95,23 @@ Blockly.Blocks['robBrick_ultrasonic'] = {
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         this.appendDummyInput().appendField(Blockly.Msg.SENSOR_ULTRASONIC);
+        this.setOutput(true, 'Sensor');
+        this.setTooltip(Blockly.Msg.ULTRASONIC_TOOLTIP);
+    }
+};
+
+Blockly.Blocks['robBrick_ultrasonic_ardu'] = {
+    /**
+     * Represent an ardu ultrasonic sensor.
+     * 
+     * @constructs robBrick_ultrasonic_ardu
+     * @memberof Block
+     */
+
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_ULTRASONIC).appendField(Blockly.Msg.MOTOR_LEFT + ' | ' + Blockly.Msg.CENTER + ' | '
+                + Blockly.Msg.MOTOR_RIGHT);
         this.setOutput(true, 'Sensor');
         this.setTooltip(Blockly.Msg.ULTRASONIC_TOOLTIP);
     }
@@ -79,22 +134,22 @@ Blockly.Blocks['robBrick_colour'] = {
 
 Blockly.Blocks['robBrick_light'] = {
     /**
-     * Represent EV3 colour sensor.
+     * Represent a light sensor.
      * 
-     * @constructs robBrick_colour
+     * @constructs robBrick_light
      * @memberof Block
      */
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
-        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_LIGHT);
         this.setOutput(true, 'Sensor');
-        this.setTooltip(Blockly.Msg.COLOUR_TOOLTIP);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_LIGHT);
+        this.setTooltip(Blockly.Msg.LIGHT_TOOLTIP);
     }
 };
 
 Blockly.Blocks['robBrick_infrared'] = {
     /**
-     * Represent infrared sensor.
+     * Represent an infrared sensor.
      * 
      * @constructs robBrick_infrared
      * @memberof Block
@@ -110,7 +165,7 @@ Blockly.Blocks['robBrick_infrared'] = {
 
 Blockly.Blocks['robBrick_touch'] = {
     /**
-     * Is the touch sensor pressed?
+     * Represent a touch sensor.
      * 
      * @constructs robBrick_touch
      * @this.Blockly.Block
@@ -127,9 +182,26 @@ Blockly.Blocks['robBrick_touch'] = {
     }
 };
 
+Blockly.Blocks['robBrick_compass'] = {
+    /**
+     * Represents a compass sensor
+     * 
+     * @constructs robBrick_compass
+     * @this.Blockly.Block
+     * @memberof Block
+     */
+
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_COMPASS);
+        this.setOutput(true, 'Sensor');
+        this.setTooltip(Blockly.Msg.COMPASS_TOOLTIP);
+    }
+};
+
 Blockly.Blocks['robBrick_gyro'] = {
     /**
-     * Represent gyro sensor.
+     * Represent a gyro sensor.
      * 
      * @constructs robBrick_gyro
      * @memberof Block
@@ -145,9 +217,9 @@ Blockly.Blocks['robBrick_gyro'] = {
 
 Blockly.Blocks['robBrick_sound'] = {
     /**
-     * Represent gyro sensor.
+     * Represent a sound sensor.
      * 
-     * @constructs robBrick_gyro
+     * @constructs robBrick_sound
      * @memberof Block
      */
 
@@ -155,7 +227,7 @@ Blockly.Blocks['robBrick_sound'] = {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         this.appendDummyInput().appendField(Blockly.Msg.SENSOR_SOUND);
         this.setOutput(true, 'Sensor');
-        this.setTooltip(Blockly.Msg.GYRO_TOOLTIP);
+        this.setTooltip(Blockly.Msg.SOUND_TOOLTIP);
         this.data = 'nxt';
     }
 };
@@ -200,6 +272,22 @@ Blockly.Blocks['robBrick_motor_middle'] = {
         this.appendDummyInput().appendField(Blockly.Msg.MOTOR_ROTATION_REVERSE).appendField(motorReverse, 'MOTOR_REVERSE').setAlign(Blockly.ALIGN_RIGHT);
         this.setOutput(true, 'Actor');
         this.setTooltip(Blockly.Msg.MOTOR_MIDDLE_TOOLTIP);
+    }
+};
+
+Blockly.Blocks['robBrick_motor_ardu'] = {
+    /**
+     * Represents a middle motor.
+     * 
+     * @constructs robActions_motor_middle
+     * @memberof Block
+     */
+
+    init : function() {
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        this.appendDummyInput().appendField(Blockly.Msg.MOTOR);
+        this.setOutput(true, 'Actor');
+        this.setTooltip(Blockly.Msg.MOTOR_ARDU_TOOLTIP);
     }
 };
 
