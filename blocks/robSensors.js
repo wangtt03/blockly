@@ -546,7 +546,7 @@ Blockly.Blocks['robSensors_colour_getSample'] = {
         this.setColour(Blockly.CAT_SENSOR_RGB);
 
         if (this.workspace.device === 'ardu') {
-            var sensorPort = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_MOTOR_LEFT, '1' ], [ Blockly.Msg.SENSOR_MOTOR_RIGHT, '2' ] ]);
+            var sensorPort = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_LEFT, '1' ], [ Blockly.Msg.MOTOR_RIGHT, '2' ] ]);
             this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_COLOUR).appendField(sensorPort, 'SENSORPORT');
         } else {
             var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
