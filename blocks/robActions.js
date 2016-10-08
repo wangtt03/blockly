@@ -95,7 +95,7 @@ Blockly.Blocks['robActions_motor_on_for_ardu'] = {
         var ports = [ [Blockly.Msg.MOTOR_PAN, 'A' ], [ Blockly.Msg.MOTOR_TILT, 'D' ] ];
         this.setColour(Blockly.CAT_ACTION_RGB);
         var motorPort = new Blockly.FieldDropdown(ports);
-        this.appendValueInput('VALUE').appendField(Blockly.Msg.MOTOR).appendField(motorPort, 'MOTORPORT').appendField(Blockly.Msg.SET + ' °').setCheck('Number');
+        this.appendValueInput('POWER').appendField(Blockly.Msg.MOTOR).appendField(motorPort, 'MOTORPORT').appendField(Blockly.Msg.SET + ' °').setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.MOTOR_ON_FOR_TOOLTIP);
