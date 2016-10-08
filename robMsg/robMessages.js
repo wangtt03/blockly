@@ -578,3 +578,4 @@ Blockly.Msg.MOTOR_ARDU_TOOLTIP = 'Represents a Bot"n Roll chassis motor.';
 Blockly.Msg.NXTBRICK_TOOLTIP = 'Represents the NXT brick with connected actors and sensors. There are also inbuild actors and sensors available, e.g. buttons, display ...';
 Blockly.Msg.ARDUBRICK_TOOLTIP = 'Represents the Bot"n Roll board with connected actors and sensors. There are also inbuild actors and sensors available, e.g. pushbuttons, display ...';
 Blockly.Msg.EV3BRICK_TOOLTIP = 'Represents the EV3 brick with connected actors and sensors. There are also inbuild actors and sensors available, e.g. buttons, display ...';
+Blockly.Msg.BOTH = 'both';

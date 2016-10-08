@@ -74,6 +74,34 @@ Blockly.Blocks['robActions_motor_on_for'] = {
     }
 };
 
+Blockly.Blocks['robActions_motor_on_for_ardu'] = {
+    /**
+     * Turn motor on and stop motor after execution of rotations/degrees.
+     * 
+     * @constructs robActions_motor_on_for
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            MOTORPORT - A, B, C, or D
+     * @param {String/dropdown}
+     *            MOTORROTATION - Rotations or Degrees
+     * @param {Number}
+     *            POWER Speed relative - -100-100
+     * @param {Number}
+     *            VALUE Number of rotations/degrees
+     * @returns after execution
+     * @memberof Block
+     */
+    init : function() {
+        var ports = [ [Blockly.Msg.MOTOR_PAN, 'A' ], [ Blockly.Msg.MOTOR_TILT, 'D' ] ];
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        var motorPort = new Blockly.FieldDropdown(ports);
+        this.appendValueInput('VALUE').appendField(Blockly.Msg.MOTOR).appendField(motorPort, 'MOTORPORT').appendField(Blockly.Msg.SET + ' °').setCheck('Number');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.MOTOR_ON_FOR_TOOLTIP);
+    }
+};
+
 Blockly.Blocks['robActions_motor_getPower'] = {
     /**
      * Get current power of this motor.

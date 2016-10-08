@@ -365,8 +365,8 @@
   "PROCEDURES_VARIABLES_LOOP_ERROR":"Fehler: Dieser Block kann nur innerhalb einer \" Schleife, die folgende Variable erzeugt: ",
   "SENSOR_COLOUR":"Farbsensor",
   "SENSOR_ENCODER":"Drehsensor",
-  "SENSOR_GET_MODE":"Gib Modus",
-  "SENSOR_GET_SAMPLE":"Gib Wert",
+  "SENSOR_GET_MODE":"gib Modus",
+  "SENSOR_GET_SAMPLE":"gib Wert",
   "SENSOR_GYRO":"Kreiselsensor",
   "SENSOR_INFRARED":"Infrarotsensor",
   "SENSOR_IS_PRESSED":"gedrückt?",
@@ -454,7 +454,7 @@
   "VALIDATION_PASSWORD_MIN_LENGTH": "Das Passwort muss mindestens 6 Zeichen lang sein!",
   "VALIDATION_TOKEN_LENGTH": "Der Token hat 8 Zeichen!",
   "VALIDATION_SECOND_PASSWORD_EQUAL": "Die beiden Passwörter müssen gleich sein!",
-  "VALIDATION_VALID_EMAIL_ADDRESS": "Bitte gebe eine gültige E-Mail-Adresse ein!",
+  "VALIDATION_VALID_EMAIL_ADDRESS": "Bitte gib eine gültige E-Mail-Adresse ein!",
   "VARIABLES_CREATE_TITLE":"Erzeuge",
   "VARIABLES_CREATE_WITH":"mit",
   "VARIABLES_GLOBAL_DECLARE_TOOLTIP":"Deklariert eine globale Variable.",
@@ -512,5 +512,7 @@
   "MOTOR_ARDU_TOOLTIP" : "Block a Bot'n Roll chassis motor.",
   "NXTBRICK_TOOLTIP" : "Block für den NXT Stein mit den angeschlossenen Aktoren und Sensoren. Es gibt auch weitere eingebaute Aktoren und Sensoren, wie z. B. das Display, die Tasten ...",
   "ARDUBRICK_TOOLTIP" : "Block für das Bot'n Roll board mit den angeschlossenen Aktoren und Sensoren. Es gibt auch weitere eingebaute Aktoren und Sensoren, wie z. B. das Display, die Tasten ...",
-  "EV3BRICK_TOOLTIP": "Block für den EV3 Stein mit den angeschlossenen Aktoren und Sensoren. Es gibt auch weitere eingebaute Aktoren und Sensoren, wie z. B. das Display, die Tasten ..."
+  "EV3BRICK_TOOLTIP": "Block für den EV3 Stein mit den angeschlossenen Aktoren und Sensoren. Es gibt auch weitere eingebaute Aktoren und Sensoren, wie z. B. das Display, die Tasten ...",
+  "BOTH" : "beide",
+  "PROCEDURES_DEFRETURN_RETURN": "gib zurück"
 }
