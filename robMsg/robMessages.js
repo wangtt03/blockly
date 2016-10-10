@@ -553,9 +553,9 @@ Blockly.Msg.MENU_LANGUAGE_TOOLTIP = 'languages';
 Blockly.Msg.MENU_LANGUAGE = 'languages';
 Blockly.Msg.POPUP_TOUR = 'take a tour';
 
-Blockly.Msg.CONFIGURATION_ERROR_MOTORS_ROTATION_DIRECTION='The direction of rotation of the left and right motor is different!';
-Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_RIGHT_MOTORS='You have multiple right motors assigned to your configuration!';
-Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_LEFT_MOTORS='You have multiple left motors assigned to your configuration!';
+Blockly.Msg.CONFIGURATION_ERROR_MOTORS_ROTATION_DIRECTION = 'The direction of rotation of the left and right motor is different!';
+Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_RIGHT_MOTORS = 'You have multiple right motors assigned to your configuration!';
+Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_LEFT_MOTORS = 'You have multiple left motors assigned to your configuration!';
 Blockly.Msg.WAIT_TIME_TOOLTIP = 'Waits for a certain time in milliseconds.';
 Blockly.Msg.POPUP_RELEASE = 'Version beta 1.4 <ul class="NonIcon"><li>Create one program for the real robot <strong>and</strong> for the simulated robot</li><li>Update blockly for better performance and zoom function</li></ul>';
 Blockly.Msg.POPUP_NEW_RELEASE = 'Version beta 2.0 <ul class="NonIcon"><li>NXT - create programs for LEGO Mindstorms NXT</li><li>Bot"n Roll - create programs for the educational robotic kit botnroll.com®compatible with Arduino™</li><li>Start programming with the new welcome tour</li><li>Improved Open Roberta Lab performance</ul>';
@@ -579,3 +579,6 @@ Blockly.Msg.NXTBRICK_TOOLTIP = 'Represents the NXT brick with connected actors a
 Blockly.Msg.ARDUBRICK_TOOLTIP = 'Represents the Bot"n Roll board with connected actors and sensors. There are also inbuild actors and sensors available, e.g. pushbuttons, display ...';
 Blockly.Msg.EV3BRICK_TOOLTIP = 'Represents the EV3 brick with connected actors and sensors. There are also inbuild actors and sensors available, e.g. buttons, display ...';
 Blockly.Msg.BOTH = 'both';
+
+
+Blockly.Msg.ORA_PROGRAM_IMPORT_ERROR_WRONG_ROBOT_TYPE = 'You are trying to import a program for a robot of a different type as selected in the menu. <br> Please switch the robot type in the robot"s menu and try to import again!';
