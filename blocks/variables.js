@@ -252,22 +252,44 @@ Blockly.Blocks['robGlobalVariables_declare'] = {
   init: function() {
     this.setHelpUrl(Blockly.Msg.VARIABLES_SET_HELPURL);
     this.setColour(Blockly.CAT_ACTIVITY_RGB);
-    var declType = new Blockly.FieldDropdown([
-      [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
-      [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
-      [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
-      [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
-    ], function(option) {
-      if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
-        this.sourceBlock_.updateType(option);
-        this.sourceBlock_.updateShape_(0, option);
-      }
-    });
+    var declType;
+    if (this.workspace.device === 'calliope') {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+        ['Image', 'Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        ['List Image', 'Array_Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+      ], function(option) {
+        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+          this.sourceBlock_.updateType(option);
+          this.sourceBlock_.updateShape_(0, option);
+        }
+      });
+    } else {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+      ], function(option) {
+        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+          this.sourceBlock_.updateType(option);
+          this.sourceBlock_.updateShape_(0, option);
+        }
+      });
+    }
     var name = Blockly.Variables.findLegalName(Blockly.Msg.VARIABLES_DEFAULT_NAME, this);
     this.nameOld = name;
     var nameField = new Blockly.FieldTextInput(name, this.validateName);
@@ -411,6 +433,8 @@ Blockly.Blocks['robGlobalVariables_declare'] = {
         block.setFieldValue(option.substr(6), 'LIST_TYPE');
       } else if (option === 'Colour') {
         block = this.workspace.newBlock('robColour_picker');
+      } else if (option === 'Image') {
+        block = this.workspace.newBlock('mbedImage_get_image');
       } else if (option === 'Connection') {
         block = this.workspace.newBlock('logic_null');
       }
@@ -441,21 +465,42 @@ Blockly.Blocks['robLocalVariables_declare'] = {
   init: function() {
     this.setHelpUrl(Blockly.Msg.VARIABLES_SET_HELPURL);
     this.setColour(Blockly.CAT_PROCEDURE_RGB);
-    var declType = new Blockly.FieldDropdown([
-      [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
-      [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
-      [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
-      [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
-    ], function(option) {
-      if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
-        this.sourceBlock_.updateType(option);
-      }
-    });
+    var declType;
+    if (this.workspace.device === 'calliope') {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+        ['Image', 'Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        ['Array Image', 'Array_Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+      ], function(option) {
+        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+          this.sourceBlock_.updateType(option);
+        }
+      });
+    } else {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+      ], function(option) {
+        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+          this.sourceBlock_.updateType(option);
+        }
+      });
+    }
     var name = Blockly.Variables.findLegalName('x', this);
     this.nameOld = name;
     var nameField = new Blockly.FieldTextInput(name, this.validateName);

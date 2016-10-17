@@ -112,6 +112,10 @@ Blockly.CAT_VARIABLE_RGB = "#9085BA";
  * The rgb value for block colours in communication category.
  */
 Blockly.CAT_COMMUNICATION_RGB = "#FF69B4";
+/**
+ * The rgb value for block colours in communication category.
+ */
+Blockly.CAT_IMAGE_RGB = "#DF01D7";
 
 /**
  * Lookup table for icon - categories.
@@ -249,12 +253,14 @@ Blockly.DATA_TYPE['Boolean'] = "#33B8CA";
 Blockly.DATA_TYPE['Colour'] = "#EBC300";
 Blockly.DATA_TYPE['Connection'] = "#FF69B4";
 Blockly.DATA_TYPE['Sensor'] = "#8FA402";
+Blockly.DATA_TYPE['Image'] = "#DF01D7";
 Blockly.DATA_TYPE['Actor'] = "#F29400";
 Blockly.DATA_TYPE['Array_Number'] = "#39378B";
 Blockly.DATA_TYPE['Array_String'] = "#39378B";
 Blockly.DATA_TYPE['Array_Boolean'] = "#39378B";
 Blockly.DATA_TYPE['Array_Colour'] = "#39378B";
 Blockly.DATA_TYPE['Array_Connection'] = "#39378B";
+Blockly.DATA_TYPE['Array_Image'] = "#39378B";
 
 /**
  * ENUM for toolbox and flyout at top of screen.

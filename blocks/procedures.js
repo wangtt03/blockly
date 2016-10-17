@@ -926,20 +926,42 @@ Blockly.Blocks['robProcedures_defreturn'] = {
    * @this Blockly.Block
    */
   init: function() {
-    var declType = new Blockly.FieldDropdown([ 
-      [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
-      [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
-      [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
-      [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String']
-    ], function(option) {
-      if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
-        this.sourceBlock_.updateType(option);
-      }
-    });
+    var declType;
+    if (this.workspace.device === 'calliope') {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+        ['Image', 'Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        ['Array Image', 'Array_Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+      ], function(option) {
+        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+          this.sourceBlock_.updateType(option);
+        }
+      });
+    } else {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+      ], function(option) {
+        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+          this.sourceBlock_.updateType(option);
+        }
+      });
+    }
     this.setHelpUrl(Blockly.Msg.PROCEDURES_DEFNORETURN_HELPURL);
     this.setColour(Blockly.CAT_PROCEDURE_RGB);
     var name = Blockly.Procedures.findLegalName(Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE, this);
@@ -1060,20 +1082,42 @@ Blockly.Blocks['robProcedures_defreturn'] = {
    * @this Blockly.Block
    */
   addDeclarationStatement_ : function() {
-    var declType = new Blockly.FieldDropdown([ 
-      [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
-      [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
-      [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
-      [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
-      [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String']
-    ], function(option) {
-      if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
-        this.sourceBlock_.updateType(option);
-      }
-    });
+    var declType;
+    if (this.workspace.device === 'calliope') {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+        ['Image', 'Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        ['Array Image', 'Array_Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+      ], function(option) {
+        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+          this.sourceBlock_.updateType(option);
+        }
+      });
+    } else {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+      ], function(option) {
+        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+          this.sourceBlock_.updateType(option);
+        }
+      });
+    }
     this.setFieldValue(Blockly.Msg.PROCEDURES_BEFORE_PARAMS, 'WITH');
     var returnConnectionTarget = this.getInput('RETURN').connection.targetConnection;
     var stackConnectionTarget = this.getInput('STACK').connection.targetConnection;

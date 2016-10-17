@@ -38,7 +38,7 @@ Blockly.Blocks['lists_create_empty'] = {
      * Block for creating an empty list. The 'list_create_with' block is
      * preferred as it is more flexible. <block type="lists_create_with">
      * <mutation items="0"></mutation> </block>
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -55,7 +55,7 @@ Blockly.Blocks['lists_create_empty'] = {
 Blockly.Blocks['lists_create_with'] = {
     /**
      * Block for creating a list with any number of elements of any type.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -69,7 +69,7 @@ Blockly.Blocks['lists_create_with'] = {
     },
     /**
      * Create XML to represent list inputs.
-     * 
+     *
      * @return {!Element} XML storage element.
      * @this Blockly.Block
      */
@@ -80,7 +80,7 @@ Blockly.Blocks['lists_create_with'] = {
     },
     /**
      * Parse XML to restore the list inputs.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -91,7 +91,7 @@ Blockly.Blocks['lists_create_with'] = {
     },
     /**
      * Populate the mutator's dialog with this block's components.
-     * 
+     *
      * @param {!Blockly.Workspace}
      *            workspace Mutator's workspace.
      * @return {!Blockly.Block} Root block in mutator.
@@ -111,7 +111,7 @@ Blockly.Blocks['lists_create_with'] = {
     },
     /**
      * Reconfigure this block based on the mutator dialog's components.
-     * 
+     *
      * @param {!Blockly.Block}
      *            containerBlock Root block in mutator.
      * @this Blockly.Block
@@ -140,7 +140,7 @@ Blockly.Blocks['lists_create_with'] = {
     },
     /**
      * Store pointers to any connected child blocks.
-     * 
+     *
      * @param {!Blockly.Block}
      *            containerBlock Root block in mutator.
      * @this Blockly.Block
@@ -157,7 +157,7 @@ Blockly.Blocks['lists_create_with'] = {
     },
     /**
      * Modify this block to have the correct number of inputs.
-     * 
+     *
      * @private
      * @this Blockly.Block
      */
@@ -187,7 +187,7 @@ Blockly.Blocks['lists_create_with'] = {
 Blockly.Blocks['lists_create_with_container'] = {
     /**
      * Mutator block for list container.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -202,7 +202,7 @@ Blockly.Blocks['lists_create_with_container'] = {
 Blockly.Blocks['lists_create_with_item'] = {
     /**
      * Mutator bolck for adding items.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -218,7 +218,7 @@ Blockly.Blocks['lists_create_with_item'] = {
 Blockly.Blocks['lists_repeat'] = {
     /**
      * Block for creating a list with one element repeated.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -243,7 +243,7 @@ Blockly.Blocks['lists_repeat'] = {
 Blockly.Blocks['lists_length'] = {
     /**
      * Block for list length.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -265,7 +265,7 @@ Blockly.Blocks['lists_length'] = {
 Blockly.Blocks['lists_isEmpty'] = {
     /**
      * Block for is the list empty?
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -287,7 +287,7 @@ Blockly.Blocks['lists_isEmpty'] = {
 Blockly.Blocks['lists_indexOf'] = {
     /**
      * Block for finding an item in the list.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -305,7 +305,7 @@ Blockly.Blocks['lists_indexOf'] = {
 Blockly.Blocks['lists_getIndex'] = {
     /**
      * Block for getting element at index.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -338,7 +338,7 @@ Blockly.Blocks['lists_getIndex'] = {
     /**
      * Create XML to represent whether the block is a statement or a value. Also
      * represent whether there is an 'AT' input.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -352,7 +352,7 @@ Blockly.Blocks['lists_getIndex'] = {
     },
     /**
      * Parse XML to restore the 'AT' input.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -367,7 +367,7 @@ Blockly.Blocks['lists_getIndex'] = {
     },
     /**
      * Switch between a value block and a statement block.
-     * 
+     *
      * @param {boolean}
      *            newStatement True if the block should be a statement. False if
      *            the block should be a value.
@@ -391,7 +391,7 @@ Blockly.Blocks['lists_getIndex'] = {
     },
     /**
      * Create or delete an input for the numeric index.
-     * 
+     *
      * @param {boolean}
      *            isAt True if the input should exist.
      * @private
@@ -432,7 +432,7 @@ Blockly.Blocks['lists_getIndex'] = {
 Blockly.Blocks['lists_setIndex'] = {
     /**
      * Block for setting the element at index.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -459,7 +459,7 @@ Blockly.Blocks['lists_setIndex'] = {
     },
     /**
      * Create XML to represent whether there is an 'AT' input.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -471,7 +471,7 @@ Blockly.Blocks['lists_setIndex'] = {
     },
     /**
      * Parse XML to restore the 'AT' input.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -484,7 +484,7 @@ Blockly.Blocks['lists_setIndex'] = {
     },
     /**
      * Create or delete an input for the numeric index.
-     * 
+     *
      * @param {boolean}
      *            isAt True if the input should exist.
      * @private
@@ -527,7 +527,7 @@ Blockly.Blocks['lists_setIndex'] = {
 Blockly.Blocks['lists_getSublist'] = {
     /**
      * Block for getting sublist.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -551,7 +551,7 @@ Blockly.Blocks['lists_getSublist'] = {
     },
     /**
      * Create XML to represent whether there are 'AT' inputs.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -565,7 +565,7 @@ Blockly.Blocks['lists_getSublist'] = {
     },
     /**
      * Parse XML to restore the 'AT' inputs.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -579,7 +579,7 @@ Blockly.Blocks['lists_getSublist'] = {
     /**
      * Create or delete an input for a numeric index. This block has two such
      * inputs, independant of each other.
-     * 
+     *
      * @param {number}
      *            n Specify first or second input (1 or 2).
      * @param {boolean}
@@ -629,7 +629,7 @@ Blockly.Blocks['lists_getSublist'] = {
 Blockly.Blocks['lists_sort'] = {
     /**
      * Block for sorting a list.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -661,7 +661,7 @@ Blockly.Blocks['lists_sort'] = {
 Blockly.Blocks['lists_split'] = {
     /**
      * Block for splitting text into a list, or joining a list into text.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -689,7 +689,7 @@ Blockly.Blocks['lists_split'] = {
     },
     /**
      * Modify this block to have the correct input and output types.
-     * 
+     *
      * @param {string}
      *            newMode Either 'SPLIT' or 'JOIN'.
      * @private
@@ -706,7 +706,7 @@ Blockly.Blocks['lists_split'] = {
     },
     /**
      * Create XML to represent the input and output types.
-     * 
+     *
      * @return {!Element} XML storage element.
      * @this Blockly.Block
      */
@@ -717,7 +717,7 @@ Blockly.Blocks['lists_split'] = {
     },
     /**
      * Parse XML to restore the input and output types.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -730,18 +730,27 @@ Blockly.Blocks['lists_split'] = {
 Blockly.Blocks['robLists_create_with'] = {
     /**
      * Block for creating a list with any number of elements of any type.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
         this.setColour(Blockly.CAT_LIST_RGB);
-        var listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
-                [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ],
-                [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ], ], function(option) {
-            this.sourceBlock_.updateType_(option);
-        });
-        this.appendValueInput('ADD0').appendField(Blockly.Msg.LISTS_CREATE_TITLE).appendField(':').appendField(listType, 'LIST_TYPE').appendField(
-                Blockly.RTL ? '\u2192' : '\u2190').setCheck('Number');
+        var listType;
+        if (this.workspace.device === 'calliope') {
+            listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ 'Image', 'Image' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ] ], function(option) {
+                this.sourceBlock_.updateType_(option);
+            });
+        } else {
+            listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ], ], function(option) {
+                this.sourceBlock_.updateType_(option);
+            });
+        }
+        this.appendValueInput('ADD0').appendField(Blockly.Msg.LISTS_CREATE_TITLE).appendField(':').appendField(listType, 'LIST_TYPE').appendField(Blockly.RTL ? '\u2192'
+                : '\u2190').setCheck('Number');
         this.setInputsInline(false);
         this.appendValueInput('ADD1').setCheck('Number');
         this.appendValueInput('ADD2').setCheck('Number');
@@ -754,7 +763,7 @@ Blockly.Blocks['robLists_create_with'] = {
     },
     /**
      * Create XML to represent list inputs.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -766,7 +775,7 @@ Blockly.Blocks['robLists_create_with'] = {
     },
     /**
      * Parse XML to restore the list inputs.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -777,16 +786,25 @@ Blockly.Blocks['robLists_create_with'] = {
         }
         this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
         this.listType_ = xmlElement.getAttribute('list_type');
-        var listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
-                [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ],
-                [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ], ], function(option) {
-            this.sourceBlock_.updateType_(option);
-        });
+        var listType;
+        if (this.workspace.device === 'calliope') {
+            listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ 'Image', 'Image' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ] ], function(option) {
+                this.sourceBlock_.updateType_(option);
+            });
+        } else {
+            listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ], ], function(option) {
+                this.sourceBlock_.updateType_(option);
+            });
+        }
         this.itemCount_ = parseInt(xmlElement.getAttribute('items'), 10);
         for (var x = 0; x < this.itemCount_; x++) {
             if (x == 0) {
-                this.appendValueInput('ADD0').appendField(Blockly.Msg.LISTS_CREATE_TITLE).appendField(':').appendField(listType, 'LIST_TYPE').appendField(
-                        Blockly.RTL ? '\u2192' : '\u2190').setCheck(this.listType_);
+                this.appendValueInput('ADD0').appendField(Blockly.Msg.LISTS_CREATE_TITLE).appendField(':').appendField(listType, 'LIST_TYPE').appendField(Blockly.RTL ? '\u2192'
+                        : '\u2190').setCheck(this.listType_);
                 this.setInputsInline(false);
             } else {
                 this.appendValueInput('ADD' + x).setCheck(this.listType_);
@@ -804,24 +822,33 @@ Blockly.Blocks['robLists_create_with'] = {
 
     /**
      * Update the shape according to the number of item inputs.
-     * 
+     *
      * @param {Number}
      *            number of item inputs.
      * @this Blockly.Block
      */
     updateShape_ : function(num) {
         Blockly.dragMode_ = Blockly.DRAG_NONE;
-        var listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
-                [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ],
-                [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ], ], function(option) {
-            this.sourceBlock_.updateType_(option);
-        });
+        var listType;
+        if (this.workspace.device === 'calliope') {
+            listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ 'Image', 'Image' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ] ], function(option) {
+                this.sourceBlock_.updateType_(option);
+            });
+        } else {
+            listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ], ], function(option) {
+                this.sourceBlock_.updateType_(option);
+            });
+        }
         listType.setValue(this.listType_);
         if (num == 1) {
             if (this.itemCount_ == 0) {
                 this.removeInput('EMPTY');
-                this.appendValueInput('ADD0').appendField(Blockly.Msg.LISTS_CREATE_TITLE).appendField(':').appendField(listType, 'LIST_TYPE').appendField(
-                        Blockly.RTL ? '\u2192' : '\u2190').setCheck(this.listType_);
+                this.appendValueInput('ADD0').appendField(Blockly.Msg.LISTS_CREATE_TITLE).appendField(':').appendField(listType, 'LIST_TYPE').appendField(Blockly.RTL ? '\u2192'
+                        : '\u2190').setCheck(this.listType_);
                 this.setInputsInline(false);
                 this.setMutatorMinus(new Blockly.MutatorMinus(this));
             } else {
@@ -852,7 +879,7 @@ Blockly.Blocks['robLists_create_with'] = {
     },
     /**
      * Update input and output type according to the value of dropdown menu.
-     * 
+     *
      * @param {String}
      *            option type of array fields.
      * @this Blockly.Block
@@ -892,6 +919,9 @@ Blockly.Blocks['robLists_create_with'] = {
         case 'Colour':
             block = this.workspace.newBlock('robColour_picker');
             return block;
+        case 'Image':
+            block = this.workspace.newBlock('mbedImage_get_image');
+            return block;
         case 'Connection':
             block = this.workspace.newBlock('logic_null');
             return block;
@@ -902,7 +932,7 @@ Blockly.Blocks['robLists_create_with'] = {
 Blockly.Blocks['robLists_repeat'] = {
     /**
      * Block for creating a list with one element repeated.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -928,12 +958,20 @@ Blockly.Blocks['robLists_repeat'] = {
         this.removeInput("NUM");
         this.removeInput("ITEM");
         this.removeInput("");
-
-        var listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
-                [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ],
-                [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ], ], function(option) {
-            this.sourceBlock_.updateType_(option);
-        });
+        var listType;
+        if (this.workspace.device === 'calliope') {
+            listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ 'Image', 'Image' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ] ], function(option) {
+                this.sourceBlock_.updateType_(option);
+            });
+        } else {
+            var listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ],
+                    [ Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ] ], function(option) {
+                this.sourceBlock_.updateType_(option);
+            });
+        }
         this.appendValueInput('ITEM').appendField(one).appendField(listType, 'LIST_TYPE');
         this.appendValueInput('NUM').appendField(two).setCheck('Number');
         this.appendDummyInput().appendField(three);
@@ -950,7 +988,7 @@ Blockly.Blocks['robLists_repeat'] = {
     },
     /**
      * Update input and output type according to the value of dropdown menu.
-     * 
+     *
      * @param {String}
      *            option type of array fields.
      * @this Blockly.Block
@@ -968,7 +1006,7 @@ Blockly.Blocks['robLists_repeat'] = {
 Blockly.Blocks['robLists_length'] = {
     /**
      * Block for list length.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -990,7 +1028,7 @@ Blockly.Blocks['robLists_length'] = {
 Blockly.Blocks['robLists_isEmpty'] = {
     /**
      * Block for is the list empty?
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -1012,7 +1050,7 @@ Blockly.Blocks['robLists_isEmpty'] = {
 Blockly.Blocks['robLists_indexOf'] = {
     /**
      * Block for finding an item in the list.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -1020,8 +1058,7 @@ Blockly.Blocks['robLists_indexOf'] = {
         this.setHelpUrl(Blockly.Msg.LISTS_INDEX_OF_HELPURL);
         this.setColour(Blockly.CAT_LIST_RGB);
         this.setOutput(true, 'Number');
-        this.appendValueInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', ]).appendField(
-                Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST);
+        this.appendValueInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', ]).appendField(Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST);
         this.appendValueInput('FIND').appendField(new Blockly.FieldDropdown(OPERATORS), 'END');
         this.setInputsInline(true);
         this.setTooltip(Blockly.Msg.LISTS_INDEX_OF_TOOLTIP);
@@ -1050,7 +1087,7 @@ Blockly.Blocks['robLists_indexOf'] = {
 Blockly.Blocks['robLists_getIndex'] = {
     /**
      * Block for getting element at index.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -1074,8 +1111,7 @@ Blockly.Blocks['robLists_getIndex'] = {
             var isStatement = (value == 'REMOVE');
             this.sourceBlock_.updateStatement_(isStatement);
         });
-        this.appendValueInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', ]).appendField(
-                Blockly.Msg.LISTS_GET_INDEX_INPUT_IN_LIST);
+        this.appendValueInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', ]).appendField(Blockly.Msg.LISTS_GET_INDEX_INPUT_IN_LIST);
         this.appendDummyInput().appendField(modeMenu, 'MODE').appendField('', 'SPACE');
         this.appendDummyInput('AT');
         if (Blockly.Msg.LISTS_GET_INDEX_TAIL) {
@@ -1094,7 +1130,7 @@ Blockly.Blocks['robLists_getIndex'] = {
     /**
      * Create XML to represent whether the block is a statement or a value. Also
      * represent whether there is an 'AT' input.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -1108,7 +1144,7 @@ Blockly.Blocks['robLists_getIndex'] = {
     },
     /**
      * Parse XML to restore the 'AT' input.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -1123,7 +1159,7 @@ Blockly.Blocks['robLists_getIndex'] = {
     },
     /**
      * Switch between a value block and a statement block.
-     * 
+     *
      * @param {boolean}
      *            newStatement True if the block should be a statement. False if
      *            the block should be a value.
@@ -1147,7 +1183,7 @@ Blockly.Blocks['robLists_getIndex'] = {
     },
     /**
      * Create or delete an input for the numeric index.
-     * 
+     *
      * @param {boolean}
      *            isAt True if the input should exist.
      * @private
@@ -1201,7 +1237,7 @@ Blockly.Blocks['robLists_getIndex'] = {
 Blockly.Blocks['robLists_setIndex'] = {
     /**
      * Block for setting the element at index.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -1217,8 +1253,7 @@ Blockly.Blocks['robLists_setIndex'] = {
         }
         this.setHelpUrl(Blockly.Msg.LISTS_SET_INDEX_HELPURL);
         this.setColour(Blockly.CAT_LIST_RGB);
-        this.appendValueInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String' ]).appendField(
-                Blockly.Msg.LISTS_SET_INDEX_INPUT_IN_LIST);
+        this.appendValueInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String' ]).appendField(Blockly.Msg.LISTS_SET_INDEX_INPUT_IN_LIST);
         this.appendDummyInput().appendField(new Blockly.FieldDropdown(MODE), 'MODE').appendField('', 'SPACE');
         this.appendDummyInput('AT');
         this.appendValueInput('TO').appendField(Blockly.Msg.LISTS_SET_INDEX_INPUT_TO);
@@ -1236,7 +1271,7 @@ Blockly.Blocks['robLists_setIndex'] = {
     },
     /**
      * Create XML to represent whether there is an 'AT' input.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -1248,7 +1283,7 @@ Blockly.Blocks['robLists_setIndex'] = {
     },
     /**
      * Parse XML to restore the 'AT' input.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -1261,7 +1296,7 @@ Blockly.Blocks['robLists_setIndex'] = {
     },
     /**
      * Create or delete an input for the numeric index.
-     * 
+     *
      * @param {boolean}
      *            isAt True if the input should exist.
      * @private
@@ -1322,7 +1357,7 @@ Blockly.Blocks['robLists_setIndex'] = {
 Blockly.Blocks['robLists_getSublist'] = {
     /**
      * Block for getting sublist.
-     * 
+     *
      * @this Blockly.Block
      */
     init : function() {
@@ -1332,8 +1367,7 @@ Blockly.Blocks['robLists_getSublist'] = {
                 [ Blockly.Msg.LISTS_GET_SUBLIST_END_LAST, 'LAST' ] ];
         this.setHelpUrl(Blockly.Msg.LISTS_GET_SUBLIST_HELPURL);
         this.setColour(Blockly.CAT_LIST_RGB);
-        this.appendValueInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String' ]).appendField(
-                Blockly.Msg.LISTS_GET_SUBLIST_INPUT_IN_LIST);
+        this.appendValueInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String' ]).appendField(Blockly.Msg.LISTS_GET_SUBLIST_INPUT_IN_LIST);
         this.appendDummyInput('AT1');
         this.appendDummyInput('AT2');
         if (Blockly.Msg.LISTS_GET_SUBLIST_TAIL) {
@@ -1347,7 +1381,7 @@ Blockly.Blocks['robLists_getSublist'] = {
     },
     /**
      * Create XML to represent whether there are 'AT' inputs.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -1361,7 +1395,7 @@ Blockly.Blocks['robLists_getSublist'] = {
     },
     /**
      * Parse XML to restore the 'AT' inputs.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -1375,7 +1409,7 @@ Blockly.Blocks['robLists_getSublist'] = {
     /**
      * Create or delete an input for a numeric index. This block has two such
      * inputs, independant of each other.
-     * 
+     *
      * @param {number}
      *            n Specify first or second input (1 or 2).
      * @param {boolean}

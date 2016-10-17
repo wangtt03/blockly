@@ -592,7 +592,6 @@ Blockly.Blocks['robMath_change'] = {
       return;
     }
     var blockVar = this.getInputTargetBlock('VAR');
-    console.log(blockVar);
     if (blockVar && blockVar.type !== 'variables_get') {
       blockVar.unplug();
       blockVar.bumpNeighbours_();
