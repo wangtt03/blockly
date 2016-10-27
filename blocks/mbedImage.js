@@ -13,27 +13,6 @@ goog.require('Blockly.Blocks');
  * @lends Block
  */
 
-//Blockly.Blocks['mbedImage_image'] = {
-//    /**
-//     * Represents an image.
-//     *
-//     * @constructs mbedImage_image
-//     * @this.Blockly.Block
-//     * @returns immediately
-//     * @memberof Block
-//     */
-//    init : function() {
-//        this.setColour(Blockly.CAT_IMAGE_RGB);
-//        this.appendDummyInput().appendField("    0     1     2     3     4");
-//        this.appendDummyInput().appendField("0").appendField(new Blockly.FieldCheckbox(), "P00").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P10").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P20").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P30").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P40");
-//        this.appendDummyInput().appendField("1").appendField(new Blockly.FieldCheckbox(), "P01").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P11").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P21").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P31").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P41");
-//        this.appendDummyInput().appendField("2").appendField(new Blockly.FieldCheckbox(), "P02").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P12").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P22").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P32").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P42");
-//        this.appendDummyInput().appendField("3").appendField(new Blockly.FieldCheckbox(), "P03").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P13").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P23").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P33").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P43");
-//        this.appendDummyInput().appendField("4").appendField(new Blockly.FieldCheckbox(), "P04").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P14").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P24").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P34").appendField(' ').appendField(new Blockly.FieldCheckbox(), "P44");
-//        this.setOutput(true, 'Image');
-//        // this.setTooltip();
-//    }
-//};
 Blockly.Blocks['mbedImage_image'] = {
     /**
      * Represents an image.
@@ -151,17 +130,19 @@ Blockly.Blocks['mbedImage_get_image'] = {
      * @this Blockly.Block
      */
     init : function() {
-        this.jsonInit({
-            "message0" : "get %1",
-            "args0" : [ {
-                "type" : "field_dropdown",
-                "name" : "IMAGE",
-                "options" : [ [ 'heart', 'HEART' ], [ 'heart small', 'HEART_SMALL' ], [ 'smile', 'SMILE' ], [ 'confused', 'CONFUSED' ], [ 'angry', 'ANGRY' ],
-                        [ 'asleep', 'ASLEEP' ], [ 'surprised', 'SURPRISED' ], [ 'silly', 'SILLY' ], [ 'fabulous', 'FABULOUS' ], [ 'meh!', 'MEH' ],
-                        [ 'yes', 'YES' ], [ 'no', 'NO' ] ]
-            } ],
-            "output" : "Image",
-            "colour" : Blockly.CAT_IMAGE_RGB
-        });
+        var options = [ [ 'heart', 'HEART' ], [ 'heart small', 'HEART_SMALL' ], [ 'smile', 'SMILE' ], [ 'confused', 'CONFUSED' ], [ 'angry', 'ANGRY' ],
+                [ 'asleep', 'ASLEEP' ], [ 'surprised', 'SURPRISED' ], [ 'silly', 'SILLY' ], [ 'fabulous', 'FABULOUS' ], [ 'meh!', 'MEH' ], [ 'yes', 'YES' ],
+                [ 'no', 'NO' ], [ 'triangle', 'TRIANGLE' ], [ 'triangle left', 'TRIANGLE_LEFT' ], [ 'chessboard', 'CHESSBOARD' ], [ 'diamond', 'DIAMOND' ],
+                [ 'diamond small', 'DIAMOND_SMALL' ], [ 'square', 'SQUARE' ], [ 'square small', 'SQUARE_SMALL' ], [ 'rabbit', 'RABBIT' ], [ 'cow', 'COW' ],
+                [ 'music crotchet', 'MUSIC_CROTCHET' ], [ 'music quaver', 'MUSIC_QUAVER' ], [ 'music quavers', 'MUSIC_QUAVERS' ], [ 'pitchfork', 'PITCHFORK' ],
+                [ 'xmas', 'XMAS' ], [ 'pacman', 'PACMAN' ], [ 'target', 'TARGET' ], [ 'T-shirt', 'TSHIRT' ], [ 'rollerskate', 'ROLLERSKATE' ],
+                [ 'duck', 'DUCK' ], [ 'house', 'HOUSE' ], [ 'tortoise', 'TORTOISE' ], [ 'butterfly', 'BUTTERFLY' ], [ 'stickfigure', 'STICKFIGURE' ],
+                [ 'ghost', 'GHOST' ], [ 'sword', 'SWORD' ], [ 'giraffe', 'GIRAFFE' ], [ 'skull', 'SKULL' ], [ 'umbrella', 'UMBRELLA' ], [ 'snake', 'SNAKE' ],
+                [ 'sad', 'SAD' ] ];
+        var dropdown = new Blockly.FieldDropdownImage(options, '../media/dropDowns/', 24, 24, 'png');
+        this.setColour(Blockly.CAT_IMAGE_RGB);
+        this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(dropdown, 'IMAGE');
+        this.setOutput(true, 'Image');
+        this.setTooltip('hallo Beate');
     }
 };

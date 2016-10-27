@@ -763,7 +763,12 @@ Blockly.Css.CONTENT = [
     'padding: 4px 7em 4px 28px;',
     'white-space: nowrap;',
   '}',
-
+  
+  '.blocklyWidgetDiv .goog-menuitem.dropdownImage{',
+    'padding: 4px 0 4px 28px;',
+    'white-space: nowrap;',
+    'height: 26px',
+  '}',
   /* BiDi override for the resting state. */
   /* #noflip */
   '.blocklyWidgetDiv .goog-menuitem.goog-menuitem-rtl {',

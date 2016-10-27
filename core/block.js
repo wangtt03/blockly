@@ -1124,6 +1124,9 @@ Blockly.Block.prototype.interpolate_ = function(message, args, lastDummyAlign) {
           case 'field_dropdown':
             field = new Blockly.FieldDropdown(element['options']);
             break;
+          case 'field_dropdownImage':
+              field = new Blockly.FieldDropdownImage(element['options']);
+            break;
           case 'field_image':
             field = new Blockly.FieldImage(element['src'],
                 element['width'], element['height'], element['alt']);

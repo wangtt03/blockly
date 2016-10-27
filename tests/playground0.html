@@ -9,12 +9,14 @@
     <script src="../robMsg/robMessages.js"></script>
     <script src="../core/blockly.js"></script>
     <script src="../core/constants.js"></script>
+    <script src="../core/events.js"></script>
+      <script src="../core/flyout.js"></script>
     <script src="../core/css.js"></script>
+    <script src="../core/field.js"></script>
     <script src="../core/inject.js"></script>
     <script src="../core/field.js"></script>
     <script src="../core/field_label.js"></script>
-    <script src="../core/field_dropdown.js"></script>
-    <script src="../core/field_textinput.js"></script>
+    <script src="../core/field_dropdownImage.js"></script>
     <script src="../core/workspace.js"></script>
     <script src="../core/workspace_svg.js"></script>
     <script src="../core/icon.js"></script>
@@ -272,6 +274,10 @@
     <toolbox_set id='toolbox' style='display: none'>
         <category name='TOOLBOX_ACTION' svg="true">
             <category name='brick'>
+             <block type="demo_image">
+    <field name="SOURCE">https://neil.fraser.name/common/no.gif</field>
+    <field name="IMAGE">https://neil.fraser.name/common/no.gif</field>
+  </block>
                 <block type='mbedBrick_Calliope-Brick'></block>
                 <block type='mbedBrick_microbit-Brick'></block>
             </category>
