@@ -159,10 +159,12 @@ Blockly.Procedures.rename = function(text) {
 Blockly.Procedures.robRename = function(text) {
  // Strip leading and trailing whitespace.  Beyond this, all names are legal.
   text = text.replace(/^[\s\xa0]+|[\s\xa0]+$/g, '');
+  // micropython cannot compile functions with capital letter first
+  text = text.substring(0, 1).toLowerCase() + text.substring(1);
   if (text === '')
     return null;
     // java convention naming?
-  if (!text.match(/^[a-zA-Z][a-zA-Z0-9_]*$/))
+  if (!text.match(/^[a-z][a-zA-Z0-9_]*$/))
     return null;
   // Ensure two identically-named procedures don't exist.
   text = Blockly.Procedures.findLegalName(text, this.sourceBlock_);

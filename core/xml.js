@@ -76,45 +76,39 @@ Blockly.Xml.blockToDomWithXY = function(block, statement_list) {
  * @return {!Element} Tree of XML elements.
  */
 Blockly.Xml.blockToDom = function(block, statement_list) {
-    var element = goog.dom.createDom(block.isShadow() ? 'shadow' : 'block');
-    var repetitions = goog.dom.createDom('repetitions');
-    var repe = false;
-    statement_list.push(element);
-    element.setAttribute('type', block.type);
-    element.setAttribute('id', block.id);
-    if (block.mutationToDom) {
-        // Custom data for an advanced block.
-        var mutation = block.mutationToDom();
-        if (mutation && (mutation.hasChildNodes() || mutation.hasAttributes())) {
-            element.appendChild(mutation);
-            if (mutation !== undefined && mutation != null
-                    && (block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for' || block.type == 'robControls_wait')) {
-                element.appendChild(repetitions);
-                repe = true;
-            }
-        }
+  var element = goog.dom.createDom(block.isShadow() ? 'shadow' : 'block');
+  var repetitions = goog.dom.createDom('repetitions');
+  var repe = false;
+  statement_list.push(element);
+  element.setAttribute('type', block.type);
+  element.setAttribute('id', block.id);
+  if (block.mutationToDom) {
+    // Custom data for an advanced block.
+    var mutation = block.mutationToDom();
+    if (mutation && (mutation.hasChildNodes() || mutation.hasAttributes())) {
+      element.appendChild(mutation);
+      if (mutation !== undefined && mutation != null
+           && (block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for' || block.type == 'robControls_wait')) {
+         element.appendChild(repetitions);
+         repe = true;
+      }
     }
+  }
 
-    function fieldToDom(field) {
-        if (field.name && field.EDITABLE) {
-            var value = field.getValue();
-            // check for numerals with decimal comma and convert them to decimal point
-            var testNum = field.getValue().replace(/,/g, '.');
-            if (!isNaN(testNum)) {
-                value = String(testNum);
-            }
-            var container = goog.dom.createDom('field', null, value);
-            container.setAttribute('name', field.name);
-            element.appendChild(container);
-        }
-    }
   function fieldToDom(field) {
     if (field.name && field.EDITABLE) {
-      var container = goog.dom.createDom('field', null, field.getValue());
+      var value = field.getValue();
+      // check for numerals with decimal comma and convert them to decimal point
+      var testNum = field.getValue().replace(/,/g, '.');
+      if (!isNaN(testNum)) {
+        value = String(testNum);
+      }
+      var container = goog.dom.createDom('field', null, value);
       container.setAttribute('name', field.name);
       element.appendChild(container);
     }
   }
+    
   for (var i = 0, input; input = block.inputList[i]; i++) {
     for (var j = 0, field; field = input.fieldRow[j]; j++) {
       fieldToDom(field);
@@ -386,7 +380,7 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
   
       // make sure the start block is in the first column, to avoid errors while instantiating blocks with global variables before the variable declaration
     for (var i = 0; i < xmlBlockList.length; i++) {
-        if (xmlBlockList[i][0].getAttribute('type') == 'robControls_start' || xmlBlockList[i][0].getAttribute('type') == 'robControls_start_ardu') {
+        if (xmlBlockList[i][0].getAttribute('type').indexOf('Controls_start') !== -1) {
             xmlBlockList[i] = xmlBlockList.splice(0, 1, xmlBlockList[i])[0];
             xmlBlockPos[i] = xmlBlockPos.splice(0, 1, xmlBlockPos[i])[0];
             break;
