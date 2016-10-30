@@ -408,7 +408,7 @@ Blockly.Blocks['robGlobalVariables_declare'] = {
       var parent = this.getParent();
       var nextBlock = this.getNextBlock();
       this.unplug(true, true);
-      if (!!parent && (parent.type == 'robControls_start' || parent.type == 'robControls_start_ardu') && !nextBlock) {
+      if (!!parent && (parent.type.indexOf('Controls_start') !== -1) && !nextBlock) {
         parent.updateShape_(num);
       } else if (!!parent && !nextBlock) {
         parent.setNext(false);

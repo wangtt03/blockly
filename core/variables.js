@@ -359,7 +359,7 @@ Blockly.Variables.getVariableType = function(name) {
         } else if (surroundParent && (surroundParent.type == 'robProcedures_defnoreturn' || surroundParent.type == 'robProcedures_defreturn')) {
           return {'local' : surroundParent.getFieldValue('NAME')};
         // special case variables declaration start block, global
-        } else if (surroundParent && (surroundParent.type == 'robControls_start' || surroundParent.type == 'robControls_start_ardu')) {
+        } else if (surroundParent && (surroundParent.type.indexOf('Controls_start') !== -1)) {
           return {'global' : 'global'};
         }
       }
@@ -464,7 +464,7 @@ Blockly.Variables.allGlobalVariables = function() {
   var variableList = [];
   for (var i = 0; i < topBlocks.length; i++) {
     var block = topBlocks[i];
-    if (block.type === 'robControls_start' || block.type === 'robControls_start_ardu') {
+    if (block.type.indexOf('Controls_start') !== -1) {
       var descendants = block.getDescendants();
       if (descendants) {
         variable: for (var i = 1; i < descendants.length; i++) {

@@ -5,17 +5,20 @@
     <meta charset="utf-8">
     <title>Blockly Playground</title>
     <script src="../blockly_compressed.js"></script>
-    <script src="../msg/js/de.js"></script>
+    <script src="../blocks_compressed.js"></script>
     <script src="../robMsg/robMessages.js"></script>
+    <script src="../msg/js/de.js"></script>
+   
     <script src="../core/blockly.js"></script>
     <script src="../core/constants.js"></script>
     <script src="../core/events.js"></script>
-      <script src="../core/flyout.js"></script>
+    <script src="../core/flyout.js"></script>
     <script src="../core/css.js"></script>
     <script src="../core/field.js"></script>
     <script src="../core/inject.js"></script>
     <script src="../core/field.js"></script>
     <script src="../core/field_label.js"></script>
+    <script src="../core/field_note.js"></script>
     <script src="../core/field_dropdownImage.js"></script>
     <script src="../core/workspace.js"></script>
     <script src="../core/workspace_svg.js"></script>
@@ -45,16 +48,17 @@
     <script src="../blocks/math.js"></script>
     <script src="../blocks/text.js"></script>
     <script src="../blocks/lists.js"></script>
-    <script src="../blocks/colour.js"></script>
+    <script src="../blocks/mbedColour.js"></script>
     <script src="../blocks/variables.js"></script>
     <script src="../blocks/procedures.js"></script>
     <script src="../blocks/mbedBrick.js"></script>
+    <script src="../blocks/mbedControls.js"></script>
     <script src="../blocks/mbedActions.js"></script>
     <script src="../blocks/mbedSensors.js"></script>
-    <script src="../blocks/robColour.js"></script>
     <script src="../blocks/robControls.js"></script>
     <script src="../blocks/mbedImage.js"></script>
     <script src="../blocks/variables.js"></script>
+    <script src="../blocks/mbedCommunication.js"></script>
     <link rel="stylesheet" type="text/css" href="typicons.css"></link>
 
     <script>
@@ -73,7 +77,7 @@
                 grid: {
                     spacing: 25,
                     length: 3,
-                    colour: '#ccc',
+                    ur: '#ccc',
                     snap: true
                 },
                 maxBlocks: Infinity,
@@ -294,20 +298,21 @@
                 <block type='mbedActions_display_clear'>
                 </block>
             </category>
+            <category name='TOOLBOX_MOVE' svg="true">
+            <block type='mbedActions_motor_on'>
+                <value name='POWER'>
+                    <block type='math_number'>
+                        <field name='NUM'>30</field>
+                    </block>
+                </value>
+            </block>
+            </category>
             <category name='TOOLBOX_SOUND' svg="true">
-                <!-- <block type='robActions_play_tone'>
-                    <value name='FREQUENCE'>
-                        <block type='math_number'>
-                            <field name='NUM'>300</field>
-                        </block>
-                    </value>
-                    <value name='DURATION'>
-                        <block type='math_number'>
-                            <field name='NUM'>100</field>
-                        </block>
-                    </value>
+               <block type='mbedActions_play_tone'>                 
                 </block>
-                <block type='robActions_play_file'>
+                <block type='mbedActions_play_note'>            
+                </block>
+               <!-- <block type='robActions_play_file'>
                 </block>
                 <block type='robActions_play_setVolume'>
                     <value name='VOLUME'>
@@ -320,14 +325,14 @@
                 </block> -->
             </category>
             <category name='TOOLBOX_LIGHT' svg="true">
-                <block type='robActions_brickLight_on'></block>
-                <block type='robActions_brickLight_off'></block>
+                <block type='mbedActions_leds_on'></block>
+                <block type='mbedActions_leds_off'></block>
             </category>
         </category>
         <category name='TOOLBOX_SENSOR' svg="true">
-            <!-- <block type='robSensors_touch_isPressed'>
-            </block>
-            <block type='sim_touch_isPressed'>
+            <!-- <block type='mbedSensors_touch_isPressed'>
+            </block> -->
+            <!-- <block type='sim_touch_isPressed'>
             </block>
             <block type='robSensors_ultrasonic_getSample'>
             </block>
@@ -351,6 +356,8 @@
             </block>
             <block type='mbedSensors_temperature_getSample'>
             </block>
+            <block type='mbedSensors_ambientLight_getSample'>
+            </block>          
             <!-- <block type='robSensors_sound_getSample'>
             </block>
             <block type='robSensors_light_getSample'>
@@ -421,7 +428,7 @@
                 </block>
                 </category>
             <category name='Tasks'>
-                <block type='robControls_start'></block>
+                <block type='mbedControls_start'></block>
             </category>
         </category>
         <category name='TOOLBOX_LOGIC' svg="true">
@@ -518,7 +525,9 @@
             </block>
         </category>
         <category name='TOOLBOX_COLOUR' svg="true">
-            <block type='robColour_picker'>
+            <block type='mbedColour_picker'>
+            </block>
+            <block type='mbedColour_rgb'>
             </block>
         </category>
         <category name='TOOLBOX_IMAGE' svg="true">
@@ -538,18 +547,19 @@
         </category>
         <category name='TOOLBOX_VARIABLE' custom='VARIABLE' svg="true"></category>
         <category name='TOOLBOX_PROCEDURE' custom='PROCEDURE' svg="true"></category>
-        <!-- <category name='TOOLBOX_COMMUNICATION' svg="true">
-            <block type='robCommunication_startConnection'></block>
-            <block type='robCommunication_sendBlock'></block>
-            <block type='robCommunication_receiveBlock'></block>
+        <category name='TOOLBOX_COMMUNICATION' svg="true">        
+            <block type='mbedCommunication_sendBlock'></block>
+            <block type='mbedCommunication_receiveBlock'></block>
+            <!--<block type='robCommunication_startConnection'></block>
+            
             <block type='robCommunication_waitForConnection'></block>
             <block type='robCommunication_connection'></block>
             <block type='robCommunication_checkConnection'>
                 <value name='CONNECTION'>
                     <block type='robCommunication_connection'></block>
                 </value>
-            </block>
-        </category> -->
+            </block>-->
+        </category> 
     </toolbox_set>
 
     <h1>Blockly Playground</h1>

@@ -192,7 +192,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
                 this.appendValue_('COLOUR');
                 sensorPort.setValue('3');
                 this.setOutput(true, 'Colour');
-            } else if (this.sensorType_ == 'COLOUR_LIGHT' || this.sensorType_ == 'COLOUR_AMBIENTLIGHT') {
+            } else if (this.sensorType_ == 'COLOUR_LIGHT' || this.sensorType_ == 'COLOUR_LIGHT') {
                 this.appendValue_('NUM', 50);
                 sensorPort.setValue('3');
                 this.setOutput(true, 'Number');
@@ -239,29 +239,6 @@ Blockly.Blocks['mbedSensors_getSample'] = {
             var valueB = logComp.getInput('B');
             valueB.connection.connect(block.outputConnection);
         }
-    }
-};
-
-Blockly.Blocks['mbedSensors_touch_isPressed'] = {
-    /**
-     * Is the touch sensor pressed?
-     *
-     * @constructs mbedSensors_touch_isPressed
-     * @this.Blockly.Block
-     * @param {String/dropdown}
-     *            SENSORPORT - 1, 2, 3 or 4
-     * @returns immediately
-     * @returns {Boolean}
-     * @memberof Block
-     */
-
-    init : function() {
-        this.setColour(Blockly.CAT_SENSOR_RGB);
-        // this.setInputsInline(true);
-        var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
-        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_TOUCH).appendField(sensorPort, 'SENSORPORT').appendField(Blockly.Msg.SENSOR_IS_PRESSED);
-        this.setOutput(true, 'Boolean');
-        this.setTooltip(Blockly.Msg.TOUCH_ISPRESSED_TOOLTIP);
     }
 };
 
@@ -397,3 +374,23 @@ Blockly.Blocks['mbedSensors_timer_getSample'] = {
         this.setTooltip(Blockly.Msg.TIMER_GETSAMPLE_TOOLTIP);
     }
 };
+
+Blockly.Blocks['mbedSensors_ambientLight_getSample'] = {
+        /**
+         * Get the current reading from a light sensor.
+         * 
+         * @constructs mbedSensors_ambientLight_getSample
+         * @this.Blockly.Block
+         * @returns immediately
+         * @returns {Number}
+         * @memberof Block
+         */
+
+        init : function() {
+            this.setColour(Blockly.CAT_SENSOR_RGB);
+            this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.MODE_AMBIENTLIGHT);
+            this.setOutput(true, 'Number');
+            this.setTooltip(Blockly.Msg.LIGHT_GETSAMPLE_TOOLTIP);
+         }
+    };
+
