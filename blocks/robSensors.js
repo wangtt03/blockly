@@ -342,6 +342,9 @@ Blockly.Blocks['robSensors_getSample_ardu'] = {
             this.appendValue_('NUM', 50);
             this.setOutput(true, 'Number');
         } else if (this.sensorType_ == 'COMPASS_ANGLE') {
+            var sensorPort = new Blockly.FieldDropdown([ [ '-', 'A' ]]);
+            sensorPort.setVisible(false)
+            input.appendField(sensorPort, 'SENSORPORT');
             this.appendValue_('NUM_REV', 90);
             this.setOutput(true, 'Number');
         } else if (this.sensorType_ == 'ULTRASONIC_DISTANCE') {
