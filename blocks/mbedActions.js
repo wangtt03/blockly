@@ -13,6 +13,31 @@ goog.require('Blockly.Blocks');
  * @lends Block
  */
 
+Blockly.Blocks['mbedActions_motor_on'] = {
+    /**
+     * Turn motor on with specific power.
+     * 
+     * @constructs mbedActions_motor_on
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            MOTORPORT - A, B, A + B
+     * @param {Number}
+     *            POWER relative - -100-100
+     * @returns immediately
+     * @memberof Block
+     */
+
+    init : function() {
+        var ports = [ [ Blockly.Msg.MOTOR_PORT + ' A', 'A' ], [ Blockly.Msg.MOTOR_PORT + ' B', 'B' ], [ Blockly.Msg.MOTOR_PORT + ' A + B', 'AB' ] ];
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        var motorPort = new Blockly.FieldDropdown(ports);
+        this.appendValueInput('POWER').appendField(motorPort, 'MOTORPORT').appendField(Blockly.Msg.ON).appendField(Blockly.Msg.MOTOR_SPEED).setCheck('Number');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.MOTOR_ON_TOOLTIP);
+    }
+};
+
 Blockly.Blocks['mbedActions_display_text'] = {
     /**
      * Display a text on the screen.
@@ -123,6 +148,32 @@ Blockly.Blocks['mbedActions_display_clear'] = {
 };
 
 Blockly.Blocks['mbedActions_play_tone'] = {
+        /**
+         * Play a tone.
+         * 
+         * @constructs robActions_play_tone
+         * @this.Blockly.Block
+         * @param {Number}
+         *            FREQUENCE Frequence
+         * @todo
+         * @param {Number}
+         *            DURATION Time in milliseconds
+         * @returns after execution (after DURATION)
+         * @memberof Block
+         */
+        init : function() {
+            // this.setHelpUrl(Blockly.Msg.PLAY_TONE_HELPURL);
+            this.setColour(Blockly.CAT_ACTION_RGB);
+            this.appendValueInput('FREQUENCE').appendField(Blockly.Msg.PLAY).appendField(Blockly.Msg.PLAY_FREQUENZ).setCheck('Number');
+            this.appendValueInput('DURATION').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.PLAY_DURATION);
+            this.setPreviousStatement(true);
+            this.setNextStatement(true);
+            this.setTooltip(Blockly.Msg.PLAY_TONE_TOOLTIP);
+            // this.setHelp(new Blockly.Help(Blockly.Msg.PLAY_TONE_HELP));
+        }
+    };
+
+Blockly.Blocks['mbedActions_play_note'] = {
     /**
      * Play a tone.
      * 
@@ -139,37 +190,14 @@ Blockly.Blocks['mbedActions_play_tone'] = {
     init : function() {
         // this.setHelpUrl(Blockly.Msg.PLAY_TONE_HELPURL);
         this.setColour(Blockly.CAT_ACTION_RGB);
-        this.appendValueInput('FREQUENCE').appendField(Blockly.Msg.PLAY).appendField(Blockly.Msg.PLAY_FREQUENZ).setCheck('Number');
-        this.appendValueInput('DURATION').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.PLAY_DURATION);
+        var frequence = new Blockly.FieldNote('261.626');
+        var duration = new Blockly.FieldDropdown([ [ 'whole note', '2000' ], [ 'half note', '1000' ], [ 'quarter note', '500' ], [ 'eighth note', '250' ],
+                [ 'sixteenth note', '125' ] ]);
+        this.appendDummyInput().appendField(Blockly.Msg.PLAY).appendField(duration,'DURATION').appendField(frequence, 'FREQUENCE');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.PLAY_TONE_TOOLTIP);
         // this.setHelp(new Blockly.Help(Blockly.Msg.PLAY_TONE_HELP));
-    }
-};
-
-Blockly.Blocks['mbedActions_play_file'] = {
-    /**
-     * Play a sound file.
-     * 
-     * @constructs mbedActions_play_file
-     * @this.Blockly.Block
-     * @param {String/dropdown}
-     *            SOUND - Soundfile1-4
-     * @returns after execution (time the soundfile needs to finish)
-     * @memberof Block
-     */
-
-    init : function() {
-        // this.setHelpUrl(Blockly.Msg.PLAY_FILE_HELPURL);
-        this.setColour(Blockly.CAT_ACTION_RGB);
-        //LEJOS system sounds from 0 to 4 in HAL
-        var file = new Blockly.FieldDropdown([ [ '1', '0' ], [ '2', '1' ], [ '3', '2' ], [ '4', '3' ], [ '5', '4' ] ]);
-        this.appendDummyInput().appendField(Blockly.Msg.PLAY + ' ' + Blockly.Msg.PLAY_FILE).appendField(file, 'FILE');
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.PLAY_FILE_TOOLTIP);
-        // this.setHelp(new Blockly.Help(Blockly.Msg.PLAY_FILE_HELP));
     }
 };
 
@@ -216,7 +244,7 @@ Blockly.Blocks['mbedActions_play_getVolume'] = {
     }
 };
 
-Blockly.Blocks['mbedActions_brickLight_on'] = {
+Blockly.Blocks['mbedActions_leds_on'] = {
     /**
      * Turn bricklight on.
      * 
@@ -232,28 +260,15 @@ Blockly.Blocks['mbedActions_brickLight_on'] = {
     init : function() {
 
         this.setColour(Blockly.CAT_ACTION_RGB);
-        // this.setInputsInline(true);
-        var dropdownColor = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_GREEN, 'GREEN' ], [ Blockly.Msg.BRICKLIGHT_ORANGE, 'ORANGE' ],
-                [ Blockly.Msg.BRICKLIGHT_RED, 'RED' ] ]);
-        this.appendDummyInput().appendField(Blockly.Msg.BRICKLIGHT);
-        var dropdownLightState;
-        if (this.workspace.device === 'ardu') {
-            dropdownLightState = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_ON, 'ON' ], [ Blockly.Msg.OFF, 'OFF' ] ]);
-        } else {
-            dropdownLightState = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_ON, 'ON' ], [ Blockly.Msg.BRICKLIGHT_FLASH, 'FLASH' ],
-                    [ Blockly.Msg.BRICKLIGHT_DOUBLE_FLASH, 'DOUBLE_FLASH' ] ]);
-            this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.BRICKLIGHT_COLOR).appendField(dropdownColor, 'SWITCH_COLOR');
-        }
-
-        this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.MOD).appendField(dropdownLightState, 'SWITCH_BLINK');
+        this.appendValueInput('COLOR').appendField('turn LED on').appendField('colour').setCheck('Colour');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.BRICKLIGHT_ON_TOOLTIP);
+        // this.setTooltip(Blockly.Msg.BRICKLIGHT_ON_TOOLTIP);
         // this.setHelp(new Blockly.Help(Blockly.Msg.BRICKLIGHT_ON_HELP));
     }
 };
 
-Blockly.Blocks['mbedActions_brickLight_off'] = {
+Blockly.Blocks['mbedActions_leds_off'] = {
     /**
      * Turn bricklight off.
      * 
@@ -265,7 +280,7 @@ Blockly.Blocks['mbedActions_brickLight_off'] = {
     init : function() {
         // this.setHelpUrl(Blockly.Msg.BRICKLIGHT_OFF_HELP);
         this.setColour(Blockly.CAT_ACTION_RGB);
-        this.appendDummyInput().appendField(Blockly.Msg.BRICKLIGHT).appendField(Blockly.Msg.OFF);
+        this.appendDummyInput().appendField('turn LED off');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.BRICKLIGHT_OFF_TOOLTIP);
