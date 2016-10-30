@@ -71,7 +71,7 @@ goog.inherits(Blockly.FieldDropdownImage, Blockly.Field);
  * @type {Element}
  * @private
  */
-Blockly.FieldImage.prototype.rectElement_ = null;
+Blockly.FieldDropdownImage.prototype.rectElement_ = null;
 
 /**
  * Horizontal distance that a checkmark ovehangs the dropdown.
@@ -129,8 +129,8 @@ Blockly.FieldDropdownImage.prototype.init = function() {
             + Blockly.FieldDropdownImage.ARROW_CHAR));
     this.textElement_ = Blockly.createSvgElement('text', {
         'class' : 'blocklyText',
-        'y' : this.size_.height - 18,
-        'x' : 30
+        'y' : this.size_.height / 2,
+        'x' : this.size_.width - 6
     }, this.fieldGroup_);
     if (this.sourceBlock_ && this.arrow_) {
         // Update arrow's colour.
@@ -183,7 +183,9 @@ Blockly.FieldDropdownImage.prototype.showEditor_ = function() {
         var img = goog.dom.createDom('img');
         goog.dom.setProperties(img, {
             'src' : this.pathToMedia_ + value + this.type_,
-            'alt' : text
+            'alt' : text,
+            'width' : this.width_,
+            'height' : this.height_
         });
         var menuItem = new goog.ui.MenuItem(img);
         menuItem.setRightToLeft(this.sourceBlock_.RTL);
