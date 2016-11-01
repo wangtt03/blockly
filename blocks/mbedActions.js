@@ -38,6 +38,31 @@ Blockly.Blocks['mbedActions_motor_on'] = {
     }
 };
 
+Blockly.Blocks['mbedActions_motor_stop'] = {
+        /**
+         * Stop this motor.
+         * 
+         * @constructs robActions_motor_stop
+         * @this.Blockly.Block
+         * @param {String/dropdown}
+         *            MOTORPORT - A, B, C, or D
+         * @param {String/dropdown}
+         *            MODE - Float or Non Float
+         * @returns immediately
+         * @memberof Block
+         */
+        init : function() {
+            this.setColour(Blockly.CAT_ACTION_RGB);
+            var ports = [ [ Blockly.Msg.MOTOR_PORT + ' A', 'A' ], [ Blockly.Msg.MOTOR_PORT + ' B', 'B' ], [ Blockly.Msg.MOTOR_PORT + ' A + B', 'AB' ] ];
+            var motorPort = new Blockly.FieldDropdown(ports);
+            var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_FLOAT, 'FLOAT' ], [ Blockly.Msg.MOTOR_BRAKE, 'NONFLOAT' ] ]);
+            this.appendDummyInput().appendField(Blockly.Msg.MOTOR_STOP).appendField(motorPort, 'MOTORPORT').appendField(mode, 'MODE');
+            this.setPreviousStatement(true);
+            this.setNextStatement(true);
+            this.setTooltip(Blockly.Msg.MOTOR_STOP_TOOLTIP);
+        }
+    };
+
 Blockly.Blocks['mbedActions_display_text'] = {
     /**
      * Display a text on the screen.
@@ -51,8 +76,7 @@ Blockly.Blocks['mbedActions_display_text'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        this.appendValueInput('OUT').appendField(Blockly.Msg.DISPLAY_SHOW + ' ' + Blockly.Msg.DISPLAY_TEXT).setCheck([ 'Number', 'Boolean', 'String', 'Colour',
-                'Connection' ]);
+        this.appendValueInput('OUT').appendField(Blockly.Msg.DISPLAY_SHOW + ' ' + Blockly.Msg.DISPLAY_TEXT).setCheck([ 'Number', 'Boolean', 'String', 'Colour' ]);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.DISPLAY_TEXT_TOOLTIP);
@@ -77,7 +101,7 @@ Blockly.Blocks['mbedActions_display_image'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        var what = new Blockly.FieldDropdown([ [ 'image', 'IMAGE' ], [ 'animation', 'ANIMATION' ] ], function(option) {
+        var what = new Blockly.FieldDropdown([ [ Blockly.Msg.DISPLAY_IMAGE, 'IMAGE' ], [ Blockly.Msg.DISPLAY_ANIMATION, 'ANIMATION' ] ], function(option) {
             if (option) {
                 this.sourceBlock_.updateShape_(option);
             }
@@ -191,12 +215,12 @@ Blockly.Blocks['mbedActions_play_note'] = {
         // this.setHelpUrl(Blockly.Msg.PLAY_TONE_HELPURL);
         this.setColour(Blockly.CAT_ACTION_RGB);
         var frequence = new Blockly.FieldNote('261.626');
-        var duration = new Blockly.FieldDropdown([ [ 'whole note', '2000' ], [ 'half note', '1000' ], [ 'quarter note', '500' ], [ 'eighth note', '250' ],
-                [ 'sixteenth note', '125' ] ]);
+        var duration = new Blockly.FieldDropdown([ [ Blockly.Msg.PLAY_WHOLE, '2000' ], [ Blockly.Msg.PLAY_HALF, '1000' ], [ Blockly.Msg.PLAY_QUARTER, '500' ], [ Blockly.Msg.PLAY_EIGHTH, '250' ],
+                [ Blockly.Msg.PLAY_SIXTEENTH, '125' ] ]);
         this.appendDummyInput().appendField(Blockly.Msg.PLAY).appendField(duration,'DURATION').appendField(frequence, 'FREQUENCE');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.PLAY_TONE_TOOLTIP);
+        this.setTooltip(Blockly.Msg.PLAY_NOTE_TOOLTIP);
         // this.setHelp(new Blockly.Help(Blockly.Msg.PLAY_TONE_HELP));
     }
 };
@@ -260,10 +284,10 @@ Blockly.Blocks['mbedActions_leds_on'] = {
     init : function() {
 
         this.setColour(Blockly.CAT_ACTION_RGB);
-        this.appendValueInput('COLOR').appendField('turn LED on').appendField('colour').setCheck('Colour');
+        this.appendValueInput('COLOR').appendField(Blockly.Msg.LED_ON).appendField(Blockly.Msg.BRICKLIGHT_COLOR).setCheck('Colour');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        // this.setTooltip(Blockly.Msg.BRICKLIGHT_ON_TOOLTIP);
+        this.setTooltip(Blockly.Msg.LED_ON_TOOLTIP);
         // this.setHelp(new Blockly.Help(Blockly.Msg.BRICKLIGHT_ON_HELP));
     }
 };
@@ -280,10 +304,10 @@ Blockly.Blocks['mbedActions_leds_off'] = {
     init : function() {
         // this.setHelpUrl(Blockly.Msg.BRICKLIGHT_OFF_HELP);
         this.setColour(Blockly.CAT_ACTION_RGB);
-        this.appendDummyInput().appendField('turn LED off');
+        this.appendDummyInput().appendField(Blockly.Msg.LED_OFF);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.BRICKLIGHT_OFF_TOOLTIP);
+        this.setTooltip(Blockly.Msg.LED_OFF_TOOLTIP);
         // this.setHelp(new Blockly.Help(Blockly.Msg.BRICKLIGHT_OFF_HELP));
     }
 };

@@ -278,10 +278,6 @@
     <toolbox_set id='toolbox' style='display: none'>
         <category name='TOOLBOX_ACTION' svg="true">
             <category name='brick'>
-             <block type="demo_image">
-    <field name="SOURCE">https://neil.fraser.name/common/no.gif</field>
-    <field name="IMAGE">https://neil.fraser.name/common/no.gif</field>
-  </block>
                 <block type='mbedBrick_Calliope-Brick'></block>
                 <block type='mbedBrick_microbit-Brick'></block>
             </category>
@@ -294,6 +290,16 @@
                     </value>
                 </block>
                 <block type='mbedActions_display_image'>
+                <value name='VALUE'>
+                    <block type='mbedImage_image'>
+                    </block>
+                </value>
+                </block>
+                <block type='mbedActions_display_image'>
+                <value name='VALUE'>
+                    <block type='mbedImage_get_image'>
+                    </block>
+                </value>
                 </block>
                 <block type='mbedActions_display_clear'>
                 </block>
@@ -302,48 +308,28 @@
             <block type='mbedActions_motor_on'>
                 <value name='POWER'>
                     <block type='math_number'>
-                        <field name='NUM'>30</field>
+                        <field name='NUM'>30</>
                     </block>
                 </value>
             </block>
+            <block type='mbedActions_motor_stop'></block>
             </category>
             <category name='TOOLBOX_SOUND' svg="true">
                <block type='mbedActions_play_tone'>                 
                 </block>
                 <block type='mbedActions_play_note'>            
                 </block>
-               <!-- <block type='robActions_play_file'>
-                </block>
-                <block type='robActions_play_setVolume'>
-                    <value name='VOLUME'>
-                        <block type='math_number'>
-                            <field name='NUM'>50</field>
-                        </block>
-                    </value>
-                </block>
-                <block type='robActions_play_getVolume'>
-                </block> -->
             </category>
             <category name='TOOLBOX_LIGHT' svg="true">
-                <block type='mbedActions_leds_on'></block>
+                <block type='mbedActions_leds_on'><value name="COLOR">
+        <block type="mbedColour_picker">
+          <field name="COLOUR">#ff0000</field>
+        </block>
+      </value></block>
                 <block type='mbedActions_leds_off'></block>
             </category>
         </category>
         <category name='TOOLBOX_SENSOR' svg="true">
-            <!-- <block type='mbedSensors_touch_isPressed'>
-            </block> -->
-            <!-- <block type='sim_touch_isPressed'>
-            </block>
-            <block type='robSensors_ultrasonic_getSample'>
-            </block>
-            <block type='robSensors_colour_getSample'>
-            </block>
-            <block type='robSensors_infrared_getSample'>
-            </block>
-            <block type='robSensors_encoder_reset'>
-            </block>
-            <block type='robSensors_encoder_getSample'>
-            </block> -->
             <block type='mbedSensors_key_isPressed'>
             </block>
             <block type='mbedSensors_gesture_isActive'>
@@ -358,12 +344,6 @@
             </block>
             <block type='mbedSensors_ambientLight_getSample'>
             </block>          
-            <!-- <block type='robSensors_sound_getSample'>
-            </block>
-            <block type='robSensors_light_getSample'>
-            </block>
-            <block type='robSensors_battery_voltage'>
-            </block> -->
         </category>
         <category name='TOOLBOX_CONTROL' svg="true">
             <category name='TOOLBOX_DECISION'>

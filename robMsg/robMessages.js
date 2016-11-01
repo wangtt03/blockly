@@ -580,5 +580,36 @@ Blockly.Msg.ARDUBRICK_TOOLTIP = 'Represents the Bot"n Roll board with connected 
 Blockly.Msg.EV3BRICK_TOOLTIP = 'Represents the EV3 brick with connected actors and sensors. There are also inbuild actors and sensors available, e.g. buttons, display ...';
 Blockly.Msg.BOTH = 'both';
 
-
 Blockly.Msg.ORA_PROGRAM_IMPORT_ERROR_WRONG_ROBOT_TYPE = 'You are trying to import a program for a robot of a different type as selected in the menu. <br> Please switch the robot type in the robot"s menu and try to import again!';
+Blockly.Msg.DISPLAY_IMAGE = 'image';
+Blockly.Msg.DISPLAY_ANIMATION = 'animation';
+Blockly.Msg.PLAY_NOTE = 'note';
+Blockly.Msg.PLAY_WHOLE = 'whole note';
+Blockly.Msg.PLAY_HALF = 'half note';
+Blockly.Msg.PLAY_QUARTER = 'quarter note';
+Blockly.Msg.PLAY_EIGHTH = 'eighth note';
+Blockly.Msg.PLAY_SIXTEENTH = 'sixteenth note';
+Blockly.Msg.LED_ON = 'turn LED on';
+Blockly.Msg.LED_OFF = 'turn LED off';
+Blockly.Msg.SENSOR_GESTURE_UP = 'gesture upright';
+Blockly.Msg.SENSOR_GESTURE_DOWN = 'gesture upside down';
+Blockly.Msg.SENSOR_GESTURE_FACE_UP = 'gesture at the back';
+Blockly.Msg.SENSOR_GESTURE_FACE_DOWN = 'gesture at the front side';
+Blockly.Msg.SENSOR_GESTURE_SHAKE = 'gesture shaking';
+Blockly.Msg.SENSOR_GESTURE_FREEFALL = 'gesture freely falling';
+Blockly.Msg.SENSOR_GESTURE_ACTIVE = 'active?';
+Blockly.Msg.SENSOR_TEMPERATURE = 'temperature sensor';
+Blockly.Msg.TOOLBOX_IMAGE = 'Images';
+
+Blockly.Msg.TEMPERATURE_GETSAMPLE_TOOLTIP = 'Gets the current reading from the temperatur sensor.';
+Blockly.Msg.COMPASS_GETSAMPLE_TOOLTIP  = 'Gets the current reading from the compass sensor.';
+Blockly.Msg.CALLIOPEBRICK_TOOLTIP = 'Represents Calliope, a pocket-sized codeable computer. There are also inbuild actors and sensors available, e.g. buttons, display ...';
+Blockly.Msg.MICROBITBRICK_TOOLTIP = 'Represents micro:bit, a pocket-sized codeable computer. There are also inbuild actors and sensors available, e.g. buttons, display ...';
+Blockly.Msg.PLAY_NOTE_TOOLTIP = 'Plays a music note';
+Blockly.Msg.LED_ON_TOOLTIP = 'Turns the LED on and changes the color.';
+Blockly.Msg.COLOUR_RGB_TOOLTIP = 'Creates a color with the given red, green, and blue values';
+Blockly.Msg.IMAGE_TOOLTIP = 'Creates an image for the display.'
+Blockly.Msg.IMAGE_GET_TOOLTIP = 'Returns the choosen image.';
+Blockly.Msg.IMAGE_INVERT_TOOLTIP = 'Inverts the image. Each pixel with value 0 or none will be set to # or 9 and pixels with value # or 9 will be set to 0 or none.';
+Blockly.Msg.IMAGE_SHIFT_TOOLTIP = 'Shifts the image in the given direction by the given number';
+

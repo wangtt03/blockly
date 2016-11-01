@@ -280,9 +280,10 @@ Blockly.Blocks['mbedSensors_gesture_isActive'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
-        var gesture = new Blockly.FieldDropdown([ [ 'up', 'UP' ], [ 'down', 'DOWN' ], [ 'left', 'LEFT' ], [ 'right', 'RIGHT' ], [ 'face up', 'FACE_UP' ],
-                [ 'face down', 'FACE_DOWN' ], [ 'shake ', 'SHAKE' ], [ 'freefall ', 'FREEFALL' ], [ '3g', 'G3' ], [ '6g', 'G6' ], [ '8g', 'G8' ] ]);
-        this.appendDummyInput().appendField('gesture').appendField(gesture, 'GESTURE').appendField('active?');
+        var gesture = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_GESTURE_UP, 'UP' ], [ Blockly.Msg.SENSOR_GESTURE_DOWN, 'DOWN' ],
+                [ Blockly.Msg.SENSOR_GESTURE_FACE_UP, 'FACE_UP' ], [ Blockly.Msg.SENSOR_GESTURE_FACE_DOWN, 'FACE_DOWN' ],
+                [ Blockly.Msg.SENSOR_GESTURE_SHAKE, 'SHAKE' ], [ Blockly.Msg.SENSOR_GESTURE_FREEFALL, 'FREEFALL' ] ]); // [ 'left', 'LEFT' ], [ 'right', 'RIGHT' ], [ '3g', 'G3' ], [ '6g', 'G6' ], [ '8g', 'G8' ] ]);
+        this.appendDummyInput().appendField(gesture, 'GESTURE').appendField(Blockly.Msg.SENSOR_GESTURE_ACTIVE);
         this.setOutput(true, 'Boolean');
         //  this.setTooltip(Blockly.Msg.ULTRASONIC_GETSAMPLE_TOOLTIP);
     }
@@ -307,7 +308,7 @@ Blockly.Blocks['mbedSensors_compass_getSample'] = {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_COMPASS);
         this.setOutput(true, 'Number');
-        //this.setTooltip(Blockly.Msg.GYRO_GETSAMPLE_TOOLTIP);
+        this.setTooltip(Blockly.Msg.COMPASS_GETSAMPLE_TOOLTIP);
     }
 };
 
@@ -324,9 +325,9 @@ Blockly.Blocks['mbedSensors_temperature_getSample'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
-        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField('temperature');
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_TEMPERATURE);
         this.setOutput(true, 'Number');
-        //this.setTooltip(Blockly.Msg.GYRO_GETSAMPLE_TOOLTIP);
+        this.setTooltip(Blockly.Msg.TEMPERATURE_GETSAMPLE_TOOLTIP);
     }
 };
 
@@ -376,21 +377,20 @@ Blockly.Blocks['mbedSensors_timer_getSample'] = {
 };
 
 Blockly.Blocks['mbedSensors_ambientLight_getSample'] = {
-        /**
-         * Get the current reading from a light sensor.
-         * 
-         * @constructs mbedSensors_ambientLight_getSample
-         * @this.Blockly.Block
-         * @returns immediately
-         * @returns {Number}
-         * @memberof Block
-         */
+    /**
+     * Get the current reading from a light sensor.
+     * 
+     * @constructs mbedSensors_ambientLight_getSample
+     * @this.Blockly.Block
+     * @returns immediately
+     * @returns {Number}
+     * @memberof Block
+     */
 
-        init : function() {
-            this.setColour(Blockly.CAT_SENSOR_RGB);
-            this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.MODE_AMBIENTLIGHT);
-            this.setOutput(true, 'Number');
-            this.setTooltip(Blockly.Msg.LIGHT_GETSAMPLE_TOOLTIP);
-         }
-    };
-
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.MODE_AMBIENTLIGHT);
+        this.setOutput(true, 'Number');
+        this.setTooltip(Blockly.Msg.LIGHT_GETSAMPLE_TOOLTIP);
+    }
+};

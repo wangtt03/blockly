@@ -750,7 +750,7 @@ Blockly.Blocks['robSensors_compass_getSample'] = {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(Blockly.Msg.SENSOR_COMPASS);
         this.setOutput(true, 'Number');
-        //this.setTooltip(Blockly.Msg.GYRO_GETSAMPLE_TOOLTIP);
+        this.setTooltip(Blockly.Msg.COMPASS_GETSAMPLE_TOOLTIP);
     }
 };
 

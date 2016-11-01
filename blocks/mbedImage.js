@@ -41,7 +41,7 @@ Blockly.Blocks['mbedImage_image'] = {
                 '  ', this.validate_), "P14").appendField(' ').appendField(new Blockly.FieldTextInput('  ', this.validate_), "P24").appendField(' ').appendField(new Blockly.FieldTextInput(
                 '  ', this.validate_), "P34").appendField(' ').appendField(new Blockly.FieldTextInput('  ', this.validate_), "P44");
         this.setOutput(true, 'Image');
-        // this.setTooltip();
+        this.setTooltip(Blockly.Msg.IMAGE_TOOLTIP);
     },
     validate_ : function(p) {
         if (!Blockly.FieldTextInput.htmlInput_)
@@ -97,7 +97,8 @@ Blockly.Blocks['mbedImage_shift'] = {
             } ],
             "inputsInline" : true,
             "output" : "Image",
-            "colour" : Blockly.CAT_IMAGE_RGB
+            "colour" : Blockly.CAT_IMAGE_RGB,
+            "tooltip": Blockly.Msg.IMAGE_SHIFT_TOOLTIP
         });
     }
 };
@@ -117,7 +118,8 @@ Blockly.Blocks['mbedImage_invert'] = {
                 "check" : "Image"
             } ],
             "output" : "Image",
-            "colour" : Blockly.CAT_IMAGE_RGB
+            "colour" : Blockly.CAT_IMAGE_RGB,
+            "tooltip": Blockly.Msg.IMAGE_INVERT_TOOLTIP
         });
     }
 };
@@ -143,7 +145,7 @@ Blockly.Blocks['mbedImage_get_image'] = {
         this.setColour(Blockly.CAT_IMAGE_RGB);
         this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(dropdown, 'IMAGE');
         this.setOutput(true, 'Image');
-        this.setTooltip('hallo Beate');
+        this.setTooltip(Blockly.Msg.IMAGE_GET_TOOLTIP);
         console.log(this);
     }
 };
