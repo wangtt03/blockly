@@ -139,10 +139,11 @@ Blockly.Blocks['mbedImage_get_image'] = {
                 [ 'duck', 'DUCK' ], [ 'house', 'HOUSE' ], [ 'tortoise', 'TORTOISE' ], [ 'butterfly', 'BUTTERFLY' ], [ 'stickfigure', 'STICKFIGURE' ],
                 [ 'ghost', 'GHOST' ], [ 'sword', 'SWORD' ], [ 'giraffe', 'GIRAFFE' ], [ 'skull', 'SKULL' ], [ 'umbrella', 'UMBRELLA' ], [ 'snake', 'SNAKE' ],
                 [ 'sad', 'SAD' ] ];
-        var dropdown = new Blockly.FieldDropdownImage(options, '../media/dropDowns/', 24, 24, 'png');
+        var dropdown = new Blockly.FieldDropdownImage(options, '/dropDowns/', 24, 24, 'png');
         this.setColour(Blockly.CAT_IMAGE_RGB);
         this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(dropdown, 'IMAGE');
         this.setOutput(true, 'Image');
         this.setTooltip('hallo Beate');
+        console.log(this);
     }
 };

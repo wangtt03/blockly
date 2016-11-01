@@ -50,14 +50,14 @@ goog.require('goog.userAgent');
  * @extends {Blockly.Field}
  * @constructor
  */
-Blockly.FieldDropdownImage = function(menuGenerator, pathToMedia, width, height, opt_type) {
+Blockly.FieldDropdownImage = function(menuGenerator, pathToImages, width, height, opt_type) {
     // Ensure height and width are numbers.  Strings are bad at math.
     this.height_ = Number(height);
     this.width_ = Number(width);
     this.type_ = '.' + (opt_type || 'png');
     this.menuGenerator_ = menuGenerator;
     this.trimOptions_();
-    this.pathToMedia_ = pathToMedia;
+    this.pathToMedia_ = Blockly.Css.mediaPath_ + pathToImages;
     var firstTuple = this.getOptions_()[0];
     this.size_ = new goog.math.Size(this.width_ + 10, this.height_ + 2 * Blockly.BlockSvg.INLINE_PADDING_Y);
     this.text_ = firstTuple[0] || '';
@@ -199,14 +199,12 @@ Blockly.FieldDropdownImage.prototype.showEditor_ = function() {
     goog.events.listen(menu, goog.ui.Component.EventType.ACTION, callback);
     // Listen for touch events (why doesn't Closure handle this already?).
     function callbackTouchStart(e) {
-        var control = this.getOwnerControl(/** @type {Node} */
-        (e.target));
+        var control = this.getOwnerControl(e.target);
         // Highlight the menu item.
         control.handleMouseDown(e);
     }
     function callbackTouchEnd(e) {
-        var control = this.getOwnerControl(/** @type {Node} */
-        (e.target));
+        var control = this.getOwnerControl(e.target);
         // Activate the menu item.
         control.performActionInternal(e);
     }
