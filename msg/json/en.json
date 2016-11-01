@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2016-11-01 21:13:12.838341",
+		"lastupdated": "2016-11-01 21:32:00.090109",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -43,7 +43,6 @@
 	"COLOUR_RGB_RED": "red",
 	"COLOUR_RGB_GREEN": "green",
 	"COLOUR_RGB_BLUE": "blue",
-	"COLOUR_RGB_TOOLTIP": "Create a colour with the specified amount of red, green, and blue. All values must be between 0 and 100.",
 	"COLOUR_BLEND_HELPURL": "http://meyerweb.com/eric/tools/color-blend/",
 	"COLOUR_BLEND_TITLE": "blend",
 	"COLOUR_BLEND_COLOUR1": "colour 1",
@@ -908,7 +907,7 @@
 	"MICROBITBRICK_TOOLTIP": "Represents micro:bit, a pocket-sized codeable computer. There are also inbuild actors and sensors available, e.g. buttons, display ...",
 	"PLAY_NOTE_TOOLTIP": "Plays a music note",
 	"LED_ON_TOOLTIP": "Turns the LED on and changes the color.",
-	"COLOUR_RGB_TOOLTIP": "Creates a color with the given red, green, and blue values",
+	"COLOUR_RGB_TOOLTIP": "Creates a color with the given red, green, and blue values. Values should be between 0 and 255.",
 	"IMAGE_TOOLTIP": "Creates an image for the display.",
 	"IMAGE_GET_TOOLTIP": "Returns the choosen image.",
 	"IMAGE_INVERT_TOOLTIP": "Inverts the image. Each pixel with value 0 or none will be set to # or 9 and pixels with value # or 9 will be set to 0 or none.",

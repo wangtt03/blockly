@@ -541,7 +541,7 @@
   "MICROBITBRICK_TOOLTIP": "Block für micro:bit, einen Mini-Computer. Es gibt auch weitere eingebaute Aktoren und Sensoren, wie z. B. das Display, die Tasten ...",
   "PLAY_NOTE_TOOLTIP": "Spielt die angegebene Note.",
   "LED_ON_TOOLTIP": "Schaltet die LED an und wechselt zur angegebenen Farbe.",
-  "COLOUR_RGB_TOOLTIP": "Erstellt eine Farbe mit den Werten für rot, grün und blau.",
+  "COLOUR_RGB_TOOLTIP": "Erstellt eine Farbe mit den Werten für rot, grün und blau. Die Werte sollten zwischen 0 und 255 liegen.",
   "IMAGE_TOOLTIP": "Erstellt ein neues Bild für das Display.",
   "IMAGE_GET_TOOLTIP": "Gibt das ausgewählte Bild zurück.",
   "IMAGE_INVERT_TOOLTIP": "Invertiert das Bild. Pixel mit dem Wert 0 oder Leerzeichen werden auf # oder 9 gesetzt. Pixel mit dem Wert # oder 9 werden auf 0 bzw. Leerzeichen gesetzt.",
