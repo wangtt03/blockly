@@ -259,19 +259,33 @@ Blockly.Blocks['robGlobalVariables_declare'] = {
         [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
         [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
         [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
-        ['Image', 'Image' ],
-        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_IMAGE, 'Image' ],
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
-        ['List Image', 'Array_Image' ],
-        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_IMAGE, 'Array_Image' ]
       ], function(option) {
         if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
           this.sourceBlock_.updateType(option);
           this.sourceBlock_.updateShape_(0, option);
-        }
+        } 
       });
+    } else if (this.workspace.device === 'microbit') {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_IMAGE, 'Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_IMAGE, 'Array_Image' ]
+      ], function(option) {
+          if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+            this.sourceBlock_.updateType(option);
+            this.sourceBlock_.updateShape_(0, option);
+          }
+        });
     } else {
       declType = new Blockly.FieldDropdown([
         [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
@@ -283,11 +297,11 @@ Blockly.Blocks['robGlobalVariables_declare'] = {
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
-      ], function(option) {
-        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
-          this.sourceBlock_.updateType(option);
-          this.sourceBlock_.updateShape_(0, option);
-        }
+        ], function(option) {
+            if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+              this.sourceBlock_.updateType(option);
+              this.sourceBlock_.updateShape_(0, option);
+          }
       });
     }
     var name = Blockly.Variables.findLegalName(Blockly.Msg.VARIABLES_DEFAULT_NAME, this);
@@ -472,18 +486,31 @@ Blockly.Blocks['robLocalVariables_declare'] = {
         [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
         [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
         [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
-        ['Image', 'Image' ],
-        [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ],
+        [Blockly.Msg.VARIABLES_TYPE_IMAGE, 'Image' ],
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
-        ['Array Image', 'Array_Image' ],
-        [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_IMAGE, 'Array_Image' ],
       ], function(option) {
         if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
           this.sourceBlock_.updateType(option);
         }
       });
+    } else if (this.workspace.device === 'microbit') {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_IMAGE, 'Image' ],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_IMAGE, 'Array_Image' ],
+      ], function(option) {
+          if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+            this.sourceBlock_.updateType(option);
+          }
+        });
     } else {
       declType = new Blockly.FieldDropdown([
         [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
@@ -496,10 +523,10 @@ Blockly.Blocks['robLocalVariables_declare'] = {
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String'],
         [Blockly.Msg.VARIABLES_TYPE_ARRAY_CONNECTION, 'Array_Connection']
       ], function(option) {
-        if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
-          this.sourceBlock_.updateType(option);
-        }
-      });
+          if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+            this.sourceBlock_.updateType(option);
+          }
+        });
     }
     var name = Blockly.Variables.findLegalName('x', this);
     this.nameOld = name;

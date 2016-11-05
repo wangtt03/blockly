@@ -612,4 +612,6 @@ Blockly.Msg.IMAGE_TOOLTIP = 'Creates an image for the display.';
 Blockly.Msg.IMAGE_GET_TOOLTIP = 'Returns the choosen image.';
 Blockly.Msg.IMAGE_INVERT_TOOLTIP = 'Inverts the image. Each pixel with value 0 or none will be set to # or 9 and pixels with value # or 9 will be set to 0 or none.';
 Blockly.Msg.IMAGE_SHIFT_TOOLTIP = 'Shifts the image in the given direction by the given number';
+Blockly.Msg.VARIABLES_TYPE_ARRAY_IMAGE = 'List Image';
+Blockly.Msg.VARIABLES_TYPE_IMAGE = 'Image';
 

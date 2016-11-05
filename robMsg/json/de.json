@@ -517,7 +517,7 @@
   "PROCEDURES_DEFRETURN_RETURN": "gib zurück",
   "ORA_PROGRAM_IMPORT_ERROR_WRONG_ROBOT_TYPE" : "Der Robotertyp, den du im Menü ausgewählt hast, passt nicht zu dem Programm, dass du importieren möchtest.<br>Wähle den richtigen Robotertyp im Robotermenü aus und versuche es noch einmal!",
   "DISPLAY_IMAGE": "Bild",
-  "DISLAY_ANIMATION": "Animation",
+  "DISPLAY_ANIMATION": "Animation",
   "PLAY_NOTE": "Note",
   "PLAY_WHOLE": "ganze Note",
   "PLAY_HALF": "halbe Note",
@@ -545,5 +545,7 @@
   "IMAGE_TOOLTIP": "Erstellt ein neues Bild für das Display.",
   "IMAGE_GET_TOOLTIP": "Gibt das ausgewählte Bild zurück.",
   "IMAGE_INVERT_TOOLTIP": "Invertiert das Bild. Pixel mit dem Wert 0 oder Leerzeichen werden auf # oder 9 gesetzt. Pixel mit dem Wert # oder 9 werden auf 0 bzw. Leerzeichen gesetzt.",
-  "IMAGE_SHIFT_TOOLTIP": "Verschiebt das Bild in die angegebene Richtung um die angegebene Anzahl von Pixeln."
+  "IMAGE_SHIFT_TOOLTIP": "Verschiebt das Bild in die angegebene Richtung um die angegebene Anzahl von Pixeln.",
+  "VARIABLES_TYPE_ARRAY_IMAGE": "Liste Bild",
+  "VARIABLES_TYPE_IMAGE": "Bild"
 }

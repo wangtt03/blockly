@@ -263,8 +263,10 @@ Blockly.FieldNote.prototype.setValue = function(newValue) {
 
 Blockly.FieldNote.prototype.onTouch = function(e) {
     e.preventDefault();
+    
     if (e.touches.length > 1 || (e.type == "touchend" && e.touches.length > 0))
         return;
+    var touch = e.touches[0];
     var element = document.elementFromPoint(touch.clientX, touch.clientY);
     var event = document.createEvent("SVGEvents");
     event.initEvent("mouseover", true, true);

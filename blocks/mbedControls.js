@@ -34,6 +34,7 @@ goog.require('Blockly.Blocks');
  * @lends Block
  */
 
+// not used.
 Blockly.Blocks['mbedControls_start'] = {
     /**
      * The starting point for the main program. This block is not deletable and
