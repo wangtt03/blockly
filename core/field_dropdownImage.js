@@ -19,8 +19,9 @@
  */
 
 /**
- * @fileoverview Dropdown input field. Used for editable titles, presented with images.
- *               
+ * @fileoverview Dropdown input field. Used for editable titles, presented with
+ *               images.
+ * 
  * @author beate.jost@iais.fraunhofer.de
  */
 'use strict';
