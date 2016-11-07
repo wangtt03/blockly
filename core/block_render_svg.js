@@ -938,7 +938,9 @@ Blockly.BlockSvg.prototype.renderDrawBottom_ =
 Blockly.BlockSvg.prototype.renderDrawLeft_ =
     function(steps, highlightSteps, connectionsXY, cursorY) {
     if (this.svgPathOutput_) {
-        this.svgGroup_.removeChild(this.svgPathOutput_);
+      if (this.svgPathOutput_.parentNode) {
+        this.svgPathOutput_.parentNode.removeChild(this.svgPathOutput_);
+      }
     }
   if (this.outputConnection) {
     // Create output connection.

@@ -1069,7 +1069,7 @@ Blockly.Blocks['robLists_indexOf'] = {
         if (blockValue) {
             this.getInput('FIND').setCheck(blockValue.outputConnection.check_[0].replace('Array_', ''));
         } else {
-            this.getInput('FIND').setCheck([ 'Number', 'String', 'Boolean', 'Colour', 'Connection', 'String' ]);
+            this.getInput('FIND').setCheck([ 'Number', 'String', 'Boolean', 'Colour', 'Connection', 'String', 'Image' ]);
         }
         if (blockFind) {
             this.getInput('VALUE').setCheck('Array_' + blockFind.outputConnection.check_[0]);
@@ -1088,13 +1088,13 @@ Blockly.Blocks['robLists_getIndex'] = {
      */
     init : function() {
         var MODE;
-        if (this.workspace.device === 'nxt') {
+        if (this.workspace.device === 'nxt' || this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
             MODE = [ [ Blockly.Msg.LISTS_GET_INDEX_GET, 'GET' ] ];
         } else {
             MODE = [ [ Blockly.Msg.LISTS_GET_INDEX_GET, 'GET' ], [ Blockly.Msg.LISTS_GET_INDEX_GET_REMOVE, 'GET_REMOVE' ],
                     [ Blockly.Msg.LISTS_GET_INDEX_REMOVE, 'REMOVE' ] ];
         }
-        if (this.workspace.device === 'nxt') {
+        if (this.workspace.device === 'nxt' || this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
             this.WHERE_OPTIONS = [ [ Blockly.Msg.LISTS_GET_INDEX_FROM_START, 'FROM_START' ] ];
         } else {
             this.WHERE_OPTIONS = [ [ Blockly.Msg.LISTS_GET_INDEX_FROM_START, 'FROM_START' ], [ Blockly.Msg.LISTS_GET_INDEX_FROM_END, 'FROM_END' ],
@@ -1114,7 +1114,7 @@ Blockly.Blocks['robLists_getIndex'] = {
             this.appendDummyInput('TAIL').appendField(Blockly.Msg.LISTS_GET_INDEX_TAIL);
         }
         this.setInputsInline(true);
-        this.setOutput(true, [ 'Number', 'String', 'Boolean', 'Colour', 'Connection' ]);
+        this.setOutput(true, [ 'Number', 'String', 'Boolean', 'Colour', 'Connection', 'Image' ]);
         this.updateAt_(true);
         // Assign 'this' to a variable for use in the tooltip closure below.
         var thisBlock = this;
@@ -1165,15 +1165,15 @@ Blockly.Blocks['robLists_getIndex'] = {
     updateStatement_ : function(newStatement) {
         var oldStatement = !this.outputConnection;
         if (newStatement != oldStatement) {
-            this.unplug(true, true);
+            var block = this;
             if (newStatement) {
-                this.setOutput(false);
-                this.setPreviousStatement(true);
-                this.setNextStatement(true);
+                block.setOutput(false);
+                block.setPreviousStatement(true);
+                block.setNextStatement(true);
             } else {
-                this.setPreviousStatement(false);
-                this.setNextStatement(false);
-                this.setOutput(true);
+                block.setPreviousStatement(false);
+                block.setNextStatement(false);
+                block.setOutput(true);
             }
         }
     },
@@ -1238,7 +1238,7 @@ Blockly.Blocks['robLists_setIndex'] = {
      */
     init : function() {
         var MODE
-        if (this.workspace.device === 'nxt') {
+        if (this.workspace.device === 'nxt' || this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
             MODE = [ [ Blockly.Msg.LISTS_SET_INDEX_SET, 'SET' ] ];
             this.WHERE_OPTIONS = [ [ Blockly.Msg.LISTS_GET_INDEX_FROM_START, 'FROM_START' ] ];
         } else {
@@ -1339,7 +1339,7 @@ Blockly.Blocks['robLists_setIndex'] = {
         if (blockList) {
             this.getInput('TO').setCheck(blockList.outputConnection.check_[0].replace('Array_', ''));
         } else {
-            this.getInput('TO').setCheck([ 'Number', 'String', 'Boolean', 'Colour', 'Connection', 'String', 'Array_Image' ]);
+            this.getInput('TO').setCheck([ 'Number', 'String', 'Boolean', 'Colour', 'Connection', 'String', 'Image' ]);
         }
         if (blockTo) {
             this.getInput('LIST').setCheck('Array_' + blockTo.outputConnection.check_[0]);
