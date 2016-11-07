@@ -142,6 +142,7 @@ Blockly.CAT_ICON['TOOLBOX_COLOUR'] = 'brush';
 Blockly.CAT_ICON['TOOLBOX_VARIABLE'] = 'variable';
 Blockly.CAT_ICON['TOOLBOX_PROCEDURE'] = 'plus-outline';
 Blockly.CAT_ICON['TOOLBOX_COMMUNICATION'] = 'messages';
+Blockly.CAT_ICON['TOOLBOX_IMAGE'] = 'image';
 
 /**
  * Sprited icons and images.

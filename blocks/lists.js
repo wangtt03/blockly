@@ -738,7 +738,7 @@ Blockly.Blocks['robLists_create_with'] = {
         var listType;
         if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
             listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
-                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ 'Image', 'Image' ] ], function(option) {
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ Blockly.Msg.VARIABLES_TYPE_IMAGE, 'Image' ] ], function(option) {
                 this.sourceBlock_.updateType_(option);
             });
         } else {
@@ -788,7 +788,7 @@ Blockly.Blocks['robLists_create_with'] = {
         var listType;
         if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
             listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
-                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ 'Image', 'Image' ] ], function(option) {
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ Blockly.Msg.VARIABLES_TYPE_IMAGE, 'Image' ] ], function(option) {
                 this.sourceBlock_.updateType_(option);
             });
         } else {
@@ -830,7 +830,7 @@ Blockly.Blocks['robLists_create_with'] = {
         var listType;
         if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
             listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
-                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ 'Image', 'Image' ] ], function(option) {
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ Blockly.Msg.VARIABLES_TYPE_IMAGE, 'Image' ] ], function(option) {
                 this.sourceBlock_.updateType_(option);
             });
         } else {
@@ -958,7 +958,7 @@ Blockly.Blocks['robLists_repeat'] = {
         var listType;
         if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
             listType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
-                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ 'Image', 'Image' ] ], function(option) {
+                    [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ], [ Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], [ Blockly.Msg.VARIABLES_TYPE_IMAGE, 'Image' ] ], function(option) {
                 this.sourceBlock_.updateType_(option);
             });
         } else {
@@ -1011,7 +1011,7 @@ Blockly.Blocks['robLists_length'] = {
             "args0" : [ {
                 "type" : "input_value",
                 "name" : "VALUE",
-                "check" : [ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', ]
+                "check" : [ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'Array_Image' ]
             } ],
             "output" : 'Number',
             "colour" : Blockly.CAT_LIST_RGB,
@@ -1033,7 +1033,7 @@ Blockly.Blocks['robLists_isEmpty'] = {
             "args0" : [ {
                 "type" : "input_value",
                 "name" : "VALUE",
-                "check" : [ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', ]
+                "check" : [ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'Array_Image' ]
             } ],
             "output" : 'Boolean',
             "colour" : Blockly.CAT_LIST_RGB,
@@ -1054,7 +1054,7 @@ Blockly.Blocks['robLists_indexOf'] = {
         this.setHelpUrl(Blockly.Msg.LISTS_INDEX_OF_HELPURL);
         this.setColour(Blockly.CAT_LIST_RGB);
         this.setOutput(true, 'Number');
-        this.appendValueInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', ]).appendField(Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST);
+        this.appendValueInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'Array_Image' ]).appendField(Blockly.Msg.LISTS_INDEX_OF_INPUT_IN_LIST);
         this.appendValueInput('FIND').appendField(new Blockly.FieldDropdown(OPERATORS), 'END');
         this.setInputsInline(true);
         this.setTooltip(Blockly.Msg.LISTS_INDEX_OF_TOOLTIP);
@@ -1074,7 +1074,7 @@ Blockly.Blocks['robLists_indexOf'] = {
         if (blockFind) {
             this.getInput('VALUE').setCheck('Array_' + blockFind.outputConnection.check_[0]);
         } else {
-            this.getInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', ]);
+            this.getInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'Array_Image']);
         }
         this.render();
     }
@@ -1107,7 +1107,7 @@ Blockly.Blocks['robLists_getIndex'] = {
             var isStatement = (value == 'REMOVE');
             this.sourceBlock_.updateStatement_(isStatement);
         });
-        this.appendValueInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', ]).appendField(Blockly.Msg.LISTS_GET_INDEX_INPUT_IN_LIST);
+        this.appendValueInput('VALUE').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'Array_Image']).appendField(Blockly.Msg.LISTS_GET_INDEX_INPUT_IN_LIST);
         this.appendDummyInput().appendField(modeMenu, 'MODE').appendField('', 'SPACE');
         this.appendDummyInput('AT');
         if (Blockly.Msg.LISTS_GET_INDEX_TAIL) {
@@ -1224,7 +1224,7 @@ Blockly.Blocks['robLists_getIndex'] = {
         if (blockA) {
             this.setOutput(true, blockA.outputConnection.check_[0].replace('Array_', ''));
         } else {
-            this.setOutput(true, [ 'Number', 'String', 'Boolean', 'Colour', 'Connection', 'String' ]);
+            this.setOutput(true, [ 'Number', 'String', 'Boolean', 'Colour', 'Connection', 'String', 'Image' ]);
         }
         this.render();
     }
@@ -1249,7 +1249,7 @@ Blockly.Blocks['robLists_setIndex'] = {
         }
         this.setHelpUrl(Blockly.Msg.LISTS_SET_INDEX_HELPURL);
         this.setColour(Blockly.CAT_LIST_RGB);
-        this.appendValueInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String' ]).appendField(Blockly.Msg.LISTS_SET_INDEX_INPUT_IN_LIST);
+        this.appendValueInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String', 'Array_Image' ]).appendField(Blockly.Msg.LISTS_SET_INDEX_INPUT_IN_LIST);
         this.appendDummyInput().appendField(new Blockly.FieldDropdown(MODE), 'MODE').appendField('', 'SPACE');
         this.appendDummyInput('AT');
         this.appendValueInput('TO').appendField(Blockly.Msg.LISTS_SET_INDEX_INPUT_TO);
@@ -1339,12 +1339,12 @@ Blockly.Blocks['robLists_setIndex'] = {
         if (blockList) {
             this.getInput('TO').setCheck(blockList.outputConnection.check_[0].replace('Array_', ''));
         } else {
-            this.getInput('TO').setCheck([ 'Number', 'String', 'Boolean', 'Colour', 'Connection', 'String' ]);
+            this.getInput('TO').setCheck([ 'Number', 'String', 'Boolean', 'Colour', 'Connection', 'String', 'Array_Image' ]);
         }
         if (blockTo) {
             this.getInput('LIST').setCheck('Array_' + blockTo.outputConnection.check_[0]);
         } else {
-            this.getInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String' ]);
+            this.getInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String', 'Array_Image' ]);
         }
         this.render();
     }
@@ -1363,14 +1363,14 @@ Blockly.Blocks['robLists_getSublist'] = {
                 [ Blockly.Msg.LISTS_GET_SUBLIST_END_LAST, 'LAST' ] ];
         this.setHelpUrl(Blockly.Msg.LISTS_GET_SUBLIST_HELPURL);
         this.setColour(Blockly.CAT_LIST_RGB);
-        this.appendValueInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String' ]).appendField(Blockly.Msg.LISTS_GET_SUBLIST_INPUT_IN_LIST);
+        this.appendValueInput('LIST').setCheck([ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String', 'Array_Image']).appendField(Blockly.Msg.LISTS_GET_SUBLIST_INPUT_IN_LIST);
         this.appendDummyInput('AT1');
         this.appendDummyInput('AT2');
         if (Blockly.Msg.LISTS_GET_SUBLIST_TAIL) {
             this.appendDummyInput('TAIL').appendField(Blockly.Msg.LISTS_GET_SUBLIST_TAIL);
         }
         this.setInputsInline(true);
-        this.setOutput(true, [ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String' ]);
+        this.setOutput(true, [ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String', 'Array_Image' ]);
         this.updateAt_(1, true);
         this.updateAt_(2, true);
         this.setTooltip(Blockly.Msg.LISTS_GET_SUBLIST_TOOLTIP);
@@ -1459,7 +1459,7 @@ Blockly.Blocks['robLists_getSublist'] = {
         if (blockList) {
             this.setOutput(true, blockList.outputConnection.check_[0]);
         } else {
-            this.setOutput(true, [ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String' ]);
+            this.setOutput(true, [ 'Array_Number', 'Array_String', 'Array_Boolean', 'Array_Colour', 'Array_Connection', 'String', 'Array_Image' ]);
         }
         this.render();
     }
