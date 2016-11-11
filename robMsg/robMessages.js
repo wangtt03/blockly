@@ -657,3 +657,87 @@ Blockly.Msg.IMAGE_GET_TOOLTIP_SKULL = 'skull';
 Blockly.Msg.IMAGE_GET_TOOLTIP_UMBRELLA = 'umbrella';
 Blockly.Msg.IMAGE_GET_TOOLTIP_SNAKE = 'snake';
 Blockly.Msg.IMAGE_GET_TOOLTIP_SAD = 'sad';
+
+// Names for the nao blocks
+/// NAO Actions names
+Blockly.Msg.STANDUP = 'stand up';
+Blockly.Msg.SITDOWN = 'sit down';
+Blockly.Msg.TAICHI = 'tai chi';
+Blockly.Msg.WAVE = 'wave';
+Blockly.Msg.WIPEFOREHEAD = 'wipe forehead';
+Blockly.Msg.APPLYPOSTURE = 'apply posture';
+Blockly.Msg.POINTAT = 'point at';
+Blockly.Msg.LOOKAT = 'look at';
+Blockly.Msg.STIFFNESSON = 'stiffness on';
+Blockly.Msg.STIFFNESSOFF = 'stiffness off';
+Blockly.Msg.PARTIALSTIFFNESSON = 'stiffness of part on';
+Blockly.Msg.PARTIALSTIFFNESSOFF = 'stiffness of part off';
+Blockly.Msg.WALK = 'walk';
+Blockly.Msg.TURN = 'turn';
+Blockly.Msg.WALKTO = 'walk to';
+Blockly.Msg.STOP = 'stop';
+Blockly.Msg.SETVOLUME = 'set volume.';
+Blockly.Msg.GETVOLUME = 'get volume.';
+Blockly.Msg.GETLANGUAGE = 'get language';
+Blockly.Msg.SETLANGUAGE = 'set language';
+Blockly.Msg.DISPLAY_SAY = 'say';
+Blockly.Msg.SETEYECOLOR = 'set eye color';
+Blockly.Msg.SETEARINTENSITY = 'set ear intensity';
+Blockly.Msg.BLINK = 'blink';
+Blockly.Msg.LEDOFF = 'LED off';
+Blockly.Msg.LEDRESET = 'LED reset';
+Blockly.Msg.RANDOMEYES = 'Random eyes';
+Blockly.Msg.RASTA = 'Rasta';
+
+// Parameters for the nao blocks
+/// NAO Actions parameters
+Blockly.Msg.WALK_DISTANCE = 'distance m';
+Blockly.Msg.POSTURE_STAND = 'Stand';
+Blockly.Msg.POSTURE_STANDINIT = 'StandInit';
+Blockly.Msg.POSTURE_STANDZERO = 'StandZero';
+Blockly.Msg.FRAME_TORSO = 'torso';
+Blockly.Msg.FRAME_WORLD = 'world';
+Blockly.Msg.FRAME_ROBOT = 'robot';
+Blockly.Msg.BODY_ARM = "arm";
+Blockly.Msg.BODY_LARM = "left arm";
+Blockly.Msg.BODY_RARM = "right arm";
+Blockly.Msg.TURN_RIGHT = "right";
+Blockly.Msg.TURN_LEFT = "left";
+Blockly.Msg.TURN_DEGREES = "degrees";
+Blockly.Msg.LANGUAGE_GERMAN = 'German';
+Blockly.Msg.LANGUAGE_ENGLISH = 'English';
+Blockly.Msg.LANGUAGE_FRENCH = 'French';
+Blockly.Msg.COLOR_GREEN = 'Green';
+Blockly.Msg.COLOR_RED = 'Red';
+Blockly.Msg.COLOR_BLUE = 'Blue';
+Blockly.Msg.DURATION = 'duration';
+
+// Tooltips for the nao blocks
+/// NAO Actions tooltips
+Blockly.Msg.STANDUP_TOOLTIP = 'NAO stands up.';
+Blockly.Msg.SITDOWN_TOOLTIP = 'NAO sits down.';
+Blockly.Msg.TAICHI_TOOLTIP = 'NAO performs Tai Chi.'
+Blockly.Msg.WAVE_TOOLTIP = 'NAO waves.';
+Blockly.Msg.WIPEFOREHEAD_TOOLTIP = 'NAO wipes his forehead.';
+Blockly.Msg.APPLYPOSTURE_TOOLTIP = 'NAO goes into the posture.';
+Blockly.Msg.POINTAT_TOOLTIP = 'NAO points at a given position';
+Blockly.Msg.LOOKAT_TOOLTIP = 'NAO looks to a given position';
+Blockly.Msg.STIFFNESSON_TOOLTIP = 'The stiffness of the whole body is turned on';
+Blockly.Msg.STIFFNESSOFF_TOOLTIP = 'The stiffness of the whole body is turned off';
+Blockly.Msg.PARTIALSTIFFNESSON_TOOLTIP = 'The stiffness of the given body part is turned on';
+Blockly.Msg.PARTIALSTIFFNESSOFF_TOOLTIP = 'The stiffness of the given body part is turned off';
+Blockly.Msg.WALK_TOOLTIP = 'Makes the robot walk a distance.';
+Blocky.Msg.TURN_TOOLTIP = 'Turns the robot for number of degrees';
+Blockly.Msg.WALKTO_TOOLTIP = 'The robot walks to the give position.';
+Blockly.Msg.STOP_TOOLTIP = 'The robot stops all movement.';
+Blockly.Msg.SETVOLUME_TOOLTIP = 'Set the volume.';
+Blockly.Msg.GETVOLUME_TOOLTIP = 'Get the volume.';
+Blockly.Msg.GETLANGUAGE_TOOLTIP = 'Get the active language.';
+Blockly.Msg.SETLANGUAGE_TOOLTIP = 'Set the language.'
+Blockly.Msg.SETEYECOLOR_TOOLTIP = 'Set eye color';
+Blockly.Msg.SETEARINTENSITY_TOOLTIP = 'Set the intensity of the LEDs in the robots ears.';
+Blockly.Msg.BLINK_TOOLTIP = 'NAO blinks once.';
+Blockly.Msg.LEDOFF_TOOLTIP = 'Turn the LEDs off.';
+Blockly.Msg.LEDRESET_TOOLTIP = 'Reset the LEDs.';
+Blockly.Msg.randomEyes_TOOLTIP = 'The Color of the Eyes is changed randomly for a specified amount of time.';
+Blockly.Msg.rasta_TOOLTIP = 'The Color of the Eyes is changed between green, yellow and red for a specified amount of time.';
