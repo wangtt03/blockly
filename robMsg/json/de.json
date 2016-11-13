@@ -597,5 +597,7 @@
   "POPUP_DOWNLOAD_STEP_D": "jetzt klicke auf »Speichern« in der rechten unteren Ecke.<br><span style='font-size: 14px;'>Falls dein Programm nicht automatisch startet, warte eine Weile und drücke dann den Reset Knopf.</span>",
   "POPUP_DOWNLOAD_CHECK": "Okay, ich habe meinen Download Ordner geändert. Lade meine Programme direkt herunter und zeige dieses Fenster nicht mehr.",
   "POPUP_DOWNLOAD_SAVE_AS": "Speichern unter ...",
-  "POPUP_DOWNLOAD_SAVE": "Speichern"
+  "POPUP_DOWNLOAD_SAVE": "Speichern",
+  "POPUP_2_0_1": "Version 2.0.1 <ul class='NonIcon'><li>Calliope - programmiere deinen Calliope!</li><li>micro:bit - programmiere deinen micro:bit©</li><li>Neue Sprachen: Portugiesisch, Russisch, Polnisch</li></ul>"
 }
+  

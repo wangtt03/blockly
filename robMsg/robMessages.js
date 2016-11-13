@@ -398,7 +398,7 @@ Blockly.Msg.MESSAGE_EDIT_SAVE_PROGRAM = 'Your program has been saved';
 Blockly.Msg.MESSAGE_EDIT_SAVE_PROGRAM_AS = 'Your program has been saved as "$"';
 Blockly.Msg.MESSAGE_EDIT_SAVE_CONFIGURATION = 'Your configuration has been saved';
 Blockly.Msg.MESSAGE_EDIT_SAVE_CONFIGURATION_AS = 'Your configuration has been saved as "$"';
-Blockly.Msg.MESSAGE_ROBOT_CONNECTED = 'Your robot $ is connected';
+Blockly.Msg.MESSAGE_ROBOT_CONNECTED = 'Your robot "$" is connected';
 Blockly.Msg.MESSAGE_ROBOT_FIRMWARE_UPDATE = 'Your robot runs now version "$"';
 Blockly.Msg.MESSAGE_USER_LOGIN = 'Hello "$"';
 Blockly.Msg.MESSAGE_USER_LOGOUT = 'You are logged out';
@@ -443,10 +443,10 @@ Blockly.Msg.ORA_PROGRAM_SAVE_ERROR_NOT_SAVED_TO_DB = 'An error has occurred whil
 Blockly.Msg.ORA_PROGRAM_SAVE_AS_ERROR_PROGRAM_EXISTS = 'This program already exists.';
 Blockly.Msg.ORA_PROGRAM_SAVE_ERROR_PROGRAM_TO_UPDATE_NOT_FOUND = 'The program could not be found, so it is impossible to update it.';
 Blockly.Msg.ORA_PROGRAM_SAVE_ERROR_NO_WRITE_PERMISSION = 'You don"t have the permission to modify this program!';
-Blockly.Msg.ORA_PROGRAM_SAVE_ERROR_OPTIMISTIC_TIMESTAMP_LOCKING = 'This program has been changed recently by someone else. You can can save your changes in a new program, choose >save as< !';
+Blockly.Msg.ORA_PROGRAM_SAVE_ERROR_OPTIMISTIC_TIMESTAMP_LOCKING = 'This program has been changed recently by someone else. You can save your changes in a new program, choose >save as< !';
 Blockly.Msg.ORA_PROGRAM_GET_ALL_SUCCESS = 'Programs loaded';
-Blockly.Msg.ORA_PROGRAM_DELETE_SUCCESS = 'Program deeleted';
-Blockly.Msg.ORA_PROGRAM_DELETE_ERROR = 'An error error has occurred while deleding the configuration. Please try it again!';
+Blockly.Msg.ORA_PROGRAM_DELETE_SUCCESS = 'Program deleted';
+Blockly.Msg.ORA_PROGRAM_DELETE_ERROR = 'An error error has occurred while deleting the configuration. Please try it again!';
 Blockly.Msg.ORA_PROGRAM_IMPORT_ERROR = 'This program is not a valid NEPO program and cannot be uploaded!';
 Blockly.Msg.ORA_USER_GET_ONE_SUCCESS = 'Login successfull';
 Blockly.Msg.ORA_USER_GET_ONE_ERROR_ID_OR_PASSWORD_WRONG = 'You have entered wrong user name or password. Please try again!';
@@ -477,7 +477,7 @@ Blockly.Msg.ORA_USER_EMAIL_ONE_ERROR_USER_NOT_EXISTS_WITH_THIS_EMAIL = 'This ema
 Blockly.Msg.ORA_SERVER_ERROR = 'Server-Error';
 
 Blockly.Msg.CONFIGURATION_ERROR_SENSOR_MISSING = 'This sensor is not set to the port!';
-Blockly.Msg.CONFIGURATION_ERROR_SENSOR_WRONG = 'Connected wrong sesnor to the given port!';
+Blockly.Msg.CONFIGURATION_ERROR_SENSOR_WRONG = 'Connected wrong sensor to the given port!';
 Blockly.Msg.CONFIGURATION_ERROR_MOTOR_LEFT_MISSING = 'Left motor missing in the configuration!';
 Blockly.Msg.CONFIGURATION_ERROR_MOTOR_RIGHT_MISSING = 'Right motor missing in the configuration!';
 Blockly.Msg.CONFIGURATION_ERROR_MOTOR_MISSING = 'Motor is missing on the given port!';
@@ -666,6 +666,7 @@ Blockly.Msg.POPUP_DOWNLOAD_STEP_D = 'now click on the »Save« button on the bot
 Blockly.Msg.POPUP_DOWNLOAD_CHECK  = 'Okay, I"ve changed the download folder of my browser permanently. Don"t show this popup again and download my programs directly.';
 Blockly.Msg.POPUP_DOWNLOAD_SAVE_AS = 'Save link as ...';
 Blockly.Msg.POPUP_DOWNLOAD_SAVE = 'Save';
+Blockly.Msg.POPUP_2_0_1 = 'Version 2.0.1 <ul class="NonIcon"><li>Calliope - create programs for Calliope</li><li>micro:bit - create Programs for micro:bit©</li><li>New languages: Portuguese, Russian, Polish</li></ul>';
 
 // Names for the nao blocks
 /// NAO Actions names
