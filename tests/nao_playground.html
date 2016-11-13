@@ -45,11 +45,11 @@
 <script src="../blocks/variables.js"></script>
 <script src="../blocks/procedures.js"></script>
 <script src="../blocks/naoActions.js"></script>
-<script src="../blocks/robActions.js"></script>
-<script src="../blocks/robBrick.js"></script>
+<script src="../blocks/naoBrick.js"></script>
 <script src="../blocks/robColour.js"></script>
 <script src="../blocks/robCommunication.js"></script>
 <script src="../blocks/robControls.js"></script>
+<script src="../blocks/naoSensors.js"></script>
 <script src="../blocks/robSensors.js"></script>
 <script src="../blocks/simActions.js"></script>
 <script src="../blocks/simSensors.js"></script>
@@ -264,22 +264,7 @@ h1 {
 <toolbox_set id='toolbox' style='display: none'>
     <category name='TOOLBOX_ACTION' svg="true">
         <category name='brick'>
-        <block type='robBrick_EV3-Brick'></block>
-        <block type='robBrick_ardu-Brick'></block>
-        <block type='robBrick_ultrasonic'></block>
-        <block type='robBrick_colour'></block>
-        <block type='robBrick_light'></block>
-        <block type='robBrick_infrared'></block>
-        <block type='robBrick_touch'></block>
-        <block type='robBrick_gyro'></block>
-        <block type='robBrick_compass'></block>
-        <block type='robBrick_ultrasonic_ardu'></block>
-        <block type='robBrick_sound'></block>
-        <block type='robBrick_motor_big'></block>
-        <block type='robBrick_motor_middle'></block>
-        <block type='robBrick_motor_ardu'>
-        </block>
-        <block type='robBrick_actor'></block>
+        <block type='naoBrick_NAO-Brick'></block>
         </category>
         <category name='TOOLBOX_MOVE' svg="true">
             <block type='naoActions_standUp'></block>
@@ -419,39 +404,28 @@ h1 {
         </category> 
     </category>    
     <category name='TOOLBOX_SENSOR' svg="true">
-        <block type='robSensors_touch_isPressed'>
+        <block type='naoSensors_headsensors'>
         </block>
-        <block type='sim_touch_isPressed'>
+        <block type='naoSensors_touchsensors'>
         </block>
-        <block type='robSensors_ultrasonic_getSample'>
-         </block>
-        <block type='robSensors_colour_getSample'>
-         </block>
-        <block type='robSensors_infrared_getSample'>
+        <block type='naoSensors_naoMark'>
         </block>
-        <block type='robSensors_encoder_reset'>
+        <block type='naoSensors_selectCamera'>
         </block>
-        <block type='robSensors_encoder_getSample'>
+        <block type='naoSensors_takePicture'>
         </block>
-        <block type='robSensors_key_isPressed'>
+        <block type='naoSensors_recordVideo'>
+        	<value name='DURATION'>
+                    <block type='math_number'>
+                        <field name='NUM'>5</field>
+                    </block>
+                </value>
         </block>
-        <block type='robSensors_gyro_reset'>
-            <field name='SENSORPORT'>2</field> 
+        <block type='naoSensors_gyrometer'>
         </block>
-        <block type='robSensors_gyro_getSample'>
-            <field name='SENSORPORT'>2</field> 
+        <block type='naoSensors_accelerometer'>
         </block>
-        <block type='robSensors_compass_getSample'>
-        </block>
-        <block type='robSensors_timer_getSample'>
-        </block>
-        <block type='robSensors_timer_reset'>
-        </block>
-        <block type='robSensors_sound_getSample'>
-        </block>
-        <block type='robSensors_light_getSample'>
-        </block>
-        <block type='robSensors_battery_voltage'>
+        <block type='naoSensors_fsr'>
         </block>
     </category>
     <category name='TOOLBOX_CONTROL' svg="true">

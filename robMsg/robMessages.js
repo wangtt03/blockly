@@ -267,6 +267,7 @@ Blockly.Msg.TOOLBOX_LIGHT = 'Lights';
 Blockly.Msg.TOOLBOX_SOUND = 'Sounds';
 Blockly.Msg.TOOLBOX_DISPLAY = 'Display';
 Blockly.Msg.TOOLBOX_DRIVE = 'Drive';
+Blockly.Msg.TOOLBOX_WALK = 'Walk';
 Blockly.Msg.TOOLBOX_MOVE = 'Move';
 Blockly.Msg.TOOLBOX_GLOBAL_VARIABLE = 'Global Variables';
 Blockly.Msg.TOOLBOX_LOOP_VARIABLE = 'Loop Variables';
@@ -660,6 +661,10 @@ Blockly.Msg.IMAGE_GET_TOOLTIP_SAD = 'sad';
 
 // Names for the nao blocks
 /// NAO Actions names
+Blockly.Msg.BRICK_IPADDRESS = 'Ip Address';
+Blockly.Msg.BRICK_PORT = 'Port number';
+Blockly.Msg.BRICK_USERNAME = 'Username';
+Blockly.Msg.BRICK_PASSWORD = 'Password';
 Blockly.Msg.STANDUP = 'stand up';
 Blockly.Msg.SITDOWN = 'sit down';
 Blockly.Msg.TAICHI = 'tai chi';
@@ -686,8 +691,18 @@ Blockly.Msg.SETEARINTENSITY = 'set ear intensity';
 Blockly.Msg.BLINK = 'blink';
 Blockly.Msg.LEDOFF = 'LED off';
 Blockly.Msg.LEDRESET = 'LED reset';
-Blockly.Msg.RANDOMEYES = 'Random eyes';
-Blockly.Msg.RASTA = 'Rasta';
+Blockly.Msg.RANDOMEYES = 'random eyes';
+Blockly.Msg.RASTA = 'rasta';
+Blockly.Msg.GYROMETER = 'get gyrometer';
+Blockly.Msg.ACCELEROMETER = 'get accelerometer';
+Blockly.Msg.HEADSENSOR = 'headsensor';
+Blockly.Msg.TOUCHSENSOR = 'touchsensor';
+Blockly.Msg.SONAR = 'sonar';
+Blockly.Msg.NAOMARK = 'detect NAO mark';
+Blockly.Msg.SELECTCAMERA = 'select camera';
+Blockly.Msg.TAKEPICTURE = 'take picture';
+Blockly.Msg.RECORDVIDEO= 'record video';
+Blockly.Msg.FSR = 'get force sensitive resistor';
 
 // Parameters for the nao blocks
 /// NAO Actions parameters
@@ -711,9 +726,25 @@ Blockly.Msg.COLOR_GREEN = 'Green';
 Blockly.Msg.COLOR_RED = 'Red';
 Blockly.Msg.COLOR_BLUE = 'Blue';
 Blockly.Msg.DURATION = 'duration';
+Blockly.Msg.TOUCH_FRONT = 'Front';
+Blockly.Msg.TOUCH_MIDDLE = 'Middle';
+Blockly.Msg.TOUCH_REAR = 'Rear';
+Blockly.Msg.TOUCHED = 'touched?';
+Blockly.Msg.TOUCH_HAND = 'Hand';
+Blockly.Msg.TOUCH_BUMPER = 'Bumper';
+Blockly.Msg.TOUCH_RIGHT = "right";
+Blockly.Msg.TOUCH_LEFT = "left";
+Blockly.Msg.CAMERA_TOP = 'Top';
+Blockly.Msg.CAMERA_BOTTOM = 'Bottom';
+Blockly.Msg.QQVGA = '160*120';
+Blockly.Msg.QVGA = '320*240';
+Blockly.Msg.VGA = '640*480';
+Blockly.Msg.CAMERA = 'camera';
+Blockly.Msg.RESOLUTION = 'resolution';
 
 // Tooltips for the nao blocks
 /// NAO Actions tooltips
+Blockly.Msg.NAOBRICK_TOOLTIP = 'Represents the NAO configuration. Enter the information about your NAO to be able to establish a connection.';
 Blockly.Msg.STANDUP_TOOLTIP = 'NAO stands up.';
 Blockly.Msg.SITDOWN_TOOLTIP = 'NAO sits down.';
 Blockly.Msg.TAICHI_TOOLTIP = 'NAO performs Tai Chi.'
@@ -739,5 +770,15 @@ Blockly.Msg.SETEARINTENSITY_TOOLTIP = 'Set the intensity of the LEDs in the robo
 Blockly.Msg.BLINK_TOOLTIP = 'NAO blinks once.';
 Blockly.Msg.LEDOFF_TOOLTIP = 'Turn the LEDs off.';
 Blockly.Msg.LEDRESET_TOOLTIP = 'Reset the LEDs.';
-Blockly.Msg.randomEyes_TOOLTIP = 'The Color of the Eyes is changed randomly for a specified amount of time.';
-Blockly.Msg.rasta_TOOLTIP = 'The Color of the Eyes is changed between green, yellow and red for a specified amount of time.';
+Blockly.Msg.RANDOMEYES_TOOLTIP = 'The Color of the Eyes is changed randomly for a specified amount of time.';
+Blockly.Msg.RASTA_TOOLTIP = 'The Color of the Eyes is changed between green, yellow and red for a specified amount of time.';
+Blockly.Msg.GYROMETER_TOOLTIP = 'Get the current reading from the gyrometer in the given direction.';
+Blockly.Msg.ACCELEROMETER_TOOLTIP = 'Get the current reading from the accelerometer in the given direction';
+BLockly.Msg.HEADSENSOR_TOOLTIP = 'Is true if touchsensor on the robots head is touched.';
+BLockly.Msg.TOUCHSENSOR_TOOLTIP = 'Is true if touchsensor on the robot is touched.';
+Blockly.Msg.SONAR_TOOLTIP = 'Get the current reading from the ultrasonic sensor.';
+Blockly.Msg.NAOMARK_TOOLTIP = 'Get the number of a detected Nao Mark.';
+Blockly.Msg.SELECTCAMERA_TOOLTIP = 'Select the used camera';
+Blockly.Msg.TAKEPICTURE_TOOLTIP = 'Take a picture and save it on the robot.';
+Blockly.Msg.RECORDVIDEO_TOOLTIP = 'Record a video and save it on the robot.';
+Blockly.Msg.FSR_TOOLTIP = 'Get the current reading from the force sensitive resistor under the feet of the robot.';
