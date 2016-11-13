@@ -589,5 +589,13 @@
   "IMAGE_GET_TOOLTIP_SKULL": "Schädel",
   "IMAGE_GET_TOOLTIP_UMBRELLA": "Regenschirm",
   "IMAGE_GET_TOOLTIP_SNAKE": "Schnecke",
-  "IMAGE_GET_TOOLTIP_SAD": "traurig"
+  "IMAGE_GET_TOOLTIP_SAD": "traurig",
+  "POPUP_DOWNLOAD": "Lade dein Program auf den »$«",
+  "POPUP_DOWNLOAD_STEP_A": "Klicke mit der rechten Maustaste auf den untenstehenden Link und",
+  "POPUP_DOWNLOAD_STEP_B": "wähle »Speichern unter ...«, dann",
+  "POPUP_DOWNLOAD_STEP_C": "markiere den verbundenen »$« in der linken Spalte mit einem Klick,",
+  "POPUP_DOWNLOAD_STEP_D": "jetzt klicke auf »Speichern« in der rechten unteren Ecke.<br><span style='font-size: 14px;'>Falls dein Programm nicht automatisch startet, warte eine Weile und drücke dann den Reset Knopf.</span>",
+  "POPUP_DOWNLOAD_CHECK": "Okay, ich habe meinen Download Ordner geändert. Lade meine Programme direkt herunter und zeige dieses Fenster nicht mehr.",
+  "POPUP_DOWNLOAD_SAVE_AS": "Speichern unter ...",
+  "POPUP_DOWNLOAD_SAVE": "Speichern"
 }

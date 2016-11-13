@@ -652,12 +652,20 @@ Blockly.Msg.IMAGE_GET_TOOLTIP_BUTTERFLY = 'butterfly';
 Blockly.Msg.IMAGE_GET_TOOLTIP_STICKFIGURE = 'stickfigure';
 Blockly.Msg.IMAGE_GET_TOOLTIP_GHOST = 'ghost';
 Blockly.Msg.IMAGE_GET_TOOLTIP_SWORD = 'sword';
-Blockly.Msg.IMAGE_GET_TOOLTIP_PITCHFORK = 'pitchfork';
 Blockly.Msg.IMAGE_GET_TOOLTIP_GIRAFFE = 'giraffe';
 Blockly.Msg.IMAGE_GET_TOOLTIP_SKULL = 'skull';
 Blockly.Msg.IMAGE_GET_TOOLTIP_UMBRELLA = 'umbrella';
 Blockly.Msg.IMAGE_GET_TOOLTIP_SNAKE = 'snake';
 Blockly.Msg.IMAGE_GET_TOOLTIP_SAD = 'sad';
+
+Blockly.Msg.POPUP_DOWNLOAD = 'Download your program to »$«';
+Blockly.Msg.POPUP_DOWNLOAD_STEP_A = 'Right click on your program link below and';
+Blockly.Msg.POPUP_DOWNLOAD_STEP_B = 'choose »Save link as ...«, then';
+Blockly.Msg.POPUP_DOWNLOAD_STEP_C = 'click on your connected »$« in the left column,';
+Blockly.Msg.POPUP_DOWNLOAD_STEP_D = 'now click on the »Save« button on the bottom right.<br><span style="font-size: 14px;">If your program doesn"t start automatically press the reset button after a while.</span>';
+Blockly.Msg.POPUP_DOWNLOAD_CHECK  = 'Okay, I"ve changed the download folder of my browser permanently. Don"t show this popup again and download my programs directly.';
+Blockly.Msg.POPUP_DOWNLOAD_SAVE_AS = 'Save link as ...';
+Blockly.Msg.POPUP_DOWNLOAD_SAVE = 'Save';
 
 // Names for the nao blocks
 /// NAO Actions names
