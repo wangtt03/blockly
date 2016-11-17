@@ -86,7 +86,8 @@ Blockly.Blocks['naoActions_pointAt'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_ACTION_RGB);
 	        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.FRAME_TORSO, '0' ], [ Blockly.Msg.FRAME_WORLD, '1' ], [ Blockly.Msg.FRAME_ROBOT, '2' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.POINTAT).appendField(dropdown, 'DIRECTION');
+	        this.appendDummyInput().appendField(Blockly.Msg.POINTAT);
+	        this.appendDummyInput().appendField(Blockly.Msg.FRAME).appendField(dropdown, 'DIRECTION');
 	        this.appendValueInput('X').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("x");
 	        this.appendValueInput('Y').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("y");
 	        this.appendValueInput('Z').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("z");
@@ -101,7 +102,8 @@ Blockly.Blocks['naoActions_lookAt'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_ACTION_RGB);
 	        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.FRAME_TORSO, '0' ], [ Blockly.Msg.FRAME_WORLD, '1' ], [ Blockly.Msg.FRAME_ROBOT, '2' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.LOOKAT).appendField(dropdown, 'DIRECTION');
+	        this.appendDummyInput().appendField(Blockly.Msg.LOOKAT);
+	        this.appendDummyInput().appendField(Blockly.Msg.FRAME).appendField(dropdown, 'DIRECTION');
 	        this.appendValueInput('X').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("x");
 	        this.appendValueInput('Y').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("y");
 	        this.appendValueInput('Z').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("z");

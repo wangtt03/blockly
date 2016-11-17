@@ -695,7 +695,7 @@ Blockly.Msg.GETLANGUAGE = 'get language';
 Blockly.Msg.SETLANGUAGE = 'set language';
 Blockly.Msg.DISPLAY_SAY = 'say';
 Blockly.Msg.SETEYECOLOR = 'set eye color';
-Blockly.Msg.SETEARINTENSITY = 'set ear intensity';
+Blockly.Msg.SETEARINTENSITY = 'set ear LED intensity';
 Blockly.Msg.BLINK = 'blink';
 Blockly.Msg.LEDOFF = 'LED off';
 Blockly.Msg.LEDRESET = 'LED reset';
@@ -749,6 +749,7 @@ Blockly.Msg.QVGA = '320*240';
 Blockly.Msg.VGA = '640*480';
 Blockly.Msg.CAMERA = 'camera';
 Blockly.Msg.RESOLUTION = 'resolution';
+Blockly.Msg.FRAME = 'frame';
 
 // Tooltips for the nao blocks
 /// NAO tooltips

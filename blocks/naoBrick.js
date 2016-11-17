@@ -1,7 +1,7 @@
 /**
- * @fileoverview Brick blocks for EV3.
+ * @fileoverview Brick blocks for NAO.
  * @requires Blockly.Blocks
- * @author Beate
+ * @author Janis
  */
 'use strict';
 
