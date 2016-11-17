@@ -669,7 +669,7 @@ Blockly.Msg.POPUP_DOWNLOAD_SAVE = 'Save';
 Blockly.Msg.POPUP_2_0_1 = 'Version 2.0.1 <ul class="NonIcon"><li>Calliope - create programs for Calliope</li><li>micro:bit - create Programs for micro:bit©</li><li>New languages: Portuguese, Russian, Polish</li></ul>';
 
 // Names for the nao blocks
-/// NAO Actions names
+/// NAO names
 Blockly.Msg.BRICK_IPADDRESS = 'Ip Address';
 Blockly.Msg.BRICK_PORT = 'Port number';
 Blockly.Msg.BRICK_USERNAME = 'Username';
@@ -684,8 +684,7 @@ Blockly.Msg.POINTAT = 'point at';
 Blockly.Msg.LOOKAT = 'look at';
 Blockly.Msg.STIFFNESSON = 'stiffness on';
 Blockly.Msg.STIFFNESSOFF = 'stiffness off';
-Blockly.Msg.PARTIALSTIFFNESSON = 'stiffness of part on';
-Blockly.Msg.PARTIALSTIFFNESSOFF = 'stiffness of part off';
+Blockly.Msg.PARTIALSTIFFNESS = 'stiffness of';
 Blockly.Msg.WALK = 'walk';
 Blockly.Msg.TURN = 'turn';
 Blockly.Msg.WALKTO = 'walk to';
@@ -714,7 +713,7 @@ Blockly.Msg.RECORDVIDEO= 'record video';
 Blockly.Msg.FSR = 'get force sensitive resistor';
 
 // Parameters for the nao blocks
-/// NAO Actions parameters
+/// NAO parameters
 Blockly.Msg.WALK_DISTANCE = 'distance m';
 Blockly.Msg.POSTURE_STAND = 'Stand';
 Blockly.Msg.POSTURE_STANDINIT = 'StandInit';
@@ -722,7 +721,7 @@ Blockly.Msg.POSTURE_STANDZERO = 'StandZero';
 Blockly.Msg.FRAME_TORSO = 'torso';
 Blockly.Msg.FRAME_WORLD = 'world';
 Blockly.Msg.FRAME_ROBOT = 'robot';
-Blockly.Msg.BODY_ARM = "arm";
+Blockly.Msg.BODY_ARM = "arms";
 Blockly.Msg.BODY_LARM = "left arm";
 Blockly.Msg.BODY_RARM = "right arm";
 Blockly.Msg.TURN_RIGHT = "right";
@@ -752,7 +751,7 @@ Blockly.Msg.CAMERA = 'camera';
 Blockly.Msg.RESOLUTION = 'resolution';
 
 // Tooltips for the nao blocks
-/// NAO Actions tooltips
+/// NAO tooltips
 Blockly.Msg.NAOBRICK_TOOLTIP = 'Represents the NAO configuration. Enter the information about your NAO to be able to establish a connection.';
 Blockly.Msg.STANDUP_TOOLTIP = 'NAO stands up.';
 Blockly.Msg.SITDOWN_TOOLTIP = 'NAO sits down.';

@@ -138,7 +138,7 @@ Blockly.Blocks['naoActions_partialStiffnessOn'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_ACTION_RGB);
 	        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.BODY_ARM, 'ARM' ], [ Blockly.Msg.BODY_LARM, 'LARM' ], [ Blockly.Msg.BODY_RARM, 'RARM' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.PARTIALSTIFFNESSON).appendField(dropdown, 'DIRECTION');
+	        this.appendDummyInput().appendField(Blockly.Msg.PARTIALSTIFFNESS).appendField(dropdown, 'DIRECTION').appendField(' on');
 	        this.setPreviousStatement(true);
 	        this.setNextStatement(true);
 	        this.setTooltip(Blockly.Msg.PARTIALSTIFFNESSON_TOOLTIP);
@@ -150,7 +150,7 @@ Blockly.Blocks['naoActions_partialStiffnessOff'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_ACTION_RGB);
 	        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.BODY_ARM, 'ARM' ], [ Blockly.Msg.BODY_LARM, 'LARM' ], [ Blockly.Msg.BODY_RARM, 'RARM' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.PARTIALSTIFFNESSOFF).appendField(dropdown, 'DIRECTION');
+	        this.appendDummyInput().appendField(Blockly.Msg.PARTIALSTIFFNESS).appendField(dropdown, 'DIRECTION').appendField(' off');
 	        this.setPreviousStatement(true);
 	        this.setNextStatement(true);
 	        this.setTooltip(Blockly.Msg.PARTIALSTIFFNESSOFF_TOOLTIP);
