@@ -6,7 +6,7 @@ goog.provide('Blockly.Msg.tl');
 
 goog.require('Blockly.Msg');
 
-Blockly.Msg.FSR_TOOLTIP = "Get the current reading from the force sensitive resistor under the feet of the robot.";  // untranslated
+Blockly.Msg.NAO_FSR_TOOLTIP = "Get the current reading from the force sensitive resistor under the feet of the robot.";  // untranslated
 Blockly.Msg.MATH_CHANGE_TITLE_ITEM = Blockly.Msg.VARIABLES_DEFAULT_NAME;
 Blockly.Msg.PROCEDURES_DEFRETURN_TITLE = Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE;
 Blockly.Msg.CONTROLS_IF_IF_TITLE_IF = Blockly.Msg.CONTROLS_IF_MSG_IF;

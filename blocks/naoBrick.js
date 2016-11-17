@@ -29,10 +29,10 @@ Blockly.Blocks['naoBrick_NAO-Brick'] = {
         var username = new Blockly.FieldTextInput('nao', Blockly.FieldTextInput.nonnegativeNumberValidator)
         var password = new Blockly.FieldTextInput('nao', Blockly.FieldTextInput.nonnegativeNumberValidator)
         this.appendDummyInput().appendField(new Blockly.FieldLabel('NAO', 'brick_label'));
-        this.appendDummyInput().appendField(Blockly.Msg.BRICK_IPADDRESS).appendField(ipAddress, 'IP_ADDRESS');
-        this.appendDummyInput().appendField(Blockly.Msg.BRICK_PORT).appendField(port, 'PORT');
-        this.appendDummyInput().appendField(Blockly.Msg.BRICK_USERNAME).appendField(username, 'USERNAME');
-        this.appendDummyInput().appendField(Blockly.Msg.BRICK_PASSWORD).appendField(password, 'PASSWORD');
+        this.appendDummyInput().appendField(Blockly.Msg.NAO_BRICK_IPADDRESS).appendField(ipAddress, 'IP_ADDRESS');
+        this.appendDummyInput().appendField(Blockly.Msg.NAO_BRICK_PORT).appendField(port, 'PORT');
+        this.appendDummyInput().appendField(Blockly.Msg.NAO_BRICK_USERNAME).appendField(username, 'USERNAME');
+        this.appendDummyInput().appendField(Blockly.Msg.NAO_BRICK_PASSWORD).appendField(password, 'PASSWORD');
         this.setTooltip(Blockly.Msg.NAOBRICK_TOOLTIP);
         this.setDeletable(false);
     }

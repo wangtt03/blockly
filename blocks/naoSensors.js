@@ -21,10 +21,10 @@ Blockly.Blocks['naoSensors_headsensors'] = {
 
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.TOUCH_FRONT, 'FRONT' ], [ Blockly.Msg.TOUCH_MIDDLE, 'MIDDLE' ], [ Blockly.Msg.TOUCH_REAR, 'REAR' ] ]);
-	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.HEADSENSOR).appendField(dropdown, 'POSITION').appendField(Blockly.Msg.TOUCHED);
+	        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCH_FRONT, 'FRONT' ], [ Blockly.Msg.NAO_TOUCH_MIDDLE, 'MIDDLE' ], [ Blockly.Msg.NAO_TOUCH_REAR, 'REAR' ] ]);
+	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.NAO_HEADSENSOR).appendField(dropdown, 'POSITION').appendField(Blockly.Msg.NAO_TOUCHED);
 	        this.setOutput(true, 'Boolean');
-	        this.setTooltip(Blockly.Msg.HEADSENSOR_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.NAO_HEADSENSOR_TOOLTIP);
 	    }
 };
 
@@ -35,11 +35,11 @@ Blockly.Blocks['naoSensors_touchsensors'] = {
 
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var position = new Blockly.FieldDropdown([ [ Blockly.Msg.TOUCH_HAND, 'HAND' ], [ Blockly.Msg.TOUCH_BUMPER, 'BUMPER' ] ]);
-	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.TOUCH_LEFT, 'LEFT' ], [ Blockly.Msg.TOUCH_RIGHT, 'RIGHT' ] ]);
-	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.TOUCHSENSOR).appendField(position, 'POSITION').appendField(side, 'SIDE').appendField(Blockly.Msg.TOUCHED);
+	        var position = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCH_HAND, 'HAND' ], [ Blockly.Msg.NAO_TOUCH_BUMPER, 'BUMPER' ] ]);
+	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCH_LEFT, 'LEFT' ], [ Blockly.Msg.NAO_TOUCH_RIGHT, 'RIGHT' ] ]);
+	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.NAO_TOUCHSENSOR).appendField(position, 'POSITION').appendField(side, 'SIDE').appendField(Blockly.Msg.NAO_TOUCHED);
 	        this.setOutput(true, 'Boolean');
-	        this.setTooltip(Blockly.Msg.TOUCHSENSOR_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.NAO_TOUCHSENSOR_TOOLTIP);
 	    }
 };
 
@@ -50,18 +50,18 @@ Blockly.Blocks['naoSensors_sonar'] = {
 
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        this.appendDummyInput().appendField(Blockly.Msg.SONAR);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_SONAR);
 	        this.setOutput(true, 'Number');
-	        this.setTooltip(Blockly.Msg.SONAR_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.NAO_SONAR_TOOLTIP);
 	    }
 	};
 
 Blockly.Blocks['naoSensors_selectCamera'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var camera = new Blockly.FieldDropdown([ [ Blockly.Msg.CAMERA_TOP, '0' ], [ Blockly.Msg.CAMERA_BOTTOM, '1' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.SELECTCAMERA).appendField(camera, 'CAMERA');
-	        this.setTooltip(Blockly.Msg.SELECTCAMERA_TOOLTIP);
+	        var camera = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_CAMERA_TOP, '0' ], [ Blockly.Msg.NAO_CAMERA_BOTTOM, '1' ] ]);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_SELECTCAMERA).appendField(camera, 'CAMERA');
+	        this.setTooltip(Blockly.Msg.NAO_SELECTCAMERA_TOOLTIP);
 	        this.setPreviousStatement(true);
 	        this.setNextStatement(true);
 	    }
@@ -75,9 +75,9 @@ Blockly.Blocks['naoSensors_naoMark'] = {
 
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        this.appendDummyInput().appendField(Blockly.Msg.NAOMARK);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_NAOMARK);
 	        this.setOutput(true, 'Number');
-	        this.setTooltip(Blockly.Msg.NAOMARK_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.NAO_NAOMARK_TOOLTIP);
 	    }
 };
 
@@ -85,8 +85,8 @@ Blockly.Blocks['naoSensors_naoMark'] = {
 Blockly.Blocks['naoSensors_takePicture'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        this.appendDummyInput().appendField(Blockly.Msg.TAKEPICTURE);
-	        this.setTooltip(Blockly.Msg.TAKEPICTURE_TOOLTIP);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_TAKEPICTURE);
+	        this.setTooltip(Blockly.Msg.NAO_TAKEPICTURE_TOOLTIP);
 	        this.setPreviousStatement(true);
 	        this.setNextStatement(true);
 	    }
@@ -99,15 +99,15 @@ Blockly.Blocks['naoSensors_recordVideo'] = {
 
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var resolution = new Blockly.FieldDropdown([ [ Blockly.Msg.QQVGA, '0' ], [ Blockly.Msg.QVGA, '1' ], [ Blockly.Msg.VGA, '2' ] ]);
-	        var camera = new Blockly.FieldDropdown([ [ Blockly.Msg.CAMERA_TOP, '0' ], [ Blockly.Msg.CAMERA_BOTTOM, '1' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.RECORDVIDEO);
-	        this.appendDummyInput().appendField(Blockly.Msg.RESOLUTION).appendField(resolution, 'RESOLUTION');
-	        this.appendDummyInput().appendField(Blockly.Msg.CAMERA).appendField(camera, 'CAMERA');
-	        this.appendValueInput('DURATION').appendField(Blockly.Msg.DURATION).setCheck('Number');
+	        var resolution = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_QQVGA, '0' ], [ Blockly.Msg.NAO_QVGA, '1' ], [ Blockly.Msg.NAO_VGA, '2' ] ]);
+	        var camera = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_CAMERA_TOP, '0' ], [ Blockly.Msg.NAO_CAMERA_BOTTOM, '1' ] ]);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_RECORDVIDEO);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_RESOLUTION).appendField(resolution, 'RESOLUTION');
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_CAMERA).appendField(camera, 'CAMERA');
+	        this.appendValueInput('DURATION').appendField(Blockly.Msg.NAO_DURATION).setCheck('Number');
 	        this.setPreviousStatement(true);
 	        this.setNextStatement(true);
-	        this.setTooltip(Blockly.Msg.RECORDVIDEO_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.NAO_RECORDVIDEO_TOOLTIP);
 	    }
 };
 
@@ -119,9 +119,9 @@ Blockly.Blocks['naoSensors_gyrometer'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
 	        var dropdown = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.GYROMETER).appendField(dropdown, 'COORDINATE');
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_GYROMETER).appendField(dropdown, 'COORDINATE');
 	        this.setOutput(true, 'Number');
-	        this.setTooltip(Blockly.Msg.GYROMETER_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.NAO_GYROMETER_TOOLTIP);
 	    }
 	};
 
@@ -134,9 +134,9 @@ Blockly.Blocks['naoSensors_accelerometer'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
 	        var dropdown = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ], [ 'Z', 'Z' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.ACCELEROMETER).appendField(dropdown, 'COORDINATE');
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_ACCELEROMETER).appendField(dropdown, 'COORDINATE');
 	        this.setOutput(true, 'Number');
-	        this.setTooltip(Blockly.Msg.ACCELEROMETER_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.NAO_ACCELEROMETER_TOOLTIP);
 	    }
 	};
 
@@ -147,15 +147,9 @@ Blockly.Blocks['naoSensors_fsr'] = {
 
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.TOUCH_LEFT, 'LEFT' ], [ Blockly.Msg.TOUCH_RIGHT, 'RIGHT' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.FSR).appendField(side, 'SIDE');
+	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCH_LEFT, 'LEFT' ], [ Blockly.Msg.NAO_TOUCH_RIGHT, 'RIGHT' ] ]);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_FSR).appendField(side, 'SIDE');
 	        this.setOutput(true, 'Number');
-	        this.setTooltip(Blockly.Msg.FSR_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.NAO_FSR_TOOLTIP);
 	    }
 	};
-
-
-
-
-
-
