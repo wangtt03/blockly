@@ -49,8 +49,7 @@
 <script src="../blocks/robColour.js"></script>
 <script src="../blocks/robCommunication.js"></script>
 <script src="../blocks/robControls.js"></script>
-<script src="../blocks/naoSensors.js"></script>
-<script src="../blocks/robSensors.js"></script>
+<script src="../blocks/naoSensors.js"></script> 
 <script src="../blocks/simActions.js"></script>
 <script src="../blocks/simSensors.js"></script>
 <link rel="stylesheet" type="text/css" href="typicons.css"></link>
@@ -60,7 +59,7 @@
 // Depending on the URL argument, render as LTR or RTL.
 var rtl = (document.location.search == '?rtl');
 var workspace = null;
-var device = 'ev3'
+var device = 'nao'
 
 function start() {
   var toolbox = document.getElementById('toolbox');
@@ -90,7 +89,7 @@ function start() {
            variableDeclaration: true,
            robControls: true
           });
-  workspace.setDevice('ev3');
+  workspace.setDevice('nao');
   // Restore previously displayed text.
   if (sessionStorage) {
     var text = sessionStorage.getItem('textarea');
