@@ -121,7 +121,7 @@ Blockly.Xml.blockToDom = function(block, statement_list) {
     // Custom data for an advanced block.
     var mutation = block.mutationToDom();
     if (mutation) {
-      if (mutation !== undefined && mutation != null && (block.type == 'robProcedures_defreturn' || block.type == 'robProcedures_defnoreturn')) {
+      if (mutation !== undefined && mutation != null && block.type == 'robProcedures_defreturn' ) {
         element.appendChild(repetitions);
         repe = true;
       }
