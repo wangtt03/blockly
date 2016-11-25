@@ -866,6 +866,7 @@ Blockly.Blocks['robProcedures_defnoreturn'] = {
       var stackConnectionTarget = this.getInput('STACK').connection.targetConnection;
       this.removeInput('STACK');
       this.appendStatementInput('ST');
+      this.getInput('ST').connection.setCheck('declaration_only');
       this.appendStatementInput('STACK').appendField(Blockly.Msg.PROCEDURES_DEFNORETURN_DO);
       if (stackConnectionTarget) {
         this.getInput('STACK').connection.connect(stackConnectionTarget);
@@ -1091,7 +1092,7 @@ Blockly.Blocks['robProcedures_defreturn'] = {
   },
   /**
    * Update the shape according, if declarations exists.
-   * 
+   *
    * @this Blockly.Block
    */
   addDeclarationStatement_ : function() {
@@ -1176,10 +1177,10 @@ Blockly.Blocks['robProcedures_defreturn'] = {
       this.returnType_ = option;
       this.updateShape_(0, this.returnType_);
       Blockly.Procedures.updateCallers(
-                         this.getFieldValue('NAME'), 
-                         this.returnType_, 
-                         this.workspace, 
-                         99, 
+                         this.getFieldValue('NAME'),
+                         this.returnType_,
+                         this.workspace,
+                         99,
                          this.getFieldValue('NAME'));
     }
   }
@@ -1273,8 +1274,8 @@ Blockly.Blocks['robProcedures_callnoreturn'] = {
         }
         if (target && target.conn) {
           var connection = target.conn;
-          if (connection && 
-              connection.targetConnection && 
+          if (connection &&
+              connection.targetConnection &&
               connection.sourceBlock_.workspace != this.workspace) {
             // Block no longer exists or has been attached elsewhere.
             // delete this.quarkConnections_[quarkName];
@@ -1299,7 +1300,7 @@ Blockly.Blocks['robProcedures_callnoreturn'] = {
    * Notification that the procedure's parameters have changed.
    * @param {String} name of the parameter
    * @param {String} type of the parameter
-   * @param {Number} action 
+   * @param {Number} action
    *                 0 parameter has changed the type
    *                 1 new parameter
    *                -1 delete parameter
@@ -1495,8 +1496,8 @@ Blockly.Blocks['robProcedures_callreturn'] = {
         }
         if (target && target.conn) {
           var connection = target.conn;
-          if (connection && 
-              connection.targetConnection && 
+          if (connection &&
+              connection.targetConnection &&
               connection.sourceBlock_.workspace != this.workspace) {
           } else {
             input.connection.connect(connection);
@@ -1519,7 +1520,7 @@ Blockly.Blocks['robProcedures_callreturn'] = {
    * Notification that the procedure's parameters have changed.
    * @param {String} name of the parameter
    * @param {String} type of the parameter
-   * @param {Number} action 
+   * @param {Number} action
    *                 0 parameter has changed the type
    *                 1 new parameter
    *                -1 delete parameter
@@ -1684,7 +1685,7 @@ Blockly.Blocks['robProcedures_ifreturn'] = {
   },
   /**
    * Returns the name of the procedure this block calls.
-   * 
+   *
    * @return {string} Procedure name.
    * @this Blockly.Block
    */
@@ -1752,4 +1753,3 @@ Blockly.Blocks['robProcedures_ifreturn'] = {
     }
   }
 };
-

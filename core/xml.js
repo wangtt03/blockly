@@ -88,7 +88,8 @@ Blockly.Xml.blockToDom = function(block, statement_list) {
     if (mutation && (mutation.hasChildNodes() || mutation.hasAttributes())) {
       element.appendChild(mutation);
       if (mutation !== undefined && mutation != null
-           && (block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for' || block.type == 'robControls_wait')) {
+            && (block.type.indexOf('Controls_if') !== -1 || block.type.indexOf('Controls_wait_for') !== -1 || block.type.indexOf('Controls_wait') !== -1)) {
+         //  && (block.type == 'robControls_if' || block.type == 'robControls_ifElse' || block.type == 'robControls_wait_for' || block.type == 'robControls_wait')) {
          element.appendChild(repetitions);
          repe = true;
       }
@@ -108,19 +109,19 @@ Blockly.Xml.blockToDom = function(block, statement_list) {
       element.appendChild(container);
     }
   }
-    
+
   for (var i = 0, input; input = block.inputList[i]; i++) {
     for (var j = 0, field; field = input.fieldRow[j]; j++) {
       fieldToDom(field);
     }
   }
-  
+
   //THIS IF STATEMENET SHOULD BE TESTED
   if (block.mutationToDom) {
     // Custom data for an advanced block.
     var mutation = block.mutationToDom();
     if (mutation) {
-      if (mutation !== undefined && mutation != null && block.type == 'robProcedures_defreturn') {
+      if (mutation !== undefined && mutation != null && (block.type == 'robProcedures_defreturn' || block.type == 'robProcedures_defnoreturn')) {
         element.appendChild(repetitions);
         repe = true;
       }
@@ -149,7 +150,7 @@ Blockly.Xml.blockToDom = function(block, statement_list) {
     var empty = true;
     if (input.type == Blockly.DUMMY_INPUT) {
       continue;
-    } else {        
+    } else {
       var childBlock = input.connection.targetBlock();
       if (input.type == Blockly.INPUT_VALUE) {
         container = goog.dom.createDom('value');
@@ -212,7 +213,7 @@ Blockly.Xml.blockToDom = function(block, statement_list) {
 
 /**
  * Appends list of XML DOM to a parent XML DOM element.
- * 
+ *
  * @param {!Element}
  *            parentDom a XML DOM element.
  * @param {!Object}
@@ -375,9 +376,9 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
       }
     xmlBlockList.push(xmlChildList);
       }
-  
+
   }
-  
+
       // make sure the start block is in the first column, to avoid errors while instantiating blocks with global variables before the variable declaration
     for (var i = 0; i < xmlBlockList.length; i++) {
         if (xmlBlockList[i][0].getAttribute('type').indexOf('Controls_start') !== -1) {
@@ -548,7 +549,7 @@ Blockly.Xml.domToBlockHeadless_ = function(xmlBlockList, workspace) {
  * Decode an XML block tag and create a block (and possibly sub blocks) on the
  * workspace. Extracted from the original method and modified so can from
  * <repetition> element to generate child blocks
- * 
+ *
  * @param {!Blockly.Workspace}
  *            workspace The workspace.
  * @param {!Element}
@@ -680,12 +681,12 @@ Blockly.Xml.childToBlock = function(workspace, block, xmlChild) {
         if (childShadowNode) {
             input.connection.setShadowDom(childShadowNode);
         }
-        if (childBlockNode) {           
+        if (childBlockNode) {
             if (!childShadowNode) {
                 blockChild = Blockly.Xml.domToBlockHeadless_(RealGrandchildList, workspace);
             } else {
-                blockChild = Blockly.Xml.domToBlockHeadless_(childBlockNode, workspace);    
-            }          
+                blockChild = Blockly.Xml.domToBlockHeadless_(childBlockNode, workspace);
+            }
             if (blockChild.outputConnection) {
                 input.connection.connect(blockChild.outputConnection);
             } else if (blockChild.previousConnection) {
