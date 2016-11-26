@@ -598,6 +598,7 @@
   "POPUP_DOWNLOAD_CHECK": "Okay, ich habe meinen Download Ordner geändert. Lade meine Programme direkt herunter und zeige dieses Fenster nicht mehr.",
   "POPUP_DOWNLOAD_SAVE_AS": "Speichern unter ...",
   "POPUP_DOWNLOAD_SAVE": "Speichern",
-  "POPUP_2_0_1": "Version 2.0.1 <ul class='NonIcon'><li>Calliope - programmiere deinen Calliope!</li><li>micro:bit - programmiere deinen micro:bit©</li><li>Neue Sprachen: Portugiesisch, Russisch, Polnisch</li></ul>"
+  "POPUP_2_0_1": "Version 2.0.1 <ul class='NonIcon'><li>Calliope - programmiere deinen Calliope!</li><li>micro:bit - programmiere deinen micro:bit©</li><li>Neue Sprachen: Portugiesisch, Russisch, Polnisch</li></ul>",
+  "POPUP_ROBOT_SIM": "Open Roberta Sim"
 }
   
