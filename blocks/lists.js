@@ -1215,7 +1215,7 @@ Blockly.Blocks['robLists_getIndex'] = {
             }
             return undefined;
         });
-        this.getInput('AT').appendField(menu, 'WHERthis.previousConnectionE');
+        this.getInput('AT').appendField(menu, 'WHERE');
         if (Blockly.Msg.LISTS_GET_INDEX_TAIL) {
             this.moveInputBefore('TAIL', null);
         }
