@@ -786,7 +786,7 @@ Blockly.Msg.PLAY_TONE = "note";
 Blockly.Msg.PLAY_TONE_TOOLTIP = "joue une note";
 Blockly.Msg.PLAY_VOLUME = "volume";
 Blockly.Msg.PLAY_WHOLE = "whole note";  // untranslated
-Blockly.Msg.POPUP_2_0_1 = "Version 2.0.1 <ul class='NonIcon'><li>Calliope - create programs for Calliope</li><li>micro:bit - create Programs for micro:bit©</li><li>New languages: Portuguese, Russian, Polish</li></ul>";  // untranslated
+Blockly.Msg.POPUP_2_0_1 = "Version 2.1.1 <ul class='NonIcon'><li>Calliope - create programs for Calliope</li><li>micro:bit - create Programs for micro:bit©</li><li>New languages: Portuguese, Russian, Polish</li></ul>";  // untranslated
 Blockly.Msg.POPUP_ABOUT_JOIN = "je souhaite aider";
 Blockly.Msg.POPUP_ABOUT_TEXT = "Open Roberta Lab est un environnement de programmation online pour les jeunes qui permet de façon simplifiée et sans obstacles techniques la programmation d'un robot. <br /> L'environnement de programmation est complètement »open source«, Vous pouvez l'améliorer!  Les Open-Source-developpertools sont à votre disposition sur le serveur Fraunhofer";
 Blockly.Msg.POPUP_ABOUT_TEXT_DEV = "Open Roberta Lab a été développé par Fraunhofer-Instituts IAIS dans le cadre de l'iInitiative  <a href='http://www.roberta-home.de/'>»Roberta – apprendre grâce aux robots«</a>";

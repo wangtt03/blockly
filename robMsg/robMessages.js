@@ -666,7 +666,7 @@ Blockly.Msg.POPUP_DOWNLOAD_STEP_D = 'now click on the »Save« button on the bot
 Blockly.Msg.POPUP_DOWNLOAD_CHECK = 'Okay, I"ve changed the download folder of my browser permanently. Don"t show this popup again and download my programs directly.';
 Blockly.Msg.POPUP_DOWNLOAD_SAVE_AS = 'Save link as ...';
 Blockly.Msg.POPUP_DOWNLOAD_SAVE = 'Save';
-Blockly.Msg.POPUP_2_0_1 = 'Version 2.0.1 <ul class="NonIcon"><li>Calliope - create programs for Calliope</li><li>micro:bit - create Programs for micro:bit©</li><li>New languages: Portuguese, Russian, Polish</li></ul>';
+Blockly.Msg.POPUP_2_0_1 = 'Version 2.1.1 <ul class="NonIcon"><li>Calliope - create programs for Calliope</li><li>micro:bit - create Programs for micro:bit©</li><li>New languages: Portuguese, Russian, Polish</li></ul>';
 Blockly.Msg.POPUP_ROBOT_SIM = 'Open Roberta Sim';
 
 // Names for the nao blocks
