@@ -132,7 +132,7 @@ Blockly.Blocks['mbedImage_get_image'] = {
      * @this Blockly.Block
      */
     init : function() {
-        var options = [ [ 'heart', 'HEART' ], [ 'heart small', 'HEART_SMALL' ], [ 'smile', 'SMILE' ], [ 'confused', 'CONFUSED' ], [ 'angry', 'ANGRY' ],
+        var options = [ [ 'heart', 'HEART' ], [ 'heart small', 'HEART_SMALL' ], [ 'happy', 'HAPPY' ], [ 'smile', 'SMILE' ], [ 'confused', 'CONFUSED' ], [ 'angry', 'ANGRY' ],
                 [ 'asleep', 'ASLEEP' ], [ 'surprised', 'SURPRISED' ], [ 'silly', 'SILLY' ], [ 'fabulous', 'FABULOUS' ], [ 'meh!', 'MEH' ], [ 'yes', 'YES' ],
                 [ 'no', 'NO' ], [ 'triangle', 'TRIANGLE' ], [ 'triangle left', 'TRIANGLE_LEFT' ], [ 'chessboard', 'CHESSBOARD' ], [ 'diamond', 'DIAMOND' ],
                 [ 'diamond small', 'DIAMOND_SMALL' ], [ 'square', 'SQUARE' ], [ 'square small', 'SQUARE_SMALL' ], [ 'rabbit', 'RABBIT' ], [ 'cow', 'COW' ],

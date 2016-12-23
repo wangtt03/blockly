@@ -559,8 +559,8 @@ Blockly.Msg.CONFIGURATION_ERROR_MOTORS_ROTATION_DIRECTION = 'The direction of ro
 Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_RIGHT_MOTORS = 'You have multiple right motors assigned to your configuration!';
 Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_LEFT_MOTORS = 'You have multiple left motors assigned to your configuration!';
 Blockly.Msg.WAIT_TIME_TOOLTIP = 'Waits for a certain time in milliseconds.';
-Blockly.Msg.POPUP_RELEASE = 'Version beta 1.4 <ul class="NonIcon"><li>Create one program for the real robot <strong>and</strong> for the simulated robot</li><li>Update blockly for better performance and zoom function</li></ul>';
-Blockly.Msg.POPUP_NEW_RELEASE = 'Version beta 2.0 <ul class="NonIcon"><li>NXT - create programs for LEGO Mindstorms NXT</li><li>Bot"n Roll - create programs for the educational robotic kit botnroll.com®compatible with Arduino™</li><li>Start programming with the new welcome tour</li><li>Improved Open Roberta Lab performance</ul>';
+Blockly.Msg.POPUP_2_1_3 = 'Version 2.1.3 <ul class="NonIcon"><li>Calliope - simulate programs for Calliope</li><li>micro:bit - simulate programs for micro:bit©</li><li>new feature - help for programming blocks in the editor (EV3 only)</li></ul>';
+Blockly.Msg.POPUP_OLD_RELEASE = 'Version 2.1.1 <ul class="NonIcon"><li>Calliope - create programs for Calliope</li><li>micro:bit - create Programs for micro:bit©</li><li>New languages: Portuguese, Russian, Polish</li></ul>';
 Blockly.Msg.ORA_TOKEN_SET_ERROR_WRONG_ROBOTTYPE = 'You are trying to connect a robot of a different type as selected in the menu. <br> Please switch the robot type in the robot"s menu and try to connect again!';
 Blockly.Msg.ORA_USER_ERROR_EMAIL_USED = 'There is already an account with this email address registered. Please enter another email adress!';
 Blockly.Msg.ORA_USER_PASSWORD_RECOVERY_EXPIRED_URL = 'The link is not valid anymore. Please ask for resetting your password again, if you still cannot remember it!';
@@ -667,7 +667,6 @@ Blockly.Msg.POPUP_DOWNLOAD_STEP_D = 'now click on the »Save« button on the bot
 Blockly.Msg.POPUP_DOWNLOAD_CHECK = 'Okay, I"ve changed the download folder of my browser permanently. Don"t show this popup again and download my programs directly.';
 Blockly.Msg.POPUP_DOWNLOAD_SAVE_AS = 'Save link as ...';
 Blockly.Msg.POPUP_DOWNLOAD_SAVE = 'Save';
-Blockly.Msg.POPUP_2_0_1 = 'Version 2.1.1 <ul class="NonIcon"><li>Calliope - create programs for Calliope</li><li>micro:bit - create Programs for micro:bit©</li><li>New languages: Portuguese, Russian, Polish</li></ul>';
 Blockly.Msg.POPUP_ROBOT_SIM = 'Open Roberta Sim';
 
 // Names for the nao blocks

@@ -331,8 +331,6 @@
   "POPUP_NEW_PASSWORD": "Neues Passwort",
   "POPUP_OLD_PASSWORD": "Altes Passwort",
   "POPUP_CHANGE_PASSWORD": "ändere Passwort ...",
-  "POPUP_RELEASE":"Version beta 1.4 <ul class='NonIcon'><li>Entwickle ein Programm für den Roboter <strong>und</strong> für den simulierten Roboter</li><li>Exportiere und importiere dein Programm lokal</li><li>Neues blockly, jetzt schneller und mit Zoomfunktion.</li></ul><br>",
-  "POPUP_NEW_RELEASE": "Version beta 2.0 <ul class='NonIcon'><li>NXT - programmiere deinen LEGO Mindstorms NXT</li><li>Bot'n Roll - programmiere deinen Bot'n Roll botnroll.com®compatible with Arduino™</li><li>Einfacher Einstieg mit der Willkommenstour!</li><li>Optimierte Ladezeit des Open Roberta Labs</ul>",
   "POPUP_REPEAT_PASSWORD":"Passwort wiederholen",
   "POPUP_ROBOT_BATTERY":"Batteriespannung",
   "POPUP_ROBOT_NAME":"Name",
@@ -598,6 +596,7 @@
   "POPUP_DOWNLOAD_CHECK": "Okay, ich habe meinen Download Ordner geändert. Lade meine Programme direkt herunter und zeige dieses Fenster nicht mehr.",
   "POPUP_DOWNLOAD_SAVE_AS": "Speichern unter ...",
   "POPUP_DOWNLOAD_SAVE": "Speichern",
-  "POPUP_2_0_1": "Version 2.1.1 <ul class='NonIcon'><li>Calliope - programmiere deinen Calliope!</li><li>micro:bit - programmiere deinen micro:bit©</li><li>Neue Sprachen: Portugiesisch, Russisch, Polnisch</li></ul>",
+  "POPUP_2_1_3": "Version 2.1.1 <ul class='NonIcon'><li>Calliope - simuliere einen Calliope!</li><li>micro:bit - simuliere einen micro:bit©</li><li>Hilfe jetzt direkt im Arbeitsbereich neben den Programmierblöcken! (nur EV3)</li></ul>",
+  "POPUP_OLD_RELEASE": "Version 2.1.1 <ul class='NonIcon'><li>Calliope - programmiere deinen Calliope!</li><li>micro:bit - programmiere deinen micro:bit©</li><li>Neue Sprachen: Portugiesisch, Russisch, Polnisch</li></ul>",
   "POPUP_ROBOT_SIM": "Open Roberta Sim"
 }
