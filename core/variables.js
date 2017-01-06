@@ -254,7 +254,7 @@ Blockly.Variables.generateUniqueName = function(workspace) {
  * @return {string} Non-colliding name.
  */
 Blockly.Variables.findLegalName = function(name, block) {
-    while (!Blockly.Variables.isLegalName(name, block)) {
+    while (!Blockly.Variables.isLegalName(name, block) || Blockly.Variables.isReservedName(name, block)) {
         // Collision with another variable.
         var r = name.match(/^(.*?)(\d+)$/);
         if (!r) {
@@ -293,6 +293,23 @@ Blockly.Variables.isLegalName = function(name, block) {
         }
     }
     return true;
+};
+
+/**
+ * Does this variable name is a reserved word in the specific programming language?
+ * 
+ * @param {string}
+ *            name The questionable name.
+ * @return {boolean} True if the name is a reserved word.
+ */
+
+Blockly.Variables.isReservedName = function(name, block) {
+    console.log(Blockly[block.workspace.device]);
+    if (Blockly[block.workspace.device]) {
+        return Blockly[block.workspace.device].indexOf(name) >= 0;
+    } else {
+        return false;
+    }
 };
 
 /**
