@@ -17,7 +17,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['mbedSensors_getSample'] = {
     /**
      * Get the current reading from choosen sensor.
-     * 
+     *
      * @constructs mbedSensors_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -51,7 +51,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
     },
     /**
      * Create XML to represent whether the sensor type has changed.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -62,7 +62,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
     },
     /**
      * Parse XML to restore the sensor type.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -75,7 +75,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
 
     /**
      * Called whenever anything on the workspace changes.
-     * 
+     *
      * @this Blockly.Block
      */
     /*
@@ -84,7 +84,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
      */
     /**
      * Called whenever the shape has to change.
-     * 
+     *
      * @this Blockly.Block
      */
     updateShape_ : function(option) {
@@ -135,7 +135,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
 
     /**
      * Called whenever the blocks shape has changed.
-     * 
+     *
      * @this Blockly.Block
      */
     appendValue_ : function(type, value) {
@@ -173,7 +173,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
 Blockly.Blocks['mbedSensors_key_isPressed'] = {
     /**
      * Is the specific key (button of the brick) pressed?
-     * 
+     *
      * @constructs mbedSensors_key_isPressed
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -192,10 +192,37 @@ Blockly.Blocks['mbedSensors_key_isPressed'] = {
     }
 };
 
+Blockly.Blocks['mbedSensors_pin_isTouched'] = {
+    /**
+     * Is the specific pin touched?
+     *
+     * @constructs mbedSensors_pin_isTouched
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            PIN - 0-3
+     * @returns immediately
+     * @returns {Boolean}
+     * @memberof Block
+     */
+
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        var pin;
+        pin = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ],
+                                                [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
+                                                [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
+                                                [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ] ]);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_IS_PIN).appendField(pin, 'PIN').appendField(Blockly.Msg.SENSOR_IS_TOUCHED);
+        this.setOutput(true, 'Boolean');
+        this.setTooltip(Blockly.Msg.PIN_ISTOUCHED_TOOLTIP);
+    }
+};
+
+
 Blockly.Blocks['mbedSensors_gesture_isActive'] = {
     /**
      * Get the current distance from the ultrasonic sensor.
-     * 
+     *
      * @constructs mbedSensors_ultrasonic_getDistance
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -220,7 +247,7 @@ Blockly.Blocks['mbedSensors_gesture_isActive'] = {
 Blockly.Blocks['mbedSensors_compass_getSample'] = {
     /**
      * Get the current reading from the compass sensor.
-     * 
+     *
      * @constructs mbedSensors_gyro_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -243,7 +270,7 @@ Blockly.Blocks['mbedSensors_compass_getSample'] = {
 Blockly.Blocks['mbedSensors_temperature_getSample'] = {
     /**
      * Get the current reading from the compass sensor.
-     * 
+     *
      * @constructs mbedSensors_temperature_getSample
      * @this.Blockly.Block
      * @returns immediately
@@ -262,7 +289,7 @@ Blockly.Blocks['mbedSensors_temperature_getSample'] = {
 Blockly.Blocks['mbedSensors_timer_reset'] = {
     /**
      * Reset the timer.
-     * 
+     *
      * @constructs mbedSensors_timer_reset
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -284,7 +311,7 @@ Blockly.Blocks['mbedSensors_timer_reset'] = {
 Blockly.Blocks['mbedSensors_timer_getSample'] = {
     /**
      * Get the current reading from the timer.
-     * 
+     *
      * @constructs mbedSensors_timer_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -304,10 +331,38 @@ Blockly.Blocks['mbedSensors_timer_getSample'] = {
     }
 };
 
+Blockly.Blocks['mbedSensors_pin_getSample'] = {
+    /**
+     * Get the current reading from a pin.
+     *
+     * @constructs mbedSensors_pin_getSample
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            PIN - 0-3
+     * @returns immediately
+     * @returns {Number}
+     * @memberof Block
+     */
+
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        var valueType;
+        valueType = new Blockly.FieldDropdown([[ Blockly.Msg.ANALOG, 'ANALOG'], [Blockly.Msg.DIGITAL, 'DIGITAL']]);
+        var pin;
+        pin = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ],
+                                                [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
+                                                [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
+                                                [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ] ]);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET).appendField(valueType, 'VALUETYPE').appendField(Blockly.Msg.SENSOR_VALUE).appendField(pin, 'PIN');
+        this.setOutput(true, 'Number');
+        this.setTooltip(Blockly.Msg.PIN_GETSAMPLE_TOOLTIP);
+    }
+};
+
 Blockly.Blocks['mbedSensors_ambientLight_getSample'] = {
     /**
      * Get the current reading from a light sensor.
-     * 
+     *
      * @constructs mbedSensors_ambientLight_getSample
      * @this.Blockly.Block
      * @returns immediately

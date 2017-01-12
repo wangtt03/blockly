@@ -387,6 +387,7 @@
   "SENSOR_ULTRASONIC":"Ultraschallsensor",
   "SENSOR_WAIT_PRESSED":"gedrückt",
   "SENSOR_WAIT_PRESSED_RELEASED":"geklickt",
+  "SENSOR_PIN" : "Pin",
   "SET":"Setze",
   "SERVER_NOT_AVAILABLE":"Das Open Roberta Lab ist zur Zeit nicht erreichbar. </br> Bitte überprüfe deine Internet Verbindung und lade diese Webseite neu. Falls das Problem weiterhin besteht, schreibe bitte eine Mail an folgende Adresse:</br>roberta-zentrale@iais.fraunhofer.de",
   "SIM_BLOCK_NOT_SUPPORTED":"Diesen Block kann man leider nicht in der Simulation verwenden!",
@@ -598,5 +599,13 @@
   "POPUP_DOWNLOAD_SAVE": "Speichern",
   "POPUP_2_1_3": "Version 2.1.1 <ul class='NonIcon'><li>Calliope - simuliere einen Calliope!</li><li>micro:bit - simuliere einen micro:bit©</li><li>Hilfe jetzt direkt im Arbeitsbereich neben den Programmierblöcken! (nur EV3)</li></ul>",
   "POPUP_OLD_RELEASE": "Version 2.1.1 <ul class='NonIcon'><li>Calliope - programmiere deinen Calliope!</li><li>micro:bit - programmiere deinen micro:bit©</li><li>Neue Sprachen: Portugiesisch, Russisch, Polnisch</li></ul>",
-  "POPUP_ROBOT_SIM": "Open Roberta Sim"
+  "POPUP_ROBOT_SIM": "Open Roberta Sim",
+  "ANALOG": "analogen",
+  "DIGITAL": "digitalen",
+  "SENSOR_GET": "gib",
+  "SENSOR_VALUE": "Wert",
+  "SENSOR_IS_PIN" : "",
+  "SENSOR_IS_TOUCHED" : "gedrückt?",
+  "PIN_WRITE": "schreibe",
+  "VALUE_TO": "Wert auf"
 }
