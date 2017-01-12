@@ -13,21 +13,6 @@ goog.require('Blockly.Blocks');
 /**
  * @lends Block
  */
-
-Blockly.Blocks['naoSensors_headsensors'] = {
-	    /**
-	     * Get the current reading from one of the headsensors.
-	     */
-
-	    init : function() {
-	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCH_FRONT, 'FRONT' ], [ Blockly.Msg.NAO_TOUCH_MIDDLE, 'MIDDLE' ], [ Blockly.Msg.NAO_TOUCH_REAR, 'REAR' ] ]);
-	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.NAO_HEADSENSOR).appendField(dropdown, 'POSITION').appendField(Blockly.Msg.NAO_TOUCHED);
-	        this.setOutput(true, 'Boolean');
-	        this.setTooltip(Blockly.Msg.NAO_HEADSENSOR_TOOLTIP);
-	    }
-};
-
 Blockly.Blocks['naoSensors_touchsensors'] = {
 	    /**
 	     * Get the current reading from one of the touchsensors.
@@ -35,8 +20,18 @@ Blockly.Blocks['naoSensors_touchsensors'] = {
 
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var position = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCH_HAND, 'HAND' ], [ Blockly.Msg.NAO_TOUCH_BUMPER, 'BUMPER' ] ]);
-	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCH_LEFT, 'LEFT' ], [ Blockly.Msg.NAO_TOUCH_RIGHT, 'RIGHT' ] ]);
+	        var position = new Blockly.FieldDropdown([ 
+	        	[ Blockly.Msg.NAO_TOUCH_HAND, 'HAND' ], 
+	        	[ Blockly.Msg.NAO_TOUCH_BUMPER, 'BUMPER' ],
+	        	[Blockly.Msg.NAO_HEADSENSOR, 'HEAD']
+	        ]);
+	        var side = new Blockly.FieldDropdown([ 
+	        	[Blockly.Msg.NAO_TOUCH_LEFT, 'LEFT'], 
+	        	[Blockly.Msg.NAO_TOUCH_RIGHT, 'RIGHT'],
+	        	[Blockly.Msg.NAO_TOUCH_FRONT, 'FRONT'],
+	        	[Blockly.Msg.NAO_TOUCH_MIDDLE, 'MIDDLE'],
+	        	[Blockly.Msg.NAO_TOUCH_REAR, 'REAR']
+	        ]);
 	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.NAO_TOUCHSENSOR).appendField(position, 'POSITION').appendField(side, 'SIDE').appendField(Blockly.Msg.NAO_TOUCHED);
 	        this.setOutput(true, 'Boolean');
 	        this.setTooltip(Blockly.Msg.NAO_TOUCHSENSOR_TOOLTIP);
@@ -55,61 +50,6 @@ Blockly.Blocks['naoSensors_sonar'] = {
 	        this.setTooltip(Blockly.Msg.NAO_SONAR_TOOLTIP);
 	    }
 	};
-
-Blockly.Blocks['naoSensors_selectCamera'] = {
-	    init : function() {
-	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var camera = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_CAMERA_TOP, '0' ], [ Blockly.Msg.NAO_CAMERA_BOTTOM, '1' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.NAO_SELECTCAMERA).appendField(camera, 'CAMERA');
-	        this.setTooltip(Blockly.Msg.NAO_SELECTCAMERA_TOOLTIP);
-	        this.setPreviousStatement(true);
-	        this.setNextStatement(true);
-	    }
-};
-
-
-Blockly.Blocks['naoSensors_naoMark'] = {
-	    /**
-	     * Get the number of a detected NAOMark.
-	     */
-
-	    init : function() {
-	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        this.appendDummyInput().appendField(Blockly.Msg.NAO_NAOMARK);
-	        this.setOutput(true, 'Number');
-	        this.setTooltip(Blockly.Msg.NAO_NAOMARK_TOOLTIP);
-	    }
-};
-
-
-Blockly.Blocks['naoSensors_takePicture'] = {
-	    init : function() {
-	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        this.appendDummyInput().appendField(Blockly.Msg.NAO_TAKEPICTURE);
-	        this.setTooltip(Blockly.Msg.NAO_TAKEPICTURE_TOOLTIP);
-	        this.setPreviousStatement(true);
-	        this.setNextStatement(true);
-	    }
-};
-
-Blockly.Blocks['naoSensors_recordVideo'] = {
-	    /**
-	     * Get the current reading from the accelerometer.
-	     */
-
-	    init : function() {
-	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var resolution = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_QQVGA, '0' ], [ Blockly.Msg.NAO_QVGA, '1' ], [ Blockly.Msg.NAO_VGA, '2' ] ]);
-	        var camera = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_CAMERA_TOP, '0' ], [ Blockly.Msg.NAO_CAMERA_BOTTOM, '1' ] ]);
-	        this.appendDummyInput().appendField(Blockly.Msg.NAO_RECORDVIDEO);
-	        this.appendDummyInput().appendField(Blockly.Msg.NAO_RESOLUTION).appendField(resolution, 'RESOLUTION');
-	        this.appendDummyInput().appendField(Blockly.Msg.NAO_CAMERA).appendField(camera, 'CAMERA');
-	        this.appendValueInput('DURATION').appendField(Blockly.Msg.NAO_DURATION).setCheck('Number');
-	        this.setPreviousStatement(true);
-	        this.setNextStatement(true);
-	        this.setTooltip(Blockly.Msg.NAO_RECORDVIDEO_TOOLTIP);
-	    }
-};
 
 Blockly.Blocks['naoSensors_gyrometer'] = {
 	    /**
@@ -153,3 +93,74 @@ Blockly.Blocks['naoSensors_fsr'] = {
 	        this.setTooltip(Blockly.Msg.NAO_FSR_TOOLTIP);
 	    }
 	};
+
+Blockly.Blocks['naoSensors_naoMark'] = {
+	    /**
+	     * Get the number of a detected NAOMark.
+	     */
+
+	    init : function() {
+	        this.setColour(Blockly.CAT_SENSOR_RGB);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_NAOMARK);
+	        this.setOutput(true, 'Number');
+	        this.setTooltip(Blockly.Msg.NAO_NAOMARK_TOOLTIP);
+	    }
+};
+
+Blockly.Blocks['naoSensors_learnFace'] = {
+	    init : function() {
+	        this.setColour(Blockly.CAT_SENSOR_RGB);
+	        this.appendValueInput('NAME').appendField(Blockly.Msg.NAO_LEARNFACEOF);
+	        this.setPreviousStatement(true);
+	        this.setNextStatement(true);
+	        this.setTooltip(Blockly.Msg.NAO_LEARNFACE_TOOLTIP);
+	    }
+};
+
+Blockly.Blocks['naoSensors_forgetFace'] = {
+	    init : function() {
+	        this.setColour(Blockly.CAT_SENSOR_RGB);
+	        this.appendValueInput('NAME').appendField(Blockly.Msg.NAO_FORGETFACEOF);
+	        this.setPreviousStatement(true);
+	        this.setNextStatement(true);
+	        this.setTooltip(Blockly.Msg.NAO_FORGETFACE_TOOLTIP);
+	    }
+};
+
+Blockly.Blocks['naoSensors_detectFace'] = {
+	    init : function() {
+	        this.setColour(Blockly.CAT_SENSOR_RGB);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_DETECTFACE);
+	        this.setOutput(true, 'Number');
+	        this.setTooltip(Blockly.Msg.NAO_DETECTFACE_TOOLTIP);
+	    }
+};
+
+Blockly.Blocks['naoSensors_learnObject'] = {
+	    init : function() {
+	        this.setColour(Blockly.CAT_SENSOR_RGB);
+	        this.appendValueInput('NAME').appendField(Blockly.Msg.NAO_LEARNOBJECT);
+	        this.setPreviousStatement(true);
+	        this.setNextStatement(true);
+	        this.setTooltip(Blockly.Msg.NAO_LEARNOBJECT_TOOLTIP);
+	    }
+};
+
+Blockly.Blocks['naoSensors_forgetObject'] = {
+	    init : function() {
+	        this.setColour(Blockly.CAT_SENSOR_RGB);
+	        this.appendValueInput('NAME').appendField(Blockly.Msg.NAO_FORGETOBJECT);
+	        this.setPreviousStatement(true);
+	        this.setNextStatement(true);
+	        this.setTooltip(Blockly.Msg.NAO_FORGETOBJECT_TOOLTIP);
+	    }
+};
+
+Blockly.Blocks['naoSensors_detectObject'] = {
+	    init : function() {
+	        this.setColour(Blockly.CAT_SENSOR_RGB);
+	        this.appendDummyInput().appendField(Blockly.Msg.NAO_DETECTOBJECT);
+	        this.setOutput(true, 'Number');
+	        this.setTooltip(Blockly.Msg.NAO_DETECTOBJECT_TOOLTIP);
+	    }
+};
