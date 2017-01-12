@@ -30,7 +30,8 @@ Blockly.JAVA = [ 'abstract', 'continue', 'for', 'new', 'switch', 'assert', 'defa
 
 Blockly.CPP  = ['auto', 'const', 'double', 'float', 'int', 'short', 'struct', 'unsigned', 'break', 'continue', 'else', 'for', 'long', 'signed', 'switch', 'void', 'case', 'default', 'enum', 'goto', 'register', 'sizeof', 'typedef', 'volatile', 'char', 'do', 'extern', 'if', 'return', 'static', 'union', 'while', 'asm', 'dynamic_cast', 'namespace', 'reinterpret_cast', 'try', 'bool', 'explicit', 'new', 'static_cast', 'typeid', 'catch', 'false', 'operator', 'template', 'typename', 'class', 'friend', 'private', 'this', 'using', 'const_cast', 'inline', 'public', 'throw', 'virtual', 'delete', 'mutable', 'protected', 'true', 'wchar_t', 'and', 'bitand', 'compl', 'not_eq', 'or_eq', 'xor_eq', 'and_eq', 'bitor', 'not', 'or', 'xor'];
 
-Blockly.PYTHON = ['and', 'del', 'from', 'not', 'while', 'as', 'elif', 'global', 'or', 'with', 'assert', 'else', 'if', 'pass', 'yield', 'break', 'except', 'import', 'print', 'class', 'exec', 'in', 'raise', 'continue', 'finally', 'is', 'return', 'def', 'for', 'lambda', 'try', 'brickConfiguration', 'hal' ];
+Blockly.PYTHON = ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'print', 'raise', 'return', 'try', 'while', 'with', 'yield', // keywords for both python2.7 and python3.4
+'brickConfiguration', 'hal', 'math', 'random']; // imports that shouldn't be hidden
 
 Blockly.ev3 = Blockly.JAVA;
 Blockly.microbit = Blockly.PYTHON;
