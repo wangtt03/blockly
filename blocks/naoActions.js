@@ -144,7 +144,8 @@ Blockly.Blocks['naoActions_moveJoint'] = {
             [Blockly.Msg.NAO_JOINT_RWRISTYAW, 'RWristYaw'],
             [Blockly.Msg.NAO_JOINT_RHAND, 'RHand']
         ]);
-        this.appendValueInput('POWER').appendField(Blockly.Msg.NAO_MOVE).appendField(dropdown, 'joint').appendField(Blockly.Msg.MODE_DEGREE).setCheck('Number');
+        var mode = new Blockly.FieldDropdown([[Blockly.Msg.NAO_ABSOLUTE, 'ABSOLUTE'], [Blockly.Msg.NAO_RELATIVE, 'RELATIVE']]);
+        this.appendValueInput('POWER').appendField(Blockly.Msg.NAO_MOVE).appendField(dropdown, 'joint').appendField(mode, 'MODE').appendField(Blockly.Msg.MODE_DEGREE).setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_MOVEJOINT_TOOLTIP);
@@ -543,6 +544,7 @@ Blockly.Blocks['naoActions_takePicture'] = {
 	        var camera = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_CAMERA_TOP, '0' ], [ Blockly.Msg.NAO_CAMERA_BOTTOM, '1' ] ]);
 	        this.appendDummyInput().appendField(Blockly.Msg.NAO_TAKEPICTURE);
 	        this.appendDummyInput().appendField(Blockly.Msg.NAO_CAMERA).appendField(camera, 'CAMERA');
+	        this.appendValueInput('FILENAME').appendField(Blockly.Msg.NAO_FILENAME);
 	        this.setTooltip(Blockly.Msg.NAO_TAKEPICTURE_TOOLTIP);
 	        this.setPreviousStatement(true);
 	        this.setNextStatement(true);
@@ -556,7 +558,7 @@ Blockly.Blocks['naoActions_recordVideo'] = {
 	     * @constructs naoActions_recordVideo
 	     * @this.Blockly.Block
 	     * @param {Number}
-	     *            RESOLUTION the video will be recorded
+	     *            RESOLUTION the video will be recorded in
 	     *            CAMERA that is used for the recording
 	     *            DURATION the video will be recorded
 	     * @returns immediately
@@ -570,6 +572,7 @@ Blockly.Blocks['naoActions_recordVideo'] = {
 	        this.appendDummyInput().appendField(Blockly.Msg.NAO_RESOLUTION).appendField(resolution, 'RESOLUTION');
 	        this.appendDummyInput().appendField(Blockly.Msg.NAO_CAMERA).appendField(camera, 'CAMERA');
 	        this.appendValueInput('DURATION').appendField(Blockly.Msg.NAO_DURATION).setCheck('Number');
+	        this.appendValueInput('FILENAME').appendField(Blockly.Msg.NAO_FILENAME);
 	        this.setPreviousStatement(true);
 	        this.setNextStatement(true);
 	        this.setTooltip(Blockly.Msg.NAO_RECORDVIDEO_TOOLTIP);

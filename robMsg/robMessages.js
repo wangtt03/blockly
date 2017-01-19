@@ -855,6 +855,9 @@ Blockly.Msg.NAO_JOINT_RHAND = 'right hand';
 Blockly.Msg.NAO_MODE_OPEN = 'open';
 Blockly.Msg.NAO_MODE_CLOSE = 'close';
 Blockly.Msg.NAO_HAND = 'hand';
+Blockly.Msg.NAO_ABSOLUTE = 'absolute';
+Blockly.Msg.NAO_RELATIVE = 'relative';
+Blockly.Msg.NAO_FILENAME = 'filename';
 
 // Tooltips for the nao blocks
 /// NAO tooltips

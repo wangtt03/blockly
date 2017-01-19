@@ -384,13 +384,24 @@ h1 {
             </block>
         </category>
         <category name='TOOLBOX_VISION' svg="true">
-        	<block type='naoActions_takePicture'></block>
+        	<block type='naoActions_takePicture'>
+        		<value name='FILENAME'>
+                    <block type='text'>
+                        <field name='TEXT'>RobertaPicture</field>
+                    </block>
+                </value>
+        	</block>
         	<block type='naoActions_recordVideo'>
         		<value name='DURATION'>
                     <block type='math_number'>
                         <field name='NUM'>5</field>
                     </block>
             	</value>
+            	<value name='FILENAME'>
+                    <block type='text'>
+                        <field name='TEXT'>RobertaVideo</field>
+                    </block>
+                </value>
         	</block>
         </category>
         <category name='TOOLBOX_LIGHT' svg="true">
