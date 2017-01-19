@@ -49,6 +49,7 @@ Blockly.Xml.workspaceToDom = function(workspace) {
   }
   xml.setAttribute('robottype', workspace.device);
   xml.setAttribute('xmlversion', workspace.version);
+  xml.setAttribute('description', workspace.description);
   return xml;
 };
 
@@ -333,6 +334,7 @@ Blockly.Xml.textToDom = function(text) {
  * @param {!Blockly.Workspace} workspace The workspace.
  */
 Blockly.Xml.domToWorkspace = function(xml, workspace) {
+    console.log(xml);
   if (xml instanceof Blockly.Workspace) {
     var swap = xml;
     xml = workspace;
@@ -355,6 +357,9 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
   if (!existingGroup) {
     Blockly.Events.setGroup(true);
   }
+  if (xml.getAttribute('description')) {
+      workspace.description = xml.getAttribute('description');
+  }
   for (var i = 0; i < childCount; i++) {
     var xmlChild = xml.childNodes[i];
     var name = xmlChild.nodeName.toLowerCase();
@@ -374,9 +379,8 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
           }
         }
       }
-    xmlBlockList.push(xmlChildList);
-      }
-
+      xmlBlockList.push(xmlChildList);
+    }
   }
 
       // make sure the start block is in the first column, to avoid errors while instantiating blocks with global variables before the variable declaration

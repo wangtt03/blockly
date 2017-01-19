@@ -53,6 +53,7 @@ Blockly.Workspace = function(opt_options) {
   this.toolboxPosition = this.options.toolboxPosition;
   this.device = '';
   this.version = '';
+  this.description = '';
   /**
    * @type {!Array.<!Blockly.Block>}
    * @private
