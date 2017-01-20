@@ -46,7 +46,7 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	                this.sourceBlock_.updateShape_(option);
 	            }
 	        });
-	        this.workspace.device === 'nao'
+	        //this.workspace.device === 'nao'
 	        this.appendDummyInput('DROPDOWN').appendField(Blockly.Msg.GET, 'GET').appendField(sensorType, 'SENSORTYPE').appendField(position, 'POSITION').appendField(touchside, 'SIDE');
 	        this.setOutput(true, 'Boolean');
 	        this.sensorType_ = 'NAO_TOUCHSENSOR';
