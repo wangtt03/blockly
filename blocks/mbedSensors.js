@@ -209,9 +209,14 @@ Blockly.Blocks['mbedSensors_pin_isTouched'] = {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         var pin;
         pin = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ],
-                                                [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
-                                                [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
-                                                [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ] ]);
+                                          [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
+                                          [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ]]);
+        if (this.workspace.device == "calliope") {
+          pin = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ],
+                                            [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
+                                            [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
+                                            [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ] ]);
+        }
         this.appendDummyInput().appendField(Blockly.Msg.SENSOR_IS_PIN).appendField(pin, 'PIN').appendField(Blockly.Msg.SENSOR_IS_TOUCHED);
         this.setOutput(true, 'Boolean');
         this.setTooltip(Blockly.Msg.PIN_ISTOUCHED_TOOLTIP);
