@@ -80,6 +80,7 @@
   "DISPLAY_ROW":"in Zeile",
   "DISPLAY_SHOW":"Zeige",
   "DISPLAY_TEXT":"Text",
+  "DISPLAY_CHARACTER":"Zeichenkette",
   "DISPLAY_TEXT_TOOLTIP":"Zeigt einen Text auf dem Bildschirm an.",
   "ENCODER_GETMODE_TOOLTIP":"Gibt den Modus des Drehsensors zurück.",
   "ENCODER_GETSAMPLE_TOOLTIP":"Gibt den aktuellen Wert des Drehsensors zurück.",

@@ -171,6 +171,7 @@ Blockly.Msg.DISPLAY_PICTURE_EYES_CLOSED = 'eyes closed';
 Blockly.Msg.DISPLAY_PICTURE_FLOWERS = 'flowers';
 Blockly.Msg.DISPLAY_PICTURE_TACHO = 'tacho';
 Blockly.Msg.DISPLAY_TEXT = 'text';
+Blockly.Msg.DISPLAY_CHARACTER = 'character';
 Blockly.Msg.PLAY = 'play';
 Blockly.Msg.PLAY_TONE = 'tone';
 Blockly.Msg.PLAY_FREQUENZ = 'frequency Hz';
