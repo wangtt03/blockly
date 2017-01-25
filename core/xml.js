@@ -334,7 +334,6 @@ Blockly.Xml.textToDom = function(text) {
  * @param {!Blockly.Workspace} workspace The workspace.
  */
 Blockly.Xml.domToWorkspace = function(xml, workspace) {
-    console.log(xml);
   if (xml instanceof Blockly.Workspace) {
     var swap = xml;
     xml = workspace;
@@ -359,6 +358,8 @@ Blockly.Xml.domToWorkspace = function(xml, workspace) {
   }
   if (xml.getAttribute('description')) {
       workspace.description = xml.getAttribute('description');
+  } else {
+      workspace.description = "";
   }
   for (var i = 0; i < childCount; i++) {
     var xmlChild = xml.childNodes[i];

@@ -44,7 +44,7 @@ Blockly.RobControls = function(workspace, zoom) {
  * @type {number}
  * @private
  */
-Blockly.RobControls.prototype.WIDTH_ = 198;
+Blockly.RobControls.prototype.WIDTH_ = 148;
 
 /**
  * Height of the button controls.
@@ -176,34 +176,34 @@ Blockly.RobControls.prototype.top_ = 0;
  */
 Blockly.RobControls.prototype.createDom = function() {
   var workspace = this.workspace_;
-  this.simVisible_ = false;
+//  this.simVisible_ = false;
   var control = this;  
   this.svgGroup_ = Blockly.createSvgElement('g', {'class': 'blocklyButtons'}, null);
   this.runOnBrick = this.createButton_(this.PATH_RUNONBRICK_, 0, 0, Blockly.Msg.MENU_START_BRICK);
   this.runOnBrick.setAttribute("id", "runOnBrick");
-  this.runInSim = this.createButton_(this.PATH_RUNINSIM_, 1, 0, Blockly.Msg.MENU_START_SIM);
-  this.simStop = this.createButton_(this.PATH_SIMSTOP_, 1, 0, Blockly.Msg.MENU_SIM_STOP);
+//  this.runInSim = this.createButton_(this.PATH_RUNINSIM_, 1, 0, Blockly.Msg.MENU_START_SIM);
+//  this.simStop = this.createButton_(this.PATH_SIMSTOP_, 1, 0, Blockly.Msg.MENU_SIM_STOP);
 //  this.simStep = this.createButton_(this.PATH_SIMSTEP_, 1, 1);
 //  this.simForward = this.createButton_(this.PATH_SIMFORWARD_, 1, 2);
 //  this.simPause = this.createButton_(this.PATH_SIMPAUSE_, 1, 2);
-  this.runInSim.setAttribute("id", "runInSim");
-  this.simStop.setAttribute("id", "simStop");
-  this.simStop.setAttribute('class', 'robButtonHidden');
+//  this.runInSim.setAttribute("id", "runInSim");
+//  this.simStop.setAttribute("id", "simStop");
+//  this.simStop.setAttribute('class', 'robButtonHidden');
 //  this.simForward.setAttribute("id", "simForward");
 //  this.simForward.setAttribute('class', 'robButtonHidden');
 //  this.simStep.setAttribute("id", "simStep");
 //  this.simStep.setAttribute('class', 'robButtonHidden');
 //  this.simPause.setAttribute("id", "simPause");
 //  this.simPause.setAttribute('class', 'robButtonHidden');
-  this.saveProgram = this.createButton_(this.PATH_SAVEPROGRAM_, 2, 0, Blockly.Msg.MENU_SAVE);
+  this.saveProgram = this.createButton_(this.PATH_SAVEPROGRAM_, 1, 0, Blockly.Msg.MENU_SAVE);
   this.saveProgram.setAttribute("id", "saveProgram");
    
   if (this.zoom_) {
     this.zoomVisible_ = false;
-    var zoom = this.createButton_(this.PATH_ZOOM_, 3, 0, Blockly.Msg.MENU_ZOOM);
-    var zoominSvg = this.createButton_(this.PATH_ZOOMIN_, 3, 0, Blockly.Msg.MENU_ZOOM_IN);
-    var zoomresetSvg = this.createButton_(this.PATH_ZOOMRESET_, 3, 1, Blockly.Msg.MENU_ZOOM_RESET);
-    var zoomoutSvg = this.createButton_(this.PATH_ZOOMOUT_, 3, 2, Blockly.Msg.MENU_ZOOM_OUT);
+    var zoom = this.createButton_(this.PATH_ZOOM_, 2, 0, Blockly.Msg.MENU_ZOOM);
+    var zoominSvg = this.createButton_(this.PATH_ZOOMIN_, 2, 0, Blockly.Msg.MENU_ZOOM_IN);
+    var zoomresetSvg = this.createButton_(this.PATH_ZOOMRESET_, 2, 1, Blockly.Msg.MENU_ZOOM_RESET);
+    var zoomoutSvg = this.createButton_(this.PATH_ZOOMOUT_, 2, 2, Blockly.Msg.MENU_ZOOM_OUT);
     zoominSvg.setAttribute('class', 'robButtonHidden');
     zoomoutSvg.setAttribute('class', 'robButtonHidden');
     zoomresetSvg.setAttribute('class', 'robButtonHidden');
