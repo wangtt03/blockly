@@ -303,36 +303,7 @@ Blockly.Blocks['naoSensors_detectFace'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
 	        this.appendDummyInput().appendField(Blockly.Msg.NAO_DETECTFACE);
-	        this.setOutput(true, 'Number');
+	        this.setOutput(true, 'Boolean');
 	        this.setTooltip(Blockly.Msg.NAO_DETECTFACE_TOOLTIP);
-	    }
-};
-
-Blockly.Blocks['naoSensors_learnObject'] = {
-	    init : function() {
-	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        this.appendValueInput('NAME').appendField(Blockly.Msg.NAO_LEARNOBJECT);
-	        this.setPreviousStatement(true);
-	        this.setNextStatement(true);
-	        this.setTooltip(Blockly.Msg.NAO_LEARNOBJECT_TOOLTIP);
-	    }
-};
-
-Blockly.Blocks['naoSensors_forgetObject'] = {
-	    init : function() {
-	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        this.appendValueInput('NAME').appendField(Blockly.Msg.NAO_FORGETOBJECT);
-	        this.setPreviousStatement(true);
-	        this.setNextStatement(true);
-	        this.setTooltip(Blockly.Msg.NAO_FORGETOBJECT_TOOLTIP);
-	    }
-};
-
-Blockly.Blocks['naoSensors_detectObject'] = {
-	    init : function() {
-	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        this.appendDummyInput().appendField(Blockly.Msg.NAO_DETECTOBJECT);
-	        this.setOutput(true, 'Number');
-	        this.setTooltip(Blockly.Msg.NAO_DETECTOBJECT_TOOLTIP);
 	    }
 };
