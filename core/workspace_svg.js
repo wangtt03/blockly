@@ -177,7 +177,6 @@ Blockly.WorkspaceSvg.prototype.createDom = function(opt_backgroundClass) {
     bottom = this.addZoomControls_(bottom);
   }
   Blockly.bindEvent_(this.svgGroup_, 'mousedown', this, this.onMouseDown_);
-  Blockly.bindEvent_(this.svgGroup_, 'mouseup', this, this.onMouseUp_);
   var thisWorkspace = this;
   Blockly.bindEvent_(this.svgGroup_, 'touchstart', null,
                      function(e) {Blockly.longStart_(e, thisWorkspace);});
@@ -582,17 +581,6 @@ Blockly.WorkspaceSvg.prototype.isDeleteArea = function(e) {
 };
 
 /**
- * Handle a mouse-up on SVG drawing surface.
- * @param {!Event} e Mouse up event.
- * @private
- */
-Blockly.WorkspaceSvg.prototype.onMouseUp_ = function(e) {
-  if (Blockly.isRightButton(e)) {
-    this.showContextMenu_(e);
-  }
-}
-
-/**
  * Handle a mouse-down on SVG drawing surface.
  * @param {!Event} e Mouse down event.
  * @private
@@ -615,7 +603,10 @@ Blockly.WorkspaceSvg.prototype.onMouseDown_ = function(e) {
     // Clicking on the document clears the selection.
     Blockly.selected.unselect();
   }
-  if (!Blockly.isRightButton(e)) {
+  if (Blockly.isRightButton(e)) {
+    // Right-click.
+    this.showContextMenu_(e);
+  } else {
     // Beate: Close all bubbles with a click on the document
     var allBlocks = this.getAllBlocks();
     for (var i = 0; i < allBlocks.length; i++) {
@@ -701,13 +692,10 @@ Blockly.WorkspaceSvg.prototype.moveDrag = function(e) {
 Blockly.WorkspaceSvg.prototype.onMouseWheel_ = function(e) {
   // TODO: Remove terminateDrag and compensate for coordinate skew during zoom.
   Blockly.terminateDrag_();
-  var delta = e.deltaY > 0 ? -1 : (e.deltaY < -0 ? 1 : 0);
-  if (delta != 0) {
-    var position = Blockly.mouseToSvg(e, this.getParentSvg());
-    // TODO: Use deltaY value directly to handle touchpad zoom better.  
-    this.zoom(position.x, position.y, delta);
-    e.preventDefault();
-  }
+  var delta = e.deltaY > 0 ? -1 : 1;
+  var position = Blockly.mouseToSvg(e, this.getParentSvg());
+  this.zoom(position.x, position.y, delta);
+  e.preventDefault();
 };
 
 /**
