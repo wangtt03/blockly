@@ -286,6 +286,20 @@ Blockly.Blocks['robGlobalVariables_declare'] = {
             this.sourceBlock_.updateShape_(0, option);
           }
         });
+    } else if (this.workspace.device === 'ardu') {
+      declType = new Blockly.FieldDropdown([
+        [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+        [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+        [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+        [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String']
+      ], function(option) {
+          if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+            this.sourceBlock_.updateType(option);
+          }
+        });
     } else {
       declType = new Blockly.FieldDropdown([
         [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
@@ -511,6 +525,20 @@ Blockly.Blocks['robLocalVariables_declare'] = {
             this.sourceBlock_.updateType(option);
           }
         });
+    } else if (this.workspace.device === 'ardu') {
+        declType = new Blockly.FieldDropdown([
+          [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
+          [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean'],
+          [Blockly.Msg.VARIABLES_TYPE_STRING, 'String'],
+          [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour'],
+          [Blockly.Msg.VARIABLES_TYPE_ARRAY_NUMBER, 'Array_Number'],
+          [Blockly.Msg.VARIABLES_TYPE_ARRAY_BOOLEAN, 'Array_Boolean'],
+          [Blockly.Msg.VARIABLES_TYPE_ARRAY_STRING, 'Array_String']
+        ], function(option) {
+            if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+              this.sourceBlock_.updateType(option);
+            }
+          });
     } else {
       declType = new Blockly.FieldDropdown([
         [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number'],
