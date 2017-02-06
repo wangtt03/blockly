@@ -33,10 +33,10 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	        	[Blockly.Msg.NAO_HEADSENSOR, 'HEAD']
 	        ]);
 	        var touchside = new Blockly.FieldDropdown([ 
-	        	[Blockly.Msg.NAO_TOUCH_LEFT, 'LEFT'], 
-	        	[Blockly.Msg.NAO_TOUCH_RIGHT, 'RIGHT'],
+	        	[Blockly.Msg.MOTOR_LEFT, 'LEFT'], 
+	        	[Blockly.Msg.MOTOR_RIGHT, 'RIGHT'],
 	        	[Blockly.Msg.NAO_TOUCH_FRONT, 'FRONT'],
-	        	[Blockly.Msg.NAO_TOUCH_MIDDLE, 'MIDDLE'],
+	        	[Blockly.Msg.MOTOR_MIDDLE, 'MIDDLE'],
 	        	[Blockly.Msg.NAO_TOUCH_REAR, 'REAR']
 	        ]);
 	        var sensorType = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCHSENSOR, 'NAO_TOUCHSENSOR' ],
@@ -101,15 +101,15 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	        	[Blockly.Msg.NAO_HEADSENSOR, 'HEAD']
 	        ]);
 	        var touchside = new Blockly.FieldDropdown([ 
-	        	[Blockly.Msg.NAO_TOUCH_LEFT, 'LEFT'], 
-	        	[Blockly.Msg.NAO_TOUCH_RIGHT, 'RIGHT'],
+	        	[Blockly.Msg.MOTOR_LEFT, 'LEFT'], 
+	        	[Blockly.Msg.MOTOR_RIGHT, 'RIGHT'],
 	        	[Blockly.Msg.NAO_TOUCH_FRONT, 'FRONT'],
-	        	[Blockly.Msg.NAO_TOUCH_MIDDLE, 'MIDDLE'],
+	        	[Blockly.Msg.MOTOR_MIDDLE, 'MIDDLE'],
 	        	[Blockly.Msg.NAO_TOUCH_REAR, 'REAR']
 	        ]);
 	        var gyrocoord = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ] ]);
 	        var accelcoord = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ], [ 'Z', 'Z' ] ]);
-	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCH_LEFT, 'LEFT' ], [ Blockly.Msg.NAO_TOUCH_RIGHT, 'RIGHT' ] ]);
+	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_LEFT, 'LEFT' ], [ Blockly.Msg.MOTOR_RIGHT, 'RIGHT' ] ]);
 
 	        var input = this.getInput('DROPDOWN');
 	        var toRemove = [];
@@ -198,10 +198,10 @@ Blockly.Blocks['naoSensors_touchsensors'] = {
 	        	[Blockly.Msg.NAO_HEADSENSOR, 'HEAD']
 	        ]);
 	        var side = new Blockly.FieldDropdown([ 
-	        	[Blockly.Msg.NAO_TOUCH_LEFT, 'LEFT'], 
-	        	[Blockly.Msg.NAO_TOUCH_RIGHT, 'RIGHT'],
+	        	[Blockly.Msg.MOTOR_LEFT, 'LEFT'], 
+	        	[Blockly.Msg.MOTOR_RIGHT, 'RIGHT'],
 	        	[Blockly.Msg.NAO_TOUCH_FRONT, 'FRONT'],
-	        	[Blockly.Msg.NAO_TOUCH_MIDDLE, 'MIDDLE'],
+	        	[Blockly.Msg.MOTOR_MIDDLE, 'MIDDLE'],
 	        	[Blockly.Msg.NAO_TOUCH_REAR, 'REAR']
 	        ]);
 	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.NAO_TOUCHSENSOR).appendField(position, 'POSITION').appendField(side, 'SIDE').appendField(Blockly.Msg.NAO_TOUCHED);
@@ -259,7 +259,7 @@ Blockly.Blocks['naoSensors_fsr'] = {
 
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCH_LEFT, 'LEFT' ], [ Blockly.Msg.NAO_TOUCH_RIGHT, 'RIGHT' ] ]);
+	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_LEFT, 'LEFT' ], [ Blockly.Msg.MOTOR_RIGHT, 'RIGHT' ] ]);
 	        this.appendDummyInput().appendField('get ' + Blockly.Msg.NAO_FSR).appendField(side, 'SIDE');
 	        this.setOutput(true, 'Number');
 	        this.setTooltip(Blockly.Msg.NAO_FSR_TOOLTIP);

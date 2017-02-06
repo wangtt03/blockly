@@ -255,7 +255,7 @@ Blockly.Blocks['naoActions_pointLookAt'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_FRAME_TORSO, '0' ], [ Blockly.Msg.NAO_FRAME_WORLD, '1' ], [ Blockly.Msg.NAO_FRAME_ROBOT, '2' ] ]);
+        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_FRAME_TORSO, '0' ], [ Blockly.Msg.NAO_FRAME_WORLD, '1' ], [ Blockly.Msg.MENU_ROBOT, '2' ] ]);
         var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_POINTAT, '0' ], [ Blockly.Msg.NAO_LOOKAT, '1' ] ]);
         this.appendDummyInput().appendField(mode, 'MODE');
         this.appendDummyInput().appendField(Blockly.Msg.NAO_FRAME).appendField(dropdown, 'DIRECTION');
@@ -265,7 +265,7 @@ Blockly.Blocks['naoActions_pointLookAt'] = {
         this.appendValueInput('Speed').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("speed");
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.NAO_POINTAT_TOOLTIP);
+        this.setTooltip(Blockly.Msg.NAO_POINTLOOKAT_TOOLTIP);
     }
 };
 
@@ -273,7 +273,7 @@ Blockly.Blocks['naoActions_pointLookAt'] = {
 
 Blockly.Blocks['naoActions_playFile'] = {
     /**
-     * Say a text.
+     * Play a sound file from the robots file system.
      *
      * @constructs naoActions_playFile
      * @this.Blockly.Block
@@ -428,7 +428,7 @@ Blockly.Blocks['naoActions_sayText'] = {
         this.appendValueInput('OUT').appendField(Blockly.Msg.NAO_SAY);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.NAO_SAYTEXT_TOOLTIP);
+        this.setTooltip(Blockly.Msg.NAO_SAY_TOOLTIP);
     }
 };
 
@@ -477,7 +477,7 @@ Blockly.Blocks['naoActions_recordVideo'] = {
         this.appendDummyInput().appendField(Blockly.Msg.NAO_RECORDVIDEO);
         this.appendDummyInput().appendField(Blockly.Msg.NAO_RESOLUTION).appendField(resolution, 'RESOLUTION');
         this.appendDummyInput().appendField(Blockly.Msg.NAO_CAMERA).appendField(camera, 'CAMERA');
-        this.appendValueInput('DURATION').appendField(Blockly.Msg.NAO_DURATION).setCheck('Number');
+        this.appendValueInput('DURATION').appendField(Blockly.Msg.PLAY_DURATION).setCheck('Number');
         this.appendValueInput('FILENAME').appendField(Blockly.Msg.NAO_FILENAME);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -502,9 +502,9 @@ Blockly.Blocks['naoActions_leds'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EYES, 'EYES' ], [ Blockly.Msg.NAO_LED_LEFTEYE, 'LEFTEYE' ], [ Blockly.Msg.NAO_LED_RIGHTEYE, 'RIGHTEYE' ], [ Blockly.Msg.NAO_LED_EARS, 'EARS' ], [ Blockly.Msg.NAO_LED_LEFTEAR, 'LEFTEAR' ], [ Blockly.Msg.NAO_LED_RIGHTEAR, 'RIGHTEAR' ], [ Blockly.Msg.NAO_LED_CHEST, 'CHEST' ], [ Blockly.Msg.NAO_LED_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_LED_LEFTFOOT, 'LEFTFOOT' ], [ Blockly.Msg.NAO_LED_RIGHTFOOT, 'RIGHTFOOT' ], [ Blockly.Msg.NAO_LED_ALL, 'ALL' ] ]);
-        var color = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_COLOR_GREEN, 'GREEN' ], [ Blockly.Msg.NAO_COLOR_BLUE, 'BLUE' ], [ Blockly.Msg.NAO_COLOR_RED, 'RED' ], [ Blockly.Msg.NAO_COLOR_WHITE, 'WHITE' ], [ Blockly.Msg.NAO_COLOR_YELLOW, 'YELLOW' ], [ Blockly.Msg.NAO_COLOR_MAGENTA, 'MAGENTA' ], [ Blockly.Msg.NAO_COLOR_CYAN, 'CYAN' ] ]);
+        var color = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_GREEN, 'GREEN' ], [ Blockly.Msg.BRICKLIGHT_BLUE, 'BLUE' ], [ Blockly.Msg.BRICKLIGHT_RED, 'RED' ], [ Blockly.Msg.NAO_COLOR_WHITE, 'WHITE' ], [ Blockly.Msg.NAO_COLOR_YELLOW, 'YELLOW' ], [ Blockly.Msg.NAO_COLOR_MAGENTA, 'MAGENTA' ], [ Blockly.Msg.NAO_COLOR_CYAN, 'CYAN' ] ]);
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_LED).appendField(led, 'LED');
-        this.appendDummyInput().setAlign(Blockly.ALIGN_LEFT).appendField(Blockly.Msg.NAO_COLOR).appendField(color, 'COLOR');
+        this.appendDummyInput().setAlign(Blockly.ALIGN_LEFT).appendField(Blockly.Msg.BRICKLIGHT_COLOR).appendField(color, 'COLOR');
         this.appendValueInput('INTENSITY').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_INTENSITY);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -524,7 +524,7 @@ Blockly.Blocks['naoActions_ledOff'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         this.setInputsInline(true);
-        this.appendDummyInput().appendField(Blockly.Msg.NAO_LEDOFF);
+        this.appendDummyInput().appendField(Blockly.Msg.LED_OFF);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_LEDOFF_TOOLTIP);
@@ -563,7 +563,7 @@ Blockly.Blocks['naoActions_randomEyes'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        this.appendValueInput('DURATION').appendField(Blockly.Msg.NAO_RANDOMEYES + ' ' + Blockly.Msg.NAO_DURATION).setCheck('Number');
+        this.appendValueInput('DURATION').appendField(Blockly.Msg.NAO_RANDOMEYES + ' ' + Blockly.Msg.PLAY_DURATION).setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_RANDOMEYES_TOOLTIP);
@@ -582,7 +582,7 @@ Blockly.Blocks['naoActions_rasta'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        this.appendValueInput('DURATION').appendField(Blockly.Msg.NAO_RASTA + ' ' + Blockly.Msg.NAO_DURATION).setCheck('Number');
+        this.appendValueInput('DURATION').appendField(Blockly.Msg.NAO_RASTA + ' ' + Blockly.Msg.PLAY_DURATION).setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_RASTA_TOOLTIP);
