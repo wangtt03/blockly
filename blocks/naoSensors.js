@@ -40,7 +40,7 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	        	[Blockly.Msg.NAO_TOUCH_REAR, 'REAR']
 	        ]);
 	        var sensorType = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCHSENSOR, 'NAO_TOUCHSENSOR' ],
-	                [ Blockly.Msg.NAO_DETECTFACE, 'NAO_DETECTFACE' ], [ Blockly.Msg.NAO_NAOMARK, 'NAO_NAOMARK' ], [ Blockly.Msg.NAO_SONAR, 'NAO_SONAR' ],
+	                [ Blockly.Msg.NAO_DETECTFACE, 'NAO_DETECTFACE' ], [ Blockly.Msg.NAO_NAOMARK, 'NAO_NAOMARK' ], [ Blockly.Msg.SENSOR_SONAR, 'NAO_SONAR' ],
 	                [ Blockly.Msg.NAO_GYROMETER, 'NAO_GYROMETER' ], [ Blockly.Msg.NAO_ACCELEROMETER, 'NAO_ACCELEROMETER' ], [ Blockly.Msg.NAO_FSR, 'NAO_FSR' ] ], function(option) {
 	            if (option && this.sourceBlock_.getFieldValue('SENSORTYPE') !== option) {
 	                this.sourceBlock_.updateShape_(option);
@@ -128,7 +128,7 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	        } else if (this.sensorType_ == 'NAO_NAOMARK') {
 	            this.appendValue_('BOOL');
 	            this.setOutput(true, 'Boolean');
-	        } else if (this.sensorType_ == 'NAO_SONAR') {
+	        } else if (this.sensorType_ == 'SENSOR_SONAR') {
 	            this.appendValue_('NUM_REV', 30);
 	            this.setOutput(true, 'Number');
 	        } else if (this.sensorType_ == 'NAO_GYROMETER') {
@@ -204,7 +204,7 @@ Blockly.Blocks['naoSensors_touchsensors'] = {
 	        	[Blockly.Msg.MOTOR_MIDDLE, 'MIDDLE'],
 	        	[Blockly.Msg.NAO_TOUCH_REAR, 'REAR']
 	        ]);
-	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.NAO_TOUCHSENSOR).appendField(position, 'POSITION').appendField(side, 'SIDE').appendField(Blockly.Msg.NAO_TOUCHED);
+	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.SENSOR_TOUCH).appendField(position, 'POSITION').appendField(side, 'SIDE').appendField(Blockly.Msg.SENSOR_IS_TOUCHED);
 	        this.setOutput(true, 'Boolean');
 	        this.setTooltip(Blockly.Msg.NAO_TOUCHSENSOR_TOOLTIP);
 	    }
@@ -217,9 +217,9 @@ Blockly.Blocks['naoSensors_sonar'] = {
 
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
-	        this.appendDummyInput().appendField(Blockly.Msg.NAO_SONAR);
+	        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_SONAR);
 	        this.setOutput(true, 'Number');
-	        this.setTooltip(Blockly.Msg.NAO_SONAR_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.ULTRASONIC_GETSAMPLE_TOOLTIP);
 	    }
 	};
 

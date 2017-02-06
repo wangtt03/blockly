@@ -32,7 +32,7 @@ Blockly.Blocks['naoActions_mode'] = {
         this.appendDummyInput().appendField(Blockly.Msg.SET + ' ' + Blockly.Msg.MODE).appendField(dropdown, 'DIRECTION');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.NAO_STANDUP_TOOLTIP);
+        this.setTooltip(Blockly.Msg.NAO_MODE_TOOLTIP);
     }
 };
 
@@ -146,7 +146,7 @@ Blockly.Blocks['naoActions_walk'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_FOREWARD, 'FOREWARD' ], [ Blockly.Msg.MOTOR_BACKWARD, 'BACKWARD' ] ]);
-        this.appendValueInput('POWER').appendField(Blockly.Msg.NAO_WALK).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.NAO_WALK_DISTANCE).setCheck('Number');
+        this.appendValueInput('POWER').appendField(Blockly.Msg.NAO_WALK).appendField(dropdown, 'DIRECTION').appendField(Blockly.Msg.MOTOR_DISTANCE).setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_WALK_TOOLTIP);
@@ -305,8 +305,8 @@ Blockly.Blocks['naoActions_dialog'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        this.appendValueInput('PHRASE').appendField(Blockly.Msg.NAO_PHRASE);
-        this.appendValueInput('ANSWER').appendField(Blockly.Msg.NAO_ANSWER);
+        this.appendValueInput('PHRASE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_PHRASE);
+        this.appendValueInput('ANSWER').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_ANSWER);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_DIALOG_TOOLTIP);
@@ -450,7 +450,7 @@ Blockly.Blocks['naoActions_takePicture'] = {
         var camera = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_CAMERA_TOP, '0' ], [ Blockly.Msg.NAO_CAMERA_BOTTOM, '1' ] ]);
         this.appendDummyInput().appendField(Blockly.Msg.NAO_TAKEPICTURE);
         this.appendDummyInput().appendField(Blockly.Msg.NAO_CAMERA).appendField(camera, 'CAMERA');
-        this.appendValueInput('FILENAME').appendField(Blockly.Msg.NAO_FILENAME);
+        this.appendValueInput('FILENAME').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_FILENAME);
         this.setTooltip(Blockly.Msg.NAO_TAKEPICTURE_TOOLTIP);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -477,8 +477,8 @@ Blockly.Blocks['naoActions_recordVideo'] = {
         this.appendDummyInput().appendField(Blockly.Msg.NAO_RECORDVIDEO);
         this.appendDummyInput().appendField(Blockly.Msg.NAO_RESOLUTION).appendField(resolution, 'RESOLUTION');
         this.appendDummyInput().appendField(Blockly.Msg.NAO_CAMERA).appendField(camera, 'CAMERA');
-        this.appendValueInput('DURATION').appendField(Blockly.Msg.PLAY_DURATION).setCheck('Number');
-        this.appendValueInput('FILENAME').appendField(Blockly.Msg.NAO_FILENAME);
+        this.appendValueInput('DURATION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.PLAY_DURATION).setCheck('Number');
+        this.appendValueInput('FILENAME').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_FILENAME);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_RECORDVIDEO_TOOLTIP);
