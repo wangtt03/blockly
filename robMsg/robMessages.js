@@ -542,7 +542,8 @@ Blockly.Msg.TOUR1_DESCRIPTION09 = 'Here you find some shortcuts!<br>From left to
 Blockly.Msg.TOUR1_DESCRIPTION10 = 'Click on »Action«';
 Blockly.Msg.TOUR1_DESCRIPTION11 = 'Click and create the block in the workspace';
 Blockly.Msg.TOUR1_DESCRIPTION12 = 'Now drag"n drop the new block just below the start-program-block so that they are connected';
-Blockly.Msg.TOUR1_DESCRIPTION13 = 'Now test your program in the simulation!';
+Blockly.Msg.TOUR1_DESCRIPTION13 = 'Now open the simulation ...';
+Blockly.Msg.TOUR1_DESCRIPTION13a = 'and test your program in the simulation!';
 Blockly.Msg.TOUR1_DESCRIPTION14 = 'Just a moment!';
 Blockly.Msg.TOUR1_DESCRIPTION15 = 'Perfect,<br>your robot is driving 20 cm forward,<br>this is what you have programmed!';
 Blockly.Msg.TOUR1_DESCRIPTION16 = 'Bye and have fun trying out more!';
@@ -571,8 +572,8 @@ Blockly.Msg.CONFIGURATION_ERROR_MOTORS_ROTATION_DIRECTION = 'The direction of ro
 Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_RIGHT_MOTORS = 'You have multiple right motors assigned to your configuration!';
 Blockly.Msg.CONFIGURATION_ERROR_MULTIPLE_LEFT_MOTORS = 'You have multiple left motors assigned to your configuration!';
 Blockly.Msg.WAIT_TIME_TOOLTIP = 'Waits for a certain time in milliseconds.';
-Blockly.Msg.POPUP_2_1_3 = 'Version 2.1.3 <ul class="NonIcon"><li>Calliope - simulate programs for Calliope</li><li>micro:bit - simulate programs for micro:bit©</li><li>new feature - help for programming blocks in the editor (EV3 only)</li></ul>';
-Blockly.Msg.POPUP_OLD_RELEASE = 'Version 2.1.1 <ul class="NonIcon"><li>Calliope - create programs for Calliope</li><li>micro:bit - create Programs for micro:bit©</li><li>New languages: Portuguese, Russian, Polish</li></ul>';
+Blockly.Msg.POPUP_2_2_0 = 'Version 2.2.0 <ul class="NonIcon"><li>bug fixes for Bot"n Roll, EV3 and Calliope</li><li>new feature - upload custom simulation environments</li><li>new feature - document your programs directly</li></ul>';
+Blockly.Msg.POPUP_OLD_RELEASE = 'Version 2.1.3 <ul class="NonIcon"><li>Calliope - simulate programs for Calliope</li><li>micro:bit - simulate programs for micro:bit©</li><li>new feature - help for programming blocks in the editor (EV3 only)</li></ul>';
 Blockly.Msg.ORA_TOKEN_SET_ERROR_WRONG_ROBOTTYPE = 'You are trying to connect a robot of a different type as selected in the menu. <br> Please switch the robot type in the robot"s menu and try to connect again!';
 Blockly.Msg.ORA_USER_ERROR_EMAIL_USED = 'There is already an account with this email address registered. Please enter another email address!';
 Blockly.Msg.ORA_USER_PASSWORD_RECOVERY_EXPIRED_URL = 'The link is not valid anymore. Please ask for resetting your password again, if you still cannot remember it!';

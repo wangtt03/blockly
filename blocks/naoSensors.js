@@ -39,7 +39,7 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	        	[Blockly.Msg.MOTOR_MIDDLE, 'MIDDLE'],
 	        	[Blockly.Msg.NAO_TOUCH_REAR, 'REAR']
 	        ]);
-	        var sensorType = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_TOUCHSENSOR, 'NAO_TOUCHSENSOR' ],
+	        var sensorType = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_TOUCH, 'NAO_TOUCHSENSOR' ],
 	                [ Blockly.Msg.NAO_DETECTFACE, 'NAO_DETECTFACE' ], [ Blockly.Msg.NAO_NAOMARK, 'NAO_NAOMARK' ], [ Blockly.Msg.SENSOR_SONAR, 'NAO_SONAR' ],
 	                [ Blockly.Msg.NAO_GYROMETER, 'NAO_GYROMETER' ], [ Blockly.Msg.NAO_ACCELEROMETER, 'NAO_ACCELEROMETER' ], [ Blockly.Msg.NAO_FSR, 'NAO_FSR' ] ], function(option) {
 	            if (option && this.sourceBlock_.getFieldValue('SENSORTYPE') !== option) {
