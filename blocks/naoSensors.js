@@ -204,7 +204,7 @@ Blockly.Blocks['naoSensors_touchsensors'] = {
 	        	[Blockly.Msg.MOTOR_MIDDLE, 'MIDDLE'],
 	        	[Blockly.Msg.NAO_TOUCH_REAR, 'REAR']
 	        ]);
-	        this.appendDummyInput().appendField('Is ' + Blockly.Msg.SENSOR_TOUCH).appendField(position, 'POSITION').appendField(side, 'SIDE').appendField(Blockly.Msg.SENSOR_IS_TOUCHED);
+	        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_IS_PIN + ' ' + Blockly.Msg.SENSOR_TOUCH).appendField(position, 'POSITION').appendField(side, 'SIDE').appendField(Blockly.Msg.SENSOR_IS_TOUCHED);
 	        this.setOutput(true, 'Boolean');
 	        this.setTooltip(Blockly.Msg.NAO_TOUCHSENSOR_TOOLTIP);
 	    }
@@ -231,7 +231,7 @@ Blockly.Blocks['naoSensors_gyrometer'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
 	        var dropdown = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ] ]);
-	        this.appendDummyInput().appendField('get ' + Blockly.Msg.NAO_GYROMETER).appendField(dropdown, 'COORDINATE');
+	        this.appendDummyInput().appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.NAO_GYROMETER).appendField(dropdown, 'COORDINATE');
 	        this.setOutput(true, 'Number');
 	        this.setTooltip(Blockly.Msg.NAO_GYROMETER_TOOLTIP);
 	    }
@@ -246,7 +246,7 @@ Blockly.Blocks['naoSensors_accelerometer'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
 	        var dropdown = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ], [ 'Z', 'Z' ] ]);
-	        this.appendDummyInput().appendField('get ' + Blockly.Msg.NAO_ACCELEROMETER).appendField(dropdown, 'COORDINATE');
+	        this.appendDummyInput().appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.NAO_ACCELEROMETER).appendField(dropdown, 'COORDINATE');
 	        this.setOutput(true, 'Number');
 	        this.setTooltip(Blockly.Msg.NAO_ACCELEROMETER_TOOLTIP);
 	    }
@@ -260,7 +260,7 @@ Blockly.Blocks['naoSensors_fsr'] = {
 	    init : function() {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
 	        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_LEFT, 'LEFT' ], [ Blockly.Msg.MOTOR_RIGHT, 'RIGHT' ] ]);
-	        this.appendDummyInput().appendField('get ' + Blockly.Msg.NAO_FSR).appendField(side, 'SIDE');
+	        this.appendDummyInput().appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.NAO_FSR).appendField(side, 'SIDE');
 	        this.setOutput(true, 'Number');
 	        this.setTooltip(Blockly.Msg.NAO_FSR_TOOLTIP);
 	    }
