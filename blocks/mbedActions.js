@@ -39,29 +39,29 @@ Blockly.Blocks['mbedActions_motor_on'] = {
 };
 
 Blockly.Blocks['mbedActions_motor_stop'] = {
-        /**
-         * Stop this motor.
-         *
-         * @constructs robActions_motor_stop
-         * @this.Blockly.Block
-         * @param {String/dropdown}
-         *            MOTORPORT - A, B, C, or D
-         * @param {String/dropdown}
-         *            MODE - Float or Non Float
-         * @returns immediately
-         * @memberof Block
-         */
-        init : function() {
-            this.setColour(Blockly.CAT_ACTION_RGB);
-            var ports = [ [ Blockly.Msg.MOTOR_PORT + ' A', 'A' ], [ Blockly.Msg.MOTOR_PORT + ' B', 'B' ], [ Blockly.Msg.MOTOR_PORT + ' A + B', 'AB' ] ];
-            var motorPort = new Blockly.FieldDropdown(ports);
-            var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_FLOAT, 'FLOAT' ], [ Blockly.Msg.MOTOR_BRAKE, 'NONFLOAT' ] ]);
-            this.appendDummyInput().appendField(Blockly.Msg.MOTOR_STOP).appendField(motorPort, 'MOTORPORT').appendField(mode, 'MODE');
-            this.setPreviousStatement(true);
-            this.setNextStatement(true);
-            this.setTooltip(Blockly.Msg.MOTOR_STOP_TOOLTIP);
-        }
-    };
+    /**
+     * Stop this motor.
+     *
+     * @constructs robActions_motor_stop
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            MOTORPORT - A, B, C, or D
+     * @param {String/dropdown}
+     *            MODE - Float or Non Float
+     * @returns immediately
+     * @memberof Block
+     */
+    init : function() {
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        var ports = [ [ Blockly.Msg.MOTOR_PORT + ' A', 'A' ], [ Blockly.Msg.MOTOR_PORT + ' B', 'B' ], [ Blockly.Msg.MOTOR_PORT + ' A + B', 'AB' ] ];
+        var motorPort = new Blockly.FieldDropdown(ports);
+        var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_FLOAT, 'FLOAT' ], [ Blockly.Msg.MOTOR_BRAKE, 'NONFLOAT' ] ]);
+        this.appendDummyInput().appendField(Blockly.Msg.MOTOR_STOP).appendField(motorPort, 'MOTORPORT').appendField(mode, 'MODE');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.MOTOR_STOP_TOOLTIP);
+    }
+};
 
 Blockly.Blocks['mbedActions_display_text'] = {
     /**
@@ -76,8 +76,7 @@ Blockly.Blocks['mbedActions_display_text'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        var what = new Blockly.FieldDropdown([ [ Blockly.Msg.DISPLAY_TEXT, 'TEXT' ],
-                                               [ Blockly.Msg.DISPLAY_CHARACTER, 'CHARACTER' ] ]);
+        var what = new Blockly.FieldDropdown([ [ Blockly.Msg.DISPLAY_TEXT, 'TEXT' ], [ Blockly.Msg.DISPLAY_CHARACTER, 'CHARACTER' ] ]);
         this.appendValueInput('OUT').appendField(Blockly.Msg.DISPLAY_SHOW).appendField(what, 'TYPE').setCheck([ 'Number', 'Boolean', 'String', 'Colour' ]);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -173,31 +172,71 @@ Blockly.Blocks['mbedActions_display_clear'] = {
     }
 };
 
-Blockly.Blocks['mbedActions_play_tone'] = {
-        /**
-         * Play a tone.
-         *
-         * @constructs robActions_play_tone
-         * @this.Blockly.Block
-         * @param {Number}
-         *            FREQUENCE Frequence
-         * @todo
-         * @param {Number}
-         *            DURATION Time in milliseconds
-         * @returns after execution (after DURATION)
-         * @memberof Block
-         */
+Blockly.Blocks['mbedActions_display_getPixel'] = {
         init : function() {
-            // this.setHelpUrl(Blockly.Msg.PLAY_TONE_HELPURL);
             this.setColour(Blockly.CAT_ACTION_RGB);
-            this.appendValueInput('FREQUENCE').appendField(Blockly.Msg.PLAY).appendField(Blockly.Msg.PLAY_FREQUENZ).setCheck('Number');
-            this.appendValueInput('DURATION').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.PLAY_DURATION);
-            this.setPreviousStatement(true);
-            this.setNextStatement(true);
-            this.setTooltip(Blockly.Msg.PLAY_TONE_TOOLTIP);
-            // this.setHelp(new Blockly.Help(Blockly.Msg.PLAY_TONE_HELP));
+            this.appendValueInput('X').setCheck('Number').appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.DISPLAY_PIXEL_TITLE).appendField(Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.X);
+            this.appendValueInput('Y').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.Y);
+            this.setTooltip(Blockly.Msg.DISPLAY_GET_PIXEL_TOOLTIP);
+            this.setOutput(true, 'Number');
         }
     };
+
+    Blockly.Blocks['mbedActions_display_setPixel'] = {
+        init : function() {
+            this.setColour(Blockly.CAT_ACTION_RGB);
+            this.appendValueInput('X').setCheck('Number').appendField(Blockly.Msg.SET + ' ' + Blockly.Msg.DISPLAY_PIXEL_TITLE).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.X);
+            this.appendValueInput('Y').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.Y);
+            this.appendValueInput('BRIGHTNESS').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
+            this.setTooltip(Blockly.Msg.DISPLAY_GET_PIXEL_TOOLTIP);
+            this.setOutput(true, 'Number');
+        }
+    };
+
+    Blockly.Blocks['mbedActions_display_getBrightness'] = {
+        init : function() {
+            this.setColour(Blockly.CAT_ACTION_RGB);
+            this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
+            this.setTooltip(Blockly.Msg.DISPLAY_GET_BRIGHTNESS_TOOLTIP);
+            this.setOutput(true, 'Number');
+        }
+    };
+
+    Blockly.Blocks['mbedActions_display_setBrightness'] = {
+        init : function() {
+            this.setColour(Blockly.CAT_ACTION_RGB);
+            this.appendValueInput('BRIGHTNESS').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.SET + ' '
+                    + Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
+            this.setTooltip(Blockly.Msg.DISPLAY_SET_BRIGHTNESS_TOOLTIP);
+            this.setOutput(true, 'Number');
+        }
+    };
+
+Blockly.Blocks['mbedActions_play_tone'] = {
+    /**
+     * Play a tone.
+     *
+     * @constructs robActions_play_tone
+     * @this.Blockly.Block
+     * @param {Number}
+     *            FREQUENCE Frequence
+     * @todo
+     * @param {Number}
+     *            DURATION Time in milliseconds
+     * @returns after execution (after DURATION)
+     * @memberof Block
+     */
+    init : function() {
+        // this.setHelpUrl(Blockly.Msg.PLAY_TONE_HELPURL);
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        this.appendValueInput('FREQUENCE').appendField(Blockly.Msg.PLAY).appendField(Blockly.Msg.PLAY_FREQUENZ).setCheck('Number');
+        this.appendValueInput('DURATION').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.PLAY_DURATION);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.PLAY_TONE_TOOLTIP);
+        // this.setHelp(new Blockly.Help(Blockly.Msg.PLAY_TONE_HELP));
+    }
+};
 
 Blockly.Blocks['mbedActions_play_note'] = {
     /**
@@ -217,9 +256,9 @@ Blockly.Blocks['mbedActions_play_note'] = {
         // this.setHelpUrl(Blockly.Msg.PLAY_TONE_HELPURL);
         this.setColour(Blockly.CAT_ACTION_RGB);
         var frequence = new Blockly.FieldNote('261.626');
-        var duration = new Blockly.FieldDropdown([ [ Blockly.Msg.PLAY_WHOLE, '2000' ], [ Blockly.Msg.PLAY_HALF, '1000' ], [ Blockly.Msg.PLAY_QUARTER, '500' ], [ Blockly.Msg.PLAY_EIGHTH, '250' ],
-                [ Blockly.Msg.PLAY_SIXTEENTH, '125' ] ]);
-        this.appendDummyInput().appendField(Blockly.Msg.PLAY).appendField(duration,'DURATION').appendField(frequence, 'FREQUENCE');
+        var duration = new Blockly.FieldDropdown([ [ Blockly.Msg.PLAY_WHOLE, '2000' ], [ Blockly.Msg.PLAY_HALF, '1000' ], [ Blockly.Msg.PLAY_QUARTER, '500' ],
+                [ Blockly.Msg.PLAY_EIGHTH, '250' ], [ Blockly.Msg.PLAY_SIXTEENTH, '125' ] ]);
+        this.appendDummyInput().appendField(Blockly.Msg.PLAY).appendField(duration, 'DURATION').appendField(frequence, 'FREQUENCE');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.PLAY_NOTE_TOOLTIP);
@@ -333,12 +372,10 @@ Blockly.Blocks['mbedActions_write_to_pin'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var valueType;
-        valueType = new Blockly.FieldDropdown([[ Blockly.Msg.ANALOG, 'ANALOG'], [Blockly.Msg.DIGITAL, 'DIGITAL']]);
+        valueType = new Blockly.FieldDropdown([ [ Blockly.Msg.ANALOG, 'ANALOG' ], [ Blockly.Msg.DIGITAL, 'DIGITAL' ] ]);
         var pin;
-        pin = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ],
-                                                [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
-                                                [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
-                                                [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ] ]);
+        pin = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
+                [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ], [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ] ]);
         this.appendValueInput('VALUE').appendField(Blockly.Msg.PIN_WRITE).appendField(valueType, 'VALUETYPE').appendField(Blockly.Msg.VALUE_TO).appendField(pin, 'PIN').setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
