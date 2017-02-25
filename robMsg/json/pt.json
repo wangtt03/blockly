@@ -237,7 +237,7 @@
   "MOTOR_STOP": "parar",
   "MOTOR_STOP_TOOLTIP": "Parar o motor.",
   "MOTOR_TILT": "varrimento vertical",
-  "MOTOR_TURN": "direita",
+  "MOTOR_TURN": "virar à",
   "MOTORDIFF_ON_FOR_TOOLTIP": "Liga o motor com uma velocidade específica e pára após uma certa distância.",
   "MOTORDIFF_ON_TOOLTIP": "Liga o motor com uma velocidade específica.",
   "MOTORDIFF_STOP_TOOLTIP": "Pára o robô.",
