@@ -16,7 +16,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['mbedActions_motor_on'] = {
     /**
      * Turn motor on with specific power.
-     *
+     * 
      * @constructs mbedActions_motor_on
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -41,7 +41,7 @@ Blockly.Blocks['mbedActions_motor_on'] = {
 Blockly.Blocks['mbedActions_motor_stop'] = {
     /**
      * Stop this motor.
-     *
+     * 
      * @constructs robActions_motor_stop
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -66,7 +66,7 @@ Blockly.Blocks['mbedActions_motor_stop'] = {
 Blockly.Blocks['mbedActions_display_text'] = {
     /**
      * Display a text on the screen.
-     *
+     * 
      * @constructs mbedActions_display_text
      * @this.Blockly.Block
      * @param {String}
@@ -87,7 +87,7 @@ Blockly.Blocks['mbedActions_display_text'] = {
 Blockly.Blocks['mbedActions_display_image'] = {
     /**
      * Display an image on the screen.
-     *
+     * 
      * @constructs mbedActions_display_image
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -114,7 +114,7 @@ Blockly.Blocks['mbedActions_display_image'] = {
     },
     /**
      * Create XML to represent the type of the element to show.
-     *
+     * 
      * @return {!Element} XML storage element.
      * @this Blockly.Block
      */
@@ -125,7 +125,7 @@ Blockly.Blocks['mbedActions_display_image'] = {
     },
     /**
      * Parse XML to restore the type of the element to show.
-     *
+     * 
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -135,7 +135,7 @@ Blockly.Blocks['mbedActions_display_image'] = {
     },
     /**
      * Modify this block to have the correct number of inputs.
-     *
+     * 
      * @private
      * @this Blockly.Block
      */
@@ -155,7 +155,7 @@ Blockly.Blocks['mbedActions_display_image'] = {
 Blockly.Blocks['mbedActions_display_clear'] = {
     /**
      * Clear the display.
-     *
+     * 
      * @constructs mbedActions_display_clear
      * @this.Blockly.Block
      * @returns immediately
@@ -173,49 +173,51 @@ Blockly.Blocks['mbedActions_display_clear'] = {
 };
 
 Blockly.Blocks['mbedActions_display_getPixel'] = {
-        init : function() {
-            this.setColour(Blockly.CAT_ACTION_RGB);
-            this.appendValueInput('X').setCheck('Number').appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.DISPLAY_PIXEL_TITLE).appendField(Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.X);
-            this.appendValueInput('Y').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.Y);
-            this.setTooltip(Blockly.Msg.DISPLAY_GET_PIXEL_TOOLTIP);
-            this.setOutput(true, 'Number');
-        }
-    };
+    init : function() {
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        this.appendValueInput('X').setCheck('Number').appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.DISPLAY_PIXEL_TITLE).appendField(Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.X);
+        this.appendValueInput('Y').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.Y);
+        this.setTooltip(Blockly.Msg.DISPLAY_GET_PIXEL_TOOLTIP);
+        this.setOutput(true, 'Number');
+    }
+};
 
-    Blockly.Blocks['mbedActions_display_setPixel'] = {
-        init : function() {
-            this.setColour(Blockly.CAT_ACTION_RGB);
-            this.appendValueInput('X').setCheck('Number').appendField(Blockly.Msg.SET + ' ' + Blockly.Msg.DISPLAY_PIXEL_TITLE).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.X);
-            this.appendValueInput('Y').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.Y);
-            this.appendValueInput('BRIGHTNESS').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
-            this.setTooltip(Blockly.Msg.DISPLAY_GET_PIXEL_TOOLTIP);
-            this.setOutput(true, 'Number');
-        }
-    };
+Blockly.Blocks['mbedActions_display_setPixel'] = {
+    init : function() {
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        this.appendValueInput('X').setCheck('Number').appendField(Blockly.Msg.SET + ' ' + Blockly.Msg.DISPLAY_PIXEL_TITLE).setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.X);
+        this.appendValueInput('Y').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.Y);
+        this.appendValueInput('BRIGHTNESS').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.DISPLAY_GET_PIXEL_TOOLTIP);
+    }
+};
 
-    Blockly.Blocks['mbedActions_display_getBrightness'] = {
-        init : function() {
-            this.setColour(Blockly.CAT_ACTION_RGB);
-            this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
-            this.setTooltip(Blockly.Msg.DISPLAY_GET_BRIGHTNESS_TOOLTIP);
-            this.setOutput(true, 'Number');
-        }
-    };
+Blockly.Blocks['mbedActions_display_getBrightness'] = {
+    init : function() {
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
+        this.setTooltip(Blockly.Msg.DISPLAY_GET_BRIGHTNESS_TOOLTIP);
+        this.setOutput(true, 'Number');
+    }
+};
 
-    Blockly.Blocks['mbedActions_display_setBrightness'] = {
-        init : function() {
-            this.setColour(Blockly.CAT_ACTION_RGB);
-            this.appendValueInput('BRIGHTNESS').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.SET + ' '
-                    + Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
-            this.setTooltip(Blockly.Msg.DISPLAY_SET_BRIGHTNESS_TOOLTIP);
-            this.setOutput(true, 'Number');
-        }
-    };
+Blockly.Blocks['mbedActions_display_setBrightness'] = {
+    init : function() {
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        this.appendValueInput('BRIGHTNESS').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.SET + ' '
+                + Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.DISPLAY_SET_BRIGHTNESS_TOOLTIP);
+    }
+};
 
 Blockly.Blocks['mbedActions_play_tone'] = {
     /**
      * Play a tone.
-     *
+     * 
      * @constructs robActions_play_tone
      * @this.Blockly.Block
      * @param {Number}
@@ -241,7 +243,7 @@ Blockly.Blocks['mbedActions_play_tone'] = {
 Blockly.Blocks['mbedActions_play_note'] = {
     /**
      * Play a tone.
-     *
+     * 
      * @constructs mbedActions_play_tone
      * @this.Blockly.Block
      * @param {Number}
@@ -269,7 +271,7 @@ Blockly.Blocks['mbedActions_play_note'] = {
 Blockly.Blocks['mbedActions_play_setVolume'] = {
     /**
      * Set volume.
-     *
+     * 
      * @constructs mbedActions_play_setVolume
      * @this.Blockly.Block
      * @param {Number}
@@ -291,7 +293,7 @@ Blockly.Blocks['mbedActions_play_setVolume'] = {
 Blockly.Blocks['mbedActions_play_getVolume'] = {
     /**
      * Get current volume
-     *
+     * 
      * @constructs mbedActions_play_getVolume
      * @this.Blockly.Block
      * @returns immediately
@@ -312,7 +314,7 @@ Blockly.Blocks['mbedActions_play_getVolume'] = {
 Blockly.Blocks['mbedActions_leds_on'] = {
     /**
      * Turn bricklight on.
-     *
+     * 
      * @constructs mbedActions_brickLight_on
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -336,7 +338,7 @@ Blockly.Blocks['mbedActions_leds_on'] = {
 Blockly.Blocks['mbedActions_leds_off'] = {
     /**
      * Turn bricklight off.
-     *
+     * 
      * @constructs mbedActions_brickLight_off
      * @this.Blockly.Block
      * @returns immediately
@@ -356,7 +358,7 @@ Blockly.Blocks['mbedActions_leds_off'] = {
 Blockly.Blocks['mbedActions_write_to_pin'] = {
     /**
      * Sends to choosen pin value.
-     *
+     * 
      * @constructs mbedActions_write_to_pin
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -373,12 +375,58 @@ Blockly.Blocks['mbedActions_write_to_pin'] = {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var valueType;
         valueType = new Blockly.FieldDropdown([ [ Blockly.Msg.ANALOG, 'ANALOG' ], [ Blockly.Msg.DIGITAL, 'DIGITAL' ] ]);
-        var pin;
-        pin = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
-                [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ], [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ] ]);
-        this.appendValueInput('VALUE').appendField(Blockly.Msg.PIN_WRITE).appendField(valueType, 'VALUETYPE').appendField(Blockly.Msg.VALUE_TO).appendField(pin, 'PIN').setCheck('Number');
+        var pin = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ] ];
+        if (this.workspace.device === 'calliope') {
+            pin.push([ Blockly.Msg.SENSOR_PIN + ' 3', '3' ]);
+            pin.push([ Blockly.Msg.SENSOR_PIN + ' A0', 'A0' ]);
+            pin.push([ Blockly.Msg.SENSOR_PIN + ' A1', 'A1' ]);
+        }
+        this.appendValueInput('VALUE').appendField(Blockly.Msg.PIN_WRITE).appendField(valueType, 'VALUETYPE').appendField(Blockly.Msg.VALUE_TO).appendField(new Blockly.FieldDropdown(
+                pin, function(option) {
+                    if (option) {
+                        this.sourceBlock_.updateShape_(option);
+                    }
+                }), 'PIN').setCheck('Number');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.WRITE_TO_PIN_TOOLTIP);
+    },
+    /**
+     * Create XML to represent the type of the element to show.
+     * 
+     * @return {!Element} XML storage element.
+     * @this Blockly.Block
+     */
+    mutationToDom : function() {
+        var container = document.createElement('mutation');
+        container.setAttribute('protocol', this.getFieldValue('VALUETYPE'));
+        return container;
+    },
+    /**
+     * Parse XML to restore the type of the element to show.
+     * 
+     * @param {!Element}
+     *            xmlElement XML storage element.
+     * @this Blockly.Block
+     */
+    domToMutation : function(xmlElement) {
+        this.updateShape_(xmlElement.getAttribute('protocol'));
+    },
+    /**
+     * Modify this block to have the correct number of inputs.
+     * 
+     * @private
+     * @this Blockly.Block
+     */
+    updateShape_ : function(option) {
+        if (!this.workspace || Blockly.Block.dragMode_ == 2) {
+            // Block has been deleted or is in move
+            return;
+        }
+        if (option === 'ANALOG') {
+            console.log('analog');
+        } else {
+            console.log('digital');
+        }
     }
 };

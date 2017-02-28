@@ -40,7 +40,7 @@ Blockly.Blocks['robActions_motor_on'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.MOTOR_ON_TOOLTIP);
-    } 
+    }
 };
 
 Blockly.Blocks['robActions_motor_on_for'] = {
