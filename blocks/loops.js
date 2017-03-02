@@ -321,7 +321,6 @@ Blockly.Blocks['robControls_for'] = {
       "helpUrl": Blockly.Msg.CONTROLS_FOR_HELPURL
     });
     // workaround to reuse the text from Blockly.Msg.CONTROLS_FOR_TITLE
-    this.nameOld = 'i';
     this.getField("VAR").setText('i');
     this.getField("VAR").setValidator(this.validateName);
     this.appendStatementInput('DO').appendField(Blockly.Msg.CONTROLS_FOR_INPUT_DO);
@@ -367,7 +366,9 @@ Blockly.Blocks['robControls_for'] = {
       return null;
     // Ensure two identically-named variables don't exist.
     if (Blockly.Variables.isLegalName(name, block)) {
-      Blockly.Variables.renameVariable (block.nameOld, name, Blockly.getMainWorkspace());
+      if (block.nameOld) {
+          Blockly.Variables.renameVariable(block.nameOld, name, Blockly.getMainWorkspace());               
+      }
       block.nameOld = name;
       return name;
     } else {
