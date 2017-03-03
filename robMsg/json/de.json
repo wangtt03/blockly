@@ -16,6 +16,7 @@
   "BRICKLIGHT_ON_TOOLTIP":"Schaltet die Statusleuchte ein.",
   "BRICKLIGHT_ORANGE":"orange",
   "BRICKLIGHT_RED":"rot",
+  "BRICKLIGHT_BLUE":"blau",
   "BRICKLIGHT_RESET_TOOLTIP":"Setzt die Statusleuchte zurück auf grün und blinkend.",
   "BRICK_TRACK_WIDTH":"Spurbreite",
   "BRICK_WHEEL_DIAMETER":"Raddurchmesser",
