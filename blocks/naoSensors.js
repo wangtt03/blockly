@@ -41,7 +41,7 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	        ]);
 	        var sensorType = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_TOUCH, 'NAO_TOUCHSENSOR' ],
 	                [ Blockly.Msg.NAO_DETECTFACE, 'NAO_DETECTFACE' ], [ Blockly.Msg.NAO_NAOMARK, 'NAO_NAOMARK' ], [ Blockly.Msg.SENSOR_SONAR, 'NAO_SONAR' ],
-	                [ Blockly.Msg.NAO_GYROMETER, 'NAO_GYROMETER' ], [ Blockly.Msg.NAO_ACCELEROMETER, 'NAO_ACCELEROMETER' ], [ Blockly.Msg.NAO_FSR, 'NAO_FSR' ] ], function(option) {
+	                [ Blockly.Msg.NAO_GYROMETER, 'NAO_GYROMETER' ], [ Blockly.Msg.NAO_ACCELEROMETER, 'NAO_ACCELEROMETER' ], [ Blockly.Msg.NAO_FSR, 'NAO_FSR' ], [ Blockly.Msg.NAO_PHRASE, 'NAO_Phrase' ] ], function(option) {
 	            if (option && this.sourceBlock_.getFieldValue('SENSORTYPE') !== option) {
 	                this.sourceBlock_.updateShape_(option);
 	            }
@@ -147,9 +147,13 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	            input.appendField(position, 'POSITION').appendField(touchside, 'SIDE');
 	            this.appendValue_('BOOL');
 	            this.setOutput(true, 'Boolean');
+	        } else if (this.sensorType_ == 'NAO_Phrase') {
+	        	input.appendField(new Blockly.FieldTextInput('Word1; Word2; Word3'),'DICTIONARY');
+            	this.appendValue_('TEXT', 'Answer1, Answer2, Answer3');
+            	this.setOutput(true, 'String');
 	        }
 	        // sensorType.setValue(this.sensorType_);
-	    },	
+	    },
 
 	    /**
 	     * Called whenever the blocks shape has changed.
@@ -173,6 +177,9 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	                block.setFieldValue(value.toString(), 'NUM');
 	            } else if (type == 'BOOL') {
 	                block = this.workspace.newBlock('logic_boolean');
+	            } else if (type == 'TEXT') {
+	            	block = this.workspace.newBlock('text');
+	            	block.setFieldValue(value, 'TEXT');
 	            }
 	            block.initSvg();
 	            block.render();
@@ -184,6 +191,28 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	        }
 	    }
 };
+
+Blockly.Blocks['naoSensors_dialog'] = {
+	    /**
+	     * Tries to recognize a phrase and says the answer on success.
+	     *
+	     * @constructs naoActions_dialog
+	     * @this.Blockly.Block
+	     * @param {String}
+	     *            PHRASE Phrase that is recognized
+	     *            ANSWER NAOs answer
+	     * @returns immediately
+	     * @memberof Block
+	     */
+	    init : function() {
+	        this.setColour(Blockly.CAT_ACTION_RGB);
+	        this.appendValueInput('PHRASE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_PHRASE);
+	        this.appendValueInput('ANSWER').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_ANSWER);
+	        this.setPreviousStatement(true);
+	        this.setNextStatement(true);
+	        this.setTooltip(Blockly.Msg.NAO_DIALOG_TOOLTIP);
+	    }
+	};
 
 Blockly.Blocks['naoSensors_touchsensors'] = {
 	    /**
@@ -263,6 +292,28 @@ Blockly.Blocks['naoSensors_fsr'] = {
 	        this.appendDummyInput().appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.NAO_FSR).appendField(side, 'SIDE');
 	        this.setOutput(true, 'Number');
 	        this.setTooltip(Blockly.Msg.NAO_FSR_TOOLTIP);
+	    }
+	};
+
+Blockly.Blocks['naoSensors_getCurrent'] = {
+	    /**
+	     * NAO returns the voltage of a joint
+	     *
+	     * @constructs naoActions_moveJoint
+	     * @this.Blockly.Block
+	     * @param {String}
+	     *            JOINT that is moved
+	     * @param {Number}
+	     *            POWER degrees the joint is moved
+	     * @returns immediately
+	     * @memberof Block
+	     */
+	    init : function() {
+	        this.setColour(Blockly.CAT_SENSOR_RGB);
+	        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_JOINT_HEADYAW, 'HeadYaw' ], [ Blockly.Msg.NAO_JOINT_HEADPITCH, 'HeadPitch' ], [ Blockly.Msg.NAO_JOINT_LSHOULDERPITCH, 'LShoulderPitch' ], [ Blockly.Msg.NAO_JOINT_LSHOULDERROLL, 'LshoulderRoll' ], [ Blockly.Msg.NAO_JOINT_LELBOWYAW, 'LElbowYaw' ], [ Blockly.Msg.NAO_JOINT_LELBOWROLL, 'LElbowRoll' ], [ Blockly.Msg.NAO_JOINT_LWRISTYAW, 'LWristYaw' ], [ Blockly.Msg.NAO_JOINT_LHAND, 'LHand' ], [ Blockly.Msg.NAO_JOINT_LHIPYAWPITCH, 'LHipYawPitch' ], [ Blockly.Msg.NAO_JOINT_LHIPROLL, 'LHipRoll' ], [ Blockly.Msg.NAO_JOINT_LHIPPITCH, 'LHipPitch' ], [ Blockly.Msg.NAO_JOINT_LKNEEPITCH, 'LKneePitch' ], [ Blockly.Msg.NAO_JOINT_LANKLEPITCH, 'LAnklePitch' ], [ Blockly.Msg.NAO_JOINT_RANKLEROLL, 'RAnkleRoll' ], [ Blockly.Msg.NAO_JOINT_RHIPYAWPITCH, 'RHipYawPitch' ], [ Blockly.Msg.NAO_JOINT_RHIPROLL, 'RHipRoll' ], [ Blockly.Msg.NAO_JOINT_RHIPPITCH, 'RHipPitch' ], [ Blockly.Msg.NAO_JOINT_RKNEEPITCH, 'RKneePitch' ], [ Blockly.Msg.NAO_JOINT_RANKLEPITCH, 'RAnklePitch' ], [ Blockly.Msg.NAO_JOINT_LANKLEROLL, 'LAnkleRoll' ], [ Blockly.Msg.NAO_JOINT_RSHOULDERPITCH, 'RShoulderPitch' ], [ Blockly.Msg.NAO_JOINT_RSHOULDERROLL, 'RShoulderRoll' ], [ Blockly.Msg.NAO_JOINT_RELBOWYAW, 'RElbowYaw' ], [ Blockly.Msg.NAO_JOINT_RELBOWROLL, 'RElbowRoll' ], [ Blockly.Msg.NAO_JOINT_RWRISTYAW, 'RWristYaw' ], [ Blockly.Msg.NAO_JOINT_RHAND, 'RHand' ] ]);
+	        this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(Blockly.Msg.NAO_CURRENT).appendField(dropdown, 'joint');
+	        this.setOutput(true, 'Number');
+	        this.setTooltip(Blockly.Msg.NAO_GETCURRENT_TOOLTIP);
 	    }
 	};
 

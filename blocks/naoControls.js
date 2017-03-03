@@ -56,7 +56,7 @@ Blockly.Blocks['naoControls_start'] = {
         this.setPreviousStatement(false);
         this.setNextStatement(true);
         this.setDeletable(false);
-        this.setMutatorPlus(new Blockly.MutatorPlus([ 'mbedControls_start' ]));
+        this.setMutatorPlus(new Blockly.MutatorPlus([ 'naoControls_start' ]));
         this.setTooltip(Blockly.Msg.START_TOOLTIP);
     },
     /**

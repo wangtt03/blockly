@@ -725,6 +725,7 @@ Blockly.Msg.NAO_FORGETFACEOF = 'forget face of';
 Blockly.Msg.NAO_DETECTFACE = 'detect face';
 Blockly.Msg.NAO_PERFORM = 'perform'
 Blockly.Msg.NAO_MOVE = 'move'
+Blockly.Msg.NAO_CURRENT = 'electric current of'
 
 // Parameters for the nao blocks
 /// NAO parameters
@@ -882,6 +883,7 @@ Blockly.Msg.NAO_ANIMATION_TOOLTIP = 'Perform the selected animation.';
 Blockly.Msg.NAO_MOVEJOINT_TOOLTIP = 'Move a single joint.';
 Blockly.Msg.NAO_HAND_TOOLTIP = 'Open/close a hand.';
 Blockly.Msg.NAO_SAY_TOOLTIP = 'The robot says the given text.';
+Blockly.Msg.NAO_GETCURRENT_TOOLTIP = 'Get the electric current from the selected joint.';
 //
 Blockly.Msg.MENU_CODE_DOWNLOAD_TOOLTIP = 'Download the source code of your program on the computer';
 Blockly.Msg.MENU_CODE_REFRESH_TOOLTIP = 'Refresh the source code, if you have changed the NEPO Block"s.';

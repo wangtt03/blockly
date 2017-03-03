@@ -291,28 +291,6 @@ Blockly.Blocks['naoActions_playFile'] = {
     }
 };
 
-Blockly.Blocks['naoActions_dialog'] = {
-    /**
-     * Tries to recognize a phrase and says the answer on success.
-     *
-     * @constructs naoActions_dialog
-     * @this.Blockly.Block
-     * @param {String}
-     *            PHRASE Phrase that is recognized
-     *            ANSWER NAOs answer
-     * @returns immediately
-     * @memberof Block
-     */
-    init : function() {
-        this.setColour(Blockly.CAT_ACTION_RGB);
-        this.appendValueInput('PHRASE').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_PHRASE);
-        this.appendValueInput('ANSWER').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_ANSWER);
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.NAO_DIALOG_TOOLTIP);
-    }
-};
-
 Blockly.Blocks['naoActions_recognizeWord'] = {
     /**
      * Recognize a word.
