@@ -798,6 +798,7 @@ Blockly.Msg.NAO_LED_RIGHTFOOT = 'right foot';
 Blockly.Msg.NAO_LED_ALL = 'all';
 Blockly.Msg.NAO_MODE_ACTIVE = 'active';
 Blockly.Msg.NAO_MODE_REST = 'rest';
+Blockly.Msg.NAO_MODE_SIT = 'sit';
 Blockly.Msg.NAO_PART_BODY = 'body';
 Blockly.Msg.NAO_PART_HEAD = 'head';
 Blockly.Msg.NAO_PART_ARMS = 'arms';

@@ -26,7 +26,7 @@ Blockly.Blocks['naoActions_mode'] = {
      * @memberof Block
      */
     init : function() {
-        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_MODE_ACTIVE, 'ACTIVE' ], [ Blockly.Msg.NAO_MODE_REST, 'REST' ], ]);
+        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_MODE_ACTIVE, 'ACTIVE' ], [ Blockly.Msg.NAO_MODE_REST, 'REST' ], [ Blockly.Msg.NAO_MODE_SIT, 'SIT' ]]);
         this.setColour(Blockly.CAT_ACTION_RGB);
         this.setInputsInline(true);
         this.appendDummyInput().appendField(Blockly.Msg.SET + ' ' + Blockly.Msg.MODE).appendField(dropdown, 'DIRECTION');
