@@ -465,30 +465,50 @@ Blockly.Blocks['naoActions_recordVideo'] = {
 
 //Lights
 
-Blockly.Blocks['naoActions_leds'] = {
+Blockly.Blocks['naoActions_rgbLeds'] = {
     /**
-     * Record a video.
+     * Set a group of RGB-LEDs to a colour.
      *
-     * @constructs naoActions_recordVideo
+     * @constructs naoActions_leds
      * @this.Blockly.Block
      * @param {Number}
      *            LED that is altered
      *            COLOR the LED is set to
-     *            INTENSITY the LED is set to
      * @memberof Block
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EYES, 'EYES' ], [ Blockly.Msg.NAO_LED_LEFTEYE, 'LEFTEYE' ], [ Blockly.Msg.NAO_LED_RIGHTEYE, 'RIGHTEYE' ], [ Blockly.Msg.NAO_LED_EARS, 'EARS' ], [ Blockly.Msg.NAO_LED_LEFTEAR, 'LEFTEAR' ], [ Blockly.Msg.NAO_LED_RIGHTEAR, 'RIGHTEAR' ], [ Blockly.Msg.NAO_LED_CHEST, 'CHEST' ], [ Blockly.Msg.NAO_LED_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_LED_LEFTFOOT, 'LEFTFOOT' ], [ Blockly.Msg.NAO_LED_RIGHTFOOT, 'RIGHTFOOT' ], [ Blockly.Msg.NAO_LED_ALL, 'ALL' ] ]);
-        var color = new Blockly.FieldDropdown([ [ Blockly.Msg.BRICKLIGHT_GREEN, 'GREEN' ], [ Blockly.Msg.BRICKLIGHT_BLUE, 'BLUE' ], [ Blockly.Msg.BRICKLIGHT_RED, 'RED' ], [ Blockly.Msg.NAO_COLOR_WHITE, 'WHITE' ], [ Blockly.Msg.NAO_COLOR_YELLOW, 'YELLOW' ], [ Blockly.Msg.NAO_COLOR_MAGENTA, 'MAGENTA' ], [ Blockly.Msg.NAO_COLOR_CYAN, 'CYAN' ] ]);
+        var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EYES, 'EYES' ], [ Blockly.Msg.NAO_LED_LEFTEYE, 'LEFTEYE' ], [ Blockly.Msg.NAO_LED_RIGHTEYE, 'RIGHTEYE' ], [ Blockly.Msg.NAO_LED_LEFTFOOT, 'LEFTFOOT' ], [ Blockly.Msg.NAO_LED_RIGHTFOOT, 'RIGHTFOOT' ], [ Blockly.Msg.NAO_LED_ALL, 'ALL' ] ]);
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_LED).appendField(led, 'LED');
-        this.appendDummyInput().setAlign(Blockly.ALIGN_LEFT).appendField(Blockly.Msg.BRICKLIGHT_COLOR).appendField(color, 'COLOR');
-        this.appendValueInput('INTENSITY').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_INTENSITY);
+        this.appendValueInput('COLOR').setCheck('Colour').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.BRICKLIGHT_COLOR);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_LED_TOOLTIP);
     }
 };
+
+Blockly.Blocks['naoActions_setIntensity'] = {
+    /**
+     * Set the intensity of a group of Non-RGB-LEDs.
+     *
+     * @constructs naoActions_leds
+     * @this.Blockly.Block
+     * @param {Number}
+     *            LED that is altered
+     *            INTENSITY the LED is set to
+     * @memberof Block
+     */
+    init : function() {
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EARS, 'EARS' ], [ Blockly.Msg.NAO_LED_LEFTEAR, 'LEFTEAR' ], [ Blockly.Msg.NAO_LED_RIGHTEAR, 'RIGHTEAR' ], [ Blockly.Msg.NAO_LED_CHEST, 'CHEST' ], [ Blockly.Msg.NAO_LED_HEAD, 'HEAD' ] ]);
+        this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_LED).appendField(led, 'LED');
+        this.appendValueInput('INTENSITY').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_INTENSITY);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.NAO_SETINTENSITY_TOOLTIP);
+    }
+};
+
 
 Blockly.Blocks['naoActions_ledOff'] = {
     /**

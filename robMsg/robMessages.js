@@ -879,7 +879,7 @@ Blockly.Msg.NAO_FSR_TOOLTIP = 'Get the current reading from the force sensitive 
 Blockly.Msg.NAO_PLAYFILE_TOOLTIP = 'Plays a sound file from the robot.';
 Blockly.Msg.NAO_DIALOG_TOOLTIP = 'The robot tries to recognize the phrase and answers on success.';
 Blockly.Msg.NAO_RECOGNIZEWORD_TOOLTIP = 'The robot tries to recognize the word.';
-Blockly.Msg.NAO_LED_TOOLTIP = 'Set the color and intensity of a single LED or a group.';
+Blockly.Msg.NAO_LED_TOOLTIP = 'Set the color of a group of LEDs.';
 //Blockly.Msg.NAO_SAVEPOSITION_TOOLTIP = 'Make NAO stand up or sit down.';
 Blockly.Msg.NAO_LEARNFACE_TOOLTIP = 'Learn and save a face under a given name';
 Blockly.Msg.NAO_FORGETFACE_TOOLTIP = 'Forget a face previously saved under a given name';
@@ -889,6 +889,7 @@ Blockly.Msg.NAO_MOVEJOINT_TOOLTIP = 'Move a single joint.';
 Blockly.Msg.NAO_HAND_TOOLTIP = 'Open/close a hand.';
 Blockly.Msg.NAO_SAY_TOOLTIP = 'The robot says the given text.';
 Blockly.Msg.NAO_GETCURRENT_TOOLTIP = 'Get the electric current from the selected joint.';
+Blockly.Msg.NAO_SETINTENSITY_TOOLTIP = 'Set the intensity of a group of LEDs.';
 //
 Blockly.Msg.MENU_CODE_DOWNLOAD_TOOLTIP = 'Download the source code of your program on the computer';
 Blockly.Msg.MENU_CODE_REFRESH_TOOLTIP = 'Refresh the source code, if you have changed the NEPO Block"s.';
