@@ -49,7 +49,7 @@ Blockly.Blocks['naoActions_applyPosture'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_POSTURE_STAND, 'STAND' ], [ Blockly.Msg.NAO_POSTURE_STANDINIT, 'STANDINIT' ], [ Blockly.Msg.NAO_POSTURE_STANDZERO, 'STANDZERO' ] ]);
+        var dropdown = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_POSTURE_STAND, 'STAND' ], [ Blockly.Msg.NAO_POSTURE_STANDINIT, 'STANDINIT' ], [ Blockly.Msg.NAO_POSTURE_STANDZERO, 'STANDZERO' ], [ Blockly.Msg.NAO_MODE_SIT, 'SIT' ], [ Blockly.Msg.NAO_POSTURE_SITRELAX, 'SITRELAX' ], [ Blockly.Msg.NAO_POSTURE_LYINGBELLY, 'LYINGBELLY' ], [ Blockly.Msg.NAO_POSTURE_LYINGBACK, 'LYINGBACK' ], [ Blockly.Msg.NAO_POSTURE_CROUCH, 'CROUCH' ] ]);
         this.appendDummyInput().appendField(Blockly.Msg.NAO_APPLYPOSTURE).appendField(dropdown, 'DIRECTION');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
