@@ -521,8 +521,10 @@ Blockly.Blocks['naoActions_ledOff'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
+	var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EYES, 'EYES' ], [ Blockly.Msg.NAO_LED_LEFTEYE, 'LEFTEYE' ], [ Blockly.Msg.NAO_LED_RIGHTEYE, 'RIGHTEYE' ], [ Blockly.Msg.NAO_LED_LEFTFOOT, 'LEFTFOOT' ], [ Blockly.Msg.NAO_LED_RIGHTFOOT, 'RIGHTFOOT' ], [ Blockly.Msg.NAO_LED_EARS, 'EARS' ], [ Blockly.Msg.NAO_LED_LEFTEAR, 'LEFTEAR' ], [ Blockly.Msg.NAO_LED_RIGHTEAR, 'RIGHTEAR' ], [ Blockly.Msg.NAO_LED_CHEST, 'CHEST' ], [ Blockly.Msg.NAO_LED_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_LED_ALL, 'ALL' ] ]);
+        this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_LED).appendField(led, 'LED');
         this.setInputsInline(true);
-        this.appendDummyInput().appendField(Blockly.Msg.LED_OFF);
+        this.appendDummyInput().appendField(Blockly.Msg.OFF);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_LEDOFF_TOOLTIP);
@@ -540,8 +542,10 @@ Blockly.Blocks['naoActions_ledReset'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
+	var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EYES, 'EYES' ], [ Blockly.Msg.NAO_LED_LEFTEYE, 'LEFTEYE' ], [ Blockly.Msg.NAO_LED_RIGHTEYE, 'RIGHTEYE' ], [ Blockly.Msg.NAO_LED_LEFTFOOT, 'LEFTFOOT' ], [ Blockly.Msg.NAO_LED_RIGHTFOOT, 'RIGHTFOOT' ], [ Blockly.Msg.NAO_LED_EARS, 'EARS' ], [ Blockly.Msg.NAO_LED_LEFTEAR, 'LEFTEAR' ], [ Blockly.Msg.NAO_LED_RIGHTEAR, 'RIGHTEAR' ], [ Blockly.Msg.NAO_LED_CHEST, 'CHEST' ], [ Blockly.Msg.NAO_LED_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_LED_ALL, 'ALL' ] ]);
+        this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_LED).appendField(led, 'LED');
         this.setInputsInline(true);
-        this.appendDummyInput().appendField(Blockly.Msg.NAO_LEDRESET);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_RESET);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_LEDRESET_TOOLTIP);
