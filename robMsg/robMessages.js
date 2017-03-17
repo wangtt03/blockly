@@ -719,6 +719,7 @@ Blockly.Msg.NAO_PLAY_FILE = 'play file';
 Blockly.Msg.NAO_PHRASE = 'phrase';
 Blockly.Msg.NAO_ANSWER = 'answer';
 Blockly.Msg.NAO_RECOGNIZEWORD = 'recognize word';
+Blockly.Msg.NAO_RECOGNIZEWORDOR = 'or recognize word';
 Blockly.Msg.NAO_POSITION = 'position';
 Blockly.Msg.NAO_LEARNFACEOF = 'learn face of';
 Blockly.Msg.NAO_FORGETFACEOF = 'forget face of';
@@ -890,6 +891,7 @@ Blockly.Msg.NAO_HAND_TOOLTIP = 'Open/close a hand.';
 Blockly.Msg.NAO_SAY_TOOLTIP = 'The robot says the given text.';
 Blockly.Msg.NAO_GETCURRENT_TOOLTIP = 'Get the electric current from the selected joint.';
 Blockly.Msg.NAO_SETINTENSITY_TOOLTIP = 'Set the intensity of a group of LEDs.';
+Blockly.Msg.NAO_CHAT_TOOLTIP = 'Add a reaction if a word is recognized.';
 //
 Blockly.Msg.MENU_CODE_DOWNLOAD_TOOLTIP = 'Download the source code of your program on the computer';
 Blockly.Msg.MENU_CODE_REFRESH_TOOLTIP = 'Refresh the source code, if you have changed the NEPO Block"s.';

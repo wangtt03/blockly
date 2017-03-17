@@ -358,3 +358,110 @@ Blockly.Blocks['naoSensors_detectFace'] = {
 	        this.setTooltip(Blockly.Msg.NAO_DETECTFACE_TOOLTIP);
 	    }
 };
+
+/**
+ * Block waiting for a word recognition
+ * 
+ * @constructs naoSensors_chat
+ * @param {Boolean} -
+ *            any condition.
+ * @returns after (first) condition is true.
+ * @memberof Block
+ */
+
+Blockly.Blocks['naoSensors_chat'] = {
+
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        // this.setInputsInline(true);
+        this.appendValueInput('WAIT0').appendField(Blockly.Msg.NAO_RECOGNIZEWORD).setCheck('String');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.lineCount_ = 0;
+        this.setMutatorPlus(new Blockly.MutatorPlus(this));
+        this.setTooltip(Blockly.Msg.NAO_CHAT_TOOLTIP);
+    },
+    /**
+     * Create XML to represent the number of wait counts.
+     * 
+     * @return {Element} XML storage element.
+     * @this Blockly.Block
+     */
+    mutationToDom : function() {
+        if (!this.lineCount_) {
+            return null;
+        }
+        var container = document.createElement('mutation');
+        if (this.lineCount_) {
+            container.setAttribute('wait', this.lineCount_);
+        }
+        return container;
+    },
+
+    /**
+     * Parse XML to restore the wait inputs.
+     * 
+     * @param {!Element}
+     *            xmlElement XML storage element.
+     * @this Blockly.Block
+     */
+    domToMutation : function(xmlElement) {
+        this.lineCount_ = parseInt(xmlElement.getAttribute('wait'), 10);
+        for (var x = 1; x <= this.lineCount_; x++) {
+            if (x == 1) {
+                this.appendStatementInput('DO0').appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+            }
+            this.appendValueInput('WAIT' + x).appendField(Blockly.Msg.NAO_RECOGNIZEWORDOR).setCheck('String');
+            this.appendStatementInput('DO' + x).appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+        }
+        if (this.lineCount_ >= 1) {
+            this.setMutatorMinus(new Blockly.MutatorMinus(this));
+        }
+    },
+    /**
+     * Update the shape according to the number of wait inputs.
+     * 
+     * @param {Number}
+     *            number of waits inputs.
+     * @this Blockly.Block
+     */
+    updateShape_ : function(num) {
+        Blockly.dragMode_ = Blockly.DRAG_NONE;
+        if (num == 1) {
+            this.lineCount_++;
+            if (this.lineCount_ == 1)
+                this.appendStatementInput('DO0').appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+            this.appendValueInput('WAIT' + this.lineCount_).appendField(Blockly.Msg.NAO_RECOGNIZEWORDOR).setCheck('String');
+            this.appendStatementInput('DO' + this.lineCount_).appendField(Blockly.Msg.CONTROLS_REPEAT_INPUT_DO);
+        } else if (num == -1) {
+            var target = this.getInputTargetBlock('DO' + this.lineCount_);
+            if (target) {
+                target.unplug();
+                target.bumpNeighbours_();
+            }
+            var target = this.getInputTargetBlock('WAIT' + this.lineCount_);
+            if (target) {
+                target.unplug();
+                target.bumpNeighbours_();
+            }
+            this.removeInput('DO' + this.lineCount_);
+            this.removeInput('WAIT' + this.lineCount_);
+            this.lineCount_--;
+            if (this.lineCount_ == 0) {
+                this.removeInput('DO0');
+            }
+            this.itemCount_--;
+            this.removeInput('ADD' + this.itemCount_);
+        }
+        if (this.waitCount_ >= 1) {
+            if (this.waitCount_ == 1) {
+                this.setMutatorMinus(new Blockly.MutatorMinus(this));
+                this.render();
+            }
+        } else {
+            this.mutatorMinus.dispose();
+            this.mutatorMinus = null;
+            this.render();
+        }
+    }
+};
