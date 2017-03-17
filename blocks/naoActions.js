@@ -71,7 +71,7 @@ Blockly.Blocks['naoActions_stiffness'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        var part = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_PART_BODY, 'BODY' ], [ Blockly.Msg.NAO_PART_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_PART_ARMS, 'ARMS' ], [ Blockly.Msg.NAO_PART_LARM, 'LEFTARM' ], [ Blockly.Msg.NAO_PART_RARM, 'RIGHTARM' ], [ Blockly.Msg.NAO_PART_LEGS, 'LEGS' ], [ Blockly.Msg.NAO_PART_LLEG, 'LEFTLEG' ], [ Blockly.Msg.NAO_PART_RLEG, 'RIHTLEG' ] ]);
+        var part = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_PART_BODY, 'BODY' ], [ Blockly.Msg.NAO_PART_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_PART_ARMS, 'ARMS' ], [ Blockly.Msg.MOTOR_LEFT  + " " + Blockly.Msg.NAO_PART_ARM, 'LEFTARM' ], [ Blockly.Msg.MOTOR_RIGHT  + " " + Blockly.Msg.NAO_PART_ARM, 'RIGHTARM' ], [ Blockly.Msg.NAO_PART_LEGS, 'LEGS' ], [ Blockly.Msg.MOTOR_LEFT  + " " + Blockly.Msg.NAO_PART_LEG, 'LEFTLEG' ], [ Blockly.Msg.MOTOR_RIGHT  + " " + Blockly.Msg.NAO_PART_LEG, 'RIHTLEG' ] ]);
         var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.ON, 'ON' ], [ Blockly.Msg.OFF, 'OFF' ] ])
         this.setInputsInline(true);
         this.appendDummyInput().appendField(Blockly.Msg.NAO_STIFFNESS).appendField(part, 'PART').appendField(mode, 'MODE');
@@ -521,7 +521,7 @@ Blockly.Blocks['naoActions_ledOff'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-	var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EYES, 'EYES' ], [ Blockly.Msg.NAO_LED_LEFTEYE, 'LEFTEYE' ], [ Blockly.Msg.NAO_LED_RIGHTEYE, 'RIGHTEYE' ], [ Blockly.Msg.NAO_LED_LEFTFOOT, 'LEFTFOOT' ], [ Blockly.Msg.NAO_LED_RIGHTFOOT, 'RIGHTFOOT' ], [ Blockly.Msg.NAO_LED_EARS, 'EARS' ], [ Blockly.Msg.NAO_LED_LEFTEAR, 'LEFTEAR' ], [ Blockly.Msg.NAO_LED_RIGHTEAR, 'RIGHTEAR' ], [ Blockly.Msg.NAO_LED_CHEST, 'CHEST' ], [ Blockly.Msg.NAO_LED_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_LED_ALL, 'ALL' ] ]);
+	var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EYES, 'EYES' ], [ Blockly.Msg.MOTOR_LEFT  + " " + Blockly.Msg.NAO_LED_EYE, 'LEFTEYE' ], [ Blockly.Msg.MOTOR_RIGHT  + " " + Blockly.Msg.NAO_LED_EYE, 'RIGHTEYE' ], [ Blockly.Msg.MOTOR_LEFT  + " " + Blockly.Msg.NAO_LED_FOOT, 'LEFTFOOT' ], [ Blockly.Msg.MOTOR_RIGHT  + " " + Blockly.Msg.NAO_LED_FOOT, 'RIGHTFOOT' ], [ Blockly.Msg.NAO_LED_EARS, 'EARS' ], [ Blockly.Msg.MOTOR_LEFT  + " " + Blockly.Msg.NAO_LED_EAR, 'LEFTEAR' ], [ Blockly.Msg.MOTOR_RIGHT  + " " + Blockly.Msg.NAO_LED_EAR, 'RIGHTEAR' ], [ Blockly.Msg.NAO_LED_CHEST, 'CHEST' ], [ Blockly.Msg.NAO_LED_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_LED_ALL, 'ALL' ] ]);
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_LED).appendField(led, 'LED');
         this.setInputsInline(true);
         this.appendDummyInput().appendField(Blockly.Msg.OFF);
@@ -542,7 +542,7 @@ Blockly.Blocks['naoActions_ledReset'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-	var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EYES, 'EYES' ], [ Blockly.Msg.NAO_LED_LEFTEYE, 'LEFTEYE' ], [ Blockly.Msg.NAO_LED_RIGHTEYE, 'RIGHTEYE' ], [ Blockly.Msg.NAO_LED_LEFTFOOT, 'LEFTFOOT' ], [ Blockly.Msg.NAO_LED_RIGHTFOOT, 'RIGHTFOOT' ], [ Blockly.Msg.NAO_LED_EARS, 'EARS' ], [ Blockly.Msg.NAO_LED_LEFTEAR, 'LEFTEAR' ], [ Blockly.Msg.NAO_LED_RIGHTEAR, 'RIGHTEAR' ], [ Blockly.Msg.NAO_LED_CHEST, 'CHEST' ], [ Blockly.Msg.NAO_LED_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_LED_ALL, 'ALL' ] ]);
+	var led = new Blockly.FieldDropdown([ [ Blockly.Msg.NAO_LED_EYES, 'EYES' ], [ Blockly.Msg.MOTOR_LEFT  + " " + Blockly.Msg.NAO_LED_EYE, 'LEFTEYE' ], [ Blockly.Msg.MOTOR_RIGHT  + " " + Blockly.Msg.NAO_LED_EYE, 'RIGHTEYE' ], [ Blockly.Msg.MOTOR_LEFT  + " " + Blockly.Msg.NAO_LED_FOOT, 'LEFTFOOT' ], [ Blockly.Msg.MOTOR_RIGHT  + " " + Blockly.Msg.NAO_LED_FOOT, 'RIGHTFOOT' ], [ Blockly.Msg.NAO_LED_EARS, 'EARS' ], [ Blockly.Msg.MOTOR_LEFT  + " " + Blockly.Msg.NAO_LED_EAR, 'LEFTEAR' ], [ Blockly.Msg.MOTOR_RIGHT  + " " + Blockly.Msg.NAO_LED_EAR, 'RIGHTEAR' ], [ Blockly.Msg.NAO_LED_CHEST, 'CHEST' ], [ Blockly.Msg.NAO_LED_HEAD, 'HEAD' ], [ Blockly.Msg.NAO_LED_ALL, 'ALL' ] ]);
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.NAO_LED).appendField(led, 'LED');
         this.setInputsInline(true);
         this.appendDummyInput().appendField(Blockly.Msg.SENSOR_RESET);
