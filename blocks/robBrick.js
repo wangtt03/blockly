@@ -143,7 +143,11 @@ Blockly.Blocks['robBrick_light'] = {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         this.setOutput(true, 'Sensor');
         this.appendDummyInput().appendField(Blockly.Msg.SENSOR_LIGHT);
-        this.setTooltip(Blockly.Msg.LIGHT_TOOLTIP);
+        if (this.workspace.device === 'ardu') {
+            this.setTooltip(Blockly.Msg.LIGHT_ARDU_TOOLTIP);
+        } else {
+            this.setTooltip(Blockly.Msg.LIGHT_TOOLTIP);
+        }
     }
 };
 

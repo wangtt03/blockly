@@ -45,7 +45,7 @@ Blockly.Blocks['robCommunication_sendBlock'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_COMMUNICATION_RGB);
-        var protocol = new Blockly.FieldDropdown([ [ 'Bluetooth', 'BLUETOOTH' ] ]);
+        var protocol = new Blockly.FieldDropdown([ [ Blockly.Msg.CONNECTION_PROTOCOL_BLUETOOTH, 'BLUETOOTH' ] ]);
         var dataType;
         var channel;
         if (this.workspace.device === 'nxt') {
@@ -117,7 +117,7 @@ Blockly.Blocks['robCommunication_receiveBlock'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_COMMUNICATION_RGB);
-        var protocol = new Blockly.FieldDropdown([ [ 'Bluetooth', 'BLUETOOTH' ] ]);
+        var protocol = new Blockly.FieldDropdown([ [ Blockly.Msg.CONNECTION_PROTOCOL_BLUETOOTH, 'BLUETOOTH' ] ]);
         var dataType;
         var channel;
         if (this.workspace.device === 'nxt') {
@@ -203,7 +203,7 @@ Blockly.Blocks['robCommunication_checkConnection'] = {
             } ],
             "output" : "Boolean",
             "colour" : Blockly.CAT_COMMUNICATION_RGB,
-            "tooltip" : Blockly.Msg.CONNECTION_TOOLTIP,
+            "tooltip" : Blockly.Msg.CONNECTION_CHECK_TOOLTIP,
         });
     }
 };

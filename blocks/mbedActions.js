@@ -190,7 +190,7 @@ Blockly.Blocks['mbedActions_display_setPixel'] = {
         this.appendValueInput('BRIGHTNESS').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.DISPLAY_PIXEL_BRIGHTNESS);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-        this.setTooltip(Blockly.Msg.DISPLAY_GET_PIXEL_TOOLTIP);
+        this.setTooltip(Blockly.Msg.DISPLAY_SET_PIXEL_TOOLTIP);
     }
 };
 
