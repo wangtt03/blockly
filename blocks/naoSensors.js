@@ -214,6 +214,25 @@ Blockly.Blocks['naoSensors_dialog'] = {
 	    }
 	};
 
+Blockly.Blocks['naoSensors_recognizeWord'] = {
+	    /**
+	     * Returns last recognized word.
+	     *
+	     * @constructs naoActions_recognizeWord
+	     * @this.Blockly.Block
+	     * @param {String}
+	     *            PHRASE Phrase that is recognized
+	     * @returns immediately
+	     * @memberof Block
+	     */
+	    init : function() {
+	        this.setColour(Blockly.CAT_SENSOR_RGB);
+	        this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.NAO_RECOGNIZEDWORD);
+		this.setOutput(true, 'String');
+	        this.setTooltip(Blockly.Msg.NAO_RECOGNIZEWORD_TOOLTIP);
+	    }
+	};
+
 Blockly.Blocks['naoSensors_touchsensors'] = {
 	    /**
 	     * Get the current reading from one of the touchsensors.
