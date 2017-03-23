@@ -678,11 +678,12 @@ Blockly.BlockSvg.prototype.onMouseUp_ = function(e) {
  * Load the block's help page in a new window.
  * @private
  */
-Blockly.BlockSvg.prototype.showHelp_ = function() {
-  var url = goog.isFunction(this.helpUrl) ? this.helpUrl() : this.helpUrl;
-  if (url) {
-    window.open(url);
-  }
+Blockly.BlockSvg.prototype.showHelp_ = function() { 
+    this.helpUrl();
+//  var url = goog.isFunction(this.helpUrl) ? this.helpUrl() : this.helpUrl;
+//  if (url) {
+//    window.open(url);
+//  }
 };
 
 /**
@@ -804,8 +805,18 @@ Blockly.BlockSvg.prototype.showContextMenu_ = function(e) {
   }
 
   // Option to get help.
-  var url = goog.isFunction(this.helpUrl) ? this.helpUrl() : this.helpUrl;
-  var helpOption = {enabled: !!url};
+  // var url = goog.isFunction(this.helpUrl) ? this.helpUrl() : this.helpUrl;
+  // for nepo we do not assign each help separately
+  this.helpUrl = function() {
+      var blocklyDiv = document.getElementById("blocklyDiv");
+      if (blocklyDiv && !blocklyDiv.classList.contains("rightActive")) {
+          var progHelp = document.getElementById("progHelp");
+          if (progHelp) {
+              progHelp.click();
+          }
+      }
+  };
+  var helpOption = {enabled: !!this.helpUrl};
   helpOption.text = Blockly.Msg.HELP;
   helpOption.callback = function() {
     block.showHelp_();
