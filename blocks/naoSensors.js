@@ -148,9 +148,8 @@ Blockly.Blocks['naoSensors_getSample'] = {
 	            this.appendValue_('BOOL');
 	            this.setOutput(true, 'Boolean');
 	        } else if (this.sensorType_ == 'NAO_RECOGNIZEDWORD') {
-	        	input.appendField(new Blockly.FieldTextInput('Word1; Word2; Word3'),'DICTIONARY');
-            	this.appendValue_('BOOL');
-            	this.setOutput(true, 'Boolean');
+            	this.appendValue_('TEXT', 'Open; Roberta; Lab');
+            	this.setOutput(true, 'String');
 	        }
 	        // sensorType.setValue(this.sensorType_);
 	    },
