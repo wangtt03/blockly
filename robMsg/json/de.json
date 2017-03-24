@@ -234,7 +234,7 @@
   "MOTOR_ROTATION_REVERSE":"Drehrichtung",
   "MOTOR_SETPOWER_TOOLTIP":"Setzt Leistung dieses Motors.",
   "MOTOR_SIDE":"Seite",
-  "MOTOR_SPEED":"Tempo",
+  "MOTOR_SPEED":"Tempo %",
   "MOTOR_STOP":"Stoppe",
   "MOTOR_STOP_TOOLTIP":"Stoppt diesen Motor.",
   "MOTOR_TURN":"Drehe",

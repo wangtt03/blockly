@@ -152,7 +152,10 @@ Blockly.Blocks['robActions_motor_setPower'] = {
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
         var motorPort = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_PORT + ' A', 'A' ], [ Blockly.Msg.MOTOR_PORT + ' B', 'B' ],
-                [ Blockly.Msg.MOTOR_PORT + ' C', 'C' ], [ Blockly.Msg.MOTOR_PORT + ' D', 'D' ] ]);
+                [ Blockly.Msg.MOTOR_PORT + ' C', 'C' ] ]);
+        if (this.workspace.device === 'ev3') {
+            motorPort.push([ Blockly.Msg.MOTOR_PORT + ' D', 'D' ]);
+        }
         this.appendValueInput('POWER').appendField(Blockly.Msg.SET).appendField(motorPort, 'MOTORPORT').appendField(Blockly.Msg.MOTOR_SPEED);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
