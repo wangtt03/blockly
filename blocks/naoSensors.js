@@ -213,7 +213,7 @@ Blockly.Blocks['naoSensors_dialog'] = {
 	    }
 	};
 
-Blockly.Blocks['naoSensors_recognizeWord'] = {
+Blockly.Blocks['naoSensors_recognizedWord'] = {
 	    /**
 	     * Returns last recognized word.
 	     *
@@ -228,7 +228,7 @@ Blockly.Blocks['naoSensors_recognizeWord'] = {
 	        this.setColour(Blockly.CAT_SENSOR_RGB);
 	        this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.GET + ' ' + Blockly.Msg.NAO_RECOGNIZEDWORD);
 		this.setOutput(true, 'String');
-	        this.setTooltip(Blockly.Msg.NAO_RECOGNIZEWORD_TOOLTIP);
+	        this.setTooltip(Blockly.Msg.NAO_RECOGNIZEDWORD_TOOLTIP);
 	    }
 	};
 
