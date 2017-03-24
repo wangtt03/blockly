@@ -459,6 +459,8 @@ Blockly.Blocks['robGlobalVariables_declare'] = {
       } else if (option.substr(0, 5) === 'Array') {
         block = this.workspace.newBlock('robLists_create_with');
         block.setFieldValue(option.substr(6), 'LIST_TYPE');
+      } else if ((this.workspace.device === 'microbit'||this.workspace.device === 'calliope') && option === 'Colour') {
+        block = this.workspace.newBlock('mbedColour_picker');
       } else if (option === 'Colour') {
         block = this.workspace.newBlock('robColour_picker');
       } else if (option === 'Image') {

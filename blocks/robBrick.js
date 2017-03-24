@@ -132,6 +132,21 @@ Blockly.Blocks['robBrick_colour'] = {
     }
 };
 
+Blockly.Blocks['robBrick_HiTechnic_colour'] = {
+        /**
+         * Represent EV3 colour sensor.
+         * 
+         * @constructs robBrick_colour
+         * @memberof Block
+         */
+        init : function() {
+            this.setColour(Blockly.CAT_SENSOR_RGB);
+            this.appendDummyInput().appendField('HiTechnic ' + Blockly.Msg.SENSOR_COLOUR);
+            this.setOutput(true, 'Sensor');
+            this.setTooltip(Blockly.Msg.COLOUR_TOOLTIP);
+        }
+    };
+
 Blockly.Blocks['robBrick_light'] = {
     /**
      * Represent a light sensor.
