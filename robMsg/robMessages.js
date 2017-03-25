@@ -447,7 +447,6 @@ Blockly.Msg.ORA_PROGRAM_TO_SHARE_DOES_NOT_EXIST = 'The program that you would li
 Blockly.Msg.ORA_USER_TO_SHARE_DOES_NOT_EXIST = 'The user with which you would like to share the program does not exist. <br />Try it again!';
 Blockly.Msg.ORA_USER_TO_SHARE_SAME_AS_LOGIN_USER = 'You cannot share any programs with yourself.';
 Blockly.Msg.ORA_USER_CREATE_ERROR_MISSING_REQ_FIELDS = 'Check all required input fields have been filled out.';
-Blockly.Msg.ORA_USER_CREATE_ERROR_CONTAINS_SPECIAL_CHARACTERS = 'Name or username format is not valid.'
 Blockly.Msg.ORA_USER_EMAIL_ONE_ERROR_USER_NOT_EXISTS_WITH_THIS_EMAIL = 'This email address is unknown, maybe you have spelled it wrong!';
 Blockly.Msg.ORA_SERVER_ERROR = 'Server-Error';
 
@@ -472,10 +471,12 @@ Blockly.Msg.SEND_DATA = 'data to send';
 
 // These messages are used for validation of forms (please use short messages)
 Blockly.Msg.VALIDATION_FIELD_REQUIRED = 'This field cannot be empty!';
-Blockly.Msg.VALIDATION_PASSWORD_MIN_LENGTH = 'Password min length is 6!';
+Blockly.Msg.VALIDATION_PASSWORD_MIN_LENGTH = 'Password min. length is 6!';
 Blockly.Msg.VALIDATION_TOKEN_LENGTH = 'Token length is 8 characters!';
 Blockly.Msg.VALIDATION_SECOND_PASSWORD_EQUAL = 'The two passwords must be equal!';
 Blockly.Msg.VALIDATION_VALID_EMAIL_ADDRESS = 'Please enter a valid email address!';
+Blockly.Msg.VALIDATION_CONTAINS_SPECIAL_CHARACTERS = 'Valid special characters: »=+!?.,%#+&^@_«';
+Blockly.Msg.VALIDATION_MAX_LENGTH = 'The max. lenght is 25 characters!'
 
 Blockly.Msg.SIM_BLOCK_NOT_SUPPORTED = 'Unfortunately you can not use this block in the simulation!';
 Blockly.Msg.SIM_CONFIGURATION_WARNING_SENSOR_MISSING = 'This sensor is not in the configuration! The behavior of the program on the real robot will be different than expected!';
