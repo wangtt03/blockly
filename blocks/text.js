@@ -678,8 +678,13 @@ Blockly.Blocks['robText_join'] = {
   init : function() {
     this.setHelpUrl(Blockly.Msg.TEXT_JOIN_HELPURL);
     this.setColour(Blockly.CAT_TEXT_RGB);
-    this.appendValueInput('ADD0').appendField(Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH);
-    this.appendValueInput('ADD1');
+    if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
+        this.appendValueInput('ADD0').appendField(Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH).setCheck([ 'Number', 'String', 'Boolean', 'String' ]);
+        this.appendValueInput('ADD1').setCheck([ 'Number', 'String', 'Boolean', 'String' ]);
+    } else {
+        this.appendValueInput('ADD0').appendField(Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH);
+        this.appendValueInput('ADD1');
+    }
     this.setOutput(true, 'String');
     this.setMutatorPlus(new Blockly.MutatorPlus(this));
     this.setTooltip(Blockly.Msg.TEXT_JOIN_TOOLTIP);
@@ -721,7 +726,11 @@ Blockly.Blocks['robText_join'] = {
         this.setMutatorMinus(new Blockly.MutatorMinus(this));
         this.render();
       }
-      this.appendValueInput('ADD' + this.itemCount_);
+      if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
+          this.appendValueInput('ADD' + this.itemCount_).setCheck([ 'Number', 'String', 'Boolean', 'String' ]);
+      } else {
+          this.appendValueInput('ADD' + this.itemCount_);
+      }
       this.itemCount_++;
     } else if (num == -1) {
       this.itemCount_--;

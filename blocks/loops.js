@@ -437,6 +437,7 @@ Blockly.Blocks['robControls_forEach'] = {
                    'Array_String', 
                    'Array_Boolean', 
                    'Array_Colour', 
+                   'Array_Image',
                    'Array_Connection']
         }
       ],
@@ -449,17 +450,32 @@ Blockly.Blocks['robControls_forEach'] = {
     this.nameOld = Blockly.Msg.VARIABLES_TITLE;
     this.getField("VAR").setText(Blockly.Msg.VARIABLES_DEFAULT_NAME);
     this.getField("VAR").setValidator(this.validateName); 
-    var declType = new Blockly.FieldDropdown([ 
+    var declType;
+    if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
+        declType = new Blockly.FieldDropdown([ 
                    [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], 
                    [Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ],
                    [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ], 
                    [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], 
-                   [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ]], 
+                   [Blockly.Msg.VARIABLES_TYPE_IMAGE, 'Image' ]], 
                    function(option) {
                      if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
                        this.sourceBlock_.updateType(option);
                      }
                    });
+    } else {
+        declType = new Blockly.FieldDropdown([ 
+            [Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], 
+            [Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ],
+            [Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ], 
+            [Blockly.Msg.VARIABLES_TYPE_COLOUR, 'Colour' ], 
+            [Blockly.Msg.VARIABLES_TYPE_CONNECTION, 'Connection' ]], 
+            function(option) {
+              if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
+                this.sourceBlock_.updateType(option);
+              }
+            });
+    }
     this.getInput('LIST').appendField(declType, 'TYPE');
     var temp = this.getInput('LIST').fieldRow.pop();
     this.getInput('LIST').fieldRow.splice(1, 0, temp);

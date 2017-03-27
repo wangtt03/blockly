@@ -33,17 +33,20 @@ Blockly.Blocks['mbedSensors_getSample'] = {
         // this switch can be removed if micropython is supporting the light level
         if (this.workspace.device === 'microbit') {
             sensorType = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_KEY + ' ' + Blockly.Msg.SENSOR_PRESSED, 'KEYS_PRESSED' ],
-                    [ Blockly.Msg.SENSOR_GESTURE, 'GESTURE_ACTIVE' ], [ Blockly.Msg.SENSOR_COMPASS, 'COMPASS_ANGLE' ], [ Blockly.Msg.SENSOR_TIME, 'TIME' ],
-                    [ Blockly.Msg.MODE_ACCELERATION, 'ACCELERATION' ], [ Blockly.Msg.MODE_ORIENTATION, 'ORIENTATION' ] ], function(option) {
+                    [ Blockly.Msg.SENSOR_GESTURE, 'GESTURE_ACTIVE' ], [ Blockly.Msg.SENSOR_COMPASS, 'COMPASS_ANGLE' ], [ Blockly.Msg.SENSOR_TIME, 'TIME' ] ],
+            // [ Blockly.Msg.MODE_ACCELERATION, 'ACCELERATION' ], [ Blockly.Msg.MODE_ORIENTATION, 'ORIENTATION' ] ],
+            function(option) {
                 if (option && this.sourceBlock_.getFieldValue('SENSORTYPE') !== option) {
                     this.sourceBlock_.updateShape_(option);
                 }
             });
         } else {
             sensorType = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_KEY + ' ' + Blockly.Msg.SENSOR_PRESSED, 'KEYS_PRESSED' ],
-                    [ Blockly.Msg.SENSOR_GESTURE, 'GESTURE_ACTIVE' ], [ Blockly.Msg.SENSOR_COMPASS, 'COMPASS_ANGLE' ], [ Blockly.Msg.SENSOR_TIME, 'TIME' ],
-                    [ Blockly.Msg.SENSOR_TEMPERATURE, 'TEMPERATURE' ], [ Blockly.Msg.MODE_AMBIENTLIGHT, 'LIGHT_LEVEL' ],
-                    [ Blockly.Msg.MODE_ACCELERATION, 'ACCELERATION' ], [ Blockly.Msg.MODE_ORIENTATION, 'ORIENTATION' ] ], function(option) {
+                    [ Blockly.Msg.SENSOR_GESTURE, 'GESTURE_ACTIVE' ], [ Blockly.Msg.SENSOR_COMPASS, 'COMPASS_ANGLE' ],
+                    [ Blockly.Msg.SENSOR_MIC, 'MICROPHONE' ], [ Blockly.Msg.SENSOR_TIME, 'TIME' ], [ Blockly.Msg.SENSOR_TEMPERATURE, 'TEMPERATURE' ],
+                    [ Blockly.Msg.MODE_AMBIENTLIGHT, 'LIGHT_LEVEL' ] ],
+            // [ Blockly.Msg.MODE_ACCELERATION, 'ACCELERATION' ], [ Blockly.Msg.MODE_ORIENTATION, 'ORIENTATION' ] ]
+            function(option) {
                 if (option && this.sourceBlock_.getFieldValue('SENSORTYPE') !== option) {
                     this.sourceBlock_.updateShape_(option);
                 }
@@ -144,6 +147,13 @@ Blockly.Blocks['mbedSensors_getSample'] = {
         } else if (this.sensorType_ == 'ORIENTATION') {
             input.appendField(orientation, 'ORIENTATION');
             this.appendValue_('NUM_REV', 20);
+            this.setOutput(true, 'Number');
+        } else if (this.sensorType_ == 'ORIENTATION') {
+            input.appendField(orientation, 'ORIENTATION');
+            this.appendValue_('NUM_REV', 20);
+            this.setOutput(true, 'Number');
+        } else if (this.sensorType_ == 'MICROPHONE') {
+            this.appendValue_('NUM', 512);
             this.setOutput(true, 'Number');
         }
 
@@ -283,28 +293,27 @@ Blockly.Blocks['mbedSensors_microphone_getSample'] = {
 };
 
 Blockly.Blocks['mbedSensors_compass_getSample'] = {
-        /**
-         * Get the current reading from the compass sensor.
-         * 
-         * @constructs mbedSensors_gyro_getSample
-         * @this.Blockly.Block
-         * @param {String/dropdown}
-         *            MODE - Angle or Rate
-         * @param {String/dropdown}
-         *            SENSORPORT - 1, 2, 3 or 4
-         * @returns immediately
-         * @returns {Number}
-         * @memberof Block
-         */
+    /**
+     * Get the current reading from the compass sensor.
+     * 
+     * @constructs mbedSensors_gyro_getSample
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            MODE - Angle or Rate
+     * @param {String/dropdown}
+     *            SENSORPORT - 1, 2, 3 or 4
+     * @returns immediately
+     * @returns {Number}
+     * @memberof Block
+     */
 
-        init : function() {
-            this.setColour(Blockly.CAT_SENSOR_RGB);
-            this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_COMPASS);
-            this.setOutput(true, 'Number');
-            this.setTooltip(Blockly.Msg.COMPASS_GETSAMPLE_TOOLTIP);
-        }
-    };
-
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_COMPASS);
+        this.setOutput(true, 'Number');
+        this.setTooltip(Blockly.Msg.COMPASS_GETSAMPLE_TOOLTIP);
+    }
+};
 
 Blockly.Blocks['mbedSensors_temperature_getSample'] = {
     /**
