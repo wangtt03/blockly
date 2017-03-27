@@ -6,9 +6,9 @@ goog.provide('Blockly.Msg.en');
 
 goog.require('Blockly.Msg');
 
-Blockly.Msg.ACCELERATION = "acceleration (mg)";
+Blockly.Msg.ACCELERATION = "acceleration mg";
 Blockly.Msg.ACCELERATION_TOOLTIP = "Get the acceleration value in milli-gravitys.";
-Blockly.Msg.ACCELEROMETER_ROTATION = "rotation (°)";
+Blockly.Msg.ACCELEROMETER_ROTATION = "rotation °";
 Blockly.Msg.ACCELEROMETER_ROTATION_TOOLTIP = "Get the tilt or rotations in degrees.";
 Blockly.Msg.ACTIVITY_TOOLTIP = "Marker for an additional activity.";
 Blockly.Msg.ACTOR_TOOLTIP = "Represents any actor.";
@@ -513,6 +513,7 @@ Blockly.Msg.MESSAGE_USER_DELETED = "User deleted";
 Blockly.Msg.MESSAGE_USER_LOGIN = "Hello »$«";
 Blockly.Msg.MESSAGE_USER_LOGOUT = "You are logged out";
 Blockly.Msg.MICROBITBRICK_TOOLTIP = "Represents micro:bit, a pocket-sized codeable computer. There are also inbuilt actors and sensors available, e.g. buttons, display ...";
+Blockly.Msg.MICROPHONE_GETSAMPLE_TOOLTIP = "Gets the current reading from the microphone.";
 Blockly.Msg.MODE = "mode";
 Blockly.Msg.MODE_ACCELERATION = "acceleration";
 Blockly.Msg.MODE_AMBIENTLIGHT = "ambient light";

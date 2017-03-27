@@ -548,6 +548,7 @@
   "TOOLBOX_IMAGE": "Bilder",
   "TEMPERATURE_GETSAMPLE_TOOLTIP": "Gibt den aktuellen Wert des Temperatursensors zurück.",
   "COMPASS_GETSAMPLE_TOOLTIP ": "Gibt den aktuellen Wert des Kompasssensors zurück.",
+  "MICROPHONE_GETSAMPLE_TOOLTIP": "Gibt den aktuellen Wert des Mikrofons zurück.",
   "CALLIOPEBRICK_TOOLTIP": "Block für Calliope, einen Mini-Computer. Es gibt auch weitere eingebaute Aktoren und Sensoren, wie z. B. das Display, die Tasten ...",
   "MICROBITBRICK_TOOLTIP": "Block für micro:bit, einen Mini-Computer. Es gibt auch weitere eingebaute Aktoren und Sensoren, wie z. B. das Display, die Tasten ...",
   "PLAY_NOTE_TOOLTIP": "Spielt die angegebene Note.",
@@ -764,6 +765,12 @@
   "MENU_RIGHT_HELP_TOOLTIP": "Öffne/schließe die Hilfeansicht.",
   "MENU_RIGHT_INFO_TOOLTIP": "Öffne/schließe die Beschreibungsansicht deines Programmes.",
   "POPUP_STARTUP_TOUR_TEXT": "Möchtest du gleich loslegen, weißt aber nicht genau wie? Wir zeigen dir die ersten Schritte in einer interaktiven Anleitung.",
-  "POPUP_STARTUP_HELP_TEXT": "In unserer ausführlichen Hilfe erklären wir dir alles ganz genau, von der Bauanleitung bis zu häufig gestellten Fragen."
-  
+  "POPUP_STARTUP_HELP_TEXT": "In unserer ausführlichen Hilfe erklären wir dir alles ganz genau, von der Bauanleitung bis zu häufig gestellten Fragen.",
+  "ACCELERATION": "Beschleunigung mg",
+  "ACCELEROMETER_ROTATION": "Drehung °",
+  "STRENGTH": "Stärke",
+  "ACCELEROMETER_ROTATION_TOOLTIP": "Gibt den Wert für Neigung und Drehung zurück.",
+  "ACCELERATION_TOOLTIP": "Gibt die aktuelle Beschleunigung zurück.",
+  "PITCH": "Neigung",
+  "ROLL": "Drehung"
 }

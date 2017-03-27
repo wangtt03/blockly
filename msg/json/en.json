@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2017-03-26 22:50:55.810103",
+		"lastupdated": "2017-03-27 12:39:04.845817",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -875,10 +875,11 @@
 	"SENSOR_TEMPERATURE": "temperature sensor",
 	"TOOLBOX_IMAGE": "Images",
 	"STRENGTH": "strength",
-	"ACCELERATION": "acceleration (mg)",
-	"ACCELEROMETER_ROTATION": "rotation (°)",
+	"ACCELERATION": "acceleration mg",
+	"ACCELEROMETER_ROTATION": "rotation °",
 	"TEMPERATURE_GETSAMPLE_TOOLTIP": "Gets the current reading from the temperatur sensor.",
 	"COMPASS_GETSAMPLE_TOOLTIP": "Gets the current reading from the compass sensor.",
+	"MICROPHONE_GETSAMPLE_TOOLTIP": "Gets the current reading from the microphone.",
 	"CALLIOPEBRICK_TOOLTIP": "Represents Calliope, a pocket-sized codeable computer. There are also inbuilt actors and sensors available, e.g. buttons, display ...",
 	"MICROBITBRICK_TOOLTIP": "Represents micro:bit, a pocket-sized codeable computer. There are also inbuilt actors and sensors available, e.g. buttons, display ...",
 	"PLAY_NOTE_TOOLTIP": "Plays a music note",

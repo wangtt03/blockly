@@ -574,11 +574,12 @@ Blockly.Msg.SENSOR_GESTURE_ACTIVE = 'active?';
 Blockly.Msg.SENSOR_TEMPERATURE = 'temperature sensor';
 Blockly.Msg.TOOLBOX_IMAGE = 'Images';
 Blockly.Msg.STRENGTH = 'strength';
-Blockly.Msg.ACCELERATION = 'acceleration (mg)';
-Blockly.Msg.ACCELEROMETER_ROTATION = 'rotation (°)';
+Blockly.Msg.ACCELERATION = 'acceleration mg';
+Blockly.Msg.ACCELEROMETER_ROTATION = 'rotation °';
 
 Blockly.Msg.TEMPERATURE_GETSAMPLE_TOOLTIP = 'Gets the current reading from the temperatur sensor.';
 Blockly.Msg.COMPASS_GETSAMPLE_TOOLTIP = 'Gets the current reading from the compass sensor.';
+Blockly.Msg.MICROPHONE_GETSAMPLE_TOOLTIP = 'Gets the current reading from the microphone.';
 Blockly.Msg.CALLIOPEBRICK_TOOLTIP = 'Represents Calliope, a pocket-sized codeable computer. There are also inbuilt actors and sensors available, e.g. buttons, display ...';
 Blockly.Msg.MICROBITBRICK_TOOLTIP = 'Represents micro:bit, a pocket-sized codeable computer. There are also inbuilt actors and sensors available, e.g. buttons, display ...';
 Blockly.Msg.PLAY_NOTE_TOOLTIP = 'Plays a music note';

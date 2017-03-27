@@ -259,7 +259,7 @@ Blockly.Blocks['mbedSensors_gesture_isActive'] = {
     }
 };
 
-Blockly.Blocks['mbedSensors_compass_getSample'] = {
+Blockly.Blocks['mbedSensors_microphone_getSample'] = {
     /**
      * Get the current reading from the compass sensor.
      * 
@@ -276,11 +276,35 @@ Blockly.Blocks['mbedSensors_compass_getSample'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
-        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_COMPASS);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_MIC);
         this.setOutput(true, 'Number');
-        this.setTooltip(Blockly.Msg.COMPASS_GETSAMPLE_TOOLTIP);
+        this.setTooltip(Blockly.Msg.MICROPHONE_GETSAMPLE_TOOLTIP);
     }
 };
+
+Blockly.Blocks['mbedSensors_compass_getSample'] = {
+        /**
+         * Get the current reading from the compass sensor.
+         * 
+         * @constructs mbedSensors_gyro_getSample
+         * @this.Blockly.Block
+         * @param {String/dropdown}
+         *            MODE - Angle or Rate
+         * @param {String/dropdown}
+         *            SENSORPORT - 1, 2, 3 or 4
+         * @returns immediately
+         * @returns {Number}
+         * @memberof Block
+         */
+
+        init : function() {
+            this.setColour(Blockly.CAT_SENSOR_RGB);
+            this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_COMPASS);
+            this.setOutput(true, 'Number');
+            this.setTooltip(Blockly.Msg.COMPASS_GETSAMPLE_TOOLTIP);
+        }
+    };
+
 
 Blockly.Blocks['mbedSensors_temperature_getSample'] = {
     /**
@@ -453,7 +477,7 @@ Blockly.Blocks['mbedSensors_acceleration_getSample'] = {
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         var direction = new Blockly.FieldDropdown([ [ 'x', 'X' ], [ 'y', 'Y' ], [ 'z', 'Z' ], [ Blockly.Msg.STRENGTH, 'STRENGTH' ] ]);
-        this.appendDummyInput().appendField(Blockly.Msg.ACCELERATION).appendField(direction, 'DIRECTION');
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.ACCELERATION).appendField(direction, 'DIRECTION');
         this.setOutput(true, 'Number');
         this.setTooltip(Blockly.Msg.ACCELERATION_TOOLTIP);
     }
@@ -475,7 +499,7 @@ Blockly.Blocks['mbedSensors_rotation_getSample'] = {
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.PITCH, 'PITCH' ], [ Blockly.Msg.ROLL, 'ROLL' ], ]);
-        this.appendDummyInput().appendField(Blockly.Msg.ACCELEROMETER_ROTATION).appendField(mode, 'MODE');
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.ACCELEROMETER_ROTATION).appendField(mode, 'MODE');
         this.setOutput(true, 'Number');
         this.setTooltip(Blockly.Msg.ACCELEROMETER_ROTATION_TOOLTIP);
     }

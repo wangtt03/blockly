@@ -6,9 +6,9 @@ goog.provide('Blockly.Msg.cs');
 
 goog.require('Blockly.Msg');
 
-Blockly.Msg.ACCELERATION = "acceleration (mg)";  // untranslated
+Blockly.Msg.ACCELERATION = "acceleration mg";  // untranslated
 Blockly.Msg.ACCELERATION_TOOLTIP = "Get the acceleration value in milli-gravitys.";  // untranslated
-Blockly.Msg.ACCELEROMETER_ROTATION = "rotation (°)";  // untranslated
+Blockly.Msg.ACCELEROMETER_ROTATION = "rotation °";  // untranslated
 Blockly.Msg.ACCELEROMETER_ROTATION_TOOLTIP = "Get the tilt or rotations in degrees.";  // untranslated
 Blockly.Msg.ACTIVITY_TOOLTIP = "Značka pro doplňkovou aktivitu.";
 Blockly.Msg.ACTOR_TOOLTIP = "Představuje libovolný spotřebič.";
@@ -513,6 +513,7 @@ Blockly.Msg.MESSAGE_USER_DELETED = "Uživatel byl smazán";
 Blockly.Msg.MESSAGE_USER_LOGIN = "Ahoj »$«";
 Blockly.Msg.MESSAGE_USER_LOGOUT = "Byl jste odhlášen";
 Blockly.Msg.MICROBITBRICK_TOOLTIP = "Represents micro:bit, a pocket-sized codeable computer. There are also inbuilt actors and sensors available, e.g. buttons, display ...";  // untranslated
+Blockly.Msg.MICROPHONE_GETSAMPLE_TOOLTIP = "Gets the current reading from the microphone.";  // untranslated
 Blockly.Msg.MODE = "mód";
 Blockly.Msg.MODE_ACCELERATION = "acceleration";  // untranslated
 Blockly.Msg.MODE_AMBIENTLIGHT = "okolní světlo";
