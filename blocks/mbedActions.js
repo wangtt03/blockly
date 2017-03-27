@@ -373,60 +373,58 @@ Blockly.Blocks['mbedActions_write_to_pin'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        var valueType;
-        valueType = new Blockly.FieldDropdown([ [ Blockly.Msg.ANALOG, 'ANALOG' ], [ Blockly.Msg.DIGITAL, 'DIGITAL' ] ]);
-        var pin = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ] ];
-        if (this.workspace.device === 'calliope') {
-            pin.push([ Blockly.Msg.SENSOR_PIN + ' 3', '3' ]);
-            pin.push([ Blockly.Msg.SENSOR_PIN + ' A0', 'A0' ]);
-            pin.push([ Blockly.Msg.SENSOR_PIN + ' A1', 'A1' ]);
-        }
+        var valueType = new Blockly.FieldDropdown([ [ Blockly.Msg.ANALOG, 'ANALOG' ], [ Blockly.Msg.DIGITAL, 'DIGITAL' ] ], function(option) {
+            if (option && this.sourceBlock_.getFieldValue('VALUETYPE') !== option) {
+                this.sourceBlock_.updatePins_(option);
+            }
+        });
         this.appendValueInput('VALUE').appendField(Blockly.Msg.PIN_WRITE).appendField(valueType, 'VALUETYPE').appendField(Blockly.Msg.VALUE_TO).appendField(new Blockly.FieldDropdown(
-                pin, function(option) {
-                    if (option) {
-                        this.sourceBlock_.updateShape_(option);
-                    }
-                }), 'PIN').setCheck('Number');
+                [ [ "dummy", '0' ] ]), 'PIN').setCheck('Number');
+        this.protocol_ = 'ANALOG';
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.WRITE_TO_PIN_TOOLTIP);
+        this.updatePins_(this.protocol_);
     },
     /**
-     * Create XML to represent the type of the element to show.
+     * Create XML to represent whether the sensor type has changed.
      * 
-     * @return {!Element} XML storage element.
+     * @return {Element} XML storage element.
      * @this Blockly.Block
      */
     mutationToDom : function() {
         var container = document.createElement('mutation');
-        container.setAttribute('protocol', this.getFieldValue('VALUETYPE'));
+        container.setAttribute('protocol', this.protocol_);
         return container;
     },
     /**
-     * Parse XML to restore the type of the element to show.
+     * Parse XML to restore the sensor type.
      * 
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
      */
     domToMutation : function(xmlElement) {
-        this.updateShape_(xmlElement.getAttribute('protocol'));
+        var input = xmlElement.getAttribute('protocol');
+        this.protocol_ = input;
+        this.updatePins_(this.protocol_);
     },
-    /**
-     * Modify this block to have the correct number of inputs.
-     * 
-     * @private
-     * @this Blockly.Block
-     */
-    updateShape_ : function(option) {
-        if (!this.workspace || Blockly.Block.dragMode_ == 2) {
-            // Block has been deleted or is in move
-            return;
+    updatePins_ : function(protocol) {
+        if (this.workspace.device === 'microbit') {
+            return; // nothing to do
         }
-        if (option === 'ANALOG') {
-            console.log('analog');
-        } else {
-            console.log('digital');
+        this.protocol_ = protocol;
+        if (protocol === 'ANALOG') {
+            var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
+            var pinField = this.getField("PIN");
+            pinField.menuGenerator_ = pins;
+            pinField.setValue("1"); // set the actual value
+        } else if (protocol === 'DIGITAL') {
+            var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
+                    [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ], [ Blockly.Msg.SENSOR_GROVE + ' A0', '4' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
+            var pinField = this.getField("PIN");
+            pinField.menuGenerator_ = pins;
+            pinField.setValue("0"); // set the actual value
         }
     }
 };

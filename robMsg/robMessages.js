@@ -190,6 +190,8 @@ Blockly.Msg.SENSOR_TIME = 'time';
 Blockly.Msg.SENSOR_MS_TIMER = 'in ms';
 Blockly.Msg.SENSOR_TIMER = 'timer';
 Blockly.Msg.SENSOR_PIN = 'pin';
+Blockly.Msg.SENSOR_GROVE = 'Grove';
+Blockly.Msg.SENSOR_MIC = 'microphone';
 Blockly.Msg.SENSOR_COLOUR = 'colour sensor';
 Blockly.Msg.SENSOR_INFRARED = 'infrared sensor';
 Blockly.Msg.SENSOR_ENCODER = 'encoder';
@@ -640,7 +642,6 @@ Blockly.Msg.POPUP_DOWNLOAD_STEP_D = 'now click on the »Save« button on the bot
 Blockly.Msg.POPUP_DOWNLOAD_CHECK = 'Okay, I"ve changed the download folder of my browser permanently. Don"t show this popup again and download my programs directly.';
 Blockly.Msg.POPUP_DOWNLOAD_SAVE_AS = 'Save link as ...';
 Blockly.Msg.POPUP_DOWNLOAD_SAVE = 'Save';
-Blockly.Msg.POPUP_ROBOT_SIM = 'Open Roberta Sim';
 
 // Names for the nao blocks
 /// NAO names

@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2017-03-25 18:25:57.150560",
+		"lastupdated": "2017-03-26 22:50:55.810103",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -502,6 +502,8 @@
 	"SENSOR_MS_TIMER": "in ms",
 	"SENSOR_TIMER": "timer",
 	"SENSOR_PIN": "pin",
+	"SENSOR_GROVE": "Grove",
+	"SENSOR_MIC": "microphone",
 	"SENSOR_COLOUR": "colour sensor",
 	"SENSOR_INFRARED": "infrared sensor",
 	"SENSOR_ENCODER": "encoder",
@@ -939,7 +941,6 @@
 	"POPUP_DOWNLOAD_CHECK": "Okay, I've changed the download folder of my browser permanently. Don't show this popup again and download my programs directly.",
 	"POPUP_DOWNLOAD_SAVE_AS": "Save link as ...",
 	"POPUP_DOWNLOAD_SAVE": "Save",
-	"POPUP_ROBOT_SIM": "Open Roberta Sim",
 	"NAO_TAI_CHI": "tai chi",
 	"NAO_WAVE": "wave",
 	"NAO_WIPE_FOREHEAD": "wipe forehead",

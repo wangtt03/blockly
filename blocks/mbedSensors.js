@@ -362,15 +362,59 @@ Blockly.Blocks['mbedSensors_pin_getSample'] = {
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         var valueType;
-        valueType = new Blockly.FieldDropdown([ [ Blockly.Msg.ANALOG, 'ANALOG' ], [ Blockly.Msg.DIGITAL, 'DIGITAL' ] ]);
-        var pin = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ] ];
-        if (this.workspace.device === 'calliope') {
-            pin.push([ Blockly.Msg.SENSOR_PIN + ' 3', '3' ]);
-        }
+        valueType = new Blockly.FieldDropdown([ [ Blockly.Msg.ANALOG, 'ANALOG' ], [ Blockly.Msg.DIGITAL, 'DIGITAL' ] ], function(option) {
+            if (option && this.sourceBlock_.getFieldValue('VALUETYPE') !== option) {
+                this.sourceBlock_.updatePins_(option);
+            }
+        });
+        // microbit pins, calliope pins are handled in updatePins_
         this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET).appendField(valueType, 'VALUETYPE').appendField(Blockly.Msg.SENSOR_VALUE).appendField(new Blockly.FieldDropdown(
-                pin), 'PIN');
+                [ [ "dummy", '0' ] ]), 'PIN');
         this.setOutput(true, 'Number');
         this.setTooltip(Blockly.Msg.PIN_GETSAMPLE_TOOLTIP);
+        this.protocol_ = "ANALOG";
+        this.updatePins_(this.protocol_);
+    },
+    /**
+     * Create XML to represent whether the sensor type has changed.
+     * 
+     * @return {Element} XML storage element.
+     * @this Blockly.Block
+     */
+    mutationToDom : function() {
+        var container = document.createElement('mutation');
+        container.setAttribute('protocol', this.protocol_);
+        return container;
+    },
+    /**
+     * Parse XML to restore the sensor type.
+     * 
+     * @param {!Element}
+     *            xmlElement XML storage element.
+     * @this Blockly.Block
+     */
+    domToMutation : function(xmlElement) {
+        var input = xmlElement.getAttribute('protocol');
+        this.protocol_ = input;
+        this.updatePins_(this.protocol_);
+    },
+    updatePins_ : function(protocol) {
+        if (this.workspace.device === 'microbit') {
+            return; // nothing to do
+        }
+        this.protocol_ = protocol;
+        if (protocol === 'ANALOG') {
+            var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
+            var pinField = this.getField("PIN");
+            pinField.menuGenerator_ = pins;
+            pinField.setValue("1"); // set the actual value
+        } else if (protocol === 'DIGITAL') {
+            var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
+                    [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ], [ Blockly.Msg.SENSOR_GROVE + ' A0', '4' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
+            var pinField = this.getField("PIN");
+            pinField.menuGenerator_ = pins;
+            pinField.setValue("0"); // set the actual value
+        }
     }
 };
 
