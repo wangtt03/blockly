@@ -182,6 +182,7 @@ Blockly.Msg.BRICKLIGHT_GREEN = 'green';
 Blockly.Msg.BRICKLIGHT_ORANGE = 'orange';
 Blockly.Msg.BRICKLIGHT_RED = 'red';
 Blockly.Msg.BRICKLIGHT_BLUE = 'blue';
+Blockly.Msg.COLOUR_RGB_WHITE = 'white';
 Blockly.Msg.WAIT = 'wait ms';
 Blockly.Msg.WAIT_OR = 'or wait for';
 Blockly.Msg.SENSOR_ULTRASONIC = 'ultrasonic sensor';

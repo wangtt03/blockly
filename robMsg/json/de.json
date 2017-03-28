@@ -772,5 +772,6 @@
   "ACCELEROMETER_ROTATION_TOOLTIP": "Gibt den Wert für Neigung und Drehung zurück.",
   "ACCELERATION_TOOLTIP": "Gibt die aktuelle Beschleunigung zurück.",
   "PITCH": "Neigung",
-  "ROLL": "Drehung"
+  "ROLL": "Drehung",
+  "COLOUR_RGB_WHITE": "weiß"
 }

@@ -44,7 +44,7 @@ Blockly.Blocks['text'] = {
     this.setColour(Blockly.CAT_TEXT_RGB);
     this.appendDummyInput()
         .appendField(this.newQuote_(true))
-        .appendField(new Blockly.FieldTextInput(''), 'TEXT')
+        .appendField(new Blockly.FieldTextInput('', this.validate), 'TEXT')
         .appendField(this.newQuote_(false));
     this.setOutput(true, 'String');
     // Assign 'this' to a variable for use in the tooltip closure below.
@@ -55,6 +55,11 @@ Blockly.Blocks['text'] = {
       return (parent && parent.getInputsInline() && parent.tooltip) ||
           Blockly.Msg.TEXT_TEXT_TOOLTIP;
     });
+  },
+  validate: function (content) {
+      if (content && content.match(/[<>\$]/))
+          return null;     
+      return content;
   },
   /**
    * Create an image of an open or closed quote.

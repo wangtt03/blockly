@@ -432,21 +432,28 @@ Blockly.Blocks['mbedSensors_pin_getSample'] = {
         this.updatePins_(this.protocol_);
     },
     updatePins_ : function(protocol) {
-        if (this.workspace.device === 'microbit') {
-            return; // nothing to do
-        }
         this.protocol_ = protocol;
+        if (this.workspace.device === 'microbit') {
+            var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ] ];
+            var pinField = this.getField("PIN");
+            pinField.menuGenerator_ = pins;
+            pinField.setValue("0");
+            pinField.setText(Blockly.Msg.SENSOR_PIN + ' 0');
+            return; 
+        }        
         if (protocol === 'ANALOG') {
             var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
             var pinField = this.getField("PIN");
             pinField.menuGenerator_ = pins;
-            pinField.setValue("1"); // set the actual value
+            pinField.setValue("1"); 
+            pinField.setText(Blockly.Msg.SENSOR_PIN + ' 1');
         } else if (protocol === 'DIGITAL') {
             var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
                     [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ], [ Blockly.Msg.SENSOR_GROVE + ' A0', '4' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
             var pinField = this.getField("PIN");
             pinField.menuGenerator_ = pins;
-            pinField.setValue("0"); // set the actual value
+            pinField.setValue("0"); 
+            pinField.setText(Blockly.Msg.SENSOR_PIN + ' 0');
         }
     }
 };
