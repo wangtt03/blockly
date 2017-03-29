@@ -990,7 +990,7 @@ Blockly.Blocks['robProcedures_defreturn'] = {
     this.setTooltip(Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP);
     this.appendValueInput('RETURN').
          setAlign(Blockly.ALIGN_RIGHT).
-         appendField(Blockly.Msg.GET).
+         appendField(Blockly.Msg.RETURN).
          appendField(declType, 'TYPE').
          appendField(Blockly.Msg.PROCEDURES_DEFRETURN_BACK).
          setCheck('Number');

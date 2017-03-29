@@ -94,6 +94,7 @@
   "ENCODER_SETMODE_TOOLTIP":"Setzt den Modus des Drehsensors.",
   "FOR":"für",
   "GET":"gib",
+  "RETURN": "gib zurück",
   "GETSAMPLE_TOOLTIP":"Gibt den aktuellen Wert des ausgewählten Sensors zurück.",
   "GYRO_GETMODE_TOOLTIP":"Gibt den Modus des Kreiselensors zurück.",
   "GYRO_GETSAMPLE_TOOLTIP":"Gibt den aktuellen Wert des Kreiselensors zurück.",

@@ -130,6 +130,7 @@ Blockly.Msg.ON = 'on';
 Blockly.Msg.OFF = 'off';
 Blockly.Msg.FOR = 'for';
 Blockly.Msg.GET = 'get';
+Blockly.Msg.RETURN = 'return';
 Blockly.Msg.SET = 'set';
 Blockly.Msg.BRICK_WHEEL_DIAMETER = 'wheel diameter';
 Blockly.Msg.BRICK_TRACK_WIDTH = 'track width';
