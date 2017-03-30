@@ -212,27 +212,50 @@ Blockly.Blocks['math_constant'] = {
    * @this Blockly.Block
    */
   init: function() {
-    this.jsonInit({
-      "message0": "%1",
-      "args0": [
-        {
-          "type": "field_dropdown",
-          "name": "CONSTANT",
-          "options": [
-            ['\u03c0', 'PI'],
-            ['e', 'E'],
-            ['\u03c6', 'GOLDEN_RATIO'],
-            ['sqrt(2)', 'SQRT2'],
-            ['sqrt(\u00bd)', 'SQRT1_2'],
-            ['\u221e', 'INFINITY']
-          ]
-        }
-      ],
-      "output": "Number",
-      "colour": Blockly.CAT_MATH_RGB,
-      "tooltip": Blockly.Msg.MATH_CONSTANT_TOOLTIP,
-      "helpUrl": Blockly.Msg.MATH_CONSTANT_HELPURL
-    });
+    if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
+        this.jsonInit({
+          "message0": "%1",
+          "args0": [
+            {
+              "type": "field_dropdown",
+              "name": "CONSTANT",
+              "options": [
+                ['\u03c0', 'PI'],
+                ['e', 'E'],
+                ['\u03c6', 'GOLDEN_RATIO'],
+                ['sqrt(2)', 'SQRT2'],
+                ['sqrt(\u00bd)', 'SQRT1_2']
+              ]
+            }
+          ],
+          "output": "Number",
+          "colour": Blockly.CAT_MATH_RGB,
+          "tooltip": Blockly.Msg.MATH_CONSTANT_TOOLTIP,
+          "helpUrl": Blockly.Msg.MATH_CONSTANT_HELPURL
+        });
+    } else {
+        this.jsonInit({
+            "message0": "%1",
+            "args0": [
+              {
+                "type": "field_dropdown",
+                "name": "CONSTANT",
+                "options": [
+                  ['\u03c0', 'PI'],
+                  ['e', 'E'],
+                  ['\u03c6', 'GOLDEN_RATIO'],
+                  ['sqrt(2)', 'SQRT2'],
+                  ['sqrt(\u00bd)', 'SQRT1_2'],
+                  ['\u221e', 'INFINITY']
+                ]
+              }
+            ],
+            "output": "Number",
+            "colour": Blockly.CAT_MATH_RGB,
+            "tooltip": Blockly.Msg.MATH_CONSTANT_TOOLTIP,
+            "helpUrl": Blockly.Msg.MATH_CONSTANT_HELPURL
+          });
+    }
   }
 };
 

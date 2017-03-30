@@ -34,8 +34,8 @@ Blockly.Blocks['robColour_picker'] = {
         this.setColour(Blockly.CAT_COLOUR_RGB);
         var colorField = new Blockly.FieldColour('#585858');
         if (this.workspace.device === 'nxt') {
-            Blockly.FieldColour.COLUMNS = 12;
-            Blockly.FieldColour.COLOURS = new Array("#585858", "#000000", "#0057a6", "#00642e", "#f7d117", "#b30006", "#FFFFFF", "#EE82EE", "#FFA500", "#7FFF00", "#D02090", "#FF00FF" );
+            Blockly.FieldColour.COLUMNS = 13;
+            Blockly.FieldColour.COLOURS = new Array("#585858", "#000000", "#0057a6", "#00642e", "#f7d117", "#b30006", "#FFFFFF", "#EE82EE", "#800080", "#00FF00", "#FFA500", "#DC143C", '#FF00FF' );
         } else {
             Blockly.FieldColour.COLUMNS = 8;
             Blockly.FieldColour.COLOURS = new Array("#585858", "#000000", "#0057a6", "#00642e", "#f7d117", "#b30006", "#FFFFFF", "#532115");

@@ -684,7 +684,7 @@ Blockly.Blocks['robText_join'] = {
     this.setHelpUrl(Blockly.Msg.TEXT_JOIN_HELPURL);
     this.setColour(Blockly.CAT_TEXT_RGB);
     if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
-        this.appendValueInput('ADD0').appendField(Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH).setCheck([ 'Number', 'String', 'Boolean', 'String' ]);
+        this.appendValueInput('ADD0').appendField(Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH).setCheck([ 'Number', 'String', 'Boolean' ]);
         this.appendValueInput('ADD1').setCheck([ 'Number', 'String', 'Boolean', 'String' ]);
     } else {
         this.appendValueInput('ADD0').appendField(Blockly.Msg.TEXT_JOIN_TITLE_CREATEWITH);
@@ -732,7 +732,7 @@ Blockly.Blocks['robText_join'] = {
         this.render();
       }
       if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
-          this.appendValueInput('ADD' + this.itemCount_).setCheck([ 'Number', 'String', 'Boolean', 'String' ]);
+          this.appendValueInput('ADD' + this.itemCount_).setCheck([ 'Number', 'String', 'Boolean' ]);
       } else {
           this.appendValueInput('ADD' + this.itemCount_);
       }
@@ -764,7 +764,11 @@ Blockly.Blocks['robText_append'] = {
     this.setColour(Blockly.CAT_TEXT_RGB);
     this.setInputsInline(true);
     this.appendValueInput('VAR').appendField(Blockly.Msg.TEXT_APPEND_TO).setCheck('String');
-    this.appendValueInput('TEXT').appendField(Blockly.Msg.TEXT_APPEND_APPENDTEXT);
+    if (this.workspace.device === 'calliope' || this.workspace.device === 'microbit') {
+        this.appendValueInput('TEXT').appendField(Blockly.Msg.TEXT_APPEND_APPENDTEXT).setCheck([ 'Number', 'String', 'Boolean' ]);
+    } else {
+        this.appendValueInput('TEXT').appendField(Blockly.Msg.TEXT_APPEND_APPENDTEXT);
+    }
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     // Assign 'this' to a variable for use in the tooltip closure below.
