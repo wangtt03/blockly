@@ -860,3 +860,11 @@ Blockly.Msg.DISPLAY_GET_BRIGHTNESS_TOOLTIP = 'Returns the brightness for all led
 Blockly.Msg.DISPLAY_SET_BRIGHTNESS_TOOLTIP = 'Sets the brightness for all leds of the display. 0 means all leds are turned off, 9 is the brightest value.';
 Blockly.Msg.POPUP_STARTUP_TOUR_TEXT = 'Would you like to get started, but do not know exactly how? We will show you the first steps in an interactive tutorial.';
 Blockly.Msg.POPUP_STARTUP_HELP_TEXT = 'In our detailed help, we will explain everything you need, from building instructions to frequently asked questions.';
+
+Blockly.Msg.MESSAGE_GROUP_DELETED = 'Group »$« was deleted';
+Blockly.Msg.MESSAGE_USER_GROUP_DELETED = 'User »$« was deleted';
+Blockly.Msg.MESSAGE_ADDED_USER = 'User »$« was added';
+Blockly.Msg.ORA_USER_TO_ADD_NOT_FOUND = 'User was not found';
+Blockly.Msg.MESSAGE_EDIT_SAVE_GROUP_AS = 'Your group has been created';
+Blockly.Msg.ORA_GROUP_CREATE_ERROR_NOT_SAVED_TO_DB = 'This group already exists'; 
+Blockly.Msg.ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS = 'This user already belongs to the group'; 

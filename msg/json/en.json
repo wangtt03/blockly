@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2017-03-30 14:19:07.015546",
+		"lastupdated": "2017-04-12 09:33:54.949047",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -1114,5 +1114,10 @@
 	"DISPLAY_GET_BRIGHTNESS_TOOLTIP": "Returns the brightness for all leds of the display. 0 means all leds are turned off, 9 is the brightest value.",
 	"DISPLAY_SET_BRIGHTNESS_TOOLTIP": "Sets the brightness for all leds of the display. 0 means all leds are turned off, 9 is the brightest value.",
 	"POPUP_STARTUP_TOUR_TEXT": "Would you like to get started, but do not know exactly how? We will show you the first steps in an interactive tutorial.",
-	"POPUP_STARTUP_HELP_TEXT": "In our detailed help, we will explain everything you need, from building instructions to frequently asked questions."
+	"POPUP_STARTUP_HELP_TEXT": "In our detailed help, we will explain everything you need, from building instructions to frequently asked questions.",
+	"MESSAGE_GROUP_DELETED": "Group »$« was deleted",
+	"MESSAGE_USER_GROUP_DELETED": "User »$« was deleted",
+	"MESSAGE_ADDED_USER": "User »$« was added",
+	"ORA_USER_TO_ADD_NOT_FOUND": "User was not found",
+	"MESSAGE_EDIT_SAVE_GROUP_AS": "Your group has been created"
 }
