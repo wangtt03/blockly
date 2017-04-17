@@ -774,5 +774,15 @@
   "ACCELERATION_TOOLTIP": "Gibt die aktuelle Beschleunigung zurück.",
   "PITCH": "Neigung",
   "ROLL": "Drehung",
-  "COLOUR_RGB_WHITE": "weiß"
+  "COLOUR_RGB_WHITE": "weiß",
+  "LIST_BACK_TOOLTIP": "Zurück zur vorherigen Auswahl.",
+  "PROGLIST_DELETE_ALL_TOOLTIP": "Klicke hier um alle ausgewählten Programme zu löschen.",
+  "PROGLIST_DELETE_TOOLTIP": "Klicke hier um dein Programm zu löschen.",
+  "PROGLIST_SHARE_TOOLTIP": "Klicke hier um dein Programm mit einem Freund zu teilen.",
+  "PROGLIST_LOAD_TOOLTIP": "Klicke hier um dein Programm in die Programmierumgebung zu laden.",
+  "CONFLIST_DELETE_ALL_TOOLTIP": "Klicke hier um alle ausgewählten Roboterkonfigurationen zu löschen.",
+  "CONFLIST_DELETE_TOOLTIP": "Klicke hier um deine Roboterkonfiguration zu löschen.",
+  "CONFLIST_LOAD_TOOLTIP": "Klicke hier um deine Roboterkonfiguration in die Konfigurationsumgebung zu laden.",
+  "PROGLIST_DELETE_SHARE_WITH_GALLERY": "Du hast dieses Programm bereits mit der Gallerie geteilt. Wenn du es änderst, werden die Änderungen in die Gallerie übernommen. Möchtest du dein Programm nicht mehr mit der Gallerie teilen?",
+  "PROGLIST_SHARE_WITH_GALLERY": "Möchtest du dein Programm wirklich mit allen anderen Benutzern teilen?"
 }

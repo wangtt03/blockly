@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2017-04-12 09:33:54.949047",
+		"lastupdated": "2017-04-17 18:47:55.675622",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -1119,5 +1119,20 @@
 	"MESSAGE_USER_GROUP_DELETED": "User »$« was deleted",
 	"MESSAGE_ADDED_USER": "User »$« was added",
 	"ORA_USER_TO_ADD_NOT_FOUND": "User was not found",
-	"MESSAGE_EDIT_SAVE_GROUP_AS": "Your group has been created"
+	"MESSAGE_EDIT_SAVE_GROUP_AS": "Your group has been created",
+	"LIST_BACK_TOOLTIP": "Back to previous view.",
+	"PROGLIST_DELETE_ALL_TOOLTIP": "Click here to delete all selected programs.",
+	"PROGLIST_DELETE_TOOLTIP": "Click here to delete your program.",
+	"PROGLIST_SHARE_TOOLTIP": "Click here to share your program with a friend.",
+	"PROGLIST_LOAD_TOOLTIP": "Click here to load your robot configuration in the configuration environment.",
+	"CONFLIST_DELETE_ALL_TOOLTIP": "Click here to delete all selected programs.",
+	"CONFLIST_DELETE_TOOLTIP": "Click here to delete your robot configuration.",
+	"CONFLIST_LOAD_TOOLTIP": "Click here to load your robot configuration in the configuration environment.",
+	"DATATABLE_BY": "by",
+	"DATATABLE_NUMBER_OF_BLOCKS": "blocks",
+	"DATATABLE_DATE": "modified",
+	"MENU_GALLERY": "gallery",
+	"MENU_GALLERY_TOOLTIP": "gallery",
+	"PROGLIST_DELETE_SHARE_WITH_GALLERY": "Your program is allready shared with the gallery. If you change it, it will be automatically updated. Do you want to remove your program from the gallery?",
+	"PROGLIST_SHARE_WITH_GALLERY": "Do you really want to share your program with everybody?"
 }
