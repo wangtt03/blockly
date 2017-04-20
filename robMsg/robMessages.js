@@ -884,3 +884,5 @@ Blockly.Msg.MENU_GALLERY = 'gallery';
 Blockly.Msg.MENU_GALLERY_TOOLTIP = 'gallery';
 Blockly.Msg.PROGLIST_DELETE_SHARE_WITH_GALLERY = 'Your program is allready shared with the gallery. If you change it, it will be automatically updated. Do you want to remove your program from the gallery?';
 Blockly.Msg.PROGLIST_SHARE_WITH_GALLERY = 'Do you really want to share your program with everybody?';
+Blockly.Msg.MENU_CREATE_LINK = 'create program link ...';
+Blockly.Msg.POPUP_GET_LINK = 'Here is the link to your actual program. Please don"t change it, it probably won"t work anymore. It"s already copied to your clipboard!</br>$';

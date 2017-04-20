@@ -152,7 +152,7 @@
   "MENU_SIM_STEP":"Step",
   "MENU_SIM_STOP":"Stop",
   "MENU_SIM_SCENE_TOOLTIP":"Wechsle die Umgebung.",
-  "MENU_SIM_ROBOT_TOOLTIP":"Öffne/schließe die Ansicht dienes Systems.",
+  "MENU_SIM_ROBOT_TOOLTIP":"Öffne/schließe die Ansicht deines Systems.",
   "MENU_STATE_INFO":"Statusinformationen",
   "MENU_EDIT_TOOLTIP":"Bearbeiten",
   "MENU_HELP_TOOLTIP":"Hilfe",
@@ -784,5 +784,7 @@
   "CONFLIST_DELETE_TOOLTIP": "Klicke hier um deine Roboterkonfiguration zu löschen.",
   "CONFLIST_LOAD_TOOLTIP": "Klicke hier um deine Roboterkonfiguration in die Konfigurationsumgebung zu laden.",
   "PROGLIST_DELETE_SHARE_WITH_GALLERY": "Du hast dieses Programm bereits mit der Gallerie geteilt. Wenn du es änderst, werden die Änderungen in die Gallerie übernommen. Möchtest du dein Programm nicht mehr mit der Gallerie teilen?",
-  "PROGLIST_SHARE_WITH_GALLERY": "Möchtest du dein Programm wirklich mit allen anderen Benutzern teilen?"
+  "PROGLIST_SHARE_WITH_GALLERY": "Möchtest du dein Programm wirklich mit allen anderen Benutzern teilen?",
+  "MENU_CREATE_LINK": "erstelle Programmlink  ...",
+  "POPUP_GET_LINK" : "Hier ist der Link zu deinem aktuellen Programm. Bitte ändere ihn nicht. Er ist bereits in deine Zwischenablage kopiert!</br>$"
 }
