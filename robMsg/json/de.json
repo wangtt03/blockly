@@ -786,5 +786,12 @@
   "PROGLIST_DELETE_SHARE_WITH_GALLERY": "Du hast dieses Programm bereits mit der Gallerie geteilt. Wenn du es änderst, werden die Änderungen in die Gallerie übernommen. Möchtest du dein Programm nicht mehr mit der Gallerie teilen?",
   "PROGLIST_SHARE_WITH_GALLERY": "Möchtest du dein Programm wirklich mit allen anderen Benutzern teilen?",
   "MENU_CREATE_LINK": "erstelle Programmlink  ...",
-  "POPUP_GET_LINK" : "Hier ist der Link zu deinem aktuellen Programm. Bitte ändere ihn nicht. Er ist bereits in deine Zwischenablage kopiert!</br>$"
+  "POPUP_GET_LINK" : "Hier ist der Link zu deinem aktuellen Programm. Bitte ändere ihn nicht. Er ist bereits in deine Zwischenablage kopiert!</br>$",
+  "MESSAGE_GROUP_DELETED" : "Die Groupe »$« wurde gelöscht",
+  "MESSAGE_USER_GROUP_DELETED" : "Der Nutzer »$« wurde gelöschts",
+  "MESSAGE_ADDED_USER" : "Der nutzer »$« wurde hinzufügt",
+  "ORA_USER_TO_ADD_NOT_FOUND" : "Der nutzer wurde nicht gefunden",
+  "MESSAGE_EDIT_SAVE_GROUP_AS" : "Die Gruppe wurde angelegt",
+  "ORA_GROUP_CREATE_ERROR_NOT_SAVED_TO_DB" : "Es gibt bereits eine Gruppe mit diesem Namen, versuche es mit einem anderen Gruppesnamen.",
+  "ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS": "Es gibt bereits einen Benutzer mit diesem Namen in dieser Gruppe, versuche es mit einem anderen Benutzernamen." 
 }
