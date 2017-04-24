@@ -89,7 +89,7 @@ Blockly.Blocks['mbedImage_shift'] = {
             }, {
                 "type" : "field_dropdown",
                 "name" : "OP",
-                "options" : [ [ 'up', 'UP' ], [ 'down', 'DOWN' ], [ 'right', 'RIGHT' ], [ 'left', 'LEFT' ] ]
+                "options" : [ [ '↑', 'UP' ], [ '↓', 'DOWN' ], [ '→', 'RIGHT' ], [ '←', 'LEFT' ] ]
             }, {
                 "type" : "input_value",
                 "name" : "B",
