@@ -40,6 +40,16 @@
   "CONFIGURATION_ERROR_MOTOR_RIGHT_UNREGULATED":"Beim rechten Motor ist die Regulierung ausgestellt!",
   "CONFIGURATION_ERROR_SENSOR_MISSING":"In der Roboterkonfiguration ist dieser Sensor nicht mit einem Sensorport verbunden!",
   "CONFIGURATION_ERROR_SENSOR_WRONG":"In der Roboterkonfiguration ist ein anderer Sensor mit diesem Sensorport verbunden!",
+  "CONNECTION_TO_ROBOT": "zu Roboter",
+  "CONNECTION_FROM_ROBOT": "von Roboter",
+  "CONNECTION_TO_CONNECTION": "zu Verbindung",
+  "CONNECTION_FROM_CONNECTION": "von Verbindung",
+  "CONNECTION_OVER_CHANNEL": "über Kanal",
+  "CONNECTION_SEND_TOOLTIP": "Sendet eine Nachricht zu einem anderen Roboter.",
+  "CONNECTION_TOOLTIP": "Verbindung zu einem Roboter",
+  "CONNECTION_CHECK": "Verbindung zu Roboter %1 aktiv?",
+  "CONNECTION_CHECK_TOOLTIP": "Prüft, ob die Verbindung zu dem Roboter aktiv ist.",
+  "CONNECTION_PROTOCOL_BLUETOOTH": "Bluetooth",
   "CONNECTION_CONNECT":"Verbinde mit Robotername",
   "CONNECTION_RECEIVED_DATA":"Empfange Nachricht",
   "CONNECTION_SEND_DATA":"Sende Nachricht",
@@ -795,5 +805,8 @@
   "ORA_USER_TO_ADD_NOT_FOUND" : "Der nutzer wurde nicht gefunden",
   "MESSAGE_EDIT_SAVE_GROUP_AS" : "Die Gruppe wurde angelegt",
   "ORA_GROUP_CREATE_ERROR_NOT_SAVED_TO_DB" : "Es gibt bereits eine Gruppe mit diesem Namen, versuche es mit einem anderen Gruppesnamen.",
-  "ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS": "Es gibt bereits einen Benutzer mit diesem Namen in dieser Gruppe, versuche es mit einem anderen Benutzernamen." 
+  "ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS": "Es gibt bereits einen Benutzer mit diesem Namen in dieser Gruppe, versuche es mit einem anderen Benutzernamen.", 
+  "IMAGE_INVERT": "invertiere",
+  "IMAGE_SHIFT": "verschiebe"
+  
 }

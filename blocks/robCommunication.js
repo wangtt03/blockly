@@ -142,7 +142,7 @@ Blockly.Blocks['robCommunication_receiveBlock'] = {
         if (channel) {
             this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_OVER_CHANNEL).appendField(channel, 'CHANNEL').appendField(Blockly.Msg.CONNECTION_FROM_ROBOT).setCheck('Connection');
         } else {
-            this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_TO_CONNECTION).setCheck('Connection');
+            this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_FROM_CONNECTION).setCheck('Connection');
         }
         this.setOutput(true, this.dataType_);
         this.setTooltip(Blockly.Msg.CONNECTION_RECEIVE_TOOLTIP);

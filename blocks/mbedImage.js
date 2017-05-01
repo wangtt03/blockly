@@ -81,7 +81,7 @@ Blockly.Blocks['mbedImage_image'] = {
 Blockly.Blocks['mbedImage_shift'] = {
     init : function() {
         this.jsonInit({
-            "message0" : "shift %1 %2 %3",
+            "message0" : Blockly.Msg.IMAGE_SHIFT + " %1 %2 %3",
             "args0" : [ {
                 "type" : "input_value",
                 "name" : "A",
@@ -111,7 +111,7 @@ Blockly.Blocks['mbedImage_invert'] = {
      */
     init : function() {
         this.jsonInit({
-            "message0" : "invert %1",
+            "message0" : Blockly.Msg.IMAGE_INVERT + " %1",
             "args0" : [ {
                 "type" : "input_value",
                 "name" : "VAR",
