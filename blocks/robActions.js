@@ -16,7 +16,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['robActions_motor_on'] = {
     /**
      * Turn motor on with specific power.
-     * 
+     *
      * @constructs robActions_motor_on
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -33,6 +33,8 @@ Blockly.Blocks['robActions_motor_on'] = {
             ports.push([ Blockly.Msg.MOTOR_PORT + ' D', 'D' ]);
         } else if (this.workspace.device === 'ardu') {
             ports = [ [ Blockly.Msg.MOTOR + ' ' + Blockly.Msg.MOTOR_LEFT, 'B' ], [ Blockly.Msg.MOTOR + ' ' + Blockly.Msg.MOTOR_RIGHT, 'C' ] ];
+        } else if (this.workspace.device === 'makeblock') {
+            ports = [ [ Blockly.Msg.MOTOR + ' ' + 'M1', 'M1' ], [ Blockly.Msg.MOTOR + ' ' + 'M2', 'M2' ] ];
         }
         this.setColour(Blockly.CAT_ACTION_RGB);
         var motorPort = new Blockly.FieldDropdown(ports);
@@ -46,7 +48,7 @@ Blockly.Blocks['robActions_motor_on'] = {
 Blockly.Blocks['robActions_motor_on_for'] = {
     /**
      * Turn motor on and stop motor after execution of rotations/degrees.
-     * 
+     *
      * @constructs robActions_motor_on_for
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -66,6 +68,8 @@ Blockly.Blocks['robActions_motor_on_for'] = {
             ports.push([ Blockly.Msg.MOTOR_PORT + ' D', 'D' ]);
         } else if (this.workspace.device === 'ardu') {
             ports = [ [ Blockly.Msg.MOTOR + ' ' + Blockly.Msg.MOTOR_LEFT, 'B' ], [ Blockly.Msg.MOTOR + ' ' + Blockly.Msg.MOTOR_RIGHT, 'C' ] ];
+        } else if (this.workspace.device === 'makeblock') {
+            ports = [ [ Blockly.Msg.MOTOR + ' ' + 'M1', 'M1' ], [ Blockly.Msg.MOTOR + ' ' + 'M2', 'M2' ] ];
         }
         this.setColour(Blockly.CAT_ACTION_RGB);
         var motorPort = new Blockly.FieldDropdown(ports);
@@ -85,7 +89,7 @@ Blockly.Blocks['robActions_motor_on_for'] = {
 Blockly.Blocks['robActions_motor_on_for_ardu'] = {
     /**
      * Turn motor on and stop motor after execution of rotations/degrees.
-     * 
+     *
      * @constructs robActions_motor_on_for
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -113,7 +117,7 @@ Blockly.Blocks['robActions_motor_on_for_ardu'] = {
 Blockly.Blocks['robActions_motor_getPower'] = {
     /**
      * Get current power of this motor.
-     * 
+     *
      * @constructs robActions_getPower
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -139,7 +143,7 @@ Blockly.Blocks['robActions_motor_getPower'] = {
 Blockly.Blocks['robActions_motor_setPower'] = {
     /**
      * Set current power of this motor (not used).
-     * 
+     *
      * @constructs robActions_setPower
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -167,7 +171,7 @@ Blockly.Blocks['robActions_motor_setPower'] = {
 Blockly.Blocks['robActions_motor_stop'] = {
     /**
      * Stop this motor.
-     * 
+     *
      * @constructs robActions_motor_stop
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -182,6 +186,8 @@ Blockly.Blocks['robActions_motor_stop'] = {
         var ports = [ [ Blockly.Msg.MOTOR_PORT + ' A', 'A' ], [ Blockly.Msg.MOTOR_PORT + ' B', 'B' ], [ Blockly.Msg.MOTOR_PORT + ' C', 'C' ] ];
         if (this.workspace.device === 'ev3') {
             ports.push([ Blockly.Msg.MOTOR_PORT + ' D', 'D' ]);
+        } else if (this.workspace.device === 'makeblock') {
+          ports = [ [ Blockly.Msg.MOTOR_PORT + ' M1', 'M1' ], [ Blockly.Msg.MOTOR_PORT + ' M2', 'M2' ] ];
         }
         var motorPort = new Blockly.FieldDropdown(ports);
         var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_FLOAT, 'FLOAT' ], [ Blockly.Msg.MOTOR_BRAKE, 'NONFLOAT' ] ]);
@@ -289,7 +295,7 @@ Blockly.Blocks['robActions_motorDiff_curve_for'] = {
 Blockly.Blocks['robActions_display_picture'] = {
     /**
      * Display a picture on the screen.
-     * 
+     *
      * @constructs robActions_display_picture
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -321,7 +327,7 @@ Blockly.Blocks['robActions_display_picture'] = {
 Blockly.Blocks['robActions_display_text'] = {
     /**
      * Display a text on the screen.
-     * 
+     *
      * @constructs robActions_display_text
      * @this.Blockly.Block
      * @param {String}
@@ -355,7 +361,7 @@ Blockly.Blocks['robActions_display_text'] = {
 Blockly.Blocks['robActions_display_clear'] = {
     /**
      * Clear the display.
-     * 
+     *
      * @constructs robActions_display_clear
      * @this.Blockly.Block
      * @returns immediately
@@ -375,7 +381,7 @@ Blockly.Blocks['robActions_display_clear'] = {
 Blockly.Blocks['robActions_display_matrix'] = {
     /**
      * Display points on the matrix.
-     * 
+     *
      * @constructs robActions_display_matrix
      * @this.Blockly.Block
      * @returns immediately
@@ -404,7 +410,7 @@ Blockly.Blocks['robActions_display_matrix'] = {
 Blockly.Blocks['robActions_play_tone'] = {
     /**
      * Play a tone.
-     * 
+     *
      * @constructs robActions_play_tone
      * @this.Blockly.Block
      * @param {Number}
@@ -430,7 +436,7 @@ Blockly.Blocks['robActions_play_tone'] = {
 Blockly.Blocks['robActions_play_file'] = {
     /**
      * Play a sound file.
-     * 
+     *
      * @constructs robActions_play_file
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -442,7 +448,7 @@ Blockly.Blocks['robActions_play_file'] = {
     init : function() {
         // this.setHelpUrl(Blockly.Msg.PLAY_FILE_HELPURL);
         this.setColour(Blockly.CAT_ACTION_RGB);
-        //LEJOS system sounds from 0 to 4 in HAL 
+        //LEJOS system sounds from 0 to 4 in HAL
         var file = new Blockly.FieldDropdown([ [ '1', '0' ], [ '2', '1' ], [ '3', '2' ], [ '4', '3' ], [ '5', '4' ] ]);
         this.appendDummyInput().appendField(Blockly.Msg.PLAY + ' ' + Blockly.Msg.PLAY_FILE).appendField(file, 'FILE');
         this.setPreviousStatement(true);
@@ -455,7 +461,7 @@ Blockly.Blocks['robActions_play_file'] = {
 Blockly.Blocks['robActions_play_setVolume'] = {
     /**
      * Set volume.
-     * 
+     *
      * @constructs robActions_play_setVolume
      * @this.Blockly.Block
      * @param {Number}
@@ -477,7 +483,7 @@ Blockly.Blocks['robActions_play_setVolume'] = {
 Blockly.Blocks['robActions_play_getVolume'] = {
     /**
      * Get current volume
-     * 
+     *
      * @constructs robActions_play_getVolume
      * @this.Blockly.Block
      * @returns immediately
@@ -498,7 +504,7 @@ Blockly.Blocks['robActions_play_getVolume'] = {
 Blockly.Blocks['robActions_brickLight_on'] = {
     /**
      * Turn bricklight on.
-     * 
+     *
      * @constructs robActions_brickLight_on
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -535,7 +541,7 @@ Blockly.Blocks['robActions_brickLight_on'] = {
 Blockly.Blocks['robActions_sensorLight_on'] = {
     /**
      * Turn sensor light on.
-     * 
+     *
      * @constructs robActions_brickLight_on
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -565,7 +571,7 @@ Blockly.Blocks['robActions_sensorLight_on'] = {
 Blockly.Blocks['robActions_brickLight_off'] = {
     /**
      * Turn bricklight off.
-     * 
+     *
      * @constructs robActions_brickLight_off
      * @this.Blockly.Block
      * @returns immediately
@@ -585,7 +591,7 @@ Blockly.Blocks['robActions_brickLight_off'] = {
 Blockly.Blocks['robActions_brickLight_reset'] = {
     /**
      * Reset bricklight. Set the default bricklight: green and blinking.
-     * 
+     *
      * @constructs robActions_brickLight_reset
      * @this.Blockly.Block
      * @returns immediately

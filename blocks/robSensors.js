@@ -17,7 +17,7 @@ goog.require('Blockly.Blocks');
 Blockly.Blocks['robSensors_getSample'] = {
     /**
      * Get the current reading from choosen sensor.
-     * 
+     *
      * @constructs robSensors_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -78,7 +78,7 @@ Blockly.Blocks['robSensors_getSample'] = {
     },
     /**
      * Create XML to represent whether the sensor type has changed.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -89,7 +89,7 @@ Blockly.Blocks['robSensors_getSample'] = {
     },
     /**
      * Parse XML to restore the sensor type.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -102,7 +102,7 @@ Blockly.Blocks['robSensors_getSample'] = {
 
     /**
      * Called whenever anything on the workspace changes.
-     * 
+     *
      * @this Blockly.Block
      */
     /*
@@ -111,7 +111,7 @@ Blockly.Blocks['robSensors_getSample'] = {
      */
     /**
      * Called whenever the shape has to change.
-     * 
+     *
      * @this Blockly.Block
      */
     updateShape_ : function(option) {
@@ -207,7 +207,7 @@ Blockly.Blocks['robSensors_getSample'] = {
 
     /**
      * Called whenever the blocks shape has changed.
-     * 
+     *
      * @this Blockly.Block
      */
     appendValue_ : function(type, value) {
@@ -245,7 +245,7 @@ Blockly.Blocks['robSensors_getSample'] = {
 Blockly.Blocks['robSensors_getSample_ardu'] = {
     /**
      * Get the current reading from choosen sensor.
-     * 
+     *
      * @constructs robSensors_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -280,14 +280,14 @@ Blockly.Blocks['robSensors_getSample_ardu'] = {
     },
     /**
      * Create XML to represent whether the sensor type has changed.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
     mutationToDom : Blockly.Blocks['robSensors_getSample'].mutationToDom,
     /**
      * Parse XML to restore the sensor type.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -296,7 +296,7 @@ Blockly.Blocks['robSensors_getSample_ardu'] = {
 
     /**
      * Called whenever anything on the workspace changes.
-     * 
+     *
      * @this Blockly.Block
      */
     /*
@@ -305,7 +305,7 @@ Blockly.Blocks['robSensors_getSample_ardu'] = {
      */
     /**
      * Called whenever the shape has to change.
-     * 
+     *
      * @this Blockly.Block
      */
     updateShape_ : function(option) {
@@ -368,7 +368,7 @@ Blockly.Blocks['robSensors_getSample_ardu'] = {
 
     /**
      * Called whenever the blocks shape has changed.
-     * 
+     *
      * @this Blockly.Block
      */
     appendValue_ : Blockly.Blocks['robSensors_getSample'].appendValue_
@@ -377,7 +377,7 @@ Blockly.Blocks['robSensors_getSample_ardu'] = {
 Blockly.Blocks['robSensors_touch_isPressed'] = {
     /**
      * Is the touch sensor pressed?
-     * 
+     *
      * @constructs robSensors_touch_isPressed
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -400,7 +400,7 @@ Blockly.Blocks['robSensors_touch_isPressed'] = {
 Blockly.Blocks['robSensors_key_isPressed'] = {
     /**
      * Is the specific key (button of the brick) pressed?
-     * 
+     *
      * @constructs robSensors_key_isPressed
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -435,7 +435,7 @@ Blockly.Blocks['robSensors_key_isPressed'] = {
 Blockly.Blocks['robSensors_ultrasonic_getSample'] = {
     /**
      * Get the current distance from the ultrasonic sensor.
-     * 
+     *
      * @constructs robSensors_ultrasonic_getDistance
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -458,6 +458,14 @@ Blockly.Blocks['robSensors_ultrasonic_getSample'] = {
                 }
             });
             this.data = 'nxt';
+        } else if (this.workspace.device === 'makeblock') {
+            sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
+            mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_DISTANCE, 'DISTANCE' ] ], function(option) {
+                if (option && this.sourceBlock_.getFieldValue('MODE') !== option) {
+                    this.sourceBlock_.updateShape_(option);
+                }
+            });
+            this.data = 'makeblock';
         } else if (this.workspace.device === 'ardu') {
             sensorPort = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_LEFT, '0' ], [ Blockly.Msg.CENTER, '1' ], [ Blockly.Msg.MOTOR_RIGHT, '2' ],
                     [ Blockly.Msg.SENSOR_SONAR, '3' ] ]);
@@ -505,7 +513,7 @@ Blockly.Blocks['robSensors_ultrasonic_getSample'] = {
 Blockly.Blocks['robSensors_colour_getSample'] = {
     /**
      * Get the current reading from the colour sensor.
-     * 
+     *
      * @constructs robSensors_colour_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -576,7 +584,7 @@ Blockly.Blocks['robSensors_colour_getSample'] = {
 Blockly.Blocks['robSensors_infrared_getSample'] = {
     /**
      * Get the current reading from the infrared sensor.
-     * 
+     *
      * @constructs robSensors_infrared_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -632,7 +640,7 @@ Blockly.Blocks['robSensors_infrared_getSample'] = {
 Blockly.Blocks['robSensors_encoder_reset'] = {
     /**
      * Reset the motor encoder.
-     * 
+     *
      * @constructs robSensors_encoder_reset
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -657,7 +665,7 @@ Blockly.Blocks['robSensors_encoder_reset'] = {
 Blockly.Blocks['robSensors_encoder_getSample'] = {
     /**
      * Get the current reading from the motor encoder.
-     * 
+     *
      * @constructs robSensors_encoder_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -686,7 +694,7 @@ Blockly.Blocks['robSensors_encoder_getSample'] = {
 Blockly.Blocks['robSensors_gyro_reset'] = {
     /**
      * Reset the gyro sensor.
-     * 
+     *
      * @constructs robSensors_gyro_reset
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -709,7 +717,7 @@ Blockly.Blocks['robSensors_gyro_reset'] = {
 Blockly.Blocks['robSensors_gyro_getSample'] = {
     /**
      * Get the current reading from the gyro sensor.
-     * 
+     *
      * @constructs robSensors_gyro_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -734,7 +742,7 @@ Blockly.Blocks['robSensors_gyro_getSample'] = {
 Blockly.Blocks['robSensors_compass_getSample'] = {
     /**
      * Get the current reading from the compass sensor.
-     * 
+     *
      * @constructs robSensors_gyro_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -757,7 +765,7 @@ Blockly.Blocks['robSensors_compass_getSample'] = {
 Blockly.Blocks['robSensors_timer_reset'] = {
     /**
      * Reset the timer.
-     * 
+     *
      * @constructs robSensors_timer_reset
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -786,7 +794,7 @@ Blockly.Blocks['robSensors_timer_reset'] = {
 Blockly.Blocks['robSensors_timer_getSample'] = {
     /**
      * Get the current reading from the timer.
-     * 
+     *
      * @constructs robSensors_timer_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -816,7 +824,7 @@ Blockly.Blocks['robSensors_timer_getSample'] = {
 Blockly.Blocks['robSensors_sound_getSample'] = {
     /**
      * Get the current reading from the sound sensor.
-     * 
+     *
      * @constructs robSensors_sound_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -838,7 +846,7 @@ Blockly.Blocks['robSensors_sound_getSample'] = {
 Blockly.Blocks['robSensors_light_getSample'] = {
     /**
      * Get the current reading from a light sensor.
-     * 
+     *
      * @constructs robSensors_light_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -872,7 +880,7 @@ Blockly.Blocks['robSensors_light_getSample'] = {
 Blockly.Blocks['robSensors_battery_voltage'] = {
     /**
      * Get the voltage of the robot's batteries in V
-     * 
+     *
      * @constructs robSensors_battery_voltage
      * @this.Blockly.Block
      * @returns immediately
