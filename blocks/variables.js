@@ -298,6 +298,7 @@ Blockly.Blocks['robGlobalVariables_declare'] = {
       ], function(option) {
           if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
             this.sourceBlock_.updateType(option);
+            this.sourceBlock_.updateShape_(0, option);
           }
         });
     } else {
