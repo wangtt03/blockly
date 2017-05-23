@@ -869,8 +869,8 @@ Blockly.Msg.MESSAGE_USER_GROUP_DELETED = 'User »$« was deleted';
 Blockly.Msg.MESSAGE_ADDED_USER = 'User »$« was added';
 Blockly.Msg.ORA_USER_TO_ADD_NOT_FOUND = 'User was not found';
 Blockly.Msg.MESSAGE_EDIT_SAVE_GROUP_AS = 'Your group has been created';
-Blockly.Msg.ORA_GROUP_CREATE_ERROR_NOT_SAVED_TO_DB = 'This group already exists'; 
-Blockly.Msg.ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS = 'This user already belongs to the group'; 
+Blockly.Msg.ORA_GROUP_CREATE_ERROR_NOT_SAVED_TO_DB = 'This group already exists';
+Blockly.Msg.ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS = 'This user already belongs to the group';
 
 Blockly.Msg.LIST_BACK_TOOLTIP = 'Back to previous view.';
 Blockly.Msg.PROGLIST_DELETE_ALL_TOOLTIP = 'Click here to delete all selected programs.';
@@ -891,3 +891,13 @@ Blockly.Msg.MENU_CREATE_LINK = 'create program link ...';
 Blockly.Msg.POPUP_GET_LINK = 'Here is the link to your actual program. Please don"t change it, it probably won"t work anymore. It"s already copied to your clipboard!</br>$';
 Blockly.Msg.IMAGE_INVERT = 'invert';
 Blockly.Msg.IMAGE_SHIFT = 'shift';
+
+
+
+Blockly.Msg.POPUP_AGE = 'Age';
+Blockly.Msg.YOUNGER_THEN_14 = 'I am younger then 14!';
+Blockly.Msg.OLDER_THEN_14 = 'I am older then 14!';
+Blockly.Msg.ORA_USER_ACTIVATION_SENT_MAIL_SUCCESS = 'We send a mail to you, please check your mailbox!';
+Blockly.Msg.ORA_USER_ACTIVATION_SENT_MAIL_FAIL = 'Sorry, we cannot send a mail to you, please contact »roberta-zentrale@iais.fraunhofer.de«';
+Blockly.Msg.ORA_USER_ACTIVATION_SUCCESS = 'Activation of the user account is successful!';
+Blockly.Msg.ORA_ACCOUNT_NOT_ACTIVATED_TO_SHARE = 'Your are not allowed to share. Please activate your account!';
