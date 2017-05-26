@@ -866,8 +866,8 @@ Blockly.Msg.MESSAGE_USER_GROUP_DELETED = 'User »$« was deleted';
 Blockly.Msg.MESSAGE_ADDED_USER = 'User »$« was added';
 Blockly.Msg.ORA_USER_TO_ADD_NOT_FOUND = 'User was not found';
 Blockly.Msg.MESSAGE_EDIT_SAVE_GROUP_AS = 'Your group has been created';
-Blockly.Msg.ORA_GROUP_CREATE_ERROR_NOT_SAVED_TO_DB = 'This group already exists'; 
-Blockly.Msg.ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS = 'This user already belongs to the group'; 
+Blockly.Msg.ORA_GROUP_CREATE_ERROR_NOT_SAVED_TO_DB = 'This group already exists';
+Blockly.Msg.ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS = 'This user already belongs to the group';
 
 Blockly.Msg.MESSAGE_PROGRAM_COMPILING = 'Compiling program';
 Blockly.Msg.MESSAGE_PROGRAM_FLASHING = 'Flashing the program, please wait';
@@ -891,3 +891,5 @@ Blockly.Msg.PROGLIST_DELETE_SHARE_WITH_GALLERY = 'Your program is allready share
 Blockly.Msg.PROGLIST_SHARE_WITH_GALLERY = 'Do you really want to share your program with everybody?';
 Blockly.Msg.MENU_CREATE_LINK = 'create program link ...';
 Blockly.Msg.POPUP_GET_LINK = 'Here is the link to your actual program. Please don"t change it, it probably won"t work anymore. It"s already copied to your clipboard!</br>$';
+Blockly.Msg.SENSOR_JOYSTICK = 'joystick';
+Blockly.Msg.JOYSTICK_GETSAMPLE_TOOLTIP = 'Gets the current reading of one of the axises of the joystick';

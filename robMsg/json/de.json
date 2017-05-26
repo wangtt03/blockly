@@ -97,7 +97,7 @@
   "DISPLAY_GET_PIXEL_TOOLTIP": "Gibt den Helligkeitswert der LED zurück. Bei 0 ist die LED aus, 9 ist der höchste Helligkeitswert.",
   "DISPLAY_SET_PIXEL_TOOLTIP": "Setzt den Helligkeitswert der LED. Bei 0 ist die LED aus, 9 ist der höchste Helligkeitswert.",
   "DISPLAY_GET_BRIGHTNESS_TOOLTIP": "Gibt den Helligkeitswert aller LED's des Displays zurück. Bei 0 sind alle LED's aus, 9 ist der höchste Helligkeitswert.",
-  "DISPLAY_SET_BRIGHTNESS_TOOLTIP": "Setzt den Helligkeitswert aller LED's des Displays. Bei 0 sind alle LED's aus, 9 ist der höchste Helligkeitswert.", 
+  "DISPLAY_SET_BRIGHTNESS_TOOLTIP": "Setzt den Helligkeitswert aller LED's des Displays. Bei 0 sind alle LED's aus, 9 ist der höchste Helligkeitswert.",
   "ENCODER_GETMODE_TOOLTIP":"Gibt den Modus des Drehsensors zurück.",
   "ENCODER_GETSAMPLE_TOOLTIP":"Gibt den aktuellen Wert des Drehsensors zurück.",
   "ENCODER_RESET_TOOLTIP":"Setzt den Drehsensor zurück.",
@@ -306,7 +306,7 @@
   "ORA_TOOLBOX_SAVE_SUCCESS":"Die Toolbox wurde gespeichert.",
   "ORA_TOOLBOX_TRANSFORM_ERROR":"Transformation Fehler?",
   "ORA_USER_CREATE_ERROR_CONTAINS_SPECIAL_CHARACTERS": "Bitte benutze keine Sonderzeichen in deinem Benutzernamen oder im Namen. Das Benutzerkonto konnte nicht erstellt werden.",
-  "ORA_USER_CREATE_ERROR_ACCOUNT_LENGTH": "Dein Benutzername oder dein Name ist länger als 25 Zeichen, bitte geben einen kürzeren ein. Das Benutzerkonto konnte nicht erstellt werden.",  
+  "ORA_USER_CREATE_ERROR_ACCOUNT_LENGTH": "Dein Benutzername oder dein Name ist länger als 25 Zeichen, bitte geben einen kürzeren ein. Das Benutzerkonto konnte nicht erstellt werden.",
   "ORA_USER_CREATE_ERROR_MISSING_REQ_FIELDS":"Schaue nach, ob du alle Felder ausgefüllt hast. Das Benutzerkonto konnte nicht erstellt werden.",
   "ORA_USER_CREATE_ERROR_NOT_SAVED_TO_DB":"Es gibt bereits einen Benutzer mit diesem Namen, versuche es mit einem anderen Benutzernamen.",
   "ORA_USER_CREATE_SUCCESS":"Das Benutzerkonto »$« wurde für dich angelegt!",
@@ -805,8 +805,10 @@
   "ORA_USER_TO_ADD_NOT_FOUND" : "Der nutzer wurde nicht gefunden",
   "MESSAGE_EDIT_SAVE_GROUP_AS" : "Die Gruppe wurde angelegt",
   "ORA_GROUP_CREATE_ERROR_NOT_SAVED_TO_DB" : "Es gibt bereits eine Gruppe mit diesem Namen, versuche es mit einem anderen Gruppesnamen.",
-  "ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS": "Es gibt bereits einen Benutzer mit diesem Namen in dieser Gruppe, versuche es mit einem anderen Benutzernamen.", 
+  "ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS": "Es gibt bereits einen Benutzer mit diesem Namen in dieser Gruppe, versuche es mit einem anderen Benutzernamen.",
   "IMAGE_INVERT": "invertiere",
-  "IMAGE_SHIFT": "verschiebe"
-  
+  "IMAGE_SHIFT": "verschiebe",
+  "SENSOR_JOYSTICK":"joystick",
+  "JOYSTICK_GETSAMPLE_TOOLTIP":"Gets the current reading of one of the axises of the joystick"
+
 }
