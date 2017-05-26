@@ -14,7 +14,7 @@ Blockly.Blocks['arduSensors_getSample'] = {
     /**
      * Get the current reading from choosen sensor.
      *
-     * @constructs mbedSensors_getSample
+     * @constructs arduSensors_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
      *            SENSORPORT - 1, 2, 3 or 4
@@ -29,7 +29,7 @@ Blockly.Blocks['arduSensors_getSample'] = {
         sensorType = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_KEY + ' ' + Blockly.Msg.SENSOR_PRESSED, 'KEYS_PRESSED' ],
                 [ Blockly.Msg.SENSOR_GESTURE, 'GESTURE_ACTIVE' ], [ Blockly.Msg.SENSOR_COMPASS, 'COMPASS_ANGLE' ],
                 [ Blockly.Msg.SENSOR_MIC, 'MICROPHONE' ], [ Blockly.Msg.SENSOR_TIME, 'TIME' ], [ Blockly.Msg.SENSOR_TEMPERATURE, 'TEMPERATURE' ],
-                [ Blockly.Msg.MODE_AMBIENTLIGHT, 'LIGHT_LEVEL' ] ],
+                [ Blockly.Msg.MODE_AMBIENTLIGHT, 'LIGHT_LEVEL' ], [ Blockly.Msg.SENSOR_JOYSTICK, 'JOYSTICK' ] ],
         // [ Blockly.Msg.MODE_ACCELERATION, 'ACCELERATION' ], [ Blockly.Msg.MODE_ORIENTATION, 'ORIENTATION' ] ]
         function(option) {
             if (option && this.sourceBlock_.getFieldValue('SENSORTYPE') !== option) {
@@ -91,7 +91,8 @@ Blockly.Blocks['arduSensors_getSample'] = {
         var direction = new Blockly.FieldDropdown([ [ 'x', 'X' ], [ 'y', 'Y' ], [ 'z', 'Z' ], [ Blockly.Msg.STRENGTH, 'STRENGTH' ] ]);
         var orientation = new Blockly.FieldDropdown([ [ Blockly.Msg.PITCH, 'PITCH' ], [ Blockly.Msg.ROLL, 'ROLL' ] ]);
         var timer = new Blockly.FieldDropdown([ [ Blockly.Msg.SENSOR_TIMER + ' 1', '1' ] ]);
-
+        var axis = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ] ]);
+        var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
         var input = this.getInput('DROPDOWN');
         var toRemove = [];
         for (var i = 0, field; field = input.fieldRow[i]; i++) {
@@ -140,6 +141,7 @@ Blockly.Blocks['arduSensors_getSample'] = {
             this.appendValue_('NUM', 512);
             this.setOutput(true, 'Number');
         } else if (this.sensorType_ == 'JOYSTICK') {
+            input.appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(axis, 'JOYSTICKAXIS').appendField('on').appendField(sensorPort, 'SENSORPORT');
             this.appendValue_('NUM', 512);
             this.setOutput(true, 'Number');
         }
@@ -200,7 +202,7 @@ Blockly.Blocks['arduSensors_joystick_getSample'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
-        var axis = new Blockly.FieldDropdown([ 'X', 'Y' ]);
+        var axis = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ] ]);
         var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
         this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(axis, 'JOYSTICKAXIS').appendField(Blockly.Msg.SENSOR_JOYSTICK).appendField(sensorPort, 'SENSORPORT');
         this.setOutput(true, 'Number');
