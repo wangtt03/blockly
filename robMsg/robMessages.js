@@ -240,6 +240,7 @@ Blockly.Msg.CONNECTION_SEND_DATA = 'send message';
 Blockly.Msg.CONNECTION_TO_ROBOT = 'to robot';
 Blockly.Msg.CONNECTION_FROM_ROBOT = 'from robot';
 Blockly.Msg.CONNECTION_TO_CONNECTION = 'to connection';
+Blockly.Msg.CONNECTION_FROM_CONNECTION = 'from connection';
 Blockly.Msg.CONNECTION_OVER_CHANNEL = 'over channel';
 Blockly.Msg.CONNECTION_RECEIVED_DATA = 'receive message';
 Blockly.Msg.CONNECTION_CONNECT = 'connect to robot name';
@@ -428,9 +429,9 @@ Blockly.Msg.ORA_PROGRAM_DELETE_ERROR = 'An error error has occurred while deleti
 Blockly.Msg.ORA_PROGRAM_IMPORT_ERROR = 'This program is not a valid NEPO program and cannot be uploaded!';
 Blockly.Msg.ORA_USER_GET_ONE_SUCCESS = 'Login successful';
 Blockly.Msg.ORA_USER_GET_ONE_ERROR_ID_OR_PASSWORD_WRONG = 'You have entered wrong user name or password. Please try again!';
-Blockly.Msg.ORA_USER_CREATE_SUCCESS = 'The user was successfully created';
+Blockly.Msg.ORA_USER_CREATE_SUCCESS = 'Your user account »$« was successfully created!';
 Blockly.Msg.ORA_USER_CREATE_ERROR_NOT_SAVED_TO_DB = 'The given user name already exists in the database, please choose another user name.';
-Blockly.Msg.ORA_USER_DELETE_SUCCESS = 'The user was successfully deleted';
+Blockly.Msg.ORA_USER_DELETE_SUCCESS = 'Your account »$« was successfully deleted. Hope to see you soon again!';
 Blockly.Msg.ORA_USER_DELETE_ERROR_NOT_DELETED_IN_DB = 'Error while deleting user in database.';
 Blockly.Msg.ORA_USER_DELETE_ERROR_ID_NOT_FOUND = 'Error while deleting user.';
 Blockly.Msg.ORA_USER_GET_ALL_SUCCESS = 'Users loaded';
@@ -450,7 +451,9 @@ Blockly.Msg.ORA_OWNER_DOES_NOT_EXIST = 'The owner does not exist.';
 Blockly.Msg.ORA_PROGRAM_TO_SHARE_DOES_NOT_EXIST = 'The program that you would like to share does not exist.';
 Blockly.Msg.ORA_USER_TO_SHARE_DOES_NOT_EXIST = 'The user with which you would like to share the program does not exist. <br />Try it again!';
 Blockly.Msg.ORA_USER_TO_SHARE_SAME_AS_LOGIN_USER = 'You cannot share any programs with yourself.';
-Blockly.Msg.ORA_USER_CREATE_ERROR_MISSING_REQ_FIELDS = 'Check all required input fields have been filled out.';
+Blockly.Msg.ORA_USER_CREATE_ERROR_MISSING_REQ_FIELDS = 'Please make sure you have filled in all required fields! Your account couldn"t be created.';
+Blockly.Msg.ORA_USER_CREATE_ERROR_CONTAINS_SPECIAL_CHARACTERS = 'You are using some one or more special characters in your account name! Please remove them. Your account couldn"t be created.';
+Blockly.Msg.ORA_USER_CREATE_ERROR_ACCOUNT_LENGTH = 'Your account name or your user name is to long. Please make sure that they are not longer then 25 digits. Your account couldn"t be created.';
 Blockly.Msg.ORA_USER_EMAIL_ONE_ERROR_USER_NOT_EXISTS_WITH_THIS_EMAIL = 'This email address is unknown, maybe you have spelled it wrong!';
 Blockly.Msg.ORA_SERVER_ERROR = 'Server-Error';
 
@@ -479,7 +482,7 @@ Blockly.Msg.VALIDATION_PASSWORD_MIN_LENGTH = 'Password min. length is 6!';
 Blockly.Msg.VALIDATION_TOKEN_LENGTH = 'Token length is 8 characters!';
 Blockly.Msg.VALIDATION_SECOND_PASSWORD_EQUAL = 'The two passwords must be equal!';
 Blockly.Msg.VALIDATION_VALID_EMAIL_ADDRESS = 'Please enter a valid email address!';
-Blockly.Msg.VALIDATION_CONTAINS_SPECIAL_CHARACTERS = 'Valid special characters: »=+!?.,%#+&^@_«';
+Blockly.Msg.VALIDATION_CONTAINS_SPECIAL_CHARACTERS = 'Valid special characters: »=+!?.,%#+&^@_-«';
 Blockly.Msg.VALIDATION_MAX_LENGTH = 'The max. lenght is 25 characters!'
 
 Blockly.Msg.SIM_BLOCK_NOT_SUPPORTED = 'Unfortunately you can not use this block in the simulation!';
@@ -869,11 +872,6 @@ Blockly.Msg.MESSAGE_EDIT_SAVE_GROUP_AS = 'Your group has been created';
 Blockly.Msg.ORA_GROUP_CREATE_ERROR_NOT_SAVED_TO_DB = 'This group already exists';
 Blockly.Msg.ORA_USER_GROUP_SAVE_AS_ERROR_USER_GROUP_EXISTS = 'This user already belongs to the group';
 
-Blockly.Msg.MESSAGE_PROGRAM_COMPILING = 'Compiling program';
-Blockly.Msg.MESSAGE_PROGRAM_FLASHING = 'Flashing the program, please wait';
-Blockly.Msg.MESSAGE_PROGRAM_FLASHED = 'Done flashing';
-Blockly.Msg.MESSAGE_ROBOT_DISCONNECTED = 'An active robot was disconnected';
-
 Blockly.Msg.LIST_BACK_TOOLTIP = 'Back to previous view.';
 Blockly.Msg.PROGLIST_DELETE_ALL_TOOLTIP = 'Click here to delete all selected programs.';
 Blockly.Msg.PROGLIST_DELETE_TOOLTIP = 'Click here to delete your program.';
@@ -891,5 +889,13 @@ Blockly.Msg.PROGLIST_DELETE_SHARE_WITH_GALLERY = 'Your program is allready share
 Blockly.Msg.PROGLIST_SHARE_WITH_GALLERY = 'Do you really want to share your program with everybody?';
 Blockly.Msg.MENU_CREATE_LINK = 'create program link ...';
 Blockly.Msg.POPUP_GET_LINK = 'Here is the link to your actual program. Please don"t change it, it probably won"t work anymore. It"s already copied to your clipboard!</br>$';
-Blockly.Msg.SENSOR_JOYSTICK = 'joystick';
-Blockly.Msg.JOYSTICK_GETSAMPLE_TOOLTIP = 'Gets the current reading of one of the axises of the joystick';
+Blockly.Msg.IMAGE_INVERT = 'invert';
+Blockly.Msg.IMAGE_SHIFT = 'shift';
+
+Blockly.Msg.POPUP_AGE = 'Age';
+Blockly.Msg.YOUNGER_THEN_14 = 'I am younger then 14!';
+Blockly.Msg.OLDER_THEN_14 = 'I am older then 14!';
+Blockly.Msg.ORA_USER_ACTIVATION_SENT_MAIL_SUCCESS = 'We send a mail to you, please check your mailbox!';
+Blockly.Msg.ORA_USER_ACTIVATION_SENT_MAIL_FAIL = 'Sorry, we cannot send a mail to you, please contact »roberta-zentrale@iais.fraunhofer.de«';
+Blockly.Msg.ORA_USER_ACTIVATION_SUCCESS = 'Activation of the user account is successful!';
+Blockly.Msg.ORA_ACCOUNT_NOT_ACTIVATED_TO_SHARE = 'Your are not allowed to share. Please activate your account!';

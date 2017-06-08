@@ -342,7 +342,7 @@ Blockly.Blocks['robSensors_getSample_ardu'] = {
             this.appendValue_('NUM', 50);
             this.setOutput(true, 'Number');
         } else if (this.sensorType_ == 'COMPASS_ANGLE') {
-            var sensorPort = new Blockly.FieldDropdown([ [ '-', 'A' ]]);
+            var sensorPort = new Blockly.FieldDropdown([ [ '-', 'A' ] ]);
             sensorPort.setVisible(false)
             input.appendField(sensorPort, 'SENSORPORT');
             this.appendValue_('NUM_REV', 90);
@@ -682,7 +682,9 @@ Blockly.Blocks['robSensors_encoder_getSample'] = {
         var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_ROTATION, 'ROTATION' ], [ Blockly.Msg.MODE_DEGREE, 'DEGREE' ],
                 [ Blockly.Msg.MODE_DISTANCE, 'DISTANCE' ] ]);
         var motorport = new Blockly.FieldDropdown([ [ 'A', 'A' ], [ 'B', 'B' ], [ 'C', 'C' ], [ 'D', 'D' ] ]);
-        if (this.workspace.device === 'ardu') {
+        if (this.workspace.device === 'nxt') {
+            motorport = new Blockly.FieldDropdown([ [ 'A', 'A' ], [ 'B', 'B' ], [ 'C', 'C' ] ])
+        } else if (this.workspace.device === 'ardu') {
             motorport = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_LEFT, 'B' ], [ Blockly.Msg.MOTOR_RIGHT, 'C' ] ]);
         }
         this.appendDummyInput().appendField(Blockly.Msg.GET).appendField(mode, 'MODE').appendField(Blockly.Msg.SENSOR_ENCODER).appendField(motorport, 'MOTORPORT');
