@@ -271,9 +271,9 @@ Blockly.Blocks['mbedSensors_gesture_isActive'] = {
 
 Blockly.Blocks['mbedSensors_microphone_getSample'] = {
     /**
-     * Get the current reading from the compass sensor.
+     * Get the current reading from the microphone sensor.
      * 
-     * @constructs mbedSensors_gyro_getSample
+     * @constructs mbedSensors_microphone_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
      *            MODE - Angle or Rate
@@ -296,7 +296,7 @@ Blockly.Blocks['mbedSensors_compass_getSample'] = {
     /**
      * Get the current reading from the compass sensor.
      * 
-     * @constructs mbedSensors_gyro_getSample
+     * @constructs mbedSensors_compass_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
      *            MODE - Angle or Rate
@@ -317,7 +317,7 @@ Blockly.Blocks['mbedSensors_compass_getSample'] = {
 
 Blockly.Blocks['mbedSensors_temperature_getSample'] = {
     /**
-     * Get the current reading from the compass sensor.
+     * Get the current reading from the temperature sensor.
      * 
      * @constructs mbedSensors_temperature_getSample
      * @this.Blockly.Block

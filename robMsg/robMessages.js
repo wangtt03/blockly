@@ -217,6 +217,7 @@ Blockly.Msg.SENSOR_IS_TOUCHED = 'touched?';
 Blockly.Msg.SENSOR_PRESSED = ' (pressed)';
 Blockly.Msg.PITCH = 'pitch';
 Blockly.Msg.ROLL = 'roll';
+Blockly.Msg.YAW = 'yaw';
 Blockly.Msg.WAIT_UNTIL = 'wait until';
 Blockly.Msg.START = 'start';
 Blockly.Msg.START_ACTIVITY = 'activity';
