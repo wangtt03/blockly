@@ -50,7 +50,7 @@ Blockly.Blocks['makeblockSensors_gyroscope_getSample'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
-        var axis = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ], ['Z', 'Z'] ], 
+        var axis = new Blockly.FieldDropdown([ [ 'X', 'X' ], [ 'Y', 'Y' ], ['Z', 'Z'] ],
             function(option) {
                this.updateShape_(option);
         });
@@ -83,7 +83,7 @@ Blockly.Blocks['makeblockSensors_gyroscope_getSample'] = {
 Blockly.Blocks['mbedSensors_getSample'] = {
     /**
      * Get the current reading from choosen sensor.
-     * 
+     *
      * @constructs mbedSensors_getSample
      * @this.Blockly.Block
      * @param {String/dropdown}
@@ -93,11 +93,11 @@ Blockly.Blocks['mbedSensors_getSample'] = {
      * @memberof Block
      */
     init : function() {
-        
+
     },
     /**
      * Create XML to represent whether the sensor type has changed.
-     * 
+     *
      * @return {Element} XML storage element.
      * @this Blockly.Block
      */
@@ -108,7 +108,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
     },
     /**
      * Parse XML to restore the sensor type.
-     * 
+     *
      * @param {!Element}
      *            xmlElement XML storage element.
      * @this Blockly.Block
@@ -121,7 +121,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
 
     /**
      * Called whenever anything on the workspace changes.
-     * 
+     *
      * @this Blockly.Block
      */
     /*
@@ -130,7 +130,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
      */
     /**
      * Called whenever the shape has to change.
-     * 
+     *
      * @this Blockly.Block
      */
     updateShape_ : function(option) {
@@ -146,10 +146,10 @@ Blockly.Blocks['mbedSensors_getSample'] = {
 
     /**
      * Called whenever the blocks shape has changed.
-     * 
+     *
      * @this Blockly.Block
      */
     appendValue_ : function(type, value) {
-        
+
     }
 };
