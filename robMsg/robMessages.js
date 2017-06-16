@@ -905,3 +905,4 @@ Blockly.Msg.ORA_ACCOUNT_NOT_ACTIVATED_TO_SHARE = 'Your are not allowed to share.
 Blockly.Msg.SENSOR_JOYSTICK = 'joystick';
 Blockly.Msg.JOYSTICK_GETSAMPLE_TOOLTIP = 'Gets the current reading of one of the axises of the joystick';
 Blockly.Msg.MESSAGE_ROBOT_DISCONNECTED = 'An active robot was disconnected'; 
+Blockly.Msg.INTERNAL_PORT = 'internal'; 

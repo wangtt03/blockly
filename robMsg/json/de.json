@@ -809,6 +809,7 @@
   "IMAGE_INVERT": "invertiere",
   "IMAGE_SHIFT": "verschiebe",
   "SENSOR_JOYSTICK":"joystick",
-  "JOYSTICK_GETSAMPLE_TOOLTIP":"Gets the current reading of one of the axises of the joystick"
-
+  "JOYSTICK_GETSAMPLE_TOOLTIP":"Gets the current reading of one of the axises of the joystick",
+  "INTERNAL_PORT":"innere",
+  "MODE_AMBIENTLIGHT":"Umgebungslicht"
 }
