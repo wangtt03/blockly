@@ -1,5 +1,5 @@
 /**
- * @fileoverview Sensor blocks for EV3.
+ * @fileoverview Sensor blocks for MakeBlock.
  * @requires Blockly.Blocks
  * @author Beate
  */
@@ -9,6 +9,49 @@
 goog.provide('Blockly.Blocks.makeblockSensors');
 
 goog.require('Blockly.Blocks');
+
+Blockly.Blocks['makeblockSensors_Ambientlight'] = {
+    /**
+     *
+     * @constructs makeblockSensors_Ambientlight
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            SENSORPORT - 1-4
+     * @returns immediately
+     * @returns {Number}
+     * @memberof Block
+     */
+
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        // this.setInputsInline(true);
+        var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_AMBIENTLIGHT).appendField(sensorPort, 'SENSORPORT');
+        this.setOutput(true, 'Number');
+    }
+};
+
+Blockly.Blocks['makeblockSensors_light'] = {
+    /**
+     *
+     * @constructs makeblockSensors_light
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            SENSORPORT - 1-4
+     * @returns immediately
+     * @returns {Boolean}
+     * @memberof Block
+     */
+
+    init : function() {
+        this.setColour(Blockly.CAT_SENSOR_RGB);
+        // this.setInputsInline(true);
+        var sensorPort = new Blockly.FieldDropdown([ [ 'Port 1', '1' ], [ 'Port 2', '2' ], [ 'Port 3', '3' ], [ 'Port 4', '4' ] ]);
+        var sensorSide = new Blockly.FieldDropdown([ [ 'Left', 'Left' ], [ 'Right', 'Right' ] ]);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_LIGHT).appendField(sensorSide).appendField(sensorPort, 'SENSORPORT');
+        this.setOutput(true, 'Boolean');
+    }
+};
 
 Blockly.Blocks['makeblockSensors_temperature_getSample'] = {
     /**

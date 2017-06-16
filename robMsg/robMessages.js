@@ -516,6 +516,7 @@ Blockly.Msg.MODE_SOUND = 'sound';
 Blockly.Msg.MOTOR_STEER = 'steer';
 Blockly.Msg.MODE_OBSTACLE = 'obstacle';
 Blockly.Msg.SENSOR_LIGHT = 'light sensor';
+Blockly.Msg.SENSOR_AMBIENTLIGHT = 'ambientlight sensor';
 Blockly.Msg.LIGHT_GETSAMPLE_TOOLTIP = 'Gets the current reading from the light sensor.';
 Blockly.Msg.SENSOR_SOUND = 'sound sensor';
 Blockly.Msg.SOUND_GETSAMPLE_TOOLTIP = 'Gets the current reading from the sound sensor.';
