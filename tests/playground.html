@@ -53,6 +53,7 @@
 <script src="../blocks/arduSensors.js"></script>
 <script src="../blocks/makeblockSensors.js"></script>
 <script src="../blocks/makeblockActions.js"></script>
+<script src="../blocks/makeblockColours.js"></script>
 <script src="../blocks/simActions.js"></script>
 <script src="../blocks/simSensors.js"></script>
 <link rel="stylesheet" type="text/css" href="typicons.css"></link>
@@ -453,7 +454,8 @@ h1 {
         </category>
     </category>
     <category name='TOOLBOX_SENSOR' svg="true">
-
+        <block type='makeblockSensors_light'></block>
+        <block type='makeblockSensors_ambientlight'></block>
         <block type='arduSensors_joystick_getSample'>
         </block>
         <block type='makeblockSensors_gyroscope_getSample'>
@@ -654,6 +656,8 @@ h1 {
     </category>
     <category name='TOOLBOX_COLOUR' svg="true">
         <block type='robColour_picker'>
+        </block>
+        <block type='makeblockColour_rgb'>
         </block>
     </category>
     <category name='TOOLBOX_VARIABLE' custom='VARIABLE' svg="true"></category>
