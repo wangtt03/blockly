@@ -1,12 +1,12 @@
 /**
  * @fileoverview Sensor blocks for MakeBlock.
  * @requires Blockly.Blocks
- * @author Beate
+ * @author Evgeniya
  */
 
 'use strict';
 
-goog.provide('Blockly.Blocks.makeblockSensors');
+goog.provide('Blockly.Blocks.makeblockColours');
 
 goog.require('Blockly.Blocks');
 
