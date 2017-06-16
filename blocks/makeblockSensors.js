@@ -10,7 +10,7 @@ goog.provide('Blockly.Blocks.makeblockSensors');
 
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks['makeblockSensors_Ambientlight'] = {
+Blockly.Blocks['makeblockSensors_ambientlight'] = {
     /**
      *
      * @constructs makeblockSensors_Ambientlight
