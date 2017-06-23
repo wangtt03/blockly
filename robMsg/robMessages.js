@@ -93,7 +93,6 @@ Blockly.Msg.GYRO_RESET_TOOLTIP = 'Resets the gyro sensor.';
 Blockly.Msg.GYRO_GETSAMPLE_TOOLTIP = 'Gets the current reading from the gyro sensor.';
 Blockly.Msg.TIMER_RESET_TOOLTIP = 'Resets the timer.';
 Blockly.Msg.TIMER_GETSAMPLE_TOOLTIP = 'Gets the current reading from the timer.';
-Blockly.Msg.PIN_GETSAMPLE_TOOLTIP = 'Gets the current reading from a pin.';
 Blockly.Msg.BATTERY_GETSAMPLE_TOOLTIP = 'Gets the current voltage from the battery.';
 /// Rob Brick tooltips
 Blockly.Msg.ULTRASONIC_TOOLTIP = 'Represents an ultrasonic sensor.';
@@ -586,7 +585,7 @@ Blockly.Msg.ACCELEROMETER_ROTATION = 'rotation °';
 
 Blockly.Msg.TEMPERATURE_GETSAMPLE_TOOLTIP = 'Gets the current reading from the temperatur sensor.';
 Blockly.Msg.COMPASS_GETSAMPLE_TOOLTIP = 'Gets the current reading from the compass sensor.';
-Blockly.Msg.MICROPHONE_GETSAMPLE_TOOLTIP = 'Gets the current reading from the microphone.';
+Blockly.Msg.MICROPHONE_GETSAMPLE_TOOLTIP = 'Gets the current reading from the microphone in % (mapped to 0 - 100). If the value is always low, the value has to be multiplied by 10, because the amplification is missing on the hardware.';
 Blockly.Msg.CALLIOPEBRICK_TOOLTIP = 'Represents Calliope, a pocket-sized codeable computer. There are also inbuilt actors and sensors available, e.g. buttons, display ...';
 Blockly.Msg.MICROBITBRICK_TOOLTIP = 'Represents micro:bit, a pocket-sized codeable computer. There are also inbuilt actors and sensors available, e.g. buttons, display ...';
 Blockly.Msg.PLAY_NOTE_TOOLTIP = 'Plays a music note';
@@ -901,8 +900,16 @@ Blockly.Msg.ORA_USER_ACTIVATION_SENT_MAIL_SUCCESS = 'We send a mail to you, plea
 Blockly.Msg.ORA_USER_ACTIVATION_SENT_MAIL_FAIL = 'Sorry, we cannot send a mail to you, please contact »roberta-zentrale@iais.fraunhofer.de«';
 Blockly.Msg.ORA_USER_ACTIVATION_SUCCESS = 'Activation of the user account is successful!';
 Blockly.Msg.ORA_ACCOUNT_NOT_ACTIVATED_TO_SHARE = 'Your are not allowed to share. Please activate your account!';
-
 Blockly.Msg.SENSOR_JOYSTICK = 'joystick';
 Blockly.Msg.JOYSTICK_GETSAMPLE_TOOLTIP = 'Gets the current reading of one of the axises of the joystick';
 Blockly.Msg.MESSAGE_ROBOT_DISCONNECTED = 'An active robot was disconnected'; 
 Blockly.Msg.INTERNAL_PORT = 'internal'; 
+Blockly.Msg.PULSE_LOW = 'pulse time HIGH';
+Blockly.Msg.PULSE_HIGH = 'pulse time LOW';
+Blockly.Msg.PIN_GETSAMPLE_ANALOG_TOOLTIP = 'Returns the value from the specified analog pin. The value is between 0 and 1023.';
+Blockly.Msg.PIN_GETSAMPLE_DIGITAL_TOOLTIP = 'Returns the value from the specified digital pin. The value is either HIGH »1« or LOW »0«.';
+Blockly.Msg.PIN_GETSAMPLE_PULSEHIGH_TOOLTIP = 'Returns the pulse HIGH on a pin in microseconds or -1 if no complete pulse was received within the timeout.';
+Blockly.Msg.PIN_GETSAMPLE_PULSELOW_TOOLTIP = 'Returns the pulse LOW on a pin in microseconds or -1 if no complete pulse was received within the timeout.';
+Blockly.Msg.CONNECTION_POWER = 'with strength';
+Blockly.Msg.CONNECTION_MBED_RECEIVE_TOOLTIP = 'Waits for a message on channel 0 - 255. ';
+Blockly.Msg.CONNECTION_MBED_SEND_TOOLTIP = 'Sends a message to another microBoard. You can use the channel from 0 to 255 and specify a signal strength from 0 - 7, where 0 is very low and 7 is the strongests.';

@@ -153,7 +153,7 @@ Blockly.Blocks['mbedSensors_getSample'] = {
             this.appendValue_('NUM_REV', 20);
             this.setOutput(true, 'Number');
         } else if (this.sensorType_ == 'MICROPHONE') {
-            this.appendValue_('NUM', 512);
+            this.appendValue_('NUM_REV', 50);
             this.setOutput(true, 'Number');
         }
 
@@ -395,7 +395,8 @@ Blockly.Blocks['mbedSensors_pin_getSample'] = {
     init : function() {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         var valueType;
-        valueType = new Blockly.FieldDropdown([ [ Blockly.Msg.ANALOG, 'ANALOG' ], [ Blockly.Msg.DIGITAL, 'DIGITAL' ] ], function(option) {
+        valueType = new Blockly.FieldDropdown([ [ Blockly.Msg.ANALOG, 'ANALOG' ], [ Blockly.Msg.DIGITAL, 'DIGITAL' ], [ Blockly.Msg.PULSE_HIGH, 'PULSEHIGH' ],
+                [ Blockly.Msg.PULSE_LOW, 'PULSELOW' ] ], function(option) {
             if (option && this.sourceBlock_.getFieldValue('VALUETYPE') !== option) {
                 this.sourceBlock_.updatePins_(option);
             }
@@ -406,6 +407,17 @@ Blockly.Blocks['mbedSensors_pin_getSample'] = {
         this.setOutput(true, 'Number');
         this.setTooltip(Blockly.Msg.PIN_GETSAMPLE_TOOLTIP);
         this.protocol_ = "ANALOG";
+        var thisBlock = this;
+        this.setTooltip(function() {
+            var protocol_ = thisBlock.getFieldValue('VALUETYPE');
+            var TOOLTIPS = {
+              'ANALOG': Blockly.Msg.PIN_GETSAMPLE_ANALOG_TOOLTIP,
+              'DIGITAL': Blockly.Msg.PIN_GETSAMPLE_DIGITAL_TOOLTIP,
+              'PULSEHIGH': Blockly.Msg.PIN_GETSAMPLE_PULSEHIGH_TOOLTIP,
+              'PULSELOW': Blockly.Msg.PIN_GETSAMPLE_PULSELOW_TOOLTIP
+            };
+            return TOOLTIPS[protocol_];
+          });
         this.updatePins_(this.protocol_);
     },
     /**
@@ -439,22 +451,93 @@ Blockly.Blocks['mbedSensors_pin_getSample'] = {
             pinField.menuGenerator_ = pins;
             pinField.setValue("0");
             pinField.setText(Blockly.Msg.SENSOR_PIN + ' 0');
-            return; 
-        }        
+            return;
+        }
         if (protocol === 'ANALOG') {
             var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
             var pinField = this.getField("PIN");
             pinField.menuGenerator_ = pins;
-            pinField.setValue("1"); 
+            pinField.setValue("1");
             pinField.setText(Blockly.Msg.SENSOR_PIN + ' 1');
         } else if (protocol === 'DIGITAL') {
             var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
                     [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ], [ Blockly.Msg.SENSOR_GROVE + ' A0', '4' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
             var pinField = this.getField("PIN");
             pinField.menuGenerator_ = pins;
-            pinField.setValue("0"); 
+            pinField.setValue("0");
+            pinField.setText(Blockly.Msg.SENSOR_PIN + ' 0');
+        } else if (protocol === 'PULSEHIGH') {
+            var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
+                    [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ], [ Blockly.Msg.SENSOR_GROVE + ' A0', '4' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
+            var pinField = this.getField("PIN");
+            pinField.menuGenerator_ = pins;
+            pinField.setValue("0");
+            pinField.setText(Blockly.Msg.SENSOR_PIN + ' 0');
+        } else if (protocol === 'PULSELOW') {
+            var pins = [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ],
+                    [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ], [ Blockly.Msg.SENSOR_GROVE + ' A0', '4' ], [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ];
+            var pinField = this.getField("PIN");
+            pinField.menuGenerator_ = pins;
+            pinField.setValue("0");
             pinField.setText(Blockly.Msg.SENSOR_PIN + ' 0');
         }
+    }
+};
+
+Blockly.Blocks['mbedSensors_pin_getPuls'] = {
+    /**
+     * Get the impulse duration in microseconds from a (digital) pin.
+     * 
+     * @constructs mbedSensors_pin_getPuls
+     * @this.Blockly.Block
+     * @param {String/dropdown}
+     *            PIN - 0-3, A1
+     * @returns blockling
+     * @returns {Number in microseconds}
+     * @memberof Block
+     */
+
+    init : function() {
+        if (this.workspace.device === 'microbit') {
+            this.jsonInit({
+                "message0" : Blockly.Msg.SENSOR_GET + " " + Blockly.Msg.PIN_GETPULSE_TITLE,
+                "args0" : [ {
+                    "type" : "field_dropdown",
+                    "name" : "PULSETYPE",
+                    "options" : [ [ Blockly.Msg.HIGH, 'HIGH' ], [ Blockly.Msg.LOW, 'LOW' ] ]
+                }, {
+                    "type" : "field_dropdown",
+                    "name" : "PIN",
+                    "options" : [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ] ]
+                } ],
+                "output" : "Number",
+                "colour" : Blockly.CAT_SENSOR_RGB,
+                "tooltip" : Blockly.Msg.PIN_GETPULSE_TOOLTIP
+            });
+
+        } else if (this.workspace.device === 'calliope') {
+            this.jsonInit({
+                "message0" : Blockly.Msg.SENSOR_GET + " " + Blockly.Msg.PIN_GETPULSE_TITLE,
+                "args0" : [
+                        {
+                            "type" : "field_dropdown",
+                            "name" : "PULSETYPE",
+                            "options" : [ [ Blockly.Msg.HIGH, 'HIGH' ], [ Blockly.Msg.LOW, 'LOW' ] ]
+                        },
+                        {
+                            "type" : "field_dropdown",
+                            "name" : "PIN",
+                            "options" : [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
+                                    [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ], [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ], [ Blockly.Msg.SENSOR_GROVE + ' A0', '4' ],
+                                    [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ]
+                        } ],
+                "output" : "Number",
+                "colour" : Blockly.CAT_SENSOR_RGB,
+                "tooltip" : Blockly.Msg.PIN_GETPULSE_TOOLTIP
+            });
+        }
+
+        //   this.setTooltip(Blockly.Msg.PIN_GETPULSE_TOOLTIP);
     }
 };
 

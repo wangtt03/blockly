@@ -561,7 +561,7 @@
   "TOOLBOX_IMAGE": "Bilder",
   "TEMPERATURE_GETSAMPLE_TOOLTIP": "Gibt den aktuellen Wert des Temperatursensors zurück.",
   "COMPASS_GETSAMPLE_TOOLTIP ": "Gibt den aktuellen Wert des Kompasssensors zurück.",
-  "MICROPHONE_GETSAMPLE_TOOLTIP": "Gibt den aktuellen Wert des Mikrofons zurück.",
+  "MICROPHONE_GETSAMPLE_TOOLTIP": "Gibt die aktuellen Lautstärke des Mikrofons in % zurück (0-100). Sollte bei deinem Calliope der Wert immer sehr niedrig sein, fehlt hardwareseitig die Verstärkung. Multipliziere den gemessenen Wert dann einfach mit 10.",
   "CALLIOPEBRICK_TOOLTIP": "Block für Calliope, einen Mini-Computer. Es gibt auch weitere eingebaute Aktoren und Sensoren, wie z. B. das Display, die Tasten ...",
   "MICROBITBRICK_TOOLTIP": "Block für micro:bit, einen Mini-Computer. Es gibt auch weitere eingebaute Aktoren und Sensoren, wie z. B. das Display, die Tasten ...",
   "PLAY_NOTE_TOOLTIP": "Spielt die angegebene Note.",
@@ -811,5 +811,13 @@
   "SENSOR_JOYSTICK":"joystick",
   "JOYSTICK_GETSAMPLE_TOOLTIP":"Gets the current reading of one of the axises of the joystick",
   "INTERNAL_PORT":"innere",
-  "MODE_AMBIENTLIGHT":"Umgebungslicht"
+  "PULSE_LOW":"Puls HIGH",
+  "PULSE_HIGH":"Puls LOW",
+  "PIN_GETSAMPLE_ANALOG_TOOLTIP":"Gibt den analogen Wert von dem angegeben Pin zurück. Der Wert ist zwischen 0 und 1023.",
+  "PIN_GETSAMPLE_DIGITAL_TOOLTIP":"Gibt den digitalen Wert von dem angegebenen Pin zurück. Der Wert ist entweder HIGH »1« oder LOW »0«.",
+  "PIN_GETSAMPLE_PULSEHIGH_TOOLTIP":"Gibt die Pulszeit HIGH an dem angegebenen Pin in Microsekunden oder -1 wenn die Zeit nicht gemessen werden konnte.",
+  "PIN_GETSAMPLE_PULSELOW_TOOLTIP":"Gibt die Pulszeit LOW an dem angegebenen Pin in Microsekunden oder -1 wenn die Zeit nicht gemessen werden konnte.",
+  "CONNECTION_POWER":"mit Stärke",
+  "CONNECTION_MBED_RECEIVE_TOOLTIP":"Liest eine Nachricht auf Kanal 0 bis 255",
+  "CONNECTION_MBED_SEND_TOOLTIP":"Sendet eine Nachricht über Kanal 0 bis 255 mit einer Signalstärke von 0 bis 7. Wobei 0 ist ein schwaches Signal und 7 das stärkste Signal ist."
 }

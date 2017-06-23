@@ -39,11 +39,17 @@ Blockly.Blocks['mbedCommunication_sendBlock'] = {
                 this.sourceBlock_.updateType_(option);
             }
         });
+        var power = [];
+        for (var i = 0; i < 8; i++) {
+            power.push([ i.toString(), i.toString() ]);
+        }
         this.dataType_ = 'String';
         this.appendValueInput('sendData').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_SEND_DATA).appendField(dataType, 'TYPE').setCheck(this.dataType_);
-        this.setTooltip(Blockly.Msg.CONNECTION_SEND_TOOLTIP);
+        this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_POWER).appendField(new Blockly.FieldDropdown(power), 'POWER').appendField(Blockly.Msg.CONNECTION_OVER_CHANNEL).setCheck('Number');
+        this.setTooltip(Blockly.Msg.CONNECTION_MBED_SEND_TOOLTIP);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
+        this.setInputsInline(false);
     },
     mutationToDom : function() {
         if (this.dataType_ === undefined) {
@@ -69,7 +75,7 @@ Blockly.Blocks['mbedCommunication_receiveBlock'] = {
     /**
      * Send a message to another device, maybe via the roberta lab server.
      * 
-     * @constructs robBrick_EV3_brick
+     * @constructs mbedCommunication_receiveBlock
      * @this.Blockly.Block
      * @param {String}
      *            CONNECTION name of the device, eg (nxt) 0, 1, 2, 3
@@ -85,12 +91,6 @@ Blockly.Blocks['mbedCommunication_receiveBlock'] = {
 
     init : function() {
         this.setColour(Blockly.CAT_COMMUNICATION_RGB);
-//        var dataType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_NUMBER, 'Number' ], [ Blockly.Msg.VARIABLES_TYPE_BOOLEAN, 'Boolean' ],
-//                [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ] ], function(option) {
-//            if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
-//                this.sourceBlock_.updateType_(option);
-//            }
-//        });
         var dataType = new Blockly.FieldDropdown([ [ Blockly.Msg.VARIABLES_TYPE_STRING, 'String' ] ], function(option) {
             if (option && this.sourceBlock_.getFieldValue('TYPE') !== option) {
                 this.sourceBlock_.updateType_(option);
@@ -98,8 +98,9 @@ Blockly.Blocks['mbedCommunication_receiveBlock'] = {
         });
         this.dataType_ = 'String';
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_RECEIVED_DATA).appendField(dataType, 'TYPE');
+        this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_OVER_CHANNEL).setCheck('Number');
         this.setOutput(true, this.dataType_);
-        this.setTooltip(Blockly.Msg.CONNECTION_RECEIVE_TOOLTIP);
+        this.setTooltip(Blockly.Msg.CONNECTION_MBED_RECEIVE_TOOLTIP);
         this.setInputsInline(false);
     },
     mutationToDom : function() {
