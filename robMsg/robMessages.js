@@ -914,4 +914,4 @@ Blockly.Msg.CONNECTION_POWER = 'with strength';
 Blockly.Msg.CONNECTION_MBED_RECEIVE_TOOLTIP = 'Waits for a message on channel 0 - 255. ';
 Blockly.Msg.CONNECTION_MBED_SEND_TOOLTIP = 'Sends a message to another microBoard. You can use the channel from 0 to 255 and specify a signal strength from 0 - 7, where 0 is very low and 7 is the strongests.';
 Blockly.Msg.BOB3_ARM = 'arm';
-Blockly.Msg.BOB3_ARM_PAIR = 'arm pair';
+Blockly.Msg.BOB3_ARM_PAIR = 'sensor pair';

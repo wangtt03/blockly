@@ -811,7 +811,7 @@
   "SENSOR_JOYSTICK":"joystick",
   "JOYSTICK_GETSAMPLE_TOOLTIP":"Gets the current reading of one of the axises of the joystick",
   "BOB3_ARM":"arm",
-  "BOB3_ARM_PAIR":"arm pair",
+  "BOB3_ARM_PAIR":"sensor pair",
   "INTERNAL_PORT":"innere",
   "PULSE_LOW":"Puls HIGH",
   "PULSE_HIGH":"Puls LOW",

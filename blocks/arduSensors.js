@@ -229,7 +229,7 @@ Blockly.Blocks['bob3Sensors_touch_getSample'] = {
         this.setColour(Blockly.CAT_SENSOR_RGB);
         var arm = new Blockly.FieldDropdown([ [ 'Left', '1' ], [ 'Right', '2' ] ]);
         var pair = new Blockly.FieldDropdown([ [ 'Bottom', '1' ], [ 'Lower middle', '2' ], [ 'Upper middle', '3' ], [ 'Upper', '4' ] ]);
-        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(arm, 'ARM').appendField(Blockly.Msg.BOB3_ARM).appendField(pair, Blockly.Msg.BOB3_ARM_PAIR);
+        this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(arm, 'ARM').appendField(Blockly.Msg.BOB3_ARM).appendField(pair, 'ARMPAIR').appendField(Blockly.Msg.BOB3_ARM_PAIR);
         this.setOutput(true, 'Boolean');
         this.setTooltip(Blockly.Msg.TOUCH_TOOLTIP);
     }
