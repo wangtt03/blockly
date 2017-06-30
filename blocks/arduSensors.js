@@ -234,3 +234,20 @@ Blockly.Blocks['bob3Sensors_touch_getSample'] = {
         this.setTooltip(Blockly.Msg.TOUCH_TOOLTIP);
     }
 };
+
+ Blockly.Blocks['bob3Sensors_irlight_getSample'] = {
+     /**
+      *
+      * @constructs bob3Sensors_irlight_getSample
+      * @this.Blockly.Block
+      * @returns immediately
+      * @returns {Number}
+      * @memberof Block
+      */
+
+     init : function() {
+         this.setColour(Blockly.CAT_SENSOR_RGB);
+         this.appendDummyInput().appendField(Blockly.Msg.SENSOR_GET_SAMPLE).appendField(Blockly.Msg.SENSOR_LIGHT);
+         this.setOutput(true, 'Number');
+     }
+ };
