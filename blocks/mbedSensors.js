@@ -411,13 +411,13 @@ Blockly.Blocks['mbedSensors_pin_getSample'] = {
         this.setTooltip(function() {
             var protocol_ = thisBlock.getFieldValue('VALUETYPE');
             var TOOLTIPS = {
-              'ANALOG': Blockly.Msg.PIN_GETSAMPLE_ANALOG_TOOLTIP,
-              'DIGITAL': Blockly.Msg.PIN_GETSAMPLE_DIGITAL_TOOLTIP,
-              'PULSEHIGH': Blockly.Msg.PIN_GETSAMPLE_PULSEHIGH_TOOLTIP,
-              'PULSELOW': Blockly.Msg.PIN_GETSAMPLE_PULSELOW_TOOLTIP
+                'ANALOG' : Blockly.Msg.PIN_GETSAMPLE_ANALOG_TOOLTIP,
+                'DIGITAL' : Blockly.Msg.PIN_GETSAMPLE_DIGITAL_TOOLTIP,
+                'PULSEHIGH' : Blockly.Msg.PIN_GETSAMPLE_PULSEHIGH_TOOLTIP,
+                'PULSELOW' : Blockly.Msg.PIN_GETSAMPLE_PULSELOW_TOOLTIP
             };
             return TOOLTIPS[protocol_];
-          });
+        });
         this.updatePins_(this.protocol_);
     },
     /**
@@ -481,63 +481,6 @@ Blockly.Blocks['mbedSensors_pin_getSample'] = {
             pinField.setValue("0");
             pinField.setText(Blockly.Msg.SENSOR_PIN + ' 0');
         }
-    }
-};
-
-Blockly.Blocks['mbedSensors_pin_getPuls'] = {
-    /**
-     * Get the impulse duration in microseconds from a (digital) pin.
-     * 
-     * @constructs mbedSensors_pin_getPuls
-     * @this.Blockly.Block
-     * @param {String/dropdown}
-     *            PIN - 0-3, A1
-     * @returns blockling
-     * @returns {Number in microseconds}
-     * @memberof Block
-     */
-
-    init : function() {
-        if (this.workspace.device === 'microbit') {
-            this.jsonInit({
-                "message0" : Blockly.Msg.SENSOR_GET + " " + Blockly.Msg.PIN_GETPULSE_TITLE,
-                "args0" : [ {
-                    "type" : "field_dropdown",
-                    "name" : "PULSETYPE",
-                    "options" : [ [ Blockly.Msg.HIGH, 'HIGH' ], [ Blockly.Msg.LOW, 'LOW' ] ]
-                }, {
-                    "type" : "field_dropdown",
-                    "name" : "PIN",
-                    "options" : [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ], [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ] ]
-                } ],
-                "output" : "Number",
-                "colour" : Blockly.CAT_SENSOR_RGB,
-                "tooltip" : Blockly.Msg.PIN_GETPULSE_TOOLTIP
-            });
-
-        } else if (this.workspace.device === 'calliope') {
-            this.jsonInit({
-                "message0" : Blockly.Msg.SENSOR_GET + " " + Blockly.Msg.PIN_GETPULSE_TITLE,
-                "args0" : [
-                        {
-                            "type" : "field_dropdown",
-                            "name" : "PULSETYPE",
-                            "options" : [ [ Blockly.Msg.HIGH, 'HIGH' ], [ Blockly.Msg.LOW, 'LOW' ] ]
-                        },
-                        {
-                            "type" : "field_dropdown",
-                            "name" : "PIN",
-                            "options" : [ [ Blockly.Msg.SENSOR_PIN + ' 0', '0' ], [ Blockly.Msg.SENSOR_PIN + ' 1', '1' ],
-                                    [ Blockly.Msg.SENSOR_PIN + ' 2', '2' ], [ Blockly.Msg.SENSOR_PIN + ' 3', '3' ], [ Blockly.Msg.SENSOR_GROVE + ' A0', '4' ],
-                                    [ Blockly.Msg.SENSOR_GROVE + ' A1', '5' ] ]
-                        } ],
-                "output" : "Number",
-                "colour" : Blockly.CAT_SENSOR_RGB,
-                "tooltip" : Blockly.Msg.PIN_GETPULSE_TOOLTIP
-            });
-        }
-
-        //   this.setTooltip(Blockly.Msg.PIN_GETPULSE_TOOLTIP);
     }
 };
 
