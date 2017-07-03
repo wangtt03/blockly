@@ -119,7 +119,7 @@ Blockly.Blocks['naoActions_hand'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_RIGHT, 'LEFT' ], [ Blockly.Msg.MOTOR_LEFT, 'RIGHT' ] ]);
+        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_RIGHT, 'RIGHT' ], [ Blockly.Msg.MOTOR_LEFT, 'LEFT' ] ]);
         var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_OPEN, 'OPEN' ], [ Blockly.Msg.MODE_CLOSE, 'CLOSE' ] ]);
         this.appendDummyInput().appendField(Blockly.Msg.NAO_HAND).appendField(side, 'SIDE').appendField(mode, 'MODE');
         this.setPreviousStatement(true);
