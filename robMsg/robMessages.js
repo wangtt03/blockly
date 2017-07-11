@@ -920,3 +920,4 @@ Blockly.Msg.CONNECTION_MBED_RECEIVE_TOOLTIP = 'Reads a message over one of the c
 Blockly.Msg.CONNECTION_MBED_SEND_TOOLTIP = 'Sends a message to another microBoard. You can specify a signal strength from 0 - 7, where 0 is very low and 7 is the strongests. The message is send over channel 0 unless you specify another one.';
 Blockly.Msg.CONNECTION_SET_CHANNEL = 'set channel to %1';
 Blockly.Msg.CONNECTION_SET_CHANNEL_TOOLTIP = 'Sets the channel for sending and receiving messages. Can be set from 0 to 255.';
+Blockly.Msg.NAO_WALK_ASYNC_TOOLTIP = 'Makes the robot walk infinitely';  // untranslated

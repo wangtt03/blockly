@@ -825,5 +825,6 @@
   "CONNECTION_MBED_RECEIVE_TOOLTIP":"Liest eine Nachricht über Kanal 0 bis 255. Der voreingestellte Kanal ist 0.",
   "CONNECTION_MBED_SEND_TOOLTIP":"Sendet eine Nachricht zu einem anderen Microboard über Kanal 0 bis 255 mit einer Signalstärke von 0 bis 7. Wobei 0 ist ein schwaches Signal und 7 das stärkste Signal ist.",
   "CONNECTION_SET_CHANNEL": "setze Kanal auf %1",
-  "CONNECTION_SET_CHANNEL_TOOLTIP": "Bestimmt den Kanal für die Nachrichtenübertragung für ein- und ausgehende Nachrichten. Mögliche Kanäle sind 0 bis 255."
+  "CONNECTION_SET_CHANNEL_TOOLTIP": "Bestimmt den Kanal für die Nachrichtenübertragung für ein- und ausgehende Nachrichten. Mögliche Kanäle sind 0 bis 255.",
+  "NAO_WALK_ASYNC_TOOLTIP": "Makes the robot walk infinitely"
 }
