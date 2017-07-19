@@ -257,6 +257,7 @@ Blockly.Msg.CONNECTION_CHECK = 'connection to robot %1 active?';
 Blockly.Msg.CONNECTION_CHECK_TOOLTIP = 'Check if the connection to the robot is active.';
 Blockly.Msg.CONNECTION_PROTOCOL_BLUETOOTH = 'Bluetooth';
 Blockly.Msg.TOOLBOX_ACTION = 'Action';
+Blockly.Msg.TOOLBOX_COGNITIVE = 'Cognitive';
 Blockly.Msg.TOOLBOX_COMMUNICATION = 'Messages';
 Blockly.Msg.TOOLBOX_PIN = 'Pin';
 Blockly.Msg.TOOLBOX_SENSOR = 'Sensors';

@@ -1083,6 +1083,7 @@ Blockly.Msg.TIMER_RESET_TOOLTIP = "Risetta il cronometro.";
 Blockly.Msg.TODAY = "Oggi";
 Blockly.Msg.TOOLBOX_ACTION = "Azione";
 Blockly.Msg.TOOLBOX_ANIMATION = "Animation";  // untranslated
+Blockly.Msg.TOOLBOX_COGNITIVE = "Cognitive";  // untranslated
 Blockly.Msg.TOOLBOX_COLOUR = "Colori";
 Blockly.Msg.TOOLBOX_COMMUNICATION = "Messaggi";
 Blockly.Msg.TOOLBOX_CONTROL = "Controllo";

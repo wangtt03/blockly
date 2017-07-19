@@ -1083,6 +1083,7 @@ Blockly.Msg.TIMER_RESET_TOOLTIP = "Сбросить таймер.";
 Blockly.Msg.TODAY = "Сегодня";
 Blockly.Msg.TOOLBOX_ACTION = "Действие";
 Blockly.Msg.TOOLBOX_ANIMATION = "Animation";  // untranslated
+Blockly.Msg.TOOLBOX_COGNITIVE = "Cognitive";  // untranslated
 Blockly.Msg.TOOLBOX_COLOUR = "Цвета";
 Blockly.Msg.TOOLBOX_COMMUNICATION = "Сообщения";
 Blockly.Msg.TOOLBOX_CONTROL = "Контроль";

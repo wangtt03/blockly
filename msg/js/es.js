@@ -1083,6 +1083,7 @@ Blockly.Msg.TIMER_RESET_TOOLTIP = "Reinicia el temporizador";
 Blockly.Msg.TODAY = "Hoy";
 Blockly.Msg.TOOLBOX_ACTION = "Acción";
 Blockly.Msg.TOOLBOX_ANIMATION = "Animation";  // untranslated
+Blockly.Msg.TOOLBOX_COGNITIVE = "Cognitive";  // untranslated
 Blockly.Msg.TOOLBOX_COLOUR = "Colores";
 Blockly.Msg.TOOLBOX_COMMUNICATION = "Mensajes";
 Blockly.Msg.TOOLBOX_CONTROL = "Control";

@@ -1083,6 +1083,7 @@ Blockly.Msg.TIMER_RESET_TOOLTIP = "Nulstiller uret.";
 Blockly.Msg.TODAY = "I dag";
 Blockly.Msg.TOOLBOX_ACTION = "Handling";
 Blockly.Msg.TOOLBOX_ANIMATION = "Animation";  // untranslated
+Blockly.Msg.TOOLBOX_COGNITIVE = "Cognitive";  // untranslated
 Blockly.Msg.TOOLBOX_COLOUR = "Farver";
 Blockly.Msg.TOOLBOX_COMMUNICATION = "Beskeder";
 Blockly.Msg.TOOLBOX_CONTROL = "Kontrol";

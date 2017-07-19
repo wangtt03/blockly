@@ -1083,6 +1083,7 @@ Blockly.Msg.TIMER_RESET_TOOLTIP = "Resets the timer.";  // untranslated
 Blockly.Msg.TODAY = "Tänään";
 Blockly.Msg.TOOLBOX_ACTION = "Toiminta";
 Blockly.Msg.TOOLBOX_ANIMATION = "Animation";  // untranslated
+Blockly.Msg.TOOLBOX_COGNITIVE = "Cognitive";  // untranslated
 Blockly.Msg.TOOLBOX_COLOUR = "Värit";
 Blockly.Msg.TOOLBOX_COMMUNICATION = "Viestintä";
 Blockly.Msg.TOOLBOX_CONTROL = "Kontrollirak.";
