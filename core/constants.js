@@ -118,6 +118,11 @@ Blockly.CAT_COMMUNICATION_RGB = "#FF69B4";
 Blockly.CAT_IMAGE_RGB = "#DF01D7";
 
 /**
+ * Opacity used to calculate flyout background color.
+ */
+Blockly.FLYOUT_OPACITY = .35;
+
+/**
  * Lookup table for icon - categories.
  * @const
  */

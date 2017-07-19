@@ -119,7 +119,7 @@ Blockly.Blocks['naoActions_hand'] = {
      */
     init : function() {
         this.setColour(Blockly.CAT_ACTION_RGB);
-        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_RIGHT, 'LEFT' ], [ Blockly.Msg.MOTOR_LEFT, 'RIGHT' ] ]);
+        var side = new Blockly.FieldDropdown([ [ Blockly.Msg.MOTOR_RIGHT, 'RIGHT' ], [ Blockly.Msg.MOTOR_LEFT, 'LEFT' ] ]);
         var mode = new Blockly.FieldDropdown([ [ Blockly.Msg.MODE_OPEN, 'OPEN' ], [ Blockly.Msg.MODE_CLOSE, 'CLOSE' ] ]);
         this.appendDummyInput().appendField(Blockly.Msg.NAO_HAND).appendField(side, 'SIDE').appendField(mode, 'MODE');
         this.setPreviousStatement(true);
@@ -196,6 +196,29 @@ Blockly.Blocks['naoActions_walkTo'] = {
         this.setPreviousStatement(true);
         this.setNextStatement(true);
         this.setTooltip(Blockly.Msg.NAO_WALKTO_TOOLTIP);
+    }
+};
+
+Blockly.Blocks['naoActions_walk_async'] = {
+    /**
+     * NAO walks infinitely.
+     *
+     * @constructs naoActions_walk_async
+     * @this.Blockly.Block
+     * @param {Number}
+     *            X, Y, Turn speeds
+     * @returns immediately
+     * @memberof Block
+     */
+    init : function() {
+        this.setColour(Blockly.CAT_ACTION_RGB);
+        this.appendDummyInput().appendField(Blockly.Msg.NAO_WALK)
+        this.appendValueInput('XSpeed').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("x speed");
+        this.appendValueInput('YSpeed').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("y speed");
+        this.appendValueInput('ZSpeed').setCheck('Number').setAlign(Blockly.ALIGN_RIGHT).appendField("turn speed");
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.setTooltip(Blockly.Msg.NAO_WALK_ASYNC_TOOLTIP);
     }
 };
 

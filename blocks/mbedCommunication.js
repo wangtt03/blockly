@@ -45,7 +45,7 @@ Blockly.Blocks['mbedCommunication_sendBlock'] = {
         }
         this.dataType_ = 'String';
         this.appendValueInput('sendData').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_SEND_DATA).appendField(dataType, 'TYPE').setCheck(this.dataType_);
-        this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_POWER).appendField(new Blockly.FieldDropdown(power), 'POWER').appendField(Blockly.Msg.CONNECTION_OVER_CHANNEL).setCheck('Number');
+        this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_POWER).appendField(new Blockly.FieldDropdown(power), 'POWER');
         this.setTooltip(Blockly.Msg.CONNECTION_MBED_SEND_TOOLTIP);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -98,7 +98,6 @@ Blockly.Blocks['mbedCommunication_receiveBlock'] = {
         });
         this.dataType_ = 'String';
         this.appendDummyInput().setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_RECEIVED_DATA).appendField(dataType, 'TYPE');
-        this.appendValueInput('CONNECTION').setAlign(Blockly.ALIGN_RIGHT).appendField(Blockly.Msg.CONNECTION_OVER_CHANNEL).setCheck('Number');
         this.setOutput(true, this.dataType_);
         this.setTooltip(Blockly.Msg.CONNECTION_MBED_RECEIVE_TOOLTIP);
         this.setInputsInline(false);
@@ -120,5 +119,22 @@ Blockly.Blocks['mbedCommunication_receiveBlock'] = {
     updateType_ : function(option) {
         this.dataType_ = option;
         this.setOutput(true, this.dataType_);
-    },
+    }
+};
+
+Blockly.Blocks['mbedCommunication_setChannel'] = {
+    init : function() {
+        this.jsonInit({
+            "message0" : Blockly.Msg.CONNECTION_SET_CHANNEL,
+            "args0" : [ {
+                "type" : "input_value",
+                "name" : "CONNECTION",
+                "check" : "Number"
+            } ],
+            "previousStatement": null,
+            "nextStatement": null,
+            "colour" : Blockly.CAT_COMMUNICATION_RGB,
+            "tooltip" : Blockly.Msg.CONNECTION_SET_CHANNEL_TOOLTIP,
+        });
+    }
 };
