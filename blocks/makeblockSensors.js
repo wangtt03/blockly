@@ -142,7 +142,7 @@ Blockly.Blocks['makeblockSensors_flameSensor_getSample'] = {
   * @lends Block
   */
 
- Blockly.Blocks['mbedSensors_getSample'] = {
+ Blockly.Blocks['makeblockSensors_getSample'] = {
      /**
       * Get the current reading from choosen sensor.
       *
