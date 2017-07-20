@@ -1085,6 +1085,7 @@ Blockly.Msg.TIMER_RESET_TOOLTIP = "Vynuluje časovač.";
 Blockly.Msg.TODAY = "Dnes";
 Blockly.Msg.TOOLBOX_ACTION = "Akce";
 Blockly.Msg.TOOLBOX_ANIMATION = "Animation";  // untranslated
+Blockly.Msg.TOOLBOX_COGNITIVE = "Cognitive";  // untranslated
 Blockly.Msg.TOOLBOX_COLOUR = "Barvy";
 Blockly.Msg.TOOLBOX_COMMUNICATION = "Zprávy";
 Blockly.Msg.TOOLBOX_CONTROL = "Ovládání";

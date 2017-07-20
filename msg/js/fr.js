@@ -1085,6 +1085,7 @@ Blockly.Msg.TIMER_RESET_TOOLTIP = "initialise le temps";
 Blockly.Msg.TODAY = "Aujourd'hui";
 Blockly.Msg.TOOLBOX_ACTION = "action";
 Blockly.Msg.TOOLBOX_ANIMATION = "Animation";  // untranslated
+Blockly.Msg.TOOLBOX_COGNITIVE = "Cognitive";  // untranslated
 Blockly.Msg.TOOLBOX_COLOUR = "couleurs";
 Blockly.Msg.TOOLBOX_COMMUNICATION = "message";
 Blockly.Msg.TOOLBOX_CONTROL = "contrôle";

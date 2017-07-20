@@ -1085,6 +1085,7 @@ Blockly.Msg.TIMER_RESET_TOOLTIP = "Resets the timer.";
 Blockly.Msg.TODAY = "Today";
 Blockly.Msg.TOOLBOX_ACTION = "Action";
 Blockly.Msg.TOOLBOX_ANIMATION = "Animation";
+Blockly.Msg.TOOLBOX_COGNITIVE = "Cognitive";
 Blockly.Msg.TOOLBOX_COLOUR = "Colours";
 Blockly.Msg.TOOLBOX_COMMUNICATION = "Messages";
 Blockly.Msg.TOOLBOX_CONTROL = "Control";
