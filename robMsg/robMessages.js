@@ -256,6 +256,9 @@ Blockly.Msg.CONNECTION_TOOLTIP = 'A robot"s connection';
 Blockly.Msg.CONNECTION_CHECK = 'connection to robot %1 active?';
 Blockly.Msg.CONNECTION_CHECK_TOOLTIP = 'Check if the connection to the robot is active.';
 Blockly.Msg.CONNECTION_PROTOCOL_BLUETOOTH = 'Bluetooth';
+Blockly.Msg.COGNITIVE_FACE_DETECT = 'face detect?';
+Blockly.Msg.COGNITIVE_SPEECH_RECOGNITION = 'Speech Recognition';
+Blockly.Msg.COGNITIVE_SPEEK = 'Speak';
 Blockly.Msg.TOOLBOX_ACTION = 'Action';
 Blockly.Msg.TOOLBOX_COGNITIVE = 'Cognitive';
 Blockly.Msg.TOOLBOX_COMMUNICATION = 'Messages';
@@ -922,3 +925,6 @@ Blockly.Msg.CONNECTION_MBED_SEND_TOOLTIP = 'Sends a message to another microBoar
 Blockly.Msg.CONNECTION_SET_CHANNEL = 'set channel to %1';
 Blockly.Msg.CONNECTION_SET_CHANNEL_TOOLTIP = 'Sets the channel for sending and receiving messages. Can be set from 0 to 255.';
 Blockly.Msg.NAO_WALK_ASYNC_TOOLTIP = 'Makes the robot walk infinitely';  // untranslated
+
+
+

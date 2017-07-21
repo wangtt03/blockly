@@ -19,3 +19,28 @@ Blockly.Blocks['face_detect'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['brickpiSpeech_Recognition'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.COGNITIVE_SPEECH_RECOGNITION);
+    this.setOutput(true, "String");
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['brickpiSpeak'] = {
+  init: function() {
+    this.appendValueInput("NAME")
+        .setCheck("String")
+        .setAlign(Blockly.ALIGN_RIGHT)
+        .appendField(Blockly.Msg.COGNITIVE_SPEEK);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
