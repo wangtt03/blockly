@@ -33,7 +33,7 @@ Blockly.Blocks['brickpiSpeech_Recognition'] = {
 
 Blockly.Blocks['brickpiSpeak'] = {
   init: function() {
-    this.appendValueInput("NAME")
+    this.appendValueInput("OUT")
         .setCheck("String")
         .setAlign(Blockly.ALIGN_RIGHT)
         .appendField(Blockly.Msg.COGNITIVE_SPEEK);
