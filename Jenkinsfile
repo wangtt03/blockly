@@ -12,7 +12,7 @@ podTemplate(label: 'blockly-pod', containers: [
         def err = ''
         try {
             stage("Build"){
-                slackSend channel: "#build_status", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
+                slackSend channel: "#build_status", message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
                 container("python"){
                     stage('Clone repository') {
                         checkout scm
@@ -68,4 +68,6 @@ def notifyStatus(success, error){
     mail (to: 'tiantiaw@microsoft.com',
         subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) is ${label}",
         body: "msg: ${error}");
+
+    slackSend channel: "#build_status", message: "Build ${label} - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 }
