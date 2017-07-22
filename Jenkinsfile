@@ -68,6 +68,7 @@ def notifyStatus(success, error){
     mail (to: 'tiantiaw@microsoft.com',
         subject: "Job '${env.JOB_NAME}' (${env.BUILD_NUMBER}) is ${label}",
         body: "msg: ${error}");
+        
     if (label == 'SUCCESS') {
         color = 'GREEN'
         colorCode = '#00FF00'
