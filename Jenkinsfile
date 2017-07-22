@@ -12,6 +12,7 @@ podTemplate(label: 'blockly-pod', containers: [
         def err = ''
         try {
             stage("Build"){
+                slackSend channel: "#build_status", message: "Build Started: ${env.JOB_NAME} ${env.BUILD_NUMBER}"
                 container("python"){
                     stage('Clone repository') {
                         checkout scm
