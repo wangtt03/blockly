@@ -44,3 +44,14 @@ Blockly.Blocks['brickpiSpeak'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['brickpiOCR'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.COGNITIVE_OCR);
+    this.setOutput(true, "String");
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};

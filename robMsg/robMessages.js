@@ -259,6 +259,7 @@ Blockly.Msg.CONNECTION_PROTOCOL_BLUETOOTH = 'Bluetooth';
 Blockly.Msg.COGNITIVE_FACE_DETECT = 'face detect?';
 Blockly.Msg.COGNITIVE_SPEECH_RECOGNITION = 'Speech Recognition';
 Blockly.Msg.COGNITIVE_SPEEK = 'Speak';
+Blockly.Msg.COGNITIVE_OCR = 'OCR';
 Blockly.Msg.TOOLBOX_ACTION = 'Action';
 Blockly.Msg.TOOLBOX_COGNITIVE = 'Cognitive';
 Blockly.Msg.TOOLBOX_COMMUNICATION = 'Messages';
