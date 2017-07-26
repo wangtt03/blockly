@@ -55,3 +55,25 @@ Blockly.Blocks['brickpiOCR'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['brickpiEmotion_Recognition'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION);
+    this.setOutput(true, "String");
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks['brickpiDescribe_Image'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE);
+    this.setOutput(true, "String");
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
