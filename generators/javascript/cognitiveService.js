@@ -71,7 +71,7 @@ Blockly.JavaScript['brickpiDescribe_Image'] = function(block) {
 };
 
 Blockly.JavaScript['brickpiSet_Wakeup_Word'] = function(block) {
-  var dropdown_wake_words = block.getFieldValue('wake_words');
+  var dropdown_wake_words = block.getFieldValue('WAKEUPWORD');
   // TODO: Assemble JavaScript into code variable.
   var code = '...;\n';
   return code;
