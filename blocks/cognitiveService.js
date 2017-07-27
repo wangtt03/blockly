@@ -9,7 +9,7 @@ goog.provide('Blockly.Blocks.cognitiveService');
 
 goog.require('Blockly.Blocks');
 
-Blockly.Blocks['face_detect'] = {
+Blockly.Blocks['brickpiFace_Detect'] = {
   init: function() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.COGNITIVE_FACE_DETECT);
@@ -82,7 +82,7 @@ Blockly.Blocks['brickpiWake_Words'] = {
   init: function() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER)
-        .appendField(new Blockly.FieldDropdown([["Hello","HELLO"], ["Start","START"], ["LaoJia","LAOJIA"]]), "wake_words");
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.COGNITIVE_WAKEWORD_HELLO,"HELLO"], [Blockly.Msg.COGNITIVE_WAKEWORD_START,"START"], [Blockly.Msg.COGNITIVE_WAKEWORD_LAOJIA,"LAOJIA"]]), "wake_words");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);

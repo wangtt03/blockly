@@ -28,7 +28,7 @@ goog.provide('Blockly.JavaScript.cognitiveService');
 
 goog.require('Blockly.JavaScript');
 
-Blockly.JavaScript['face_detect'] = function(block) {
+Blockly.JavaScript['brickpiFace_Detect'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = '...';
   // TODO: Change ORDER_NONE to the correct strength.
