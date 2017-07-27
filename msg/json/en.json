@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2017-07-26 14:54:17.649185",
+		"lastupdated": "2017-07-27 09:26:43.605553",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -574,6 +574,7 @@
 	"COGNITIVE_OCR": "OCR",
 	"COGNITIVE_EMOTION_RECOGNITION": "Emotion Recognition",
 	"COGNITIVE_DESCRIBE_IMAGE": "Describe image",
+	"COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER": "Choose the word to wake up Jasper",
 	"TOOLBOX_ACTION": "Action",
 	"TOOLBOX_COGNITIVE": "Cognitive",
 	"TOOLBOX_COMMUNICATION": "Messages",

@@ -77,3 +77,16 @@ Blockly.Blocks['brickpiDescribe_Image'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['brickpiWake_Words'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER)
+        .appendField(new Blockly.FieldDropdown([["Hello","HELLO"], ["Start","START"], ["LaoJia","LAOJIA"]]), "wake_words");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};

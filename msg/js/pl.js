@@ -41,6 +41,7 @@ Blockly.Msg.CENTER = "środek";
 Blockly.Msg.CHANGE_VALUE_TITLE = "Zmień wartość:";
 Blockly.Msg.CHAT = "Rozmawiaj z swoim współpracownikiem, pisząc w tym polu!";
 Blockly.Msg.CLEAN_UP = "Uporządkuj bloki";
+Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "Choose the word to wake up Jasper";  // untranslated
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "Describe image";  // untranslated
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "Emotion Recognition";  // untranslated
 Blockly.Msg.COGNITIVE_FACE_DETECT = "face detect?";  // untranslated

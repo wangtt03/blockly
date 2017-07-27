@@ -69,3 +69,10 @@ Blockly.JavaScript['brickpiDescribe_Image'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
+Blockly.JavaScript['brickpiWake_Words'] = function(block) {
+  var dropdown_wake_words = block.getFieldValue('wake_words');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  return code;
+};

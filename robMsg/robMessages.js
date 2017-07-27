@@ -262,6 +262,7 @@ Blockly.Msg.COGNITIVE_SPEEK = 'Speak';
 Blockly.Msg.COGNITIVE_OCR = 'OCR';
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = 'Emotion Recognition';
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = 'Describe image';
+Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = 'Choose the word to wake up Jasper';
 Blockly.Msg.TOOLBOX_ACTION = 'Action';
 Blockly.Msg.TOOLBOX_COGNITIVE = 'Cognitive';
 Blockly.Msg.TOOLBOX_COMMUNICATION = 'Messages';

@@ -41,6 +41,7 @@ Blockly.Msg.CENTER = "center";
 Blockly.Msg.CHANGE_VALUE_TITLE = "Change value:";
 Blockly.Msg.CHAT = "Chat with your collaborator by typing in this box!";
 Blockly.Msg.CLEAN_UP = "Clean up Blocks";
+Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "Choose the word to wake up Jasper";
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "Describe image";
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "Emotion Recognition";
 Blockly.Msg.COGNITIVE_FACE_DETECT = "face detect?";
