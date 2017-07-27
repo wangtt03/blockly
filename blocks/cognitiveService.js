@@ -78,7 +78,7 @@ Blockly.Blocks['brickpiDescribe_Image'] = {
   }
 };
 
-Blockly.Blocks['brickpiWake_Words'] = {
+Blockly.Blocks['brickpiSet_Wakeup_Word'] = {
   init: function() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER)
