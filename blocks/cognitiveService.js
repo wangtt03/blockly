@@ -82,7 +82,7 @@ Blockly.Blocks['brickpiSet_Wakeup_Word'] = {
   init: function() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER)
-        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.COGNITIVE_WAKEWORD_HELLO,"HELLO"], [Blockly.Msg.COGNITIVE_WAKEWORD_START,"START"], [Blockly.Msg.COGNITIVE_WAKEWORD_LAOJIA,"LAOJIA"]]), "wake_words");
+        .appendField(new Blockly.FieldDropdown([[Blockly.Msg.COGNITIVE_WAKEWORD_HELLO,"HELLO"], [Blockly.Msg.COGNITIVE_WAKEWORD_START,"START"], [Blockly.Msg.COGNITIVE_WAKEWORD_LAOJIA,"LAOJIA"]]), "WAKEUPWORD");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
