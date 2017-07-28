@@ -42,6 +42,7 @@ Blockly.Msg.CHANGE_VALUE_TITLE = "値を変更します。";
 Blockly.Msg.CHAT = "このボックスに入力して共同編集者とチャットしよう！";
 Blockly.Msg.CLEAN_UP = "ブロックの整理";
 Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "Choose the word to wake up Jasper";  // untranslated
+Blockly.Msg.COGNITIVE_CONTAINS = "contains";  // untranslated
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "Describe image";  // untranslated
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "Emotion Recognition";  // untranslated
 Blockly.Msg.COGNITIVE_FACE_DETECT = "face detect?";  // untranslated

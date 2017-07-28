@@ -42,6 +42,7 @@ Blockly.Msg.CHANGE_VALUE_TITLE = "Ndrysho Vlerat:";
 Blockly.Msg.CHAT = "Chat with your collaborator by typing in this box!";  // untranslated
 Blockly.Msg.CLEAN_UP = "Clean up Blocks";  // untranslated
 Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "Choose the word to wake up Jasper";  // untranslated
+Blockly.Msg.COGNITIVE_CONTAINS = "contains";  // untranslated
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "Describe image";  // untranslated
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "Emotion Recognition";  // untranslated
 Blockly.Msg.COGNITIVE_FACE_DETECT = "face detect?";  // untranslated

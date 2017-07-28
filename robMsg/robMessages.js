@@ -268,6 +268,7 @@ Blockly.Msg.COGNITIVE_WAKEWORD_START = 'Start';
 Blockly.Msg.COGNITIVE_WAKEWORD_LAOJIA = 'LaoJia';
 Blockly.Msg.COGNITIVE_JASPER_LISTEN_FOR = 'Jasper listen for';
 Blockly.Msg.COGNITIVE_SECONDS = 'seconds';
+Blockly.Msg.COGNITIVE_CONTAINS = 'contains';
 Blockly.Msg.TOOLBOX_ACTION = 'Action';
 Blockly.Msg.TOOLBOX_COGNITIVE = 'Cognitive';
 Blockly.Msg.TOOLBOX_COMMUNICATION = 'Messages';

@@ -84,3 +84,12 @@ Blockly.JavaScript['brickpiListen_For_Some_Seconds'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
+Blockly.JavaScript['brickpiText_Contain'] = function(block) {
+  var value_string = Blockly.JavaScript.valueToCode(block, 'STRING', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_substring = Blockly.JavaScript.valueToCode(block, 'SUBSTRING', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};

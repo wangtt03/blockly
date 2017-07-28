@@ -42,6 +42,7 @@ Blockly.Msg.CHANGE_VALUE_TITLE = "Άλλαξε την τιμή:";
 Blockly.Msg.CHAT = "Μπορείς να μιλήσεις με τον συνεργάτη σου πληκτρολογώντας σ'αυτό το πλαίσιο!";
 Blockly.Msg.CLEAN_UP = "Clean up Blocks";  // untranslated
 Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "Choose the word to wake up Jasper";  // untranslated
+Blockly.Msg.COGNITIVE_CONTAINS = "contains";  // untranslated
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "Describe image";  // untranslated
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "Emotion Recognition";  // untranslated
 Blockly.Msg.COGNITIVE_FACE_DETECT = "face detect?";  // untranslated

@@ -103,3 +103,18 @@ Blockly.Blocks['brickpiListen_For_Some_Seconds'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['brickpiText_Contain'] = {
+  init: function() {
+    this.appendValueInput("STRING")
+        .setCheck("String");
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.COGNITIVE_CONTAINS);
+    this.appendValueInput("SUBSTRING")
+        .setCheck("String");
+    this.setOutput(true, "Boolean");
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};

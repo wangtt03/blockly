@@ -42,6 +42,7 @@ Blockly.Msg.CHANGE_VALUE_TITLE = "修改值:";
 Blockly.Msg.CHAT = "與您的合作者洽談藉由在此框輸入！";
 Blockly.Msg.CLEAN_UP = "清理積木";
 Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "Choose the word to wake up Jasper";  // untranslated
+Blockly.Msg.COGNITIVE_CONTAINS = "contains";  // untranslated
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "Describe image";  // untranslated
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "Emotion Recognition";  // untranslated
 Blockly.Msg.COGNITIVE_FACE_DETECT = "face detect?";  // untranslated

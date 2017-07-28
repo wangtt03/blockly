@@ -42,6 +42,7 @@ Blockly.Msg.CHANGE_VALUE_TITLE = "Мәғәнәне үҙгәртегеҙ:";
 Blockly.Msg.CHAT = "Был яланды тултырғанда, хеҙмәттәшегеҙ менән аралашығыҙ";
 Blockly.Msg.CLEAN_UP = "Блоктарҙы таҙартырға";
 Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "Choose the word to wake up Jasper";  // untranslated
+Blockly.Msg.COGNITIVE_CONTAINS = "contains";  // untranslated
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "Describe image";  // untranslated
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "Emotion Recognition";  // untranslated
 Blockly.Msg.COGNITIVE_FACE_DETECT = "face detect?";  // untranslated

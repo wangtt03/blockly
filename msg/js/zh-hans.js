@@ -42,6 +42,7 @@ Blockly.Msg.CHANGE_VALUE_TITLE = "更改值：";
 Blockly.Msg.CHAT = "通过在此框输入与您的合作者沟通！";
 Blockly.Msg.CLEAN_UP = "清理块";
 Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "为语音助手选择唤醒词";
+Blockly.Msg.COGNITIVE_CONTAINS = "包含";
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "描述图片";
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "表情识别";
 Blockly.Msg.COGNITIVE_FACE_DETECT = "是否检测到人脸？";

@@ -42,6 +42,7 @@ Blockly.Msg.CHANGE_VALUE_TITLE = "Промени стойността:";
 Blockly.Msg.CHAT = "Говори с колега, като пишеш в това поле!";
 Blockly.Msg.CLEAN_UP = "Премахни блокове";
 Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "Choose the word to wake up Jasper";  // untranslated
+Blockly.Msg.COGNITIVE_CONTAINS = "contains";  // untranslated
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "Describe image";  // untranslated
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "Emotion Recognition";  // untranslated
 Blockly.Msg.COGNITIVE_FACE_DETECT = "face detect?";  // untranslated

@@ -42,6 +42,7 @@ Blockly.Msg.CHANGE_VALUE_TITLE = "Thay giá trị thành:";
 Blockly.Msg.CHAT = "Trò chuyện với cộng tác viên của bạn bằng cách gõ vào hộp này!";
 Blockly.Msg.CLEAN_UP = "Clean up Blocks";  // untranslated
 Blockly.Msg.COGNITIVE_CHOOSE_WAKE_WORD_FOR_JASPER = "Choose the word to wake up Jasper";  // untranslated
+Blockly.Msg.COGNITIVE_CONTAINS = "contains";  // untranslated
 Blockly.Msg.COGNITIVE_DESCRIBE_IMAGE = "Describe image";  // untranslated
 Blockly.Msg.COGNITIVE_EMOTION_RECOGNITION = "Emotion Recognition";  // untranslated
 Blockly.Msg.COGNITIVE_FACE_DETECT = "face detect?";  // untranslated
