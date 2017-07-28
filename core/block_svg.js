@@ -55,13 +55,13 @@ Blockly.BlockSvg = function(workspace, prototypeName, opt_id) {
    */
   this.svgGroup_ = Blockly.createSvgElement('g', {}, null);
 
-//  /**
-//   * @type {SVGElement}
-//   * @private
-//   */
-//  this.svgPathDark_ = Blockly.createSvgElement('path',
-//      {'class': 'blocklyPathDark', 'transform': 'translate(1,1)'},
-//      this.svgGroup_);
+  /**
+   * @type {SVGElement}
+   * @private
+   */
+  this.svgPathDark_ = Blockly.createSvgElement('path',
+      {'class': 'blocklyPathDark', 'transform': 'translate(1,1)'},
+      this.svgGroup_);
 
   /**
    * @type {SVGElement}
@@ -75,8 +75,8 @@ Blockly.BlockSvg = function(workspace, prototypeName, opt_id) {
    * @type {SVGElement}
    * @private
    */
-//  this.svgPathLight_ = Blockly.createSvgElement('path',
-//      {'class': 'blocklyPathLight'}, this.svgGroup_);
+  this.svgPathLight_ = Blockly.createSvgElement('path',
+      {'class': 'blocklyPathLight'}, this.svgGroup_);
   this.svgPath_.tooltip = this;
 
   /** @type {boolean} */
@@ -1070,8 +1070,8 @@ Blockly.BlockSvg.prototype.dispose = function(healStack, animate) {
   // Sever JavaScript to DOM connections.
   this.svgGroup_ = null;
   this.svgPath_ = null;
-//  this.svgPathLight_ = null;
-//  this.svgPathDark_ = null;
+  this.svgPathLight_ = null;
+  this.svgPathDark_ = null;
   Blockly.Field.stopCache();
 };
 
@@ -1259,19 +1259,18 @@ Blockly.BlockSvg.prototype.updateColour = function() {
   }
   var hexColour = this.getColour();
   var rgb = goog.color.hexToRgb(hexColour);
-//  if (this.isShadow()) {
-//    rgb = goog.color.lighten(rgb, 0.6);
-//    hexColour = goog.color.rgbArrayToHex(rgb);
-//    this.svgPathLight_.style.display = 'none';
-//  }
-//    this.svgPathDark_.setAttribute('fill', hexColour);
-//  } else {
-//    this.svgPathLight_.style.display = '';
-//    var hexLight = goog.color.rgbArrayToHex(goog.color.lighten(rgb, 0.3));
-//    var hexDark = goog.color.rgbArrayToHex(goog.color.darken(rgb, 0.2));
-//    this.svgPathLight_.setAttribute('stroke', hexLight);
-//    this.svgPathDark_.setAttribute('fill', hexDark);
-//  }
+ if (this.isShadow()) {
+   rgb = goog.color.lighten(rgb, 0.6);
+   hexColour = goog.color.rgbArrayToHex(rgb);
+   this.svgPathLight_.style.display = 'none';
+   this.svgPathDark_.setAttribute('fill', hexColour);
+ } else {
+   this.svgPathLight_.style.display = '';
+   var hexLight = goog.color.rgbArrayToHex(goog.color.lighten(rgb, 0.3));
+   var hexDark = goog.color.rgbArrayToHex(goog.color.darken(rgb, 0.2));
+   this.svgPathLight_.setAttribute('stroke', hexLight);
+   this.svgPathDark_.setAttribute('fill', hexDark);
+ }
   this.svgPath_.setAttribute('fill', hexColour);
 
   var icons = this.getIcons();
