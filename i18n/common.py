@@ -135,7 +135,6 @@ def _create_lang_file(author, lang, output_dir):
 \t\t"locale": "{2}",
 \t\t"messagedocumentation" : "qqq"
 """.format(author, str(datetime.now()), lang))
-    lang_file.write('\t},\n')
     return lang_file
 
 
@@ -208,9 +207,13 @@ def write_files(author, lang, output_dir, units, write_key_file):
         KeyError: An expected key is missing from units.
     """
     lang_file = _create_lang_file(author, lang, output_dir)
+    if len(units) > 0:
+        lang_file.write('\t},\n')
+    else:
+        lang_file.write('\t}\n')
     qqq_file = _create_qqq_file(output_dir)
     if write_key_file:
-      key_file = _create_key_file(output_dir)
+        key_file = _create_key_file(output_dir)
     first_entry = True
     for unit in units:
         if not first_entry:
