@@ -28,7 +28,7 @@ goog.provide('Blockly.JavaScript.cognitiveService');
 
 goog.require('Blockly.JavaScript');
 
-Blockly.JavaScript['face_detect'] = function(block) {
+Blockly.JavaScript['brickpiFace_Detect'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = '...';
   // TODO: Change ORDER_NONE to the correct strength.
@@ -50,6 +50,35 @@ Blockly.JavaScript['brickpiSpeak'] = function(block) {
 };
 
 Blockly.JavaScript['brickpiOCR'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['brickpiEmotion_Recognition'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['brickpiDescribe_Image'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['brickpiSet_Wakeup_Word'] = function(block) {
+  var dropdown_wake_words = block.getFieldValue('WAKEUPWORD');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  return code;
+};
+
+Blockly.JavaScript['brickpiListen_For_Some_Seconds'] = function(block) {
+  var dropdown_second = block.getFieldValue('SECOND');
   // TODO: Assemble JavaScript into code variable.
   var code = '...';
   // TODO: Change ORDER_NONE to the correct strength.
