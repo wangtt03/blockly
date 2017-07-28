@@ -76,3 +76,11 @@ Blockly.JavaScript['brickpiSet_Wakeup_Word'] = function(block) {
   var code = '...;\n';
   return code;
 };
+
+Blockly.JavaScript['brickpiListen_For_Some_Seconds'] = function(block) {
+  var dropdown_second = block.getFieldValue('SECOND');
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};

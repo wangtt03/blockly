@@ -90,3 +90,16 @@ Blockly.Blocks['brickpiSet_Wakeup_Word'] = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks['brickpiListen_For_Some_Seconds'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.COGNITIVE_JASPER_LISTEN_FOR)
+        .appendField(new Blockly.FieldDropdown([["5","FIVE_SECOND"], ["8","EIGHT_SECOND"], ["10","TEN_SECOND"]]), "SECOND")
+        .appendField(Blockly.Msg.COGNITIVE_SECONDS);
+    this.setOutput(true, "String");
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
