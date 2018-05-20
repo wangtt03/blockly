@@ -37,7 +37,7 @@ goog.require('goog.dom');
  */
 Blockly.RobControls = function(workspace, zoom) {
     this.workspace_ = workspace;
-    this.zoom_ = zoom;
+    this.zoom_ = false;
 };
 
 /**
@@ -166,8 +166,8 @@ Blockly.RobControls.prototype.createDom = function() {
     this.svgGroup_ = Blockly.createSvgElement('g', {
         'class' : 'blocklyButtons'
     }, null);
-    this.runOnBrick = this.createButton_(this.PATH_RUNONBRICK_, 0, 0, 'MENU_START_BRICK');
-    this.runOnBrick.setAttribute("id", "runOnBrick");
+    // this.runOnBrick = this.createButton_(this.PATH_RUNONBRICK_, 0, 0, 'MENU_START_BRICK');
+    // this.runOnBrick.setAttribute("id", "runOnBrick");
 //  this.runInSim = this.createButton_(this.PATH_RUNINSIM_, 1, 0, Blockly.Msg.MENU_START_SIM);
 //  this.simStop = this.createButton_(this.PATH_SIMSTOP_, 1, 0, Blockly.Msg.MENU_SIM_STOP);
 //  this.simStep = this.createButton_(this.PATH_SIMSTEP_, 1, 1);
@@ -182,46 +182,46 @@ Blockly.RobControls.prototype.createDom = function() {
 //  this.simStep.setAttribute('class', 'robButtonHidden');
 //  this.simPause.setAttribute("id", "simPause");
 //  this.simPause.setAttribute('class', 'robButtonHidden');
-    this.saveProgram = this.createButton_(this.PATH_SAVEPROGRAM_, 1, 0, 'MENU_SAVE');
-    this.saveProgram.setAttribute("id", "saveProgram");
+    // this.saveProgram = this.createButton_(this.PATH_SAVEPROGRAM_, 1, 0, 'MENU_SAVE');
+    // this.saveProgram.setAttribute("id", "saveProgram");
 
-    if (this.zoom_) {
-        this.zoomVisible_ = false;
-        var zoom = this.createButton_(this.PATH_ZOOM_, 2, 0, 'MENU_ZOOM');
-        var zoominSvg = this.createButton_(this.PATH_ZOOMIN_, 2, 0, 'MENU_ZOOM_IN');
-        var zoomresetSvg = this.createButton_(this.PATH_ZOOMRESET_, 2, 1, 'MENU_ZOOM_RESET');
-        var zoomoutSvg = this.createButton_(this.PATH_ZOOMOUT_, 2, 2, 'MENU_ZOOM_OUT');
-        zoominSvg.setAttribute('class', 'robButtonHidden');
-        zoomoutSvg.setAttribute('class', 'robButtonHidden');
-        zoomresetSvg.setAttribute('class', 'robButtonHidden');
+    // if (this.zoom_) {
+    //     this.zoomVisible_ = false;
+    //     var zoom = this.createButton_(this.PATH_ZOOM_, 2, 0, 'MENU_ZOOM');
+    //     var zoominSvg = this.createButton_(this.PATH_ZOOMIN_, 2, 0, 'MENU_ZOOM_IN');
+    //     var zoomresetSvg = this.createButton_(this.PATH_ZOOMRESET_, 2, 1, 'MENU_ZOOM_RESET');
+    //     var zoomoutSvg = this.createButton_(this.PATH_ZOOMOUT_, 2, 2, 'MENU_ZOOM_OUT');
+    //     zoominSvg.setAttribute('class', 'robButtonHidden');
+    //     zoomoutSvg.setAttribute('class', 'robButtonHidden');
+    //     zoomresetSvg.setAttribute('class', 'robButtonHidden');
 
-        // Attach event listeners. 
-        Blockly.bindEvent_(zoomresetSvg, 'mousedown', workspace, function(e) {
-            workspace.setScale(1);
-            workspace.scrollCenter();
-            e.stopPropagation();
-            e.preventDefault()
-            control.showZoom(false);
-        });
-        Blockly.bindEvent_(zoominSvg, 'mousedown', null, function(e) {
-            workspace.zoomCenter(1);
-            e.stopPropagation();
-            e.preventDefault()
-        });
-        Blockly.bindEvent_(zoomoutSvg, 'mousedown', null, function(e) {
-            workspace.zoomCenter(-1);
-            e.stopPropagation();
-            e.preventDefault()
-        });
-        Blockly.bindEvent_(zoom, 'mousedown', null, function(e) {
-            control.showZoom(true);
-            e.stopPropagation(); // Don't start a workspace scroll.
-        });
-        this.zoominSvg = zoominSvg;
-        this.zoom = zoom;
-        this.zoomoutSvg = zoomoutSvg;
-        this.zoomresetSvg = zoomresetSvg;
-    }
+    //     // Attach event listeners. 
+    //     Blockly.bindEvent_(zoomresetSvg, 'mousedown', workspace, function(e) {
+    //         workspace.setScale(1);
+    //         workspace.scrollCenter();
+    //         e.stopPropagation();
+    //         e.preventDefault()
+    //         control.showZoom(false);
+    //     });
+    //     Blockly.bindEvent_(zoominSvg, 'mousedown', null, function(e) {
+    //         workspace.zoomCenter(1);
+    //         e.stopPropagation();
+    //         e.preventDefault()
+    //     });
+    //     Blockly.bindEvent_(zoomoutSvg, 'mousedown', null, function(e) {
+    //         workspace.zoomCenter(-1);
+    //         e.stopPropagation();
+    //         e.preventDefault()
+    //     });
+    //     Blockly.bindEvent_(zoom, 'mousedown', null, function(e) {
+    //         control.showZoom(true);
+    //         e.stopPropagation(); // Don't start a workspace scroll.
+    //     });
+    //     this.zoominSvg = zoominSvg;
+    //     this.zoom = zoom;
+    //     this.zoomoutSvg = zoomoutSvg;
+    //     this.zoomresetSvg = zoomresetSvg;
+    // }
     return this.svgGroup_;
 };
 

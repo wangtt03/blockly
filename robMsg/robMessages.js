@@ -866,6 +866,7 @@ Blockly.Msg.MENU_CODE_DOWNLOAD_TOOLTIP = 'Download the source code of your progr
 Blockly.Msg.MENU_CODE_REFRESH_TOOLTIP = 'Refresh the source code, if you have changed the NEPO Block"s.';
 Blockly.Msg.MENU_SIM_WRO = 'World Robot Olympiad scene';
 Blockly.Msg.MENU_SIM_START_TOOLTIP = 'Start your program in the simulation.';
+Blockly.Msg.MENU_REAL_START_TOOLTIP = 'Start your program in the ev3.';
 Blockly.Msg.MENU_SIM_VALUES_TOOLTIP = 'Open/close the sensors" data view.';
 Blockly.Msg.MENU_SIM_STOP_TOOLTIP = 'Stop your program in the simulation.';
 Blockly.Msg.MENU_SIM_IMPORT_TOOLTIP = 'Upload your own simulation background image, it will be appended at the end of the background"s list.';

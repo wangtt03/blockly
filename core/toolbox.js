@@ -404,7 +404,7 @@ Blockly.Toolbox.prototype.addColour_ = function(opt_tree, opt_sub) {
     if (element) {
       if (this.hasColours_) {
         var border = '8px solid ' + (child.hexColour || '#ddd'); 
-      } else if (this.hasSvg_ && element.className === "blocklyTreeRow") {        
+      } else if (this.hasSvg_ && element.className === "blocklyTreeRow") {
         if (opt_sub) {
           child.hexColour = currentColour; 
           child.getLabelElement().className += " blocklyTreeSub";

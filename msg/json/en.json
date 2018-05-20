@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"author": "Ellen Spertus <ellen.spertus@gmail.com>",
-		"lastupdated": "2017-07-28 15:46:55.237246",
+		"lastupdated": "2017-10-09 15:12:39.785601",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
@@ -1121,6 +1121,7 @@
 	"MENU_CODE_REFRESH_TOOLTIP": "Refresh the source code, if you have changed the NEPO Block's.",
 	"MENU_SIM_WRO": "World Robot Olympiad scene",
 	"MENU_SIM_START_TOOLTIP": "Start your program in the simulation.",
+	"MENU_REAL_START_TOOLTIP": "Start your program in the ev3.",
 	"MENU_SIM_VALUES_TOOLTIP": "Open/close the sensors' data view.",
 	"MENU_SIM_STOP_TOOLTIP": "Stop your program in the simulation.",
 	"MENU_SIM_IMPORT_TOOLTIP": "Upload your own simulation background image, it will be appended at the end of the background's list.",
